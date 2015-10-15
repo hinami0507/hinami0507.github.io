@@ -29,7 +29,7 @@
     <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" href="/img/fav.ico">
     
     
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
@@ -194,6 +194,12 @@
             
           </li>
         
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
     </ul>
 </div>
 
@@ -281,6 +287,11 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
   
   $(window).resize(function(){
     getSize(); 

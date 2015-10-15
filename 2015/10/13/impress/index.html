@@ -17,7 +17,7 @@
 <meta property="og:url" content="hinami.xyz/2015/10/13/impress/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="前段装X利器！传送门→_→impress.js听某人安利的前端框架，即写即得~Demo镜头的切换如丝般顺滑，完全碾压prezi，前提需要有html基础，w3school部分代码解说123&amp;lt;link href=&quot;css/impress-demo.css&quot; rel=&quot;stylesheet&quot; /&amp;gt;&amp;lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.png&quot;">
-<meta property="og:updated_time" content="2015-10-14T15:38:32.027Z">
+<meta property="og:updated_time" content="2015-10-14T15:41:26.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="impress.js">
 <meta name="twitter:description" content="前段装X利器！传送门→_→impress.js听某人安利的前端框架，即写即得~Demo镜头的切换如丝般顺滑，完全碾压prezi，前提需要有html基础，w3school部分代码解说123&amp;lt;link href=&quot;css/impress-demo.css&quot; rel=&quot;stylesheet&quot; /&amp;gt;&amp;lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.png&quot;">
@@ -26,7 +26,7 @@
     <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" href="/img/fav.ico">
     
     
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
@@ -201,6 +201,12 @@
             
           </li>
         
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
     </ul>
 </div>
 
@@ -288,6 +294,11 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
   
   $(window).resize(function(){
     getSize(); 
