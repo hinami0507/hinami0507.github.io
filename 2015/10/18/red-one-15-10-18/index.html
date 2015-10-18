@@ -11,34 +11,25 @@
     
 
     
-    <meta name="description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：
+    <meta name="description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
 
-async
 
-这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-async：可选。表示应该立即下载脚本，但不应妨">
+async：可选。表示应该立即下载脚本，但不应妨碍页面">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小红书-(1)-js脚本加载问题">
 <meta property="og:url" content="hinami.xyz/2015/10/18/red-one-15-10-18/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：
+<meta property="og:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
 
-async
 
-这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-async：可选。表示应该立即下载脚本，但不应妨">
-<meta property="og:updated_time" content="2015-10-18T01:41:50.205Z">
+async：可选。表示应该立即下载脚本，但不应妨碍页面">
+<meta property="og:updated_time" content="2015-10-18T02:01:13.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(1)-js脚本加载问题">
-<meta name="twitter:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：
+<meta name="twitter:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
 
-async
 
-这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-async：可选。表示应该立即下载脚本，但不应妨">
+async：可选。表示应该立即下载脚本，但不应妨碍页面">
 
     
     <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
@@ -111,18 +102,28 @@ async：可选。表示应该立即下载脚本，但不应妨">
 </header>
 	<div class="article-content">
 		
-		<h2 id="网页中">网页中</h2><p><code>&lt;script type=&quot;text/javascript&quot; src=&quot;...&quot;&gt;&lt;/script&gt;</code>标记可以加载脚本，能够无阻塞加载的属性是：</p>
-<blockquote>
-<p>async</p>
-</blockquote>
-<p>这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。</p>
+		<h3 id="网页中&lt;script_type=&quot;text/javascript&quot;_src=&quot;-&quot;&gt;&lt;/script&gt;标记可以加载脚本，能够无阻塞加载的属性是：defer">网页中<code>&lt;script type=&quot;text/javascript&quot; src=&quot;...&quot;&gt;&lt;/script&gt;</code>标记可以加载脚本，能够无阻塞加载的属性是：<code>defer</code></h3><p>这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。</p>
+<hr>
 <ul>
-<li><p>async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或<br>等待加载其他脚本。只对外部脚本文件有效。</p>
-</li>
-<li><p>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有<br>效。IE7 及更早版本对嵌入脚本也支持这个属性。</p>
-</li>
+<li>async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。</li>
 </ul>
-<h2 id="包含在&lt;script&gt;元素内部的JavaScript_代码将被从上至下依次解释。">包含在<code>&lt;script&gt;</code>元素内部的JavaScript 代码将被从上至下依次解释。</h2><p>解释器会解释一个函数的定义，然后将该定义保存在自己的环境当中。在解释器对<code>&lt;script&gt;</code>元素内部的所<br>有代码求值完毕以前，页面中的其余内容都不会被浏览器加载或显示。</p>
+<blockquote>
+<p>在XHTML 文档中，要把async 属性设置为async=”async”。</p>
+</blockquote>
+<hr>
+<ul>
+<li>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。立即下载，但是延迟执行</li>
+</ul>
+<blockquote>
+<p>在XHTML 文档中，要把defer 属性设置为defer=”defer”。</p>
+</blockquote>
+<hr>
+<h3 id="包含在&lt;script&gt;元素内部的JavaScript_代码将被从上至下依次解释。">包含在<code>&lt;script&gt;</code>元素内部的JavaScript 代码将被从上至下依次解释。</h3><p>解释器会解释一个函数的定义，然后将该定义保存在自己的环境当中。在解释器对<code>&lt;script&gt;</code>元素内部的所有代码求值完毕以前，页面中的其余内容都不会被浏览器加载或显示。</p>
+<hr>
+<blockquote>
+<p>需要注意的是</p>
+</blockquote>
+<p>带有src 属性的<code>&lt;script&gt;</code>元素不应该在其<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签之间再<br>包含额外的JavaScript 代码。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码<br>会被忽略。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -171,7 +172,7 @@ async：可选。表示应该立即下载脚本，但不应妨">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网页中"><span class="toc-number">1.</span> <span class="toc-text">网页中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包含在<script>元素内部的JavaScript_代码将被从上至下依次解释。"><span class="toc-number">2.</span> <span class="toc-text">包含在<script>元素内部的JavaScript 代码将被从上至下依次解释。</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#网页中<script_type="text/javascript"_src="-"></script>标记可以加载脚本，能够无阻塞加载的属性是：defer"><span class="toc-number">1.</span> <span class="toc-text">网页中<script type="text/javascript" src="..."></script>标记可以加载脚本，能够无阻塞加载的属性是：defer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含在<script>元素内部的JavaScript_代码将被从上至下依次解释。"><span class="toc-number">2.</span> <span class="toc-text">包含在<script>元素内部的JavaScript 代码将被从上至下依次解释。</span></a></li></ol>
  
   </div>
 
