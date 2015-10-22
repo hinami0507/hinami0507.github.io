@@ -4,32 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红书-(2)-ECMAscript变量 | hinami</title>
+    <title>小红书-(1)-js脚本加载问题 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据var message=&quot;hinami&quot;;
-这只是给变量message赋值而已，并没有标记他为字符串类型变量。
+    <meta name="description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
 
-局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。function">
+
+async：可选。表示应该立即下载脚本，但不应妨碍页面">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红书-(2)-ECMAscript变量">
-<meta property="og:url" content="hinami.xyz/2015/10/21/red-1-15-10-21/index.html">
+<meta property="og:title" content="小红书-(1)-js脚本加载问题">
+<meta property="og:url" content="hinami.xyz/2015/10/18/red-1-15-10-18/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据var message=&quot;hinami&quot;;
-这只是给变量message赋值而已，并没有标记他为字符串类型变量。
+<meta property="og:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
 
-局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。function">
-<meta property="og:updated_time" content="2015-10-22T11:34:46.898Z">
+
+async：可选。表示应该立即下载脚本，但不应妨碍页面">
+<meta property="og:updated_time" content="2015-10-22T12:27:19.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红书-(2)-ECMAscript变量">
-<meta name="twitter:description" content="ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据var message=&quot;hinami&quot;;
-这只是给变量message赋值而已，并没有标记他为字符串类型变量。
+<meta name="twitter:title" content="小红书-(1)-js脚本加载问题">
+<meta name="twitter:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
 
-局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。function">
+
+async：可选。表示应该立即下载脚本，但不应妨碍页面">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -90,36 +90,55 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/21/red-1-15-10-21/" title="小红书-(2)-ECMAscript变量" itemprop="url">小红书-(2)-ECMAscript变量</a>
+      <a href="/2015/10/18/red-1-15-10-18/" title="小红书-(1)-js脚本加载问题" itemprop="url">小红书-(1)-js脚本加载问题</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-21T14:40:23.000Z" itemprop="datePublished"> 发表于 2015-10-21</time>
+    <time datetime="2015-10-18T01:31:03.000Z" itemprop="datePublished"> 发表于 2015-10-18</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<p>ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> message</span>=<span class="string">"hinami"</span>;</span><br></pre></td></tr></table></figure></p>
-<p>这只是给变量message赋值而已，并没有标记他为字符串类型变量。</p>
+		<h3 id="网页中&lt;script_type=&quot;text/javascript&quot;_src=&quot;-&quot;&gt;&lt;/script&gt;标记可以加载脚本，能够无阻塞加载的属性是：defer">网页中<code>&lt;script type=&quot;text/javascript&quot; src=&quot;...&quot;&gt;&lt;/script&gt;</code>标记可以加载脚本，能够无阻塞加载的属性是：<code>defer</code></h3><p>这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。</p>
 <hr>
-<p>局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。<br>而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">var</span> message = <span class="string">"hinami"</span>; <span class="comment">// 局部变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">// 错误！</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。</li>
+</ul>
+<blockquote>
+<p>在XHTML 文档中，要把async 属性设置为async=”async”。</p>
+</blockquote>
 <hr>
-<p>上边的例子如果去掉var，则message变为全局变量,就对了， <strong>但是全局变量较难维护，使用之前要三思</strong><br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">message = <span class="string">"hinami"</span>; <span class="comment">// 全局变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">// 正确！</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。立即下载，但是延迟执行</li>
+</ul>
+<blockquote>
+<p>在XHTML 文档中，要把defer 属性设置为defer=”defer”。</p>
+</blockquote>
 <hr>
-<p>可以使用一条语句定义多个变量，只要像下面这样把每个变量（初始化或不初始化均可）用逗号分隔开即可：<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> message</span> = <span class="string">"hinami"</span>,</span><br><span class="line">	found = <span class="literal">false</span>,</span><br><span class="line">	age = <span class="number">29</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="包含在&lt;script&gt;元素内部的JavaScript_代码将被从上至下依次解释。">包含在<code>&lt;script&gt;</code>元素内部的JavaScript 代码将被从上至下依次解释。</h3><p>解释器会解释一个函数的定义，然后将该定义保存在自己的环境当中。在解释器对<code>&lt;script&gt;</code>元素内部的所有代码求值完毕以前，页面中的其余内容都不会被浏览器加载或显示。</p>
+<hr>
+<blockquote>
+<p>需要注意的是</p>
+</blockquote>
+<p>带有src 属性的<code>&lt;script&gt;</code>元素不应该在其<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签之间再<br>包含额外的JavaScript 代码。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码<br>会被忽略。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/变量/">变量</a><a href="/tags/小红书/">小红书</a>
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a><a href="/tags/脚本加载/">脚本加载</a>
   </div>
 
 </div>
@@ -128,7 +147,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/21/red-1-15-10-21/" data-title="小红书-(2)-ECMAscript变量 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/18/red-1-15-10-18/" data-title="小红书-(1)-js脚本加载问题 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -141,11 +160,19 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/10/21/red-2-15-10-21/" title="小红书-(2)-ECMAscript变量">
+  <strong>上一篇：</strong><br/>
+  <span>
+  小红书-(2)-ECMAscript变量</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/10/18/red-one-15-10-18/"  title="小红书-(1)-js脚本加载问题">
+<a href="/2015/10/17/15-10-17Recruitment/"  title="去招聘会玩耍">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(1)-js脚本加载问题
+ <span>去招聘会玩耍
 </span>
 </a>
 </div>
@@ -154,7 +181,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/21/red-1-15-10-21/" data-title="小红书-(2)-ECMAscript变量" data-url="hinami.xyz/2015/10/21/red-1-15-10-21/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/18/red-1-15-10-18/" data-title="小红书-(1)-js脚本加载问题" data-url="hinami.xyz/2015/10/18/red-1-15-10-18/"></div>
 </section>
 
 
@@ -164,7 +191,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#网页中<script_type="text/javascript"_src="-"></script>标记可以加载脚本，能够无阻塞加载的属性是：defer"><span class="toc-number">1.</span> <span class="toc-text">网页中<script type="text/javascript" src="..."></script>标记可以加载脚本，能够无阻塞加载的属性是：defer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含在<script>元素内部的JavaScript_代码将被从上至下依次解释。"><span class="toc-number">2.</span> <span class="toc-text">包含在<script>元素内部的JavaScript 代码将被从上至下依次解释。</span></a></li></ol>
  
   </div>
 
@@ -173,6 +200,21 @@
 <aside class="clearfix">
 
   
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
 
   
 <div class="tagslist">
@@ -180,23 +222,39 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>4</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小红书/" title="小红书">小红书<sup>2</sup></a></li>
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>2</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>2</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/脚本加载/" title="脚本加载">脚本加载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架/" title="框架">框架<sup>1</sup></a></li>
 			
 		
 			
@@ -205,24 +263,6 @@
 		
 			
 				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/脚本加载/" title="脚本加载">脚本加载<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/框架/" title="框架">框架<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
-			
-		
-			
-		
-			
-		
 			
 		
 		</ul>
