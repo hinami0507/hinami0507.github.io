@@ -23,7 +23,7 @@
 这只是给变量message赋值而已，并没有标记他为字符串类型变量。
 
 局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。function">
-<meta property="og:updated_time" content="2015-10-22T11:42:54.945Z">
+<meta property="og:updated_time" content="2015-10-23T13:25:19.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(2)-ECMAscript变量">
 <meta name="twitter:description" content="ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据var message=&quot;hinami&quot;;
@@ -108,7 +108,7 @@
 <hr>
 <p>局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。<br>而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">var</span> message = <span class="string">"hinami"</span>; <span class="comment">// 局部变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">// 错误！</span></span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>上边的例子如果去掉var，则message变为全局变量,就对了， <strong>但是全局变量较难维护，使用之前要三思</strong><br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">message = <span class="string">"hinami"</span>; <span class="comment">// 全局变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">// 正确！</span></span><br></pre></td></tr></table></figure></p>
+<p>上边的例子如果去掉var，则message变为全局变量(关闭网页后销毁),就对了， <strong>但是全局变量较难维护，使用之前要三思</strong><br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">message = <span class="string">"hinami"</span>; <span class="comment">// 全局变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">// 正确！</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 <p>可以使用一条语句定义多个变量，只要像下面这样把每个变量（初始化或不初始化均可）用逗号分隔开即可：<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> message</span> = <span class="string">"hinami"</span>,</span><br><span class="line">	found = <span class="literal">false</span>,</span><br><span class="line">	age = <span class="number">29</span>;</span><br></pre></td></tr></table></figure></p>
   
@@ -147,10 +147,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/10/22/red-3-15-10-22/" title="小红书-(3)-数据类型">
+ <a href="/2015/10/22/red-3-15-10-22/" title="小红书-(4)-数据类型(上)">
   <strong>上一篇：</strong><br/>
   <span>
-  小红书-(3)-数据类型</span>
+  小红书-(4)-数据类型(上)</span>
 </a>
 </div>
 
@@ -195,7 +195,7 @@
 		  
 		
 		  
-			<li><a href="/categories/小红书/" title="小红书">小红书<sup>3</sup></a></li>
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>4</sup></a></li>
 		  
 		
 		</ul>
@@ -208,31 +208,31 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>5</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>7</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小红书/" title="小红书">小红书<sup>3</sup></a></li>
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>3</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>3</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>1</sup></a></li>
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/脚本加载/" title="脚本加载">脚本加载<sup>1</sup></a></li>
 			
 		
 			
@@ -244,11 +244,19 @@
 			
 		
 			
+				<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/float/" title="float">float<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/html5/" title="html5">html5<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
+				<li><a href="/tags/脚本加载/" title="脚本加载">脚本加载<sup>1</sup></a></li>
 			
 		
 		</ul>

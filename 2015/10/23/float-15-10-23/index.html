@@ -4,32 +4,31 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红书-(1)-js脚本加载问题 | hinami</title>
+    <title>关于float导致父层坍塌 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
+    <meta name="description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
+前端很经典的问题本来想做成这样的
+&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红书-(1)-js脚本加载问题">
-<meta property="og:url" content="hinami.xyz/2015/10/18/red-1-15-10-18/index.html">
+<meta property="og:title" content="关于float导致父层坍塌">
+<meta property="og:url" content="hinami.xyz/2015/10/23/float-15-10-23/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
-<meta property="og:updated_time" content="2015-10-22T12:27:19.050Z">
+<meta property="og:description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
+前端很经典的问题本来想做成这样的
+&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_1.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_2.png">
+<meta property="og:updated_time" content="2015-10-23T15:26:38.197Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红书-(1)-js脚本加载问题">
-<meta name="twitter:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
+<meta name="twitter:title" content="关于float导致父层坍塌">
+<meta name="twitter:description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
+前端很经典的问题本来想做成这样的
+&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -90,55 +89,51 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/18/red-1-15-10-18/" title="小红书-(1)-js脚本加载问题" itemprop="url">小红书-(1)-js脚本加载问题</a>
+      <a href="/2015/10/23/float-15-10-23/" title="关于float导致父层坍塌" itemprop="url">关于float导致父层坍塌</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-18T01:31:03.000Z" itemprop="datePublished"> 发表于 2015-10-18</time>
+    <time datetime="2015-10-23T13:28:43.000Z" itemprop="datePublished"> 发表于 2015-10-23</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h3 id="网页中&lt;script_type=&quot;text/javascript&quot;_src=&quot;-&quot;&gt;&lt;/script&gt;标记可以加载脚本，能够无阻塞加载的属性是：defer">网页中<code>&lt;script type=&quot;text/javascript&quot; src=&quot;...&quot;&gt;&lt;/script&gt;</code>标记可以加载脚本，能够无阻塞加载的属性是：<code>defer</code></h3><p>这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。</p>
+		<blockquote>
+<h1 id="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:">解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:</h1></blockquote>
+<p>前端很经典的问题<br>本来想做成这样的<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_1.png" alt="本来想做成这样的"></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>float坍塌问题实验<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line">	</span><br><span class="line"><span class="class">.father</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#FAA05F</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.div1</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#A6E22A</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.div2</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">120px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">120px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#FA655F</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.div3</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#53B5DB</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">80px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.another</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#937DE4</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"father"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div1"</span>&gt;</span>I am DIV1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div2"</span>&gt;</span>I am DIV2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div3"</span>&gt;</span>I am DIV3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"another"</span>&gt;</span>I am another<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
-<ul>
-<li>async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。</li>
-</ul>
-<blockquote>
-<p>在XHTML 文档中，要把async 属性设置为async=”async”。</p>
-</blockquote>
-<hr>
-<ul>
-<li>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。立即下载，但是延迟执行</li>
-</ul>
-<blockquote>
-<p>在XHTML 文档中，要把defer 属性设置为defer=”defer”。</p>
-</blockquote>
-<hr>
-<h3 id="包含在&lt;script&gt;元素内部的JavaScript_代码将被从上至下依次解释。">包含在<code>&lt;script&gt;</code>元素内部的JavaScript 代码将被从上至下依次解释。</h3><p>解释器会解释一个函数的定义，然后将该定义保存在自己的环境当中。在解释器对<code>&lt;script&gt;</code>元素内部的所有代码求值完毕以前，页面中的其余内容都不会被浏览器加载或显示。</p>
+<p>上边代码运行后就成了这样Σ(っ °Д °;)っWTF!<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_2.png" alt="上边代码运行后就成了这样"></p>
 <hr>
 <blockquote>
-<p>需要注意的是</p>
-</blockquote>
-<p>带有src 属性的<code>&lt;script&gt;</code>元素不应该在其<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签之间再<br>包含额外的JavaScript 代码。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码<br>会被忽略。</p>
+<h2 id="分析一下原因">分析一下原因</h2></blockquote>
+<p>三个DIV float:left<br>然而父层并没有设置高度，三个子层div也没有高度，这便导致了<strong>父层坍塌，高度为0。</strong></p>
+<h1 id="于是找到了三种解决方法">于是找到了三种解决方法</h1><p>1.在father-div里加入height属性，该方法适用于子元素高度已知并且固定的情况。</p>
+<p>2.在最后一个子元素后加入 <code>&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</code>，清除浮动元素。</p>
+<p>3.在father-div里加入<code>overflow:hidden</code>属性。</p>
+<p>这里推荐<strong>后两种方法</strong>。</p>
+<hr>
+<blockquote>
+<h2 id="解释一下方案2:">解释一下方案2:</h2></blockquote>
+<p><code>style=&quot;clear:both;&quot;</code>原本是用来清除浮动的，<br>可以用来给  有<code>float属性</code>的 div元素换行~<br>而这里巧妙的用了一个伪div来换行，赋予了父层div以高度</p>
+<blockquote>
+<h2 id="解释一下方案3:">解释一下方案3:</h2></blockquote>
+<p><code>overflow:hidden&quot;</code>清除了子层div的浮动<br>说到这里，我们再来理解一下“浮动”这个词的含义。我们原先的理解是，在一个平面上的浮动，但是通过这个试验，我们发现，这不仅仅是一个平面上的浮动，而是一个立体的浮动！</p>
+<p>当我们没有给父层这个div设置高度的时候，子层这个div的高度，就会撑开父层这个div，而在另一个方面，我们要注意到的是，当我们给父层这个div加上一个高度值，那么无论子层这个div的高度是多少，父层这个高度都是我们设定的值。而当子层的高度超过父层的高度的时候，超出的部分就会被隐藏。这就是隐藏溢出的含义！</p>
+<p>参考:<br><a href="http://www.chinaz.com/design/2008/0818/35473.shtml" target="_blank" rel="external">全面阐述overflow:hidden属性</a><br><a href="http://www.difangla.com/Html/jishu/css/88140.htm" target="_blank" rel="external">首发地址</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/小红书/">小红书</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a><a href="/tags/脚本加载/">脚本加载</a>
+  <span></span> <a href="/tags/css/">css</a><a href="/tags/float/">float</a><a href="/tags/前端/">前端</a>
   </div>
 
 </div>
@@ -147,7 +142,7 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/18/red-1-15-10-18/" data-title="小红书-(1)-js脚本加载问题 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/23/float-15-10-23/" data-title="关于float导致父层坍塌 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -160,19 +155,11 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/21/red-2-15-10-21/" title="小红书-(2)-ECMAscript变量">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红书-(2)-ECMAscript变量</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/17/15-10-17Recruitment/"  title="去招聘会玩耍">
+<a href="/2015/10/23/red-4-15-10-23/"  title="小红书-(3)-数据类型(下)">
  <strong>下一篇：</strong><br/> 
- <span>去招聘会玩耍
+ <span>小红书-(3)-数据类型(下)
 </span>
 </a>
 </div>
@@ -181,7 +168,7 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/18/red-1-15-10-18/" data-title="小红书-(1)-js脚本加载问题" data-url="hinami.xyz/2015/10/18/red-1-15-10-18/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/23/float-15-10-23/" data-title="关于float导致父层坍塌" data-url="hinami.xyz/2015/10/23/float-15-10-23/"></div>
 </section>
 
 
@@ -191,7 +178,7 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#网页中<script_type="text/javascript"_src="-"></script>标记可以加载脚本，能够无阻塞加载的属性是：defer"><span class="toc-number">1.</span> <span class="toc-text">网页中<script type="text/javascript" src="..."></script>标记可以加载脚本，能够无阻塞加载的属性是：defer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含在<script>元素内部的JavaScript_代码将被从上至下依次解释。"><span class="toc-number">2.</span> <span class="toc-text">包含在<script>元素内部的JavaScript 代码将被从上至下依次解释。</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:"><span class="toc-number">1.</span> <span class="toc-text">解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析一下原因"><span class="toc-number">1.1.</span> <span class="toc-text">分析一下原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#于是找到了三种解决方法"><span class="toc-number">2.</span> <span class="toc-text">于是找到了三种解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案2:"><span class="toc-number">2.1.</span> <span class="toc-text">解释一下方案2:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案3:"><span class="toc-number">2.2.</span> <span class="toc-text">解释一下方案3:</span></a></li></ol></li></ol>
  
   </div>
 
