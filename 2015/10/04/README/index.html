@@ -4,31 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>关于float导致父层坍塌 | hinami</title>
+    <title>hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
-前端很经典的问题本来想做成这样的
-&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
+    <meta name="description" content="Jacman中文说明
+Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
+Jacman support Hexo 3.0 now !
+Demo | Jark’s Blog
+如何使用 Jacman">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于float导致父层坍塌">
-<meta property="og:url" content="hinami.xyz/2015/10/23/float-15-10-23/index.html">
+<meta property="og:title" content="hinami">
+<meta property="og:url" content="hinami.xyz/2015/10/04/README/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
-前端很经典的问题本来想做成这样的
-&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
-<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_1.png">
-<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_2.png">
-<meta property="og:updated_time" content="2015-10-23T15:26:44.930Z">
+<meta property="og:description" content="Jacman中文说明
+Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
+Jacman support Hexo 3.0 now !
+Demo | Jark’s Blog
+如何使用 Jacman">
+<meta property="og:updated_time" content="2015-10-04T15:15:13.541Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于float导致父层坍塌">
-<meta name="twitter:description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
-前端很经典的问题本来想做成这样的
-&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
+<meta name="twitter:title" content="hinami">
+<meta name="twitter:description" content="Jacman中文说明
+Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
+Jacman support Hexo 3.0 now !
+Demo | Jark’s Blog
+如何使用 Jacman">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -89,52 +93,93 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/23/float-15-10-23/" title="关于float导致父层坍塌" itemprop="url">关于float导致父层坍塌</a>
+      <a href="/2015/10/04/README/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-23T13:28:43.000Z" itemprop="datePublished"> 发表于 2015-10-23</time>
+    <time datetime="2015-10-04T15:15:13.541Z" itemprop="datePublished"> 发表于 2015-10-04</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<blockquote>
-<h1 id="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:">解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:</h1></blockquote>
-<p>前端很经典的问题<br>本来想做成这样的<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_1.png" alt="本来想做成这样的"></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>float坍塌问题实验<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line">	</span><br><span class="line"><span class="class">.father</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#FAA05F</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.div1</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#A6E22A</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.div2</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">120px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">120px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#FA655F</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.div3</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#53B5DB</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">80px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.another</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#937DE4</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"father"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div1"</span>&gt;</span>I am DIV1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div2"</span>&gt;</span>I am DIV2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div3"</span>&gt;</span>I am DIV3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"another"</span>&gt;</span>I am another<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>上边代码运行后就成了这样Σ(っ °Д °;)っWTF!<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_2.png" alt="上边代码运行后就成了这样"></p>
-<hr>
-<blockquote>
-<h2 id="分析一下原因">分析一下原因</h2></blockquote>
-<p>三个DIV float:left<br>然而父层并没有设置高度，三个子层div也没有高度，这便导致了<strong>父层坍塌，高度为0。</strong></p>
-<h1 id="于是找到了三种解决方法">于是找到了三种解决方法</h1><p>1.在father-div里加入height属性，该方法适用于子元素高度已知并且固定的情况。</p>
-<p>2.在最后一个子元素后加入 <code>&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</code>，清除浮动元素。</p>
-<p>3.在father-div里加入<code>overflow:hidden</code>属性。</p>
-<p>这里推荐<strong>后两种方法</strong>。</p>
-<hr>
-<blockquote>
-<h2 id="解释一下方案2:">解释一下方案2:</h2></blockquote>
-<p><code>style=&quot;clear:both;&quot;</code>原本是用来清除浮动的，<br>可以用来给  有<code>float属性</code>的 div元素换行~<br>而这里巧妙的用了一个伪div来换行，赋予了父层div以高度</p>
-<blockquote>
-<h2 id="解释一下方案3:">解释一下方案3:</h2></blockquote>
-<p><code>overflow:hidden&quot;</code>清除了子层div的浮动<br>说到这里，我们再来理解一下“浮动”这个词的含义。我们原先的理解是，在一个平面上的浮动，但是通过这个试验，我们发现，这不仅仅是一个平面上的浮动，而是一个立体的浮动！</p>
-<p>当我们没有给父层这个div设置高度的时候，子层这个div的高度，就会撑开父层这个div，而在另一个方面，我们要注意到的是，当我们给父层这个div加上一个高度值，那么无论子层这个div的高度是多少，父层这个高度都是我们设定的值。而当子层的高度超过父层的高度的时候，超出的部分就会被隐藏。这就是隐藏溢出的含义！</p>
-<p>参考:<br><a href="http://www.chinaz.com/design/2008/0818/35473.shtml" target="_blank" rel="external">全面阐述overflow:hidden属性</a><br><a href="http://www.difangla.com/Html/jishu/css/88140.htm" target="_blank" rel="external">首发地址</a></p>
+		<h1 id="Jacman">Jacman</h1><p><a href="/README_zh.md">中文说明</a></p>
+<p>Jacman is a fresh looking and responsive theme for <a href="http://hexo.io" target="_blank" rel="external">Hexo</a> with more features and some build-in Chinese service based on <a href="https://github.com/A-limon/pacman" target="_blank" rel="external">Pacman</a>.  </p>
+<p><strong>Jacman support Hexo 3.0 now !</strong></p>
+<p><a href="http://wuchong.me/jacman" target="_blank" rel="external">Demo</a> | <a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a></p>
+<p><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
+<p>##Installation</p>
+<p>###Install<br><figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/wuchong</span><span class="regexp">/jacman.git themes/jacman</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Jacman requires Hexo 2.7 and above.</strong> </p>
+<p>###Enable<br>Modify <code>theme</code> setting in blog folder<code>_config.yml</code> to <code>jacman</code>.</p>
+<p>###Update<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/jacman</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
+<p><strong>please backup your <code>_config.yml</code> file before update.</strong> </p>
+<p>##Configuration</p>
+<p>Modify settings in  <code>/themes/jacman/_config.yml</code>. <a href="https://github.com/wuchong/jacman/wiki/%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97" target="_blank" rel="external">Learn More</a>.</p>
+<p>##Features</p>
+<ul>
+<li><strong>menu</strong><br>Main navigation menu.</li>
+<li><strong>widget</strong><br>Widgets displaying in sidebar.The category,tag,rss,archive,tagcloud,links,weibo are supported.</li>
+<li><strong>Image</strong><br>Images about favicon, site logo, author image, banner image. Support different image styles like <code>img-logo</code>,<code>img-topic</code>,<code>img-center</code> etc.</li>
+<li><strong>index</strong><br>Two different home page display modes.You can visit <a href="http://wuchong.me/jacman" target="_blank" rel="external">Demo</a> &amp; <a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a> to check the difference.</li>
+<li><strong>author</strong><br>Author imformation, used to show your social network links on the bottom right. Including github, stackoverflow, twitter, facebook, linkedin, google+, weibo, douban, zhihu, email.</li>
+<li><strong>toc</strong><br>Show Table Of Contents in article &amp; aside.</li>
+<li><strong>comments</strong><br><a href="http://duoshuo.com/" target="_blank" rel="external">duoshuo</a> &amp; <a href="https://disqus.com/" target="_blank" rel="external">disqus</a> are supported.</li>
+<li><strong>jiathis</strong><br>Build-in share tool or <a href="http://www.jiathis.com/" target="_blank" rel="external">JiaThis</a> share buttons at the bottom of articles.</li>
+<li><strong>Analytiscs</strong><br><a href="http://www.google.com/analytics/" target="_blank" rel="external">Google analytics</a> &amp; <a href="http://tongji.baidu.com/" target="_blank" rel="external">Baidu tongji</a> &amp; <a href="http://www.cnzz.com/" target="_blank" rel="external">CNZZ tongji</a> are all supported.</li>
+<li><strong>Search</strong><br><a href="https://www.google.com/cse/" target="_blank" rel="external">Googlle Custom Search</a> &amp; <a href="http://zn.baidu.com/" target="_blank" rel="external">Baidu Site Search</a> &amp; <a href="http://tinysou.com/" target="_blank" rel="external">Tiny Search</a> are supported.</li>
+<li><strong>totop</strong><br>Scroll to top</li>
+<li><strong>rss</strong><br>RSS subscription link (change if using Feedburner).</li>
+<li><strong>fancybox</strong><br>Enable <a href="http://fancyapps.com/fancybox/" target="_blank" rel="external">Fancybox</a></li>
+<li><strong>custom theme color</strong><br>Mondify theme color in <code>_config.yaml</code> instead of finding unfamiliar stylus files.</li>
+<li><strong>others</strong><br>You can configure sidebar not show in post pages.</li>
+</ul>
+<p>You can learn how to use them from <a href="https://github.com/wuchong/jacman/wiki/配置指南" target="_blank" rel="external">Configuration</a>.</p>
+<p>##Sites</p>
+<ul>
+<li><a href="http://wuchong.me/jacman" target="_blank" rel="external">Jacman Theme</a> - The demo site of Jacman Theme</li>
+<li><a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a> - The author’s blog of Jacman</li>
+<li><a href="http://ralphadu.com" target="_blank" rel="external">阿杜个人博客</a> - 阿杜个人博客</li>
+<li><a href="http://philosky.ml/" target="_blank" rel="external">PhiloSky’s Blog</a> - Personal blog</li>
+<li><a href="http://hiluluke.cn" target="_blank" rel="external">hiluSdream</a> - 梦想是无所谓无的，无所谓有的</li>
+<li><a href="http://melface.tk" target="_blank" rel="external">Melface</a> - Personal blog</li>
+<li><a href="http://heamon7.com" target="_blank" rel="external">heamon7’s Utopia</a> - 修行绝尘，悟道涉俗</li>
+<li><a href="http://ningning.today" target="_blank" rel="external">PegasusWang’s Blog</a> - 你的问题主要在于读书不多而想得太多</li>
+<li><a href="http://www.caoqq.net" target="_blank" rel="external">青劲草</a> - 学会记录成长点滴</li>
+<li><a href="http://cscao.com" target="_blank" rel="external">Vigorass</a> - Learn to record dripping growth</li>
+<li><a href="http://moqizhan.com" target="_blank" rel="external">MoqiZhan</a> - 人生就是不停的战斗</li>
+<li><a href="http://think-diff.me/" target="_blank" rel="external">Think Differently</a> - If You Can Think Differently, You Can Act Differently.</li>
+<li><a href="http://wangyangyang.gitcafe.com" target="_blank" rel="external">ylf</a> - 王洋洋</li>
+<li><a href="http://blog.igevin.info/" target="_blank" rel="external">Gevin’s blog</a> - Stay hungry, stay foolish; Stop when you are perfect.</li>
+<li><a href="http://keychar.com" target="_blank" rel="external">keychar</a> - A technology blog, design &amp; programming.</li>
+<li><a href="http://chenpengdsp.com" target="_blank" rel="external">peng的博客</a> - 人生就是不停的战斗</li>
+<li><a href="http://aeesky.github.io" target="_blank" rel="external">More and More</a> -刚起步：）</li>
+<li><a href="http://dpast.org" target="_blank" rel="external">好久不见</a> - Julian Zhu</li>
+<li><a href="http://jukezhang.com/" target="_blank" rel="external">keke2014’s blog</a> - Stay hungry, stay foolish - Steve Jobs</li>
+<li><a href="http://www.eurry.net" target="_blank" rel="external">Eurry</a> - Eurry’s Blog.</li>
+<li><a href="http://isencle.com" target="_blank" rel="external">sencle’s blog</a> -just do it</li>
+<li><a href="http://ioxymoron.me" target="_blank" rel="external">Oxymoron’s Blog</a> - Let’s start from here.</li>
+<li><a href="http://wsgzao.github.io" target="_blank" rel="external">HelloDog</a> - Keep Clam and Carry On</li>
+<li><a href="http://haomwei.com" target="_blank" rel="external">屠城｜屠夫9441的博客</a> - 苟全性命于乱世，不求闻达于诸侯。</li>
+<li><a href="http://icehe.github.io/" target="_blank" rel="external">Ice He. 何志遠</a> - Less is more. 寧靜致遠。</li>
+<li><a href="http://www.prokitty.com" target="_blank" rel="external">prokitty，侏罗纪公园</a> -Belive yourself,belive Cherry.</li>
+<li><a href="http://ceclinux.org" target="_blank" rel="external">Ceclinux</a> - Arch is the best</li>
+<li><a href="http://brucege.com" target="_blank" rel="external">BruceGe’s blog</a> - Start Blogging</li>
+<li><a href="http://yangxiaolei.me" target="_blank" rel="external">Yangxiaolei’s blog</a> - 让知识成为信仰，让优秀成为习惯</li>
+<li><a href="http://ccloveyou.org" target="_blank" rel="external">CC’s blog</a> - CC</li>
+<li><a href="http://watermeion.github.io" target="_blank" rel="external">TadGuo’s pages</a> - More is different.</li>
+<li><a href="http://mutse.github.io" target="_blank" rel="external">Mutse’s blog</a> - Love Life, Love open source</li>
+</ul>
+<p>If you are using Jacman,you can add your site <a href="https://github.com/wuchong/jacman/wiki/Sites" target="_blank" rel="external">here</a> ! I’ll push the available sites here.</p>
+<p>##License<br><a href="/LICENSE">MIT</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/css/">css</a><a href="/tags/float/">float</a><a href="/tags/前端/">前端</a>
-  </div>
 
 </div>
 
@@ -142,7 +187,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/23/float-15-10-23/" data-title="关于float导致父层坍塌 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/04/README/" data-title="hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -155,20 +200,20 @@
 	
 <nav class="article-nav clearfix">
  
-
-<div class="next">
-<a href="/2015/10/23/red-4-15-10-23/"  title="小红书-(3)-数据类型(下)">
- <strong>下一篇：</strong><br/> 
- <span>小红书-(3)-数据类型(下)
-</span>
+ <div class="prev" >
+ <a href="/2015/10/04/README_zh/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
 </a>
 </div>
+
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/23/float-15-10-23/" data-title="关于float导致父层坍塌" data-url="hinami.xyz/2015/10/23/float-15-10-23/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/04/README/" data-title="" data-url="hinami.xyz/2015/10/04/README/"></div>
 </section>
 
 
@@ -178,7 +223,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:"><span class="toc-number">1.</span> <span class="toc-text">解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析一下原因"><span class="toc-number">1.1.</span> <span class="toc-text">分析一下原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#于是找到了三种解决方法"><span class="toc-number">2.</span> <span class="toc-text">于是找到了三种解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案2:"><span class="toc-number">2.1.</span> <span class="toc-text">解释一下方案2:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案3:"><span class="toc-number">2.2.</span> <span class="toc-text">解释一下方案3:</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jacman"><span class="toc-number">1.</span> <span class="toc-text">Jacman</span></a></li></ol>
  
   </div>
 
