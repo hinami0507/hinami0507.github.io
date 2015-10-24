@@ -4,31 +4,56 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>关于float导致父层坍塌 | hinami</title>
+    <title>小红书-(5)-基本类型值和引用类型 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
-前端很经典的问题本来想做成这样的
-&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
+    <meta name="description" content="文章开头祝大家程序员节日快乐ヽ(✿·▽·)ノ摇起来！！！
+看书啦！撸代码啦！严肃点！(￣ε(#￣)☆╰╮o(￣皿￣///)
+哦(。﹏。*)
+
+基本类型和引用类型的值ECMAscript有两种不同数据类型的值：
+
+基本类型 -简单数据段
+引用类型 -可能由多个值构成的对象
+
+
+举例~下边是引用类型var person = new Object();person.name = &quot;hinami&quot;;ale">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于float导致父层坍塌">
-<meta property="og:url" content="hinami.xyz/2015/10/23/float-15-10-23/index.html">
+<meta property="og:title" content="小红书-(5)-基本类型值和引用类型">
+<meta property="og:url" content="hinami.xyz/2015/10/24/red-5-15-10-24/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
-前端很经典的问题本来想做成这样的
-&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
-<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_1.png">
-<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_2.png">
-<meta property="og:updated_time" content="2015-10-23T15:26:44.930Z">
+<meta property="og:description" content="文章开头祝大家程序员节日快乐ヽ(✿·▽·)ノ摇起来！！！
+看书啦！撸代码啦！严肃点！(￣ε(#￣)☆╰╮o(￣皿￣///)
+哦(。﹏。*)
+
+基本类型和引用类型的值ECMAscript有两种不同数据类型的值：
+
+基本类型 -简单数据段
+引用类型 -可能由多个值构成的对象
+
+
+举例~下边是引用类型var person = new Object();person.name = &quot;hinami&quot;;ale">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/1024.gif">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/red-51-15-10-24.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/red-52-15-10-24.png">
+<meta property="og:updated_time" content="2015-10-24T08:14:43.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于float导致父层坍塌">
-<meta name="twitter:description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
-前端很经典的问题本来想做成这样的
-&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
+<meta name="twitter:title" content="小红书-(5)-基本类型值和引用类型">
+<meta name="twitter:description" content="文章开头祝大家程序员节日快乐ヽ(✿·▽·)ノ摇起来！！！
+看书啦！撸代码啦！严肃点！(￣ε(#￣)☆╰╮o(￣皿￣///)
+哦(。﹏。*)
+
+基本类型和引用类型的值ECMAscript有两种不同数据类型的值：
+
+基本类型 -简单数据段
+引用类型 -可能由多个值构成的对象
+
+
+举例~下边是引用类型var person = new Object();person.name = &quot;hinami&quot;;ale">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -89,51 +114,67 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/23/float-15-10-23/" title="关于float导致父层坍塌" itemprop="url">关于float导致父层坍塌</a>
+      <a href="/2015/10/24/red-5-15-10-24/" title="小红书-(5)-基本类型值和引用类型" itemprop="url">小红书-(5)-基本类型值和引用类型</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-23T13:28:43.000Z" itemprop="datePublished"> 发表于 2015-10-23</time>
+    <time datetime="2015-10-24T03:04:39.000Z" itemprop="datePublished"> 发表于 2015-10-24</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<blockquote>
-<h1 id="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:">解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:</h1></blockquote>
-<p>前端很经典的问题<br>本来想做成这样的<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_1.png" alt="本来想做成这样的"></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>float坍塌问题实验<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line">	</span><br><span class="line"><span class="class">.father</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#FAA05F</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.div1</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#A6E22A</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.div2</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">120px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">120px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#FA655F</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.div3</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#53B5DB</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">80px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.another</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#937DE4</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"father"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div1"</span>&gt;</span>I am DIV1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div2"</span>&gt;</span>I am DIV2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"div3"</span>&gt;</span>I am DIV3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"another"</span>&gt;</span>I am another<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>上边代码运行后就成了这样Σ(っ °Д °;)っWTF!<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_2.png" alt="上边代码运行后就成了这样"></p>
-<hr>
+		<h1 id="文章开头祝大家程序员节日快乐ヽ(✿·▽·)ノ摇起来！！！">文章开头祝大家程序员节日快乐ヽ(✿·▽·)ノ摇起来！！！</h1><p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/1024.gif" alt="摇起来！"></p>
+<p>看书啦！撸代码啦！严肃点！(￣ε(#￣)☆╰╮o(￣皿￣///)</p>
+<p>哦(。﹏。*)</p>
 <blockquote>
-<h2 id="分析一下原因">分析一下原因</h2></blockquote>
-<p>三个DIV float:left<br>然而父层并没有设置高度，三个子层div也没有高度，这便导致了<strong>父层坍塌，高度为0。</strong></p>
-<h1 id="于是找到了三种解决方法">于是找到了三种解决方法</h1><p>1.在father-div里加入height属性，该方法适用于子元素高度已知并且固定的情况。</p>
-<p>2.在最后一个子元素后加入 <code>&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</code>，清除浮动元素。</p>
-<p>3.在father-div里加入<code>overflow:hidden</code>属性。</p>
-<p>这里推荐<strong>后两种方法</strong>。</p>
+<h1 id="基本类型和引用类型的值">基本类型和引用类型的值</h1><p>ECMAscript有两种不同数据类型的值：</p>
+<ul>
+<li>基本类型 -简单数据段</li>
+<li>引用类型 -可能由多个值构成的对象</li>
+</ul>
+</blockquote>
+<p>举例~下边是引用类型<br><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">"hinami"</span>;</span><br><span class="line">alert(person.name); <span class="comment">//"hinami"</span></span><br></pre></td></tr></table></figure></p>
+<p>上边代码建立了一个对象，并且给对象添加了一个名字为<code>name</code>的<strong>属性</strong>,并且将<code>hinami</code>这个值赋给了这个属性.之后顺利访问到了这个属性，如果对象不被删除，属性不被删除，这个值就一直存在。</p>
 <hr>
+<p>下边是基本类型<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> name</span> = <span class="string">"hinami"</span>;</span><br><span class="line">name.age = <span class="number">27</span>;</span><br><span class="line">alert(name.age); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></p>
+<p>访问失败，因为name这个只是一个基本型变量，不能装下更多的东西了。<br>这说明只能给<strong><code>引用类型</code></strong>添加属性。</p>
 <blockquote>
-<h2 id="解释一下方案2:">解释一下方案2:</h2></blockquote>
-<p><code>style=&quot;clear:both;&quot;</code>原本是用来清除浮动的，<br>可以用来给  有<code>float属性</code>的 div元素换行~<br>而这里巧妙的用了一个伪div来换行，赋予了父层div以高度</p>
+<h2 id="复制变量">复制变量</h2></blockquote>
+<h5 id="与c++不同,ECMAscript里函数传参只是按值传递">与<code>c++</code>不同,ECMAscript里函数传参只是<strong><code>按值传递</code></strong></h5><p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/red-51-15-10-24.png" alt=""></p>
+<h2 id=""><img src="http://7xnp0k.com1.z0.glb.clouddn.com/red-52-15-10-24.png" alt=""></h2><p>针对上边举两个例子</p>
 <blockquote>
-<h2 id="解释一下方案3:">解释一下方案3:</h2></blockquote>
-<p><code>overflow:hidden&quot;</code>清除了子层div的浮动<br>说到这里，我们再来理解一下“浮动”这个词的含义。我们原先的理解是，在一个平面上的浮动，但是通过这个试验，我们发现，这不仅仅是一个平面上的浮动，而是一个立体的浮动！</p>
-<p>当我们没有给父层这个div设置高度的时候，子层这个div的高度，就会撑开父层这个div，而在另一个方面，我们要注意到的是，当我们给父层这个div加上一个高度值，那么无论子层这个div的高度是多少，父层这个高度都是我们设定的值。而当子层的高度超过父层的高度的时候，超出的部分就会被隐藏。这就是隐藏溢出的含义！</p>
-<p>参考:<br><a href="http://www.chinaz.com/design/2008/0818/35473.shtml" target="_blank" rel="external">全面阐述overflow:hidden属性</a><br><a href="http://www.difangla.com/Html/jishu/css/88140.htm" target="_blank" rel="external">首发地址</a></p>
+<h4 id="参数传递:">参数传递:</h4></blockquote>
+<figure class="highlight nimrod"><table><tr><td class="code"><pre><span class="line">function addTen(num) &#123;</span><br><span class="line">num += <span class="number">10</span>;</span><br><span class="line"><span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> count = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="literal">result</span> = addTen(count);</span><br><span class="line">alert(count); //<span class="number">20</span>，没有变化</span><br><span class="line">alert(<span class="literal">result</span>); //<span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p>函数里的num只是一个代号而已，函数运行完就销毁，和<code>addTen(count)</code>里的<code>count</code>没有半毛钱关系。</p>
+<hr>
+<p>下边来看</p>
+<blockquote>
+<h4 id="对象传递:">对象传递:</h4></blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">obj.name = <span class="string">"hianmi"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">setName(person);</span><br><span class="line">alert(person.name); <span class="comment">//"hinami"</span></span><br></pre></td></tr></table></figure>
+<p>在函数内部，<strong><code>obj和person引用的是同一个对象</code></strong>,换句话说，即使这个变量是按值传递的，obj 也会按引用来访问同一个对象</p>
+<hr>
+<p>有很多开发人员错误地认为：在局部作用域中修改的对象会在全局作用域中反映出来，就说明：<br>参数是按引用传递的。<br>为了证明对象是按值传递的，我们再看一看下面这个经过修改的例子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">obj.name = <span class="string">"hinami"</span>;</span><br><span class="line">obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">obj.name = <span class="string">"Greg"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">setName(person);</span><br><span class="line">alert(person.name); <span class="comment">//"hinami"</span></span><br></pre></td></tr></table></figure></p>
+<p>这个例子与前一个例子的唯一区别:<br>在setName()函数中添加了两行代码：<br>一行代码为obj重新定义了一个对象，<br>另一行代码为该对象定义了一个带有不同值的name 属性。<br>在把person 传递给setName()后，</p>
+<p>其name 属性被设置为”hinami”。<br>然后，又将一个新对象赋给变量obj，同时将其name属性设置为”Greg”。<br><strong><code>如果person 是按引用传递的</code></strong>，那么person 就会自动被修改为指向其name 属性值为”Greg”的新对象。</p>
+<p>但是，当接下来再访问person.name 时，显示的值仍然是”hinami”。<br>这说明即使在函数内部修改了<strong><code>参数obj</code></strong>的值，但原始的引用仍然保持未变。<br>实际上，当在函数内部重写obj 时，这个变量引用的就是一个局部对象了。<br>而这个局部对象会在函数执行完毕后立即被销毁。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/css/">css</a><a href="/tags/float/">float</a><a href="/tags/前端/">前端</a>
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a><a href="/tags/数据类型/">数据类型</a>
   </div>
 
 </div>
@@ -142,7 +183,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/23/float-15-10-23/" data-title="关于float导致父层坍塌 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/24/red-5-15-10-24/" data-title="小红书-(5)-基本类型值和引用类型 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -155,19 +196,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/24/red-5-15-10-24/" title="小红书-(5)-基本类型值和引用类型">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红书-(5)-基本类型值和引用类型</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/23/red-4-15-10-23/"  title="小红书-(4)-数据类型(下)">
+<a href="/2015/10/23/float-15-10-23/"  title="关于float导致父层坍塌">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(4)-数据类型(下)
+ <span>关于float导致父层坍塌
 </span>
 </a>
 </div>
@@ -176,7 +209,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/23/float-15-10-23/" data-title="关于float导致父层坍塌" data-url="hinami.xyz/2015/10/23/float-15-10-23/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/24/red-5-15-10-24/" data-title="小红书-(5)-基本类型值和引用类型" data-url="hinami.xyz/2015/10/24/red-5-15-10-24/"></div>
 </section>
 
 
@@ -186,7 +219,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:"><span class="toc-number">1.</span> <span class="toc-text">解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析一下原因"><span class="toc-number">1.1.</span> <span class="toc-text">分析一下原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#于是找到了三种解决方法"><span class="toc-number">2.</span> <span class="toc-text">于是找到了三种解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案2:"><span class="toc-number">2.1.</span> <span class="toc-text">解释一下方案2:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案3:"><span class="toc-number">2.2.</span> <span class="toc-text">解释一下方案3:</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#文章开头祝大家程序员节日快乐ヽ(✿·▽·)ノ摇起来！！！"><span class="toc-number">1.</span> <span class="toc-text">文章开头祝大家程序员节日快乐ヽ(✿·▽·)ノ摇起来！！！</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本类型和引用类型的值"><span class="toc-number">2.</span> <span class="toc-text">基本类型和引用类型的值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#复制变量"><span class="toc-number">2.1.</span> <span class="toc-text">复制变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#与c++不同,ECMAscript里函数传参只是按值传递"><span class="toc-number">2.1.0.0.1.</span> <span class="toc-text">与c++不同,ECMAscript里函数传参只是按值传递</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.2.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参数传递:"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">参数传递:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象传递:"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">对象传递:</span></a></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 

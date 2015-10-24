@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红书-(3)-数据类型(下) | hinami</title>
+    <title>小红书-(4)-数据类型(下) | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
@@ -15,15 +15,15 @@
 可以用单引号，也可以用双引号赋值,但是不能混用var firstName = &quot;hinami&quot;;var lastName = &apos;hxz&apos;;
 字 面 量 含 义\n···················换行\t···················制表\b···················空格\r···················回车\f···················进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红书-(3)-数据类型(下)">
+<meta property="og:title" content="小红书-(4)-数据类型(下)">
 <meta property="og:url" content="hinami.xyz/2015/10/23/red-4-15-10-23/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="string
 可以用单引号，也可以用双引号赋值,但是不能混用var firstName = &quot;hinami&quot;;var lastName = &apos;hxz&apos;;
 字 面 量 含 义\n···················换行\t···················制表\b···················空格\r···················回车\f···················进">
-<meta property="og:updated_time" content="2015-10-23T13:08:39.616Z">
+<meta property="og:updated_time" content="2015-10-24T03:07:02.895Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红书-(3)-数据类型(下)">
+<meta name="twitter:title" content="小红书-(4)-数据类型(下)">
 <meta name="twitter:description" content="string
 可以用单引号，也可以用双引号赋值,但是不能混用var firstName = &quot;hinami&quot;;var lastName = &apos;hxz&apos;;
 字 面 量 含 义\n···················换行\t···················制表\b···················空格\r···················回车\f···················进">
@@ -87,7 +87,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/23/red-4-15-10-23/" title="小红书-(3)-数据类型(下)" itemprop="url">小红书-(3)-数据类型(下)</a>
+      <a href="/2015/10/23/red-4-15-10-23/" title="小红书-(4)-数据类型(下)" itemprop="url">小红书-(4)-数据类型(下)</a>
   </h1>
   <p class="article-author">By
        
@@ -105,6 +105,19 @@
 <p>可以用单引号，也可以用双引号赋值,但是不能混用<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> firstName</span> = <span class="string">"hinami"</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> lastName</span> = 'hxz';</span><br></pre></td></tr></table></figure></p>
 <p>字 面 量 含 义<br>\n···················换行<br>\t···················制表<br>\b···················空格<br>\r···················回车<br>\f···················进纸<br>\···················斜杠<br>\’ ···················单引号（’），在用单引号表示的字符串中使用。例如：’He said, \’hey.\’’<br>\” ···················双引号（”），在用双引号表示的字符串中使用。例如：”He said, \”hey.\””<br>\xnn ···················以十六进制代码nn表示的一个字符（其中n为0～F）。例如，\x41表示”A”<br>\unnnn ···················以十六进制代码nnnn表示的一个Unicode字符（其中n为0～F）。例如，\u03a3表示希腊字符Σ</p>
 <hr>
+<blockquote>
+<h2 id="用toString()来转化成字符串">用toString()来转化成字符串</h2></blockquote>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> age</span> = <span class="number">11</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> ageAsString</span> = age.toString(); <span class="comment">// 字符串"11"</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> found</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> foundAsString</span> = found.toString(); <span class="comment">// 字符串"true"</span></span><br></pre></td></tr></table></figure>
+<p>多数情况下，调用toString()方法不必传递参数。但是，在调用数值的toString()方法时，可<br>以传递一个参数：输出数值的基数。默认情况下，toString()方法以十进制格式返回数值的字符串表<br>示。而通过传递基数，toString()可以输出以二进制、八进制、十六进制，乃至其他任意有效进制格<br>式表示的字符串值。下面给出几个例子：<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">var num = <span class="number">10</span><span class="comment">;</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">()</span>)</span><span class="comment">; // "10"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">(<span class="number">2</span>)</span>)</span><span class="comment">; // "1010"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">(<span class="number">8</span>)</span>)</span><span class="comment">; // "12"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">(<span class="number">10</span>)</span>)</span><span class="comment">; // "10"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">(<span class="number">16</span>)</span>)</span><span class="comment">; // "a"</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h2 id="string()转化为字符串">string()转化为字符串</h2></blockquote>
+<p>在不知道要转换的值是不是null 或undefined 的情况下，还可以使用转型函数String()，<strong>这个函数能够将任何类型的值转换为字符串</strong>。String()函数遵循下列转换规则：</p>
+<ul>
+<li>如果值有toString()方法，则调用该方法（没有参数）并返回相应的结果；</li>
+<li>如果值是null，则返回”null”；</li>
+<li>如果值是undefined，则返回”undefined”。<br>下面再看几个例子：<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">var value1 = <span class="number">10</span><span class="comment">;</span></span><br><span class="line">var value2 = true<span class="comment">;</span></span><br><span class="line">var value3 = null<span class="comment">;</span></span><br><span class="line">var value4<span class="comment">;</span></span><br><span class="line">alert<span class="list">(<span class="keyword">String</span><span class="list">(<span class="keyword">value1</span>)</span>)</span><span class="comment">; // "10"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">String</span><span class="list">(<span class="keyword">value2</span>)</span>)</span><span class="comment">; // "true"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">String</span><span class="list">(<span class="keyword">value3</span>)</span>)</span><span class="comment">; // "null"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">String</span><span class="list">(<span class="keyword">value4</span>)</span>)</span><span class="comment">; // "undefined"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -127,7 +140,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/23/red-4-15-10-23/" data-title="小红书-(3)-数据类型(下) | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/23/red-4-15-10-23/" data-title="小红书-(4)-数据类型(下) | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -161,7 +174,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/23/red-4-15-10-23/" data-title="小红书-(3)-数据类型(下)" data-url="hinami.xyz/2015/10/23/red-4-15-10-23/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/23/red-4-15-10-23/" data-title="小红书-(4)-数据类型(下)" data-url="hinami.xyz/2015/10/23/red-4-15-10-23/"></div>
 </section>
 
 
@@ -171,7 +184,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#string"><span class="toc-number">1.</span> <span class="toc-text">string</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#string"><span class="toc-number">1.</span> <span class="toc-text">string</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用toString()来转化成字符串"><span class="toc-number">1.1.</span> <span class="toc-text">用toString()来转化成字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string()转化为字符串"><span class="toc-number">1.2.</span> <span class="toc-text">string()转化为字符串</span></a></li></ol></li></ol>
  
   </div>
 
@@ -189,7 +202,7 @@
 		  
 		
 		  
-			<li><a href="/categories/小红书/" title="小红书">小红书<sup>4</sup></a></li>
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>5</sup></a></li>
 		  
 		
 		</ul>
@@ -202,23 +215,23 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>7</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小红书/" title="小红书">小红书<sup>4</sup></a></li>
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>4</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>4</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>2</sup></a></li>
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
 			
 		
 			
