@@ -4,29 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红书-(4)-数据类型(下) | hinami</title>
+    <title>检测类型 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="string
-可以用单引号，也可以用双引号赋值,但是不能混用var firstName = &quot;hinami&quot;;var lastName = &apos;hxz&apos;;
-字 面 量 含 义\n···················换行\t···················制表\b···················空格\r···················回车\f···················进">
+    <meta name="description" content="又一个前端面试题
+typeof操作符
+
+检测类型？首先想到的是他:string,boolean,number,undefined统统秒杀var s = &quot;hinami&quot;;var b = true;var i = 22;var u;var n = null;var o = new Object();alert(typeof s); //stringalert(typeof i); //numbera">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红书-(4)-数据类型(下)">
-<meta property="og:url" content="hinami.xyz/2015/10/23/red-4-15-10-23/index.html">
+<meta property="og:title" content="检测类型">
+<meta property="og:url" content="hinami.xyz/2015/10/24/detection-type/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="string
-可以用单引号，也可以用双引号赋值,但是不能混用var firstName = &quot;hinami&quot;;var lastName = &apos;hxz&apos;;
-字 面 量 含 义\n···················换行\t···················制表\b···················空格\r···················回车\f···················进">
-<meta property="og:updated_time" content="2015-10-24T03:07:02.895Z">
+<meta property="og:description" content="又一个前端面试题
+typeof操作符
+
+检测类型？首先想到的是他:string,boolean,number,undefined统统秒杀var s = &quot;hinami&quot;;var b = true;var i = 22;var u;var n = null;var o = new Object();alert(typeof s); //stringalert(typeof i); //numbera">
+<meta property="og:updated_time" content="2015-10-24T13:14:06.721Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红书-(4)-数据类型(下)">
-<meta name="twitter:description" content="string
-可以用单引号，也可以用双引号赋值,但是不能混用var firstName = &quot;hinami&quot;;var lastName = &apos;hxz&apos;;
-字 面 量 含 义\n···················换行\t···················制表\b···················空格\r···················回车\f···················进">
+<meta name="twitter:title" content="检测类型">
+<meta name="twitter:description" content="又一个前端面试题
+typeof操作符
+
+检测类型？首先想到的是他:string,boolean,number,undefined统统秒杀var s = &quot;hinami&quot;;var b = true;var i = 22;var u;var n = null;var o = new Object();alert(typeof s); //stringalert(typeof i); //numbera">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -87,51 +90,54 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/23/red-4-15-10-23/" title="小红书-(4)-数据类型(下)" itemprop="url">小红书-(4)-数据类型(下)</a>
+      <a href="/2015/10/24/detection-type/" title="检测类型" itemprop="url">检测类型</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-23T13:02:53.000Z" itemprop="datePublished"> 发表于 2015-10-23</time>
+    <time datetime="2015-10-24T08:56:06.000Z" itemprop="datePublished"> 发表于 2015-10-24</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<blockquote>
-<h1 id="string">string</h1></blockquote>
-<p>可以用单引号，也可以用双引号赋值,但是不能混用<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> firstName</span> = <span class="string">"hinami"</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> lastName</span> = 'hxz';</span><br></pre></td></tr></table></figure></p>
-<p>字 面 量 含 义<br>\n···················换行<br>\t···················制表<br>\b···················空格<br>\r···················回车<br>\f···················进纸<br>\···················斜杠<br>\’ ···················单引号（’），在用单引号表示的字符串中使用。例如：’He said, \’hey.\’’<br>\” ···················双引号（”），在用双引号表示的字符串中使用。例如：”He said, \”hey.\””<br>\xnn ···················以十六进制代码nn表示的一个字符（其中n为0～F）。例如，\x41表示”A”<br>\unnnn ···················以十六进制代码nnnn表示的一个Unicode字符（其中n为0～F）。例如，\u03a3表示希腊字符Σ</p>
+<h1 id="又一个前端面试题">又一个前端面试题</h1><blockquote>
+<h3 id="typeof操作符">typeof操作符</h3></blockquote>
+</blockquote>
+<p>检测类型？首先想到的是他:<code>string</code>,<code>boolean</code>,<code>number</code>,<code>undefined</code>统统秒杀<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">"hinami"</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> i = <span class="number">22</span>;</span><br><span class="line"><span class="keyword">var</span> u;</span><br><span class="line"><span class="keyword">var</span> n = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">alert(<span class="keyword">typeof</span> s); <span class="comment">//string</span></span><br><span class="line">alert(<span class="keyword">typeof</span> i); <span class="comment">//number</span></span><br><span class="line">alert(<span class="keyword">typeof</span> b); <span class="comment">//boolean</span></span><br><span class="line">alert(<span class="keyword">typeof</span> u); <span class="comment">//undefined</span></span><br><span class="line">alert(<span class="keyword">typeof</span> n); <span class="comment">//object</span></span><br><span class="line">alert(<span class="keyword">typeof</span> o); <span class="comment">//object</span></span><br></pre></td></tr></table></figure></p>
+<p>然而这对于Array并没有什么用</p>
 <hr>
 <blockquote>
-<h2 id="用toString()来转化成字符串">用toString()来转化成字符串</h2></blockquote>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> age</span> = <span class="number">11</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> ageAsString</span> = age.toString(); <span class="comment">// 字符串"11"</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> found</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> foundAsString</span> = found.toString(); <span class="comment">// 字符串"true"</span></span><br></pre></td></tr></table></figure>
-<p>多数情况下，调用toString()方法不必传递参数。但是，在调用数值的toString()方法时，可<br>以传递一个参数：输出数值的基数。默认情况下，toString()方法以十进制格式返回数值的字符串表<br>示。而通过传递基数，toString()可以输出以二进制、八进制、十六进制，乃至其他任意有效进制格<br>式表示的字符串值。下面给出几个例子：<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">var num = <span class="number">10</span><span class="comment">;</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">()</span>)</span><span class="comment">; // "10"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">(<span class="number">2</span>)</span>)</span><span class="comment">; // "1010"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">(<span class="number">8</span>)</span>)</span><span class="comment">; // "12"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">(<span class="number">10</span>)</span>)</span><span class="comment">; // "10"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">num</span>.toString<span class="list">(<span class="number">16</span>)</span>)</span><span class="comment">; // "a"</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<h2 id="string()转化为字符串">string()转化为字符串</h2></blockquote>
-<p>在不知道要转换的值是不是null 或undefined 的情况下，还可以使用转型函数String()，<strong>这个函数能够将任何类型的值转换为字符串</strong>。String()函数遵循下列转换规则：</p>
-<ul>
-<li>如果值有toString()方法，则调用该方法（没有参数）并返回相应的结果；</li>
-<li>如果值是null，则返回”null”；</li>
-<li>如果值是undefined，则返回”undefined”。<br>下面再看几个例子：<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">var value1 = <span class="number">10</span><span class="comment">;</span></span><br><span class="line">var value2 = true<span class="comment">;</span></span><br><span class="line">var value3 = null<span class="comment">;</span></span><br><span class="line">var value4<span class="comment">;</span></span><br><span class="line">alert<span class="list">(<span class="keyword">String</span><span class="list">(<span class="keyword">value1</span>)</span>)</span><span class="comment">; // "10"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">String</span><span class="list">(<span class="keyword">value2</span>)</span>)</span><span class="comment">; // "true"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">String</span><span class="list">(<span class="keyword">value3</span>)</span>)</span><span class="comment">; // "null"</span></span><br><span class="line">alert<span class="list">(<span class="keyword">String</span><span class="list">(<span class="keyword">value4</span>)</span>)</span><span class="comment">; // "undefined"</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<h3 id="instanceof操作符">instanceof操作符</h3></blockquote>
+</blockquote>
+<p>这个操作符和JavaScript中面向对象有点关系，了解这个就先得了解JavaScript中的面向对象。因为这个操作符是检测对象的原型链是否指向构造函数的prototype对象的。<br>语法如下<br><code>result = variable instanceof constructor</code>;<br>例子如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]; </span><br><span class="line">alert(arr instanceof Array); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>数组这个东西</p>
+<blockquote>
+<blockquote>
+<h3 id="对象的constructor属性">对象的constructor属性</h3></blockquote>
+</blockquote>
+<p>除了instanceof，每个对象还有constructor的属性，利用它似乎也能进行Array的判断。<br>代码如下:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]; </span><br><span class="line">alert(arr.constructor === Array); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>然而上述的方法在复杂iframe情况下会失效</strong></p>
+<h2 id="所以隆重介绍下边这个方法">所以隆重介绍下边这个方法</h2><blockquote>
+<h2 id="1-Object-prototype-toString">1.Object.prototype.toString</h2></blockquote>
+<p>Object.prototype.toString的行为：<br>首先，取得对象的一个内部属性[[Class]，<br>然后依据这个属性，返回一个类似于”[object Array]”的字符串作为结果<br>(看过ECMA标准的应该都知道，[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”)</p>
+<p>利用这 个方法，再配合call，我们可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较，以达到我们的目的。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArrayFn</span> (<span class="params">o</span>) </span>&#123; </span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(o) === <span class="string">'[object Array]'</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]; </span><br><span class="line">alert(isArrayFn(arr));<span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>3.较好参考<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]; </span><br><span class="line"><span class="keyword">var</span> arr2 = [&#123; abac : <span class="number">1</span>, abc : <span class="number">2</span> &#125;]; </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArrayFn</span>(<span class="params">value</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Array</span>.isArray === <span class="string">"function"</span>) </span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Array</span>.isArray(value); </span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">"[object Array]"</span>; </span><br><span class="line">&#125;	 </span><br><span class="line">alert(isArrayFn(arr));<span class="comment">// true </span></span><br><span class="line">alert(isArrayFn(arr2));<span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>参考文章：<br><a href="http://www.jb51.net/article/41413.htm" target="_blank" rel="external">判断一个变量是数组Array类型的方法</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/小红书/">小红书</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a><a href="/tags/数据类型/">数据类型</a>
+  <span></span> <a href="/tags/Javascript/">Javascript</a><a href="/tags/Js/">Js</a><a href="/tags/前端/">前端</a>
   </div>
 
 </div>
@@ -140,7 +146,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/23/red-4-15-10-23/" data-title="小红书-(4)-数据类型(下) | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/24/detection-type/" data-title="检测类型 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -153,19 +159,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/23/float-15-10-23/" title="关于float导致父层坍塌">
-  <strong>上一篇：</strong><br/>
-  <span>
-  关于float导致父层坍塌</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/22/red-3-15-10-22/"  title="小红书-(4)-数据类型(上)">
+<a href="/2015/10/24/red-5-15-10-24/"  title="小红书-(5)-基本类型值和引用类型">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(4)-数据类型(上)
+ <span>小红书-(5)-基本类型值和引用类型
 </span>
 </a>
 </div>
@@ -174,7 +172,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/23/red-4-15-10-23/" data-title="小红书-(4)-数据类型(下)" data-url="hinami.xyz/2015/10/23/red-4-15-10-23/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/24/detection-type/" data-title="检测类型" data-url="hinami.xyz/2015/10/24/detection-type/"></div>
 </section>
 
 
@@ -184,7 +182,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#string"><span class="toc-number">1.</span> <span class="toc-text">string</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用toString()来转化成字符串"><span class="toc-number">1.1.</span> <span class="toc-text">用toString()来转化成字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string()转化为字符串"><span class="toc-number">1.2.</span> <span class="toc-text">string()转化为字符串</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#又一个前端面试题"><span class="toc-number">1.</span> <span class="toc-text">又一个前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#typeof操作符"><span class="toc-number">1.0.1.</span> <span class="toc-text">typeof操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#instanceof操作符"><span class="toc-number">1.0.2.</span> <span class="toc-text">instanceof操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的constructor属性"><span class="toc-number">1.0.3.</span> <span class="toc-text">对象的constructor属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所以隆重介绍下边这个方法"><span class="toc-number">1.1.</span> <span class="toc-text">所以隆重介绍下边这个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Object-prototype-toString"><span class="toc-number">1.2.</span> <span class="toc-text">1.Object.prototype.toString</span></a></li></ol></li></ol>
  
   </div>
 
