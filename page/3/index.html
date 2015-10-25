@@ -4,32 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红书-(1)-js脚本加载问题 | hinami</title>
+    <title>hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
-<meta property="og:type" content="article">
-<meta property="og:title" content="小红书-(1)-js脚本加载问题">
-<meta property="og:url" content="hinami.xyz/2015/10/18/red-1-15-10-18/index.html">
+    <meta name="description" content="Where you go?">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hinami">
+<meta property="og:url" content="hinami.xyz/page/3/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
-<meta property="og:updated_time" content="2015-10-22T12:27:19.050Z">
+<meta property="og:description" content="Where you go?">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红书-(1)-js脚本加载问题">
-<meta name="twitter:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
-
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
+<meta name="twitter:title" content="hinami">
+<meta name="twitter:description" content="Where you go?">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -84,116 +74,50 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 </div>
     </header>
     <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+      <div id="main">
+
   
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/10/04/README/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
     
-      <a href="/2015/10/18/red-1-15-10-18/" title="小红书-(1)-js脚本加载问题" itemprop="url">小红书-(1)-js脚本加载问题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-18T01:31:03.000Z" itemprop="datePublished"> 发表于 2015-10-18</time>
+     
+           <p itemprop="description" >Jacman中文说明
+Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
+J</p>
+        
     
-  </p>
-</header>
-	<div class="article-content">
-		
-		<h3 id="网页中&lt;script_type=&quot;text/javascript&quot;_src=&quot;-&quot;&gt;&lt;/script&gt;标记可以加载脚本，能够无阻塞加载的属性是：defer">网页中<code>&lt;script type=&quot;text/javascript&quot; src=&quot;...&quot;&gt;&lt;/script&gt;</code>标记可以加载脚本，能够无阻塞加载的属性是：<code>defer</code></h3><p>这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。</p>
-<hr>
-<ul>
-<li>async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。</li>
-</ul>
-<blockquote>
-<p>在XHTML 文档中，要把async 属性设置为async=”async”。</p>
-</blockquote>
-<hr>
-<ul>
-<li>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。立即下载，但是延迟执行</li>
-</ul>
-<blockquote>
-<p>在XHTML 文档中，要把defer 属性设置为defer=”defer”。</p>
-</blockquote>
-<hr>
-<h3 id="包含在&lt;script&gt;元素内部的JavaScript_代码将被从上至下依次解释。">包含在<code>&lt;script&gt;</code>元素内部的JavaScript 代码将被从上至下依次解释。</h3><p>解释器会解释一个函数的定义，然后将该定义保存在自己的环境当中。在解释器对<code>&lt;script&gt;</code>元素内部的所有代码求值完毕以前，页面中的其余内容都不会被浏览器加载或显示。</p>
-<hr>
-<blockquote>
-<p>需要注意的是</p>
-</blockquote>
-<p>带有src 属性的<code>&lt;script&gt;</code>元素不应该在其<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签之间再<br>包含额外的JavaScript 代码。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码<br>会被忽略。</p>
+    <time datetime="2015-10-04T15:15:13.541Z" itemprop="datePublished">2015-10-04</time>
+  </a>
+  <script type="text/javascript">
+var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
   
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/小红书/">小红书</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a><a href="/tags/脚本加载/">脚本加载</a>
-  </div>
-
-</div>
-
-
-
-	<div class="article-share" id="share">
-	
-	  <div data-url="hinami.xyz/2015/10/18/red-1-15-10-18/" data-title="小红书-(1)-js脚本加载问题 | hinami" data-tsina="null" class="share clearfix">
-	  </div>
-	
-	</div>
-
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2015/10/21/red-2-15-10-21/" title="小红书-(2)-ECMAscript变量">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红书-(2)-ECMAscript变量</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2015/10/17/15-10-17Recruitment/"  title="去招聘会玩耍">
- <strong>下一篇：</strong><br/> 
- <span>去招聘会玩耍
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-<section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/18/red-1-15-10-18/" data-title="小红书-(1)-js脚本加载问题" data-url="hinami.xyz/2015/10/18/red-1-15-10-18/"></div>
 </section>
 
 
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#网页中<script_type="text/javascript"_src="-"></script>标记可以加载脚本，能够无阻塞加载的属性是：defer"><span class="toc-number">1.</span> <span class="toc-text">网页中<script type="text/javascript" src="..."></script>标记可以加载脚本，能够无阻塞加载的属性是：defer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含在<script>元素内部的JavaScript_代码将被从上至下依次解释。"><span class="toc-number">2.</span> <span class="toc-text">包含在<script>元素内部的JavaScript 代码将被从上至下依次解释。</span></a></li></ol>
- 
-  </div>
+
+
+
+
+  <nav id="page-nav" class="clearfix unexpand">
+    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -435,11 +359,6 @@ $(document).ready(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
   
-        getSize();
-        if (myWidth >= 1024) {
-          c.click();
-        }
-  
   $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
@@ -448,89 +367,12 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
 
 
 
@@ -608,4 +450,4 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <!-- Tiny_search End -->
 
   </body>
-</html>
+ </html>
