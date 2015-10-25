@@ -23,7 +23,7 @@
 全局执行环境是最外围的一个执行环境。根据ECMAScript 实现所在的宿主环境不同，表示执行环境的对象也不一样。在Web 浏览器中，全局执行环境被认为是window 对象（第7 章将详细讨论），因此所有全局变量和函数都是作为window 对象的属性和方法创建的。某个执行环境中的所有代码执行完毕后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁（">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/red-61.png">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/red-62.png">
-<meta property="og:updated_time" content="2015-10-25T02:32:37.882Z">
+<meta property="og:updated_time" content="2015-10-25T02:54:56.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(6)-执行环境和作用域">
 <meta name="twitter:description" content="环境是JavaScript中很重要的东西
@@ -106,7 +106,12 @@
 <p><strong>环境是JavaScript中很重要的东西</strong></p>
 </blockquote>
 <p>全局执行环境是最外围的一个执行环境。根据ECMAScript 实现所在的宿主环境不同，表示执行环境的对象也不一样。在Web 浏览器中，全局执行环境被认为是window 对象（第7 章将详细讨论），因此所有全局变量和函数都是作为window 对象的属性和方法创建的。某个执行环境中的所有代码执行完毕后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁（全局执行环境直到应用程序退出——例如关闭网页或浏览器——时才会被销毁）。</p>
-<h5 id="简单来说，JS作用域就像前端的div嵌套一样，你不能访问兄弟的环境(包括其变量),也不能访问儿子的环境(包括其变量)，但是你能使用父层的变量(包括其变量)">简单来说，JS作用域就像前端的div嵌套一样，你不能访问兄弟的环境(包括其变量),也不能访问儿子的环境(包括其变量)，但是你能使用父层的变量(包括其变量)</h5><hr>
+<h5 id="简单来说，JS作用域就像前端的div嵌套一样：">简单来说，JS作用域就像前端的div嵌套一样：</h5><ul>
+<li>你不能访问儿子的环境(包括其变量)，</li>
+<li>但是你能访问父层的环境(包括其变量,也就是其自己身处的环境)</li>
+<li>你能访问父层环境的变量，不能访问父层环境的函数，<br>下边有图有例子</li>
+</ul>
+<hr>
 <p>标识符解析是沿着作用域链一级一级地搜索标识符的过程。搜索过程始终从作用域链的前端开始，<br>然后逐级地向后回溯，直至找到标识符为止（如果找不到标识符，通常会导致错误发生）。<br><figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">color</span> = <span class="string">"blue"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span><span class="params">()</span></span><br><span class="line">&#123;</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">color</span> === <span class="string">"blue"</span>)</span><br><span class="line">	<span class="built_in">color</span> = <span class="string">"red"</span>;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	<span class="built_in">color</span> = <span class="string">"blue"</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">changeColor();</span><br><span class="line">alert(<span class="string">"Color is now "</span> + <span class="built_in">color</span>);</span><br></pre></td></tr></table></figure></p>
 <p>在这个简单的例子中，函数changeColor()的作用域链包含两个对象：它自己的变量对象（其中定义着arguments 对象）和全局环境的变量对象。可以在函数内部访问变量color，就是因为可以在这个作用域链中找到它。</p>
 <p>下边例子更加具体一点:<br>例子①<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> color = <span class="string">"blue"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> anotherColor = <span class="string">"red"</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">swapColors</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">var</span> tempColor = anotherColor;</span><br><span class="line">		anotherColor = color;</span><br><span class="line">		color = tempColor;</span><br><span class="line">			<span class="comment">// 这里可以访问color、anotherColor 和tempColor</span></span><br><span class="line">		&#125;</span><br><span class="line">			<span class="comment">// 这里可以访问color 和anotherColor，但不能访问tempColor</span></span><br><span class="line">		swapColors();</span><br><span class="line">		&#125;</span><br><span class="line">			<span class="comment">// 这里只能访问color</span></span><br><span class="line">changeColor();</span><br></pre></td></tr></table></figure></p>
@@ -187,7 +192,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#简单来说，JS作用域就像前端的div嵌套一样，你不能访问兄弟的环境(包括其变量),也不能访问儿子的环境(包括其变量)，但是你能使用父层的变量(包括其变量)"><span class="toc-number">1.</span> <span class="toc-text">简单来说，JS作用域就像前端的div嵌套一样，你不能访问兄弟的环境(包括其变量),也不能访问儿子的环境(包括其变量)，但是你能使用父层的变量(包括其变量)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数才可以创建属于自己的环境,if和for这些则不会"><span class="toc-number"></span> <span class="toc-text">函数才可以创建属于自己的环境,if和for这些则不会</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询标识符"><span class="toc-number"></span> <span class="toc-text">查询标识符</span></a>
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#简单来说，JS作用域就像前端的div嵌套一样："><span class="toc-number">1.</span> <span class="toc-text">简单来说，JS作用域就像前端的div嵌套一样：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数才可以创建属于自己的环境,if和for这些则不会"><span class="toc-number"></span> <span class="toc-text">函数才可以创建属于自己的环境,if和for这些则不会</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询标识符"><span class="toc-number"></span> <span class="toc-text">查询标识符</span></a>
  
   </div>
 
