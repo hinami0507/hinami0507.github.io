@@ -4,32 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红书-(2)-ECMAscript变量 | hinami</title>
+    <title>小红书-(7)-引用类型&gt;对象&gt;属性 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据var message=&quot;hinami&quot;;
-这只是给变量message赋值而已，并没有标记他为字符串类型变量。
+    <meta name="description" content="文章开头特别提示~虽然引用类型与类看起来相似，然而他们的概念并不相同,要区分开来！
+用类型的值（对象）是引用类型的一个实例.
+举个例子:引用类型—–&amp;gt;诺基亚品牌的手机↓对象——&amp;gt;诺基亚 5310XM············↓············↓············↓↓·························↓属性(防弹)········方法(投掷)
 
-局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。function">
+新对象是使用n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红书-(2)-ECMAscript变量">
-<meta property="og:url" content="hinami.xyz/2015/10/21/red-2-15-10-21/index.html">
+<meta property="og:title" content="小红书-(7)-引用类型>对象>属性">
+<meta property="og:url" content="hinami.xyz/2015/10/25/red-7/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据var message=&quot;hinami&quot;;
-这只是给变量message赋值而已，并没有标记他为字符串类型变量。
+<meta property="og:description" content="文章开头特别提示~虽然引用类型与类看起来相似，然而他们的概念并不相同,要区分开来！
+用类型的值（对象）是引用类型的一个实例.
+举个例子:引用类型—–&amp;gt;诺基亚品牌的手机↓对象——&amp;gt;诺基亚 5310XM············↓············↓············↓↓·························↓属性(防弹)········方法(投掷)
 
-局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。function">
-<meta property="og:updated_time" content="2015-10-23T13:25:19.362Z">
+新对象是使用n">
+<meta property="og:updated_time" content="2015-10-25T12:52:03.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红书-(2)-ECMAscript变量">
-<meta name="twitter:description" content="ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据var message=&quot;hinami&quot;;
-这只是给变量message赋值而已，并没有标记他为字符串类型变量。
+<meta name="twitter:title" content="小红书-(7)-引用类型>对象>属性">
+<meta name="twitter:description" content="文章开头特别提示~虽然引用类型与类看起来相似，然而他们的概念并不相同,要区分开来！
+用类型的值（对象）是引用类型的一个实例.
+举个例子:引用类型—–&amp;gt;诺基亚品牌的手机↓对象——&amp;gt;诺基亚 5310XM············↓············↓············↓↓·························↓属性(防弹)········方法(投掷)
 
-局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。function">
+新对象是使用n">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -90,27 +93,43 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/21/red-2-15-10-21/" title="小红书-(2)-ECMAscript变量" itemprop="url">小红书-(2)-ECMAscript变量</a>
+      <a href="/2015/10/25/red-7/" title="小红书-(7)-引用类型&gt;对象&gt;属性" itemprop="url">小红书-(7)-引用类型&gt;对象&gt;属性</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-21T14:40:23.000Z" itemprop="datePublished"> 发表于 2015-10-21</time>
+    <time datetime="2015-10-25T12:08:04.000Z" itemprop="datePublished"> 发表于 2015-10-25</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<p>ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> message</span>=<span class="string">"hinami"</span>;</span><br></pre></td></tr></table></figure></p>
-<p>这只是给变量message赋值而已，并没有标记他为字符串类型变量。</p>
+		<p>文章开头特别提示~<br>虽然引用类型与类看起来相似，然而他们的概念<strong><code>并不相同</code></strong>,要区分开来！</p>
+<p>用类型的值（对象）是引用类型的一个实例.</p>
+<p>举个例子:<br>引用类型—–&gt;<code>诺基亚品牌的手机</code><br>↓<br>对象——&gt;<code>诺基亚 5310XM</code><br>············↓<br>············↓<br>············↓<br>↓·························↓<br>属性(防弹)········方法(投掷)</p>
 <hr>
-<p>局(菊)部变量,这里，变量message 是在函数中使用var 定义的。当函数被调用时，就会创建该变量并为其赋值。<br>而在此之后，这个变量又会立即被销毁，因此例子中的下一行代码就会导致错误。<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">var</span> message = <span class="string">"hinami"</span>; <span class="comment">// 局部变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">// 错误！</span></span><br></pre></td></tr></table></figure></p>
+<p>新对象是使用new 操作符后跟一个构造函数来创建的<br>用以下姿势来创建引用对象<br><figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>(</span>);</span><br></pre></td></tr></table></figure></p>
+<p>有两种方法为对象添加属性：</p>
+<blockquote>
+<h4 id="方法一:">方法一:</h4><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">"hinami"</span>;</span><br><span class="line">person.age = <span class="string">"21"</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="方法二:对象字面量(推荐)">方法二:<strong>对象字面量(推荐)</strong></h4><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">	<span class="string">name :</span> <span class="string">"hinami"</span>,</span><br><span class="line">	<span class="string">age :</span> <span class="string">"21"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>注意：最后一个属性后边不用加逗号,否则会在IE7以下和Opera中报错</strong><br>也可以这样:<br><figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">	<span class="string">"name"</span> : <span class="string">"hinami"</span>,</span><br><span class="line">	<span class="string">"age"</span> : <span class="number">29</span>,</span><br><span class="line"><span class="label">	5 :</span> <span class="literal">true</span></span><br><span class="line">&#125;<span class="comment">;</span></span><br><span class="line">创建三个属性 <span class="escape">`n</span>ame<span class="escape">`.</span><span class="escape">`a</span>ge<span class="escape">`.</span><span class="escape">`5</span><span class="escape">`(</span>数字属性名自动转化为字符串)</span><br></pre></td></tr></table></figure></p>
+<h1 id="访问对象属性">访问对象属性</h1><p>两种方法:</p>
+<ul>
+<li>点表示法(<strong>推荐!</strong>优点:易读易写(常用))</li>
+<li>方括号表示法(优点:使用变量访问属性，可以访问属性名中有括号的属性)</li>
+</ul>
+<blockquote>
+<h4 id="点表示法:">点表示法:</h4></blockquote>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">alert<span class="list">(<span class="keyword">person</span>.name)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
 <hr>
-<p>上边的例子如果去掉var，则message变为全局变量(关闭网页后销毁),就对了， <strong>但是全局变量较难维护，使用之前要三思</strong><br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">message = <span class="string">"hinami"</span>; <span class="comment">// 全局变量</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message); <span class="comment">// 正确！</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>可以使用一条语句定义多个变量，只要像下面这样把每个变量（初始化或不初始化均可）用逗号分隔开即可：<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> message</span> = <span class="string">"hinami"</span>,</span><br><span class="line">	found = <span class="literal">false</span>,</span><br><span class="line">	age = <span class="number">29</span>;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h4 id="方括号表示法:">方括号表示法:</h4></blockquote>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">alert<span class="list">(<span class="keyword">person</span>[<span class="string">"name"</span>])</span><span class="comment">;</span></span><br><span class="line">alert<span class="list">(<span class="keyword">person</span>[<span class="string">"first name"</span>])</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>通过变量访问属性<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> propertyName</span> = <span class="string">"name"</span>;</span><br><span class="line">alert(person[propertyName]);</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -124,7 +143,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/变量/">变量</a><a href="/tags/小红书/">小红书</a>
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a><a href="/tags/引用类型/">引用类型</a><a href="/tags/类/">类</a>
   </div>
 
 </div>
@@ -133,7 +152,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/21/red-2-15-10-21/" data-title="小红书-(2)-ECMAscript变量 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/25/red-7/" data-title="小红书-(7)-引用类型&gt;对象&gt;属性 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -146,19 +165,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/22/red-3-15-10-22/" title="小红书-(4)-数据类型(上)">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红书-(4)-数据类型(上)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/18/red-1-15-10-18/"  title="小红书-(1)-js脚本加载问题">
+<a href="/2015/10/25/Target/"  title="关于前端工程师的要求">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(1)-js脚本加载问题
+ <span>关于前端工程师的要求
 </span>
 </a>
 </div>
@@ -167,7 +178,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/21/red-2-15-10-21/" data-title="小红书-(2)-ECMAscript变量" data-url="hinami.xyz/2015/10/21/red-2-15-10-21/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/25/red-7/" data-title="小红书-(7)-引用类型>对象>属性" data-url="hinami.xyz/2015/10/25/red-7/"></div>
 </section>
 
 
@@ -177,7 +188,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法一:"><span class="toc-number">1.</span> <span class="toc-text">方法一:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法二:对象字面量(推荐)"><span class="toc-number">2.</span> <span class="toc-text">方法二:对象字面量(推荐)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#访问对象属性"><span class="toc-number"></span> <span class="toc-text">访问对象属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#点表示法:"><span class="toc-number">1.</span> <span class="toc-text">点表示法:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方括号表示法:"><span class="toc-number">2.</span> <span class="toc-text">方括号表示法:</span></a></li></ol>
  
   </div>
 
