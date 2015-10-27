@@ -12,36 +12,33 @@
 
     
     <meta name="description" content="什么是 RegExp？正则表达式描述了字符的模式对象。当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。简单的模式可以是一个单独的字符。更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。您可以规定字符串中的检索位置，以及要检索的字符类型，等等。
+他常常用来检测用户输入的账号邮箱格式。
 
 
 RegExp类型
 
-var expression = / pattern / flags ;
-
-相当于">
+var expression = / pa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小红书-(9)-RegExp">
 <meta property="og:url" content="hinami.xyz/2015/10/27/red-9/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="什么是 RegExp？正则表达式描述了字符的模式对象。当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。简单的模式可以是一个单独的字符。更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。您可以规定字符串中的检索位置，以及要检索的字符类型，等等。
+他常常用来检测用户输入的账号邮箱格式。
 
 
 RegExp类型
 
-var expression = / pattern / flags ;
-
-相当于">
-<meta property="og:updated_time" content="2015-10-27T07:44:00.702Z">
+var expression = / pa">
+<meta property="og:updated_time" content="2015-10-27T12:55:27.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(9)-RegExp">
 <meta name="twitter:description" content="什么是 RegExp？正则表达式描述了字符的模式对象。当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。简单的模式可以是一个单独的字符。更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。您可以规定字符串中的检索位置，以及要检索的字符类型，等等。
+他常常用来检测用户输入的账号邮箱格式。
 
 
 RegExp类型
 
-var expression = / pattern / flags ;
-
-相当于">
+var expression = / pa">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -116,6 +113,7 @@ var expression = / pattern / flags ;
 	<div class="article-content">
 		
 		<h1 id="什么是_RegExp？">什么是 RegExp？</h1><p>正则表达式描述了字符的模式对象。<br>当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。<br>简单的模式可以是一个单独的字符。<br>更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。<br>您可以规定字符串中的检索位置，以及要检索的字符类型，等等。</p>
+<p>他常常用来检测用户输入的账号邮箱格式。</p>
 <hr>
 <blockquote>
 <h1 id="RegExp类型">RegExp类型</h1></blockquote>
@@ -133,6 +131,17 @@ var expression = / pattern / flags ;
 <h5 id="转义">转义</h5></blockquote>
 <p>要想搜索<strong><code>元字符</code></strong>必须转义:<br><code>( [ { \ ^ $ | ) ? * + .]}</code></p>
 <p>再举几个栗子~：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">var pattern1 = <span class="regexp">/at/g</span>;   <span class="regexp">//</span>匹配字符串中所有<span class="string">"at"</span>的实例</span><br><span class="line">var pattern2 = <span class="regexp">/\[bc\]at/i</span>;  <span class="regexp">//</span>匹配第一个<span class="string">"[bc]at"</span>，不区分大小写</span><br><span class="line">var pattern3 = <span class="regexp">/\.at/gi</span>;  <span class="regexp">//</span>匹配所有的<span class="string">".at"</span>组合，不区分大小写</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="RegExp实例方法">RegExp实例方法</h1></blockquote>
+<p>RegExp对象的主要方法是exec(),返回三项</p>
+<ul>
+<li>Array()数组</li>
+<li>index</li>
+<li>input</li>
+</ul>
+<p>例子~<br><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">var text = <span class="string">"mom and dad and baby"</span>;</span><br><span class="line">var pattern = /mom( <span class="keyword">and</span> dad( <span class="keyword">and</span> baby)?)?/gi;</span><br><span class="line">var <span class="operator">matches</span> = pattern.exec(text);</span><br><span class="line">alert(<span class="operator">matches</span>.index); // <span class="number">0</span>  匹配的字符串所在的位置</span><br><span class="line">alert(<span class="operator">matches</span>.input); // <span class="string">"mom and dad and baby"</span> </span><br><span class="line">alert(<span class="operator">matches</span>[<span class="number">0</span>]); // <span class="string">"mom and dad and baby"</span></span><br><span class="line">alert(<span class="operator">matches</span>[<span class="number">1</span>]); // <span class="string">" and dad and baby"</span></span><br><span class="line">alert(<span class="operator">matches</span>[<span class="number">2</span>]); // <span class="string">" and baby"</span></span><br></pre></td></tr></table></figure></p>
+<p>验证邮箱的一个例子(未完成):<br><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"www.hinami@qq.com"</span>;</span><br><span class="line"><span class="keyword">var</span> pattern = /@/<span class="keyword">g</span>;</span><br><span class="line"><span class="keyword">var</span> com = /com/<span class="keyword">g</span>;</span><br><span class="line"><span class="keyword">if</span> ( pattern.<span class="keyword">test</span>(text) &amp;&amp; com.<span class="keyword">test</span>(text) )&#123;</span><br><span class="line">alert(<span class="string">"The pattern was matched."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>关于RegExp还有很多不懂的，先挖个坑，以后填</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -170,9 +179,9 @@ var expression = / pattern / flags ;
  
 
 <div class="next">
-<a href="/2015/10/25/red-8/"  title="小红书-(8)-Array数组">
+<a href="/2015/10/27/red-10/"  title="小红书-(10)-function">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(8)-Array数组
+ <span>小红书-(10)-function
 </span>
 </a>
 </div>
@@ -191,7 +200,7 @@ var expression = / pattern / flags ;
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是_RegExp？"><span class="toc-number">1.</span> <span class="toc-text">什么是 RegExp？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RegExp类型"><span class="toc-number">2.</span> <span class="toc-text">RegExp类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#转义"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">转义</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是_RegExp？"><span class="toc-number">1.</span> <span class="toc-text">什么是 RegExp？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RegExp类型"><span class="toc-number">2.</span> <span class="toc-text">RegExp类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#转义"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">转义</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RegExp实例方法"><span class="toc-number">3.</span> <span class="toc-text">RegExp实例方法</span></a></li></ol>
  
   </div>
 
@@ -209,7 +218,7 @@ var expression = / pattern / flags ;
 		  
 		
 		  
-			<li><a href="/categories/小红书/" title="小红书">小红书<sup>9</sup></a></li>
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>10</sup></a></li>
 		  
 		
 		</ul>
@@ -222,19 +231,19 @@ var expression = / pattern / flags ;
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>13</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>14</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小红书/" title="小红书">小红书<sup>9</sup></a></li>
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>10</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>9</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>10</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>9</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>10</sup></a></li>
 			
 		
 			
@@ -242,11 +251,11 @@ var expression = / pattern / flags ;
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
 			
 		
 			
@@ -266,11 +275,15 @@ var expression = / pattern / flags ;
 			
 		
 			
+				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
+				<li><a href="/tags/function/" title="function">function<sup>1</sup></a></li>
 			
 		
 			
@@ -278,7 +291,7 @@ var expression = / pattern / flags ;
 			
 		
 			
-				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
 			
 		
 			
@@ -295,10 +308,6 @@ var expression = / pattern / flags ;
 		
 			
 				<li><a href="/tags/html5/" title="html5">html5<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Js/" title="Js">Js<sup>1</sup></a></li>
 			
 		
 		</ul>
