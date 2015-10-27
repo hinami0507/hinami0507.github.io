@@ -23,7 +23,7 @@ typeof操作符
 typeof操作符
 
 检测类型？首先想到的是他:string,boolean,number,undefined统统秒杀var s = &quot;hinami&quot;;var b = true;var i = 22;var u;var n = null;var o = new Object();alert(typeof s); //stringalert(typeof i); //numbera">
-<meta property="og:updated_time" content="2015-10-24T13:27:17.126Z">
+<meta property="og:updated_time" content="2015-10-26T14:16:35.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="检测类型">
 <meta name="twitter:description" content="又一个前端面试题
@@ -128,6 +128,19 @@ typeof操作符
 <p>Object.prototype.toString的行为：<br>首先，取得对象的一个内部属性[[Class]，<br>然后依据这个属性，返回一个类似于”[object Array]”的字符串作为结果<br>(看过ECMA标准的应该都知道，[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”)</p>
 <p>利用这 个方法，再配合call，我们可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较，以达到我们的目的。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArrayFn</span> (<span class="params">o</span>) </span>&#123; </span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(o) === <span class="string">'[object Array]'</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]; </span><br><span class="line">alert(isArrayFn(arr));<span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
 <p>3.较好参考<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]; </span><br><span class="line"><span class="keyword">var</span> arr2 = [&#123; abac : <span class="number">1</span>, abc : <span class="number">2</span> &#125;]; </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArrayFn</span>(<span class="params">value</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Array</span>.isArray === <span class="string">"function"</span>) </span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Array</span>.isArray(value); </span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">"[object Array]"</span>; </span><br><span class="line">&#125;	 </span><br><span class="line">alert(isArrayFn(arr));<span class="comment">// true </span></span><br><span class="line">alert(isArrayFn(arr2));<span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<h1 id="补充">补充</h1></blockquote>
+<p>ECMAscript5新增了Array.isArray()方法，不论数组在哪个全局环境中创建，直接检测！<br><figure class="highlight ceylon"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(Array.isArray(<span class="keyword">value</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//对数组操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>支持Array.isArray()方法的浏览器有</p>
+<ul>
+<li><code>IE9+</code></li>
+<li><code>FireFox 4+</code></li>
+<li><code>Safari 5+</code></li>
+<li><code>Opera 10.5+</code> </li>
+<li><code>Chrome</code></li>
+</ul>
+<hr>
 <p>参考文章：<br><a href="http://www.jb51.net/article/41413.htm" target="_blank" rel="external">判断一个变量是数组Array类型的方法</a></p>
   
 	</div>
@@ -190,7 +203,7 @@ typeof操作符
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#又一个前端面试题"><span class="toc-number">1.</span> <span class="toc-text">又一个前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#typeof操作符"><span class="toc-number">1.0.1.</span> <span class="toc-text">typeof操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#instanceof操作符"><span class="toc-number">1.0.2.</span> <span class="toc-text">instanceof操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的constructor属性"><span class="toc-number">1.0.3.</span> <span class="toc-text">对象的constructor属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所以隆重介绍下边这个方法"><span class="toc-number">1.1.</span> <span class="toc-text">所以隆重介绍下边这个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Object-prototype-toString"><span class="toc-number">1.2.</span> <span class="toc-text">1.Object.prototype.toString</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#又一个前端面试题"><span class="toc-number">1.</span> <span class="toc-text">又一个前端面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#typeof操作符"><span class="toc-number">1.0.1.</span> <span class="toc-text">typeof操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#instanceof操作符"><span class="toc-number">1.0.2.</span> <span class="toc-text">instanceof操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的constructor属性"><span class="toc-number">1.0.3.</span> <span class="toc-text">对象的constructor属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所以隆重介绍下边这个方法"><span class="toc-number">1.1.</span> <span class="toc-text">所以隆重介绍下边这个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Object-prototype-toString"><span class="toc-number">1.2.</span> <span class="toc-text">1.Object.prototype.toString</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#补充"><span class="toc-number">2.</span> <span class="toc-text">补充</span></a></li></ol>
  
   </div>
 
