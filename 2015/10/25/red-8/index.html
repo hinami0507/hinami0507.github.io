@@ -17,7 +17,7 @@
 <meta property="og:url" content="hinami.xyz/2015/10/25/red-8/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="创建数组var colors = new Array();var colors = Array(20);  // 创建一个包含20项的数组var colors = Array(); //new可以省略var colors = Array(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;);var names = Array(&quot;Greg&quot;); // 创建一个包含1 项，即字符串&quot;Greg&quot;的数组var">
-<meta property="og:updated_time" content="2015-10-27T06:48:20.495Z">
+<meta property="og:updated_time" content="2015-10-27T07:08:44.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(8)-Array数组">
 <meta name="twitter:description" content="创建数组var colors = new Array();var colors = Array(20);  // 创建一个包含20项的数组var colors = Array(); //new可以省略var colors = Array(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;);var names = Array(&quot;Greg&quot;); // 创建一个包含1 项，即字符串&quot;Greg&quot;的数组var">
@@ -104,8 +104,8 @@
 <p>然而length并不那么简单，通过设置该属性，还可以修改数组长度，添加或者移除项,如下<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含3 个字符串的数组</span></span><br><span class="line">colors.length = <span class="number">2</span>;   <span class="comment">//数组长度置为2，移除第三项，</span></span><br><span class="line">alert(colors[<span class="number">2</span>]); <span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line">var colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含3 个字符串的数组</span></span><br><span class="line">colors.length = <span class="number">4</span>;   <span class="comment">//数组长度置为4，添加第四项，</span></span><br><span class="line"><span class="function">aler <span class="title">t</span><span class="params">(colors[<span class="number">3</span>])</span></span>; <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 <blockquote>
-<h3 id="数组中连续添加元素">数组中连续添加元素</h3><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> colors</span> = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含3 个字符串的数组</span></span><br><span class="line">colors[colors.length] = <span class="string">"black"</span>; <span class="comment">//（在位置3）添加一种颜色</span></span><br><span class="line">colors[colors.length] = <span class="string">"brown"</span>; <span class="comment">//（在位置4）再添加一种颜色</span></span><br></pre></td></tr></table></figure>
-</blockquote>
+<h3 id="数组中连续添加元素">数组中连续添加元素</h3></blockquote>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> colors</span> = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含3 个字符串的数组</span></span><br><span class="line">colors[colors.length] = <span class="string">"black"</span>; <span class="comment">//（在位置3）添加一种颜色</span></span><br><span class="line">colors[colors.length] = <span class="string">"brown"</span>; <span class="comment">//（在位置4）再添加一种颜色</span></span><br></pre></td></tr></table></figure>
 <hr>
 <p>还有数组添加的问题：<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> colors</span> = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含3 个字符串的数组</span></span><br><span class="line">colors[<span class="number">99</span>] = <span class="string">"black"</span>; <span class="comment">// （在位置99）添加一种颜色</span></span><br><span class="line">alert(colors.length); <span class="comment">// 100</span></span><br></pre></td></tr></table></figure></p>
 <p>在这个例子中，我们向colors 数组的位置99 插入了一个值，结果数组新长度（length）就是100（99+1）。而位置3 到位置98 实际上都是不存在的，所以访问它们都将返回undefined。</p>
@@ -167,16 +167,48 @@
 <hr>
 <blockquote>
 <h1 id="迭代方法">迭代方法</h1></blockquote>
+<p>支持的浏览器:<code>IE9+</code>、<code>Firefox 2+</code>、<code>Safari 3+</code>、<code>Opera 9.5+</code>和<code>Chrome</code></p>
+<p>下边五种方法都是<strong><code>对数组中的每一项运行给定函数</code></strong></p>
 <ul>
-<li><strong><code>every()</code></strong>：对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true(相当于<strong><code>且</code></strong>运算)。</li>
-<li><strong><code>some()</code></strong>：对数组中的每一项运行给定函数，如果该函数对任一项返回true，则返回true。</li>
-<li><strong><code>filter()</code></strong>(过滤)：对数组中的每一项运行给定函数，返回该函数会返回true 的项组成的数组(相当于<strong><code>或</code></strong>运算)。</li>
-<li><strong><code>forEach()</code></strong>：对数组中的每一项运行给定函数。<strong>这个方法没有返回值</strong>。</li>
-<li><strong><code>map()</code></strong>对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。<br>以上方法都不会修改数组中的包含的值。</li>
+<li><strong><code>every()</code></strong>：如果该函数对<strong>每一项</strong>都返回true，则返回true(相当于<strong><code>且</code></strong>运算)。</li>
+<li><strong><code>some()</code></strong>：如果该函数对<strong>任一项</strong>返回true，则返回true。</li>
+<li><strong><code>filter()</code></strong>(过滤)：返回该函数会返回true 的项组成的数组(相当于<strong><code>或</code></strong>运算)。</li>
+<li><strong><code>forEach()</code></strong>：<strong>这个方法没有返回值</strong>，只是对数组进行函数操作。</li>
+<li><strong><code>map()</code></strong>:返回每次函数调用的结果组成的数组。<br>以上方法都不会修改数组中的包含的值。</li>
 </ul>
 <blockquote>
 <h5 id="every()和some()">every()和some()</h5></blockquote>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line">var everyResult = numbers.every(function(item, index, <span class="built_in">array</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> (item &gt; <span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">alert(everyResult); <span class="comment">//false</span></span><br><span class="line">var someResult = numbers.some(function(item, index, <span class="built_in">array</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> (item &gt; <span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">alert(someResult); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5 id="filter()">filter()</h5></blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line">var filterResult = numbers.filter(function(item, index, <span class="built_in">array</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> (item &gt; <span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line">alert(filterResult); <span class="comment">//[3,4,5,4,3]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5 id="map()">map()</h5></blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line">var mapResult = numbers.<span class="built_in">map</span>(function(item, index, <span class="built_in">array</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> item * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line">alert(mapResult); <span class="comment">//[2,4,6,8,10,8,6,4,2]</span></span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<h5 id="forEach()">forEach()</h5></blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line">numbers.forEach(function(item, index, <span class="built_in">array</span>)&#123;</span><br><span class="line"><span class="comment">//执行某些操作</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<h1 id="归并方法">归并方法</h1></blockquote>
+<p>支持的浏览器:<code>IE9+</code>、<code>Firefox 2+</code>、<code>Safari 3+</code>、<code>Opera 9.5+</code>和<code>Chrome</code></p>
+<ul>
+<li><code>reduce()</code>从<strong>左</strong>开始遍历数组</li>
+<li><code>reduceRight()</code>从<strong>右</strong>开始遍历数组<br>方向不同，其他都一样。</li>
+</ul>
+<p>接受4个参数：</p>
+<ul>
+<li>前一个值<code>prev</code></li>
+<li>当前值<code>cur</code></li>
+<li>项的索引<code>index</code></li>
+<li>数组对象<code>array</code></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">var sum = values.reduce(function(prev, cur, index, <span class="built_in">array</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> prev + cur;</span><br><span class="line">&#125;);</span><br><span class="line">alert(sum); <span class="comment">//15</span></span><br></pre></td></tr></table></figure>
+<p>上述例子：第一次执行回调函数，prev 是1，cur 是2。第二次，prev 是3（1 加2 的结果），cur 是3（数组的第三项）。这个过程会持续到把数组中的每一项都访问一遍，最后返回结果。</p>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">var sum = values.reduceRight(function(prev, cur, index, <span class="built_in">array</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> prev + cur;</span><br><span class="line">&#125;);</span><br><span class="line">alert(sum); <span class="comment">//15</span></span><br></pre></td></tr></table></figure>
+<p>同reduce</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -212,6 +244,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/10/27/red-9/" title="小红书-(9)-RegExp">
+  <strong>上一篇：</strong><br/>
+  <span>
+  小红书-(9)-RegExp</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/10/25/red-7/"  title="小红书-(7)-引用类型&gt;对象&gt;属性">
@@ -235,7 +275,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#length"><span class="toc-number">1.</span> <span class="toc-text">length</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数组中连续添加元素"><span class="toc-number">1.0.1.</span> <span class="toc-text">数组中连续添加元素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#join方法"><span class="toc-number">1.0.1.0.1.</span> <span class="toc-text">join方法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#检验数组"><span class="toc-number">2.</span> <span class="toc-text">检验数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组的栈方法"><span class="toc-number">3.</span> <span class="toc-text">数组的栈方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#队列方法"><span class="toc-number">4.</span> <span class="toc-text">队列方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#shift()(移除首项)"><span class="toc-number">4.0.0.0.1.</span> <span class="toc-text">shift()(移除首项)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#unshift()(从开头添加项)"><span class="toc-number">4.0.0.0.2.</span> <span class="toc-text">unshift()(从开头添加项)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重排序方法"><span class="toc-number">5.</span> <span class="toc-text">重排序方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#reverse()*翻转数组"><span class="toc-number">5.0.0.0.1.</span> <span class="toc-text">reverse()*翻转数组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sort()排序数组"><span class="toc-number">5.0.0.0.2.</span> <span class="toc-text">sort()排序数组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#改进排序"><span class="toc-number">5.0.0.0.3.</span> <span class="toc-text">改进排序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#join()"><span class="toc-number">5.0.0.0.4.</span> <span class="toc-text">join()</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作方法"><span class="toc-number">6.</span> <span class="toc-text">操作方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#concat()"><span class="toc-number">6.0.0.0.1.</span> <span class="toc-text">concat() </span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#slice()(切片)"><span class="toc-number">6.0.0.0.2.</span> <span class="toc-text">slice()(切片)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#splice()(粘接)"><span class="toc-number">6.0.0.0.3.</span> <span class="toc-text">splice()(粘接)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#位置方法"><span class="toc-number">7.</span> <span class="toc-text">位置方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#indexOf()(从开始往后查找),lastIndexOf()(从后往前找)"><span class="toc-number">7.0.0.0.1.</span> <span class="toc-text">indexOf()(从开始往后查找),lastIndexOf()(从后往前找)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#迭代方法"><span class="toc-number">8.</span> <span class="toc-text">迭代方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#every()和some()"><span class="toc-number">8.0.0.0.1.</span> <span class="toc-text">every()和some()</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#length"><span class="toc-number">1.</span> <span class="toc-text">length</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数组中连续添加元素"><span class="toc-number">1.0.1.</span> <span class="toc-text">数组中连续添加元素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#join方法"><span class="toc-number">1.0.1.0.1.</span> <span class="toc-text">join方法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#检验数组"><span class="toc-number">2.</span> <span class="toc-text">检验数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组的栈方法"><span class="toc-number">3.</span> <span class="toc-text">数组的栈方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#队列方法"><span class="toc-number">4.</span> <span class="toc-text">队列方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#shift()(移除首项)"><span class="toc-number">4.0.0.0.1.</span> <span class="toc-text">shift()(移除首项)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#unshift()(从开头添加项)"><span class="toc-number">4.0.0.0.2.</span> <span class="toc-text">unshift()(从开头添加项)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重排序方法"><span class="toc-number">5.</span> <span class="toc-text">重排序方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#reverse()*翻转数组"><span class="toc-number">5.0.0.0.1.</span> <span class="toc-text">reverse()*翻转数组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sort()排序数组"><span class="toc-number">5.0.0.0.2.</span> <span class="toc-text">sort()排序数组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#改进排序"><span class="toc-number">5.0.0.0.3.</span> <span class="toc-text">改进排序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#join()"><span class="toc-number">5.0.0.0.4.</span> <span class="toc-text">join()</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作方法"><span class="toc-number">6.</span> <span class="toc-text">操作方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#concat()"><span class="toc-number">6.0.0.0.1.</span> <span class="toc-text">concat() </span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#slice()(切片)"><span class="toc-number">6.0.0.0.2.</span> <span class="toc-text">slice()(切片)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#splice()(粘接)"><span class="toc-number">6.0.0.0.3.</span> <span class="toc-text">splice()(粘接)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#位置方法"><span class="toc-number">7.</span> <span class="toc-text">位置方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#indexOf()(从开始往后查找),lastIndexOf()(从后往前找)"><span class="toc-number">7.0.0.0.1.</span> <span class="toc-text">indexOf()(从开始往后查找),lastIndexOf()(从后往前找)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#迭代方法"><span class="toc-number">8.</span> <span class="toc-text">迭代方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#every()和some()"><span class="toc-number">8.0.0.0.1.</span> <span class="toc-text">every()和some()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#filter()"><span class="toc-number">8.0.0.0.2.</span> <span class="toc-text">filter()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#map()"><span class="toc-number">8.0.0.0.3.</span> <span class="toc-text">map()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#forEach()"><span class="toc-number">8.0.0.0.4.</span> <span class="toc-text">forEach()</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#归并方法"><span class="toc-number">9.</span> <span class="toc-text">归并方法</span></a></li></ol>
  
   </div>
 
@@ -253,7 +293,7 @@
 		  
 		
 		  
-			<li><a href="/categories/小红书/" title="小红书">小红书<sup>8</sup></a></li>
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>9</sup></a></li>
 		  
 		
 		</ul>
@@ -266,19 +306,19 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>12</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>13</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小红书/" title="小红书">小红书<sup>8</sup></a></li>
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>9</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>8</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>9</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>8</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>9</sup></a></li>
 			
 		
 			
@@ -286,7 +326,11 @@
 			
 		
 			
-				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
 			
 		
 			
@@ -306,11 +350,11 @@
 			
 		
 			
-				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
+				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
 			
 		
 			
@@ -318,7 +362,7 @@
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
 			
 		
 			
@@ -339,10 +383,6 @@
 		
 			
 				<li><a href="/tags/Js/" title="Js">Js<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>1</sup></a></li>
 			
 		
 		</ul>
