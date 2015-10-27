@@ -11,19 +11,19 @@
     
 
     
-    <meta name="description" content="说起来ECMAScript 中function 什么的最有意思了
-function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10)); //20var anotherSum = sum;alert(anotherSum(10,10)); //20sum = null;alert(anotherSum(10,10)); /">
+    <meta name="description" content="说起来ECMAScript 中function 什么的最有意思了要注意：所有参数传递的都是值，不可能通过引用传递参数
+function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10)); //20var anotherSum = sum;alert(anotherSum(10,10)); //20sum = null;a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小红书-(10)-function">
 <meta property="og:url" content="hinami.xyz/2015/10/27/red-10/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="说起来ECMAScript 中function 什么的最有意思了
-function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10)); //20var anotherSum = sum;alert(anotherSum(10,10)); //20sum = null;alert(anotherSum(10,10)); /">
-<meta property="og:updated_time" content="2015-10-27T12:55:40.816Z">
+<meta property="og:description" content="说起来ECMAScript 中function 什么的最有意思了要注意：所有参数传递的都是值，不可能通过引用传递参数
+function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10)); //20var anotherSum = sum;alert(anotherSum(10,10)); //20sum = null;a">
+<meta property="og:updated_time" content="2015-10-27T15:19:25.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(10)-function">
-<meta name="twitter:description" content="说起来ECMAScript 中function 什么的最有意思了
-function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10)); //20var anotherSum = sum;alert(anotherSum(10,10)); //20sum = null;alert(anotherSum(10,10)); /">
+<meta name="twitter:description" content="说起来ECMAScript 中function 什么的最有意思了要注意：所有参数传递的都是值，不可能通过引用传递参数
+function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10)); //20var anotherSum = sum;alert(anotherSum(10,10)); //20sum = null;a">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -97,14 +97,38 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 </header>
 	<div class="article-content">
 		
-		<p>说起来ECMAScript 中<strong><code>function</code></strong> 什么的最有意思了</p>
+		<p>说起来ECMAScript 中<strong><code>function</code></strong> 什么的最有意思了<br><strong><code>要注意：所有参数传递的都是值，不可能通过引用传递参数</code></strong></p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">function <span class="title">sum</span><span class="params">(num1, num2)</span></span>&#123;</span><br><span class="line"><span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line">alert(sum(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br><span class="line">var anotherSum = sum;</span><br><span class="line">alert(anotherSum(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br><span class="line">sum = null;</span><br><span class="line">alert(anotherSum(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br><span class="line">alert(sum(<span class="number">32</span>,<span class="number">65</span>));        <span class="comment">//undefinder</span></span><br></pre></td></tr></table></figure>
 <p>这里把sum赋值给anotherSum，实际是将<strong><code>sum</code></strong>和<strong><code>anotherSum</code></strong> 指向<strong>同一个函数</strong><br>之后再把 <code>sum=null</code> 就取消了其指向性，但是这并不影响<code>anotherSum</code>的指向</p>
+<blockquote>
+<h1 id="没有重载（深入理解）">没有重载（深入理解）</h1><p>将函数名想象为指针，也有助于理解为什么ECMAScript 中没有函数重载的概念<br><figure class="highlight nimrod"><table><tr><td class="code"><pre><span class="line">function addSomeNumber(num)&#123;</span><br><span class="line"><span class="keyword">return</span> num + <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">function addSomeNumber(num) &#123;</span><br><span class="line"><span class="keyword">return</span> num + <span class="number">200</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> <span class="literal">result</span> = addSomeNumber(<span class="number">100</span>); //<span class="number">300</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
 <blockquote>
 <h1 id="作为值的函数">作为值的函数</h1></blockquote>
 <p>因为ECMAScript 中的函数名本身就是变量，所以函数也可以作为值来使用</p>
 <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSomeFunction</span><span class="params">(someFunction, someArgument)</span></span>&#123;</span><br><span class="line"><span class="keyword">return</span> someFunction(someArgument);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个函数接受两个参数。第一个参数应该是一个函数，第二个参数应该是要传递给该函数的一个值。</p>
+<p>很多网站的欢迎词经常要调用 hello，[“name”]下边是简单的例子<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add10</span><span class="params">(num)</span></span>&#123;</span><br><span class="line"><span class="keyword">return</span> num + <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result1 = callSomeFunction(add10, <span class="number">10</span>);</span><br><span class="line">alert(result1); <span class="comment">//20</span></span><br><span class="line">······································</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloPage</span><span class="params">(name)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Hello,"</span>+ name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result2 = callSomeFunction(helloPage,<span class="string">"hinami"</span>);</span><br><span class="line">alert(result2); <span class="comment">//"Hello,hinami"</span></span><br></pre></td></tr></table></figure></p>
+<p>P113</p>
+<blockquote>
+<h1 id="函数内部属性">函数内部属性</h1></blockquote>
+<p>在函数内部，有两个<strong>非常重要</strong>的特殊对象:<strong><code>arguments</code></strong>、<strong><code>this</code></strong></p>
+<blockquote>
+<h3 id="arguments">arguments</h3></blockquote>
+<p>首先要了解的是function定义函数的参数，只是为了方便而已，其实他们相当于存在arguments这个数组里！命名参数只是图个方便而已<br>arguments对象与数组类似<br>举例`<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	alert(<span class="string">"Hello:"</span>+<span class="built_in">arguments</span>[<span class="number">0</span>]+<span class="string">","</span>+<span class="built_in">arguments</span>[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line">alert(sayHi(<span class="string">"hinami"</span>,<span class="string">"hxz"</span>));  <span class="comment">//hello:hinami,hxz</span></span><br><span class="line">·······································</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi2</span>(<span class="params">Fname,Lname</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	alert(<span class="string">"Hello:"</span>+Fname+<span class="string">","</span>+Lname);</span><br><span class="line">&#125;</span><br><span class="line">alert(sayHi(<span class="string">"hinami"</span>,<span class="string">"hxz"</span>));  <span class="comment">//hello:hinami,hxz</span></span><br></pre></td></tr></table></figure></p>
+<p>两个例子都是相同的</p>
+<hr>
+<p>下边的例子进一步证明arguments是一个数组<br><figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">howManyArgs</span><span class="params">()</span> <span class="comment">&#123;</span><br><span class="line">alert(arguments.length);</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="title">howManyArgs</span><span class="params">("<span class="keyword">string</span>", 45)</span>;</span> <span class="comment">//2</span></span><br><span class="line">howManyArgs(); <span class="comment">//0</span></span><br><span class="line">howManyArgs(<span class="number">12</span>); <span class="comment">//1</span></span><br></pre></td></tr></table></figure></p>
+<p>另外 <code>arguments</code> 和 <code>所命名的参数</code> 可以一起使用~没有冲突，而且他们值<strong>始终保持同步(但内存空间独立，不共用)</strong>这里就不再举例。</p>
+<h3 id="来看一个非常经典的阶乘问题">来看一个非常经典的阶乘问题</h3><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">function factorial(<span class="built_in">num</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">num</span> &lt;=<span class="number">1</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	`<span class="keyword">return</span> <span class="built_in">num</span> * factorial(<span class="built_in">num</span>-<span class="number">1</span>)`</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然而小红书上的叫我们要用下边这种方式写，之后要改函数名<code>factorial</code>的话,只用改一处，不会漏~<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">function <span class="title">factorial</span><span class="params">(num)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (num &lt;=<span class="number">1</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> num * arguments.callee(num-<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是在<a href="http://segmentfault.com/q/1010000000672936" target="_blank" rel="external">sf:阶乘函数问题</a>中有人指出:<br>arguments.callee的性能不佳，已经被标准所摈弃了。<br>所以其实第一种反而是目前标准推荐的写法。</p>
+<p>然而本人用了两种方法做了实验，发现耗时都差不多……╮（╯＿╰）╭<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">"a"</span>); </span><br><span class="line">    <span class="built_in">console</span>.log(factorial( n ));</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">"a"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看心情吧，用第二种<del>~</del>┑(￣Д ￣)┍<del>~</del>~~~~</p>
+<hr>
+<blockquote>
+<h1 id="this">this</h1></blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -140,19 +164,11 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/27/red-9/" title="小红书-(9)-RegExp">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红书-(9)-RegExp</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/25/red-8/"  title="小红书-(8)-Array数组">
+<a href="/2015/10/27/red-9/"  title="小红书-(9)-RegExp">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(8)-Array数组
+ <span>小红书-(9)-RegExp
 </span>
 </a>
 </div>
@@ -171,7 +187,7 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#作为值的函数"><span class="toc-number">1.</span> <span class="toc-text">作为值的函数</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#没有重载（深入理解）"><span class="toc-number">1.</span> <span class="toc-text">没有重载（深入理解）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作为值的函数"><span class="toc-number">2.</span> <span class="toc-text">作为值的函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数内部属性"><span class="toc-number">3.</span> <span class="toc-text">函数内部属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#arguments"><span class="toc-number">3.0.1.</span> <span class="toc-text">arguments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#来看一个非常经典的阶乘问题"><span class="toc-number">3.0.2.</span> <span class="toc-text">来看一个非常经典的阶乘问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">4.</span> <span class="toc-text">this</span></a></li></ol>
  
   </div>
 
@@ -288,6 +304,12 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
   <div class="linkslist">
   <p class="asidetitle">友情链接</p>
     <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
         
           <li>
             
