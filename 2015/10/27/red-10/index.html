@@ -19,7 +19,7 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="说起来ECMAScript 中function 什么的最有意思了要注意：所有参数传递的都是值，不可能通过引用传递参数
 function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10)); //20var anotherSum = sum;alert(anotherSum(10,10)); //20sum = null;a">
-<meta property="og:updated_time" content="2015-10-27T15:19:25.850Z">
+<meta property="og:updated_time" content="2015-10-28T12:33:40.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(10)-function">
 <meta name="twitter:description" content="说起来ECMAScript 中function 什么的最有意思了要注意：所有参数传递的都是值，不可能通过引用传递参数
@@ -129,6 +129,36 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 <hr>
 <blockquote>
 <h1 id="this">this</h1></blockquote>
+<p><strong><code>this</code></strong>引用的是函数据以执行的环境对象</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.color = <span class="string">"red"</span>;</span><br><span class="line">var o = &#123; <span class="attribute">color</span>: <span class="string">"blue"</span> &#125;;</span><br><span class="line">	function sayColor()&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.color);</span><br><span class="line">	&#125;</span><br><span class="line">sayColor(); <span class="regexp">//</span><span class="string">"red"</span> <span class="keyword">this</span> 引用的是全局对象<span class="built_in">window</span>，相当于<span class="built_in">window</span>.color</span><br><span class="line">o.sayColor = sayColor;</span><br><span class="line">o.sayColor(); <span class="regexp">//</span><span class="string">"blue"</span> <span class="keyword">this</span> 引用的是对象o,相当于对o.color。</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>第一次调用时在<strong>全局环境下</strong>，this 引用的是全局对象<code>window</code>，相当于<code>window.color</code></p>
+</li>
+<li><p>第二次调用时在<strong>o对象环境下</strong>，this 引用的是对象<code>o</code>,相当于对<code>o.color</code>。</p>
+</li>
+</ul>
+<blockquote>
+<h1 id="函数的属性和方法">函数的属性和方法</h1></blockquote>
+<p><strong>ECMAScript 中的函数是对象，因此函数也有属性和方法。</strong></p>
+<p>包含两个属性:<strong><code>length</code></strong>和<strong><code>prototype</code></strong></p>
+<h5 id="length表示函数希望接收的命名参数的个数">length表示函数希望接收的命名参数的个数</h5><figure class="highlight scilab"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span><span class="params">(name)</span>&#123;</span></span><br><span class="line">alert(name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(num1, num2)</span>&#123;</span></span><br><span class="line"><span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span><span class="params">()</span>&#123;</span></span><br><span class="line">alert(<span class="string">"hi"</span>);</span><br><span class="line">&#125;</span><br><span class="line">alert(<span class="transposed_variable">sayName.</span><span class="built_in">length</span>); <span class="comment">//1</span></span><br><span class="line">alert(<span class="transposed_variable">sum.</span><span class="built_in">length</span>); <span class="comment">//2</span></span><br><span class="line">alert(<span class="transposed_variable">sayHi.</span><span class="built_in">length</span>); <span class="comment">//0</span></span><br></pre></td></tr></table></figure>
+<h5 id="prototype是保存它们所有实例方法的真正所在">prototype是保存它们所有实例方法的真正所在</h5><p><strong><code>prototype</code></strong>非常重要，之后会开一个单独的篇章来讲</p>
+<p>每个函数包含两个非继承来的方法：<strong><code>apply()</code></strong> 和 <strong><code>call()</code></strong></p>
+<blockquote>
+<h4 id="apply()">apply()</h4></blockquote>
+<p><strong><code>apply()</code></strong>接受两个参数</p>
+<ul>
+<li>在其中运行函数的作用域</li>
+<li>参数数组(可以是Array实例，也可以是arguments对象)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum1</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> sum.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>); <span class="comment">// 传入this(window)作用域，传入arguments 对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum2</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> sum.apply(<span class="keyword">this</span>, [num1, num2]); <span class="comment">// 传入this(window)作用域，传入数组</span></span><br><span class="line">&#125;</span><br><span class="line">alert(callSum1(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br><span class="line">alert(callSum2(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br></pre></td></tr></table></figure>
+<p>这里callSum1()在执行sum()函数时传入了this 作为this 值<br>（因为是在全局作用域中调用的，所以传入的就是window 对象）</p>
+<blockquote>
+<h4 id="call()">call()</h4></blockquote>
+<p><strong><code>call()</code></strong>和apply()不同之处在与，arguments传入需要一一列举，其他都一样</p>
+<p>然而<strong><code>apply()</code></strong> 和 <strong><code>call()</code></strong>并不是用来传参数的<br>主要功能是：<strong><code>扩充函数赖以运行的作用域</code></strong><br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.color = <span class="string">"red"</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123; color: <span class="string">"blue"</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.color);</span><br><span class="line">&#125;</span><br><span class="line">sayColor(); <span class="comment">//red</span></span><br><span class="line">sayColor.call(<span class="keyword">this</span>); <span class="comment">//red</span></span><br><span class="line">sayColor.call(<span class="built_in">window</span>); <span class="comment">//red</span></span><br><span class="line">sayColor.call(o); <span class="comment">//blue</span></span><br></pre></td></tr></table></figure></p>
+<p>用call()的好处在于对比之前的例子(this标签下边那个例子)<br>之前的例子还要<code>o.sayColor = sayColor;</code>把函数放到o对象中。<br>然而用了call()后就不需要上边这一步了↑；</p>
+<p>还有一个bind()函数之后再讲~挖个坑~(～￣(OO)￣)ブ</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -164,6 +194,14 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/10/28/red-11/" title="red-(11)-基本包装类型">
+  <strong>上一篇：</strong><br/>
+  <span>
+  red-(11)-基本包装类型</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/10/27/red-9/"  title="小红书-(9)-RegExp">
@@ -187,7 +225,7 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#没有重载（深入理解）"><span class="toc-number">1.</span> <span class="toc-text">没有重载（深入理解）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作为值的函数"><span class="toc-number">2.</span> <span class="toc-text">作为值的函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数内部属性"><span class="toc-number">3.</span> <span class="toc-text">函数内部属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#arguments"><span class="toc-number">3.0.1.</span> <span class="toc-text">arguments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#来看一个非常经典的阶乘问题"><span class="toc-number">3.0.2.</span> <span class="toc-text">来看一个非常经典的阶乘问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">4.</span> <span class="toc-text">this</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#没有重载（深入理解）"><span class="toc-number">1.</span> <span class="toc-text">没有重载（深入理解）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作为值的函数"><span class="toc-number">2.</span> <span class="toc-text">作为值的函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数内部属性"><span class="toc-number">3.</span> <span class="toc-text">函数内部属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#arguments"><span class="toc-number">3.0.1.</span> <span class="toc-text">arguments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#来看一个非常经典的阶乘问题"><span class="toc-number">3.0.2.</span> <span class="toc-text">来看一个非常经典的阶乘问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">4.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数的属性和方法"><span class="toc-number">5.</span> <span class="toc-text">函数的属性和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#length表示函数希望接收的命名参数的个数"><span class="toc-number">5.0.0.0.1.</span> <span class="toc-text">length表示函数希望接收的命名参数的个数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#prototype是保存它们所有实例方法的真正所在"><span class="toc-number">5.0.0.0.2.</span> <span class="toc-text">prototype是保存它们所有实例方法的真正所在</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#apply()"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">apply()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call()"><span class="toc-number">5.0.0.2.</span> <span class="toc-text">call()</span></a></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -205,7 +243,7 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 		  
 		
 		  
-			<li><a href="/categories/小红书/" title="小红书">小红书<sup>10</sup></a></li>
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>11</sup></a></li>
 		  
 		
 		</ul>
@@ -218,19 +256,19 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>14</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>15</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小红书/" title="小红书">小红书<sup>10</sup></a></li>
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>11</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>10</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>11</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>10</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>11</sup></a></li>
 			
 		
 			
@@ -270,6 +308,10 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 			
 		
 			
+				<li><a href="/tags/基本包装类型/" title="基本包装类型">基本包装类型<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/function/" title="function">function<sup>1</sup></a></li>
 			
 		
@@ -291,10 +333,6 @@ function sum(num1, num2)&amp;#123;return num1 + num2;&amp;#125;alert(sum(10,10))
 		
 			
 				<li><a href="/tags/float/" title="float">float<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>1</sup></a></li>
 			
 		
 		</ul>
