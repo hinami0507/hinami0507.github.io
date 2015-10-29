@@ -1,0 +1,707 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>小红书-(13)-DOM | hinami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hinami">
+    
+
+    
+    <meta name="description" content="DOM
+DOM（文档对象模型）是针对HTML 和XML 文档的一个API（应用程序编程接口）DOM描绘了一个节点数，允许程序猿添加、删除、修改页面的某一部分。
+
+可以用NodeType来确定节点的类型，下边是类型汇总：
+
+Node.ELEMENT_NODE(1)；+Node.ATTRIBUTE_NODE(2)；+Node.TEXT_NODE(3)；+Node.CDATA_SECTION_NO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小红书-(13)-DOM">
+<meta property="og:url" content="hinami.xyz/2015/10/29/red-13/index.html">
+<meta property="og:site_name" content="hinami">
+<meta property="og:description" content="DOM
+DOM（文档对象模型）是针对HTML 和XML 文档的一个API（应用程序编程接口）DOM描绘了一个节点数，允许程序猿添加、删除、修改页面的某一部分。
+
+可以用NodeType来确定节点的类型，下边是类型汇总：
+
+Node.ELEMENT_NODE(1)；+Node.ATTRIBUTE_NODE(2)；+Node.TEXT_NODE(3)；+Node.CDATA_SECTION_NO">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/document.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/node.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/getElements.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/css1.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/css2.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/css3.png">
+<meta property="og:updated_time" content="2015-10-29T13:16:44.193Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小红书-(13)-DOM">
+<meta name="twitter:description" content="DOM
+DOM（文档对象模型）是针对HTML 和XML 文档的一个API（应用程序编程接口）DOM描绘了一个节点数，允许程序猿添加、删除、修改页面的某一部分。
+
+可以用NodeType来确定节点的类型，下边是类型汇总：
+
+Node.ELEMENT_NODE(1)；+Node.ATTRIBUTE_NODE(2)；+Node.TEXT_NODE(3)；+Node.CDATA_SECTION_NO">
+<meta name="twitter:creator" content="@346565386Toms">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/fav.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hinami" title="hinami"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hinami">hinami</a></h1>
+				<h2 class="blog-motto">↖give me five~(๑•̀▽•́)و✧</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hinami.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/29/red-13/" title="小红书-(13)-DOM" itemprop="url">小红书-(13)-DOM</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-29T08:51:53.000Z" itemprop="datePublished"> 发表于 2015-10-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<blockquote>
+<h1 id="DOM">DOM</h1></blockquote>
+<p>DOM（文档对象模型）是针对HTML 和XML 文档的一个API（应用程序编程接口）<br>DOM描绘了一个节点数，允许程序猿<code>添加</code>、<code>删除</code>、<code>修改页面</code>的某一部分。</p>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/document.png" alt=""></p>
+<p>可以用NodeType来确定节点的类型，下边是类型汇总：</p>
+<ul>
+<li>Node.ELEMENT_NODE(1)；<br>+Node.ATTRIBUTE_NODE(2)；<br>+Node.TEXT_NODE(3)；<br>+Node.CDATA_SECTION_NODE(4)；<br>+Node.ENTITY_REFERENCE_NODE(5)；<br>+Node.ENTITY_NODE(6)；<br>+Node.PROCESSING_INSTRUCTION_NODE(7)；<br>+Node.COMMENT_NODE(8)；</li>
+<li>Node.DOCUMENT_NODE(9)；</li>
+<li>Node.DOCUMENT_TYPE_NODE(10)；<br>+Node.DOCUMENT_FRAGMENT_NODE(11)；<br>+Node.NOTATION_NODE(12)。</li>
+</ul>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/node.png" alt=""></p>
+<blockquote>
+<h1 id="文档的子节点">文档的子节点</h1></blockquote>
+<p>然而我们更多时候是通过document访问<br><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> html = <span class="built_in">document</span>.documentElement; <span class="comment">//取得对&lt;html&gt;的引用</span></span><br><span class="line">alert(html === <span class="built_in">document</span>.childNodes[<span class="number">0</span>]); <span class="comment">//true</span></span><br><span class="line">alert(html === <span class="built_in">document</span>.firstChild); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p><strong><code>documentElement</code>、<code>firstChild</code> 和<code>childNodes[0]</code></strong>的值相同，都指向<code>&lt;html&gt;</code><br>元素。</p>
+<p>更多的时候,我们访问的是<code>document.body</code><br><figure class="highlight d"><table><tr><td class="code"><pre><span class="line">var <span class="keyword">body</span> = document.<span class="keyword">body</span>; <span class="comment">//取得对&lt;body&gt;的引用</span></span><br></pre></td></tr></table></figure></p>
+<p>所有浏览器都支持document.documentElement 和document.body 属性。</p>
+<blockquote>
+<h1 id="文档信息">文档信息</h1></blockquote>
+<p>document作为HTMLDocument 的一个实例，<br>document有三个属性~</p>
+<ul>
+<li><strong><code>title</code></strong>页面标题</li>
+<li><strong><code>URL</code></strong>链接(包含页面完整的URL,即地址栏中显示的URL)</li>
+<li><strong><code>domain</code></strong>域名</li>
+<li><strong><code>referrer</code></strong>链接到当前页面的URL(属性中则保存着链接到当前页面的那个页面的URL,没有来源的话为空)</li>
+</ul>
+<blockquote>
+<h4 id="title">title</h4></blockquote>
+<p>通过document.title 来<strong><code>取得</code></strong>并且<strong><code>修改</code></strong>页面标题~</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment">//取得文档标题</span></span><br><span class="line"><span class="keyword">var</span> originalTitle = <span class="built_in">document</span>.title;</span><br><span class="line"><span class="comment">//设置文档标题</span></span><br><span class="line"><span class="built_in">document</span>.title = <span class="string">"hinami page title"</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="URL,domain,referrer">URL,domain,referrer</h4></blockquote>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment">//取得完整的URL</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.URL;</span><br><span class="line"><span class="comment">//取得域名</span></span><br><span class="line"><span class="keyword">var</span> domain = <span class="built_in">document</span>.domain;</span><br><span class="line"><span class="comment">//取得来源页面的URL</span></span><br><span class="line"><span class="keyword">var</span> referrer = <span class="built_in">document</span>.referrer;</span><br></pre></td></tr></table></figure>
+<p>只有domain可以设置，但是不能乱设置<br>如果URL 中包含一个子域名，例如<strong><code>i.hinami.xyz</code></strong>，那么就只能将domain 设置为<strong><code>hinami.xyz</code></strong></p>
+<blockquote>
+<h4 id="通过修改document-domain来实现两个页面JS对象的互相访问">通过修改document.domain来实现两个页面JS对象的互相访问</h4></blockquote>
+<p>当页面中包含来自其他子域的框架或内嵌框架时，能够设置document.domain 就非常方便了。<br>由于跨域安全限制， 来自不同子域的页面无法通过JavaScript 通信。<br>而通过将每个页面的document.domain 设置为相同的值，这些页面就可以互相访问对方包含的JavaScript 对象了。</p>
+<p>例如:<br>假设有一个页面加载自www.wrox.com，其中包含一个内嵌框架，框架内的页面加载自p2p.wrox.com。<br>由于document.domain 字符串不一样，内外两个页面之间无法相互访问对方的JavaScript 对象。<br>但如果将这两个页面的document.domain 值都设置为”wrox.com”，它们之间就可以通信了。</p>
+<blockquote>
+<h1 id="查找元素">查找元素</h1></blockquote>
+<p>两个方法 <strong><code>getElementById()</code></strong> 和 <strong><code>getElementsByTagName()</code></strong>(注意这里是elements)</p>
+<blockquote>
+<h4 id="getElementById()">getElementById()</h4></blockquote>
+<figure class="highlight cal"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> id=<span class="variable">"myDiv"</span>&gt;Some text&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> hina = getElementById(<span class="variable">"myDiv"</span>);   //取得&lt;<span class="keyword">div</span>&gt;元素的引用</span><br></pre></td></tr></table></figure>
+<p>注意：IE8及较低版本不区分ID 的大小写,但是还是建议核对大小写</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&lt;input type=<span class="string">"text"</span> <span class="property">name</span>=<span class="string">"myElement"</span> value=<span class="string">"Text field"</span>&gt;</span><br><span class="line">&lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"myElement"</span>&gt;A <span class="keyword">div</span>&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="getElementsByTagName()">getElementsByTagName()</h4></blockquote>
+<p>这个方法会返回一个HTMLCollection 对象，作为一个“动态”集合，该对象与NodeList 非常类似。</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> images = document.getElementsByTagName(<span class="string">"img"</span>);</span><br><span class="line">alert(images.length); <span class="comment">//输出图像的数量</span></span><br><span class="line">alert(images[<span class="number">0</span>].src); <span class="comment">//输出第一个图像元素的src 特性</span></span><br><span class="line"><span class="function">aler <span class="title">t</span>(<span class="params">images.item(<span class="number">0</span></span>).src)</span>; <span class="comment">//输出第一个图像元素的 src 特性</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="namedItem()">namedItem()</h4></blockquote>
+<p>通过名字取得集合中的项</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">&lt;img src=<span class="string">"myimage.gif"</span> name=<span class="string">"myImage"</span>&gt;</span><br><span class="line"><span class="keyword">var</span> myImage = images.namedItem(<span class="string">"myImage"</span>);<span class="comment">//若有多项，只取第一项</span></span><br></pre></td></tr></table></figure>
+<p>若要取得所有元素括号中可以输入<code>(&quot;*&quot;)</code>,这里<code>*</code>表示全部<br>于是乎我尝试了一下<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/getElements.png" alt=""></p>
+<h4 id="注意!">注意!</h4><ul>
+<li><code>getElementsByTagName()</code><strong>取得所有项</strong></li>
+<li><code>namedItem()</code><strong>只取一项</strong></li>
+<li><code>document.forms</code> = <code>document.getElementsByTagName(&quot;form&quot;)</code>：取得所有forms</li>
+<li><code>document.images</code> = <code>document.getElementsByTagName(&quot;img&quot;)</code>：取得所有forms</li>
+</ul>
+<hr>
+<blockquote>
+<h1 id="文档写入">文档写入</h1></blockquote>
+<p>write()和writen()两种方式<br>直接去w3school,传送门→<a href="http://www.runoob.com/jsref/met-doc-write.html" target="_blank" rel="external">write</a></p>
+<blockquote>
+<h1 id="HTML_元素">HTML 元素</h1></blockquote>
+<ul>
+<li><code>id</code>，元素在文档中的唯一标识符。</li>
+<li><code>title</code>，有关元素的附加说明信息，一般通过工具提示条显示出来。</li>
+<li><code>lang</code>，元素内容的语言代码，很少使用。</li>
+<li><code>dir</code>，语言的方向，值为”ltr”（left-to-right，从左至右）或”rtl”（right-to-left，从右至左），<br>也很少使用。</li>
+<li><code>className</code>，与元素的class 特性对应，即为元素指定的CSS类。没有将这个属性命名为class，是因为class 是ECMAScript 的保留字</li>
+</ul>
+<blockquote>
+<h1 id="终于等到你；修改元素的属性！！">终于等到你；修改元素的属性！！</h1></blockquote>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> id=<span class="string">"myDiv"</span> class=<span class="string">"bd"</span> title=<span class="string">"Body text"</span> lang=<span class="string">"en"</span> dir=<span class="string">"ltr"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">var <span class="keyword">div</span> = document.getElementById(<span class="string">"myDiv"</span>)<span class="comment">;</span></span><br><span class="line">alert(<span class="keyword">div</span>.id)<span class="comment">; //"myDiv""</span></span><br><span class="line">alert(<span class="keyword">div</span>.className)<span class="comment">; //"bd"   可以改css类！！！</span></span><br><span class="line">alert(<span class="keyword">div</span>.title)<span class="comment">; //"Body text"</span></span><br><span class="line">alert(<span class="keyword">div</span>.lang)<span class="comment">; //"en"</span></span><br><span class="line">alert(<span class="keyword">div</span>.dir)<span class="comment">; //"ltr"</span></span><br><span class="line">················</span><br><span class="line"><span class="keyword">div</span>.id = <span class="string">"someOtherId"</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">div</span>.className = <span class="string">"ft"</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">div</span>.title = <span class="string">"Some other text"</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">div</span>.lang = <span class="string">"fr"</span><span class="comment">;</span></span><br><span class="line"><span class="keyword">div</span>.dir =<span class="string">"rtl"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>可以直接改css类名！！ヾ(´∀`o)+<br>即使原先class为空，运行div.className=”div1”后也会自动添加css类！！<br>看！图！<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/css1.png" alt=""><br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/css2.png" alt=""><br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/css3.png" alt=""><br>好用的飞起！！相当于在 js中写html</p>
+<p>并不是对所有属性的修改都会在页面中直观地表现出来。</p>
+<ul>
+<li>对<code>id</code> 或<code>lang</code> 的修改对用户而言是透明不可见的（假设没有基于它们的值设置的CSS 样式）</li>
+<li>而对<code>title</code>的修改则只会在鼠标移动到这个元素之上时才会显示出来(然而我修改 document.title是直接出来了)</li>
+<li>对<code>dir</code> 的修改会在属性被重写的那一刻，立即影响页面中文本的左、右对齐方式。</li>
+<li><code>className</code> 如果新类关联了与此前不同的CSS样式，那么就会<strong>立即应用新的样式</strong>。</li>
+</ul>
+<blockquote>
+<h1 id="操作特性的DOM">操作特性的DOM</h1><p>方法主要有三个</p>
+</blockquote>
+<ul>
+<li><strong><code>getAttribute()</code></strong></li>
+<li><strong><code>setAttribute()</code></strong></li>
+<li><strong><code>removeAttribute()</code></strong></li>
+</ul>
+<blockquote>
+<h4 id="getAttribute()">getAttribute()</h4></blockquote>
+<figure class="highlight cal"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> id=<span class="variable">"myDiv"</span> class=<span class="variable">"bd"</span> title=<span class="variable">"Body text"</span> lang=<span class="variable">"en"</span> dir=<span class="variable">"ltr"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="keyword">div</span> = document.getElementById(<span class="variable">"myDiv"</span>);</span><br><span class="line">alert(<span class="keyword">div</span>.getAttribute(<span class="variable">"id"</span>)); //<span class="variable">"myDiv"</span></span><br><span class="line">alert(<span class="keyword">div</span>.getAttribute(<span class="variable">"class"</span>)); //<span class="variable">"bd"</span></span><br><span class="line">alert(<span class="keyword">div</span>.getAttribute(<span class="variable">"title"</span>)); //<span class="variable">"Body text"</span></span><br><span class="line">alert(<span class="keyword">div</span>.getAttribute(<span class="variable">"lang"</span>)); //<span class="variable">"en"</span></span><br><span class="line">alert(<span class="keyword">div</span>.getAttribute(<span class="variable">"dir"</span>)); //<span class="variable">"ltr"</span></span><br><span class="line">//可以取值</span><br><span class="line"><span class="keyword">var</span> value = <span class="keyword">div</span>.getAttribute(<span class="variable">"my_special_attribute"</span>);</span><br></pre></td></tr></table></figure>
+<p>这里对比一下<strong><code>style</code></strong> 在<strong><code>getAttribute()方法</code></strong> 和 <strong><code>元素属性</code></strong>上的区别<br><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">&lt;<span class="tag">div</span> class=<span class="string">"div1"</span> style=<span class="string">"background:red"</span> id=<span class="string">"mili"</span>&gt;I am DIV1&lt;/div&gt;</span><br><span class="line">``` </span><br><span class="line">![](http:<span class="comment">//7xnp0k.com1.z0.glb.clouddn.com/style.png)</span></span><br><span class="line"></span><br><span class="line">可以看到，访问对象属性，直接把整个div的style都输出出来了。</span><br><span class="line">但是用`<span class="function"><span class="title">getAttribute</span><span class="params">()</span></span>`只是把写的那一行输出`<span class="attribute">background</span>:red`</span><br><span class="line"></span><br><span class="line">同样的`onclick`也存在同样的问题：</span><br></pre></td></tr></table></figure></p>
+<p><div class="div1" onclick="him()" style="background:red" id="mili">I am DIV1</div><br><code>``
+![](http://7xnp0k.com1.z0.glb.clouddn.com/onclick.png)
+如果用对象属性来访问，具体函数
+如果用</code>getAttribute()<code>访问，那么只是输出文本:</code>him()`;</p>
+<p>然而小红本<strong>不推荐用</strong><code>getAttribute()</code>,因为浏览器间差异</p>
+<h4 id="所以推荐墙裂推荐用属性方式访问！！！">所以推荐墙裂推荐用属性方式访问！！！</h4>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/DOM/">DOM</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2015/10/29/red-13/" data-title="小红书-(13)-DOM | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/10/28/red-12/"  title="小红书-(12)-函数表达式与闭包">
+ <strong>下一篇：</strong><br/> 
+ <span>小红书-(12)-函数表达式与闭包
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/10/29/red-13/" data-title="小红书-(13)-DOM" data-url="hinami.xyz/2015/10/29/red-13/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM"><span class="toc-number">1.</span> <span class="toc-text">DOM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文档的子节点"><span class="toc-number">2.</span> <span class="toc-text">文档的子节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文档信息"><span class="toc-number">3.</span> <span class="toc-text">文档信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#title"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">title</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#URL,domain,referrer"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">URL,domain,referrer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过修改document-domain来实现两个页面JS对象的互相访问"><span class="toc-number">3.0.0.3.</span> <span class="toc-text">通过修改document.domain来实现两个页面JS对象的互相访问</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查找元素"><span class="toc-number">4.</span> <span class="toc-text">查找元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#getElementById()"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">getElementById()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getElementsByTagName()"><span class="toc-number">4.0.0.2.</span> <span class="toc-text">getElementsByTagName()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#namedItem()"><span class="toc-number">4.0.0.3.</span> <span class="toc-text">namedItem()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意!"><span class="toc-number">4.0.0.4.</span> <span class="toc-text">注意!</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文档写入"><span class="toc-number">5.</span> <span class="toc-text">文档写入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML_元素"><span class="toc-number">6.</span> <span class="toc-text">HTML 元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#终于等到你；修改元素的属性！！"><span class="toc-number">7.</span> <span class="toc-text">终于等到你；修改元素的属性！！</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作特性的DOM"><span class="toc-number">8.</span> <span class="toc-text">操作特性的DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#getAttribute()"><span class="toc-number">8.0.0.1.</span> <span class="toc-text">getAttribute()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#所以推荐墙裂推荐用属性方式访问！！！"><span class="toc-number">8.0.0.2.</span> <span class="toc-text">所以推荐墙裂推荐用属性方式访问！！！</span></a></li></ol></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>13</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/引用类型/" title="引用类型">引用类型<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/类/" title="类">类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境/" title="环境">环境<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/作用域/" title="作用域">作用域<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/基本包装类型/" title="基本包装类型">基本包装类型<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/string方法汇总/" title="string方法汇总">string方法汇总<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/function/" title="function">function<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/脚本加载/" title="脚本加载">脚本加载<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://tms.im" target="_blank" title="梦石真人">谭  总</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="cateaf.com" target="_blank" title="这人是个死基佬">小礼服</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="全球最大同性交友社区">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://home.cnblogs.com/u/yxy99/" target="_blank" title="yxy">yxy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m hinami in HNU. <br/>
+			This is my school,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hinami0507" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/346565386Toms" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/hinami.sin" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/po-xiao-14-75" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:346565386@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="hinami">hinami</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd65912a25436b0b55db731ce75f5c981' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
