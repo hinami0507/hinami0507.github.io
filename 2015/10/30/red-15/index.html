@@ -25,7 +25,7 @@ querySelector()方法
 
 querySelector()方法
 //取得body 元素var body = document.querySel">
-<meta property="og:updated_time" content="2015-10-30T11:40:27.823Z">
+<meta property="og:updated_time" content="2015-10-30T14:33:08.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(15)-DOM(3)">
 <meta name="twitter:description" content="选择符API
@@ -140,6 +140,64 @@ querySelector()方法
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> i,</span><br><span class="line">len,</span><br><span class="line">child</span> = element.firstChild;</span><br><span class="line"><span class="keyword">while</span>(child != element.lastChild)&#123;</span><br><span class="line">	<span class="keyword">if</span> (child.nodeType == <span class="number">1</span>)&#123; <span class="comment">//检查是不是元素</span></span><br><span class="line">	processChild(child);</span><br><span class="line">&#125;</span><br><span class="line">child = child.nextSibling;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>而使用Element Traversal 新增的元素，代码会更简洁。<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> i,</span><br><span class="line">len,</span><br><span class="line">child</span> = element.firstElementChild;</span><br><span class="line"><span class="keyword">while</span>(child != element.lastElementChild)&#123;</span><br><span class="line">	processChild(child); <span class="comment">//已知其是元素</span></span><br><span class="line">	child = child.nextElementSibling;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>支持Element Traversal 规范的浏览器有<code>IE 9</code>+、<code>Firefox 3.5+</code>、<code>Safari 4+</code>、<code>Chrome</code> 和<code>Opera 10+</code>。</p>
+<blockquote>
+<h1 id="与类相关的扩充">与类相关的扩充</h1><h3 id="getElementsByClassName()方法">getElementsByClassName()方法</h3></blockquote>
+<p>该方法接受一个参数，即一个包含一个或者多个类名的字符串。<br>返回所有元素的NodeList.<br>支持该方法的浏览器: <code>IE 9+</code>、<code>Firefox 3+</code>、<code>Safari 3.1+</code>、<code>Chrome</code> 和<br><code>Opera 9.5+</code>。<br><figure class="highlight cal"><table><tr><td class="code"><pre><span class="line">//取得所有类中包含<span class="variable">"username"</span>和<span class="variable">"current"</span>的元素，类名的先后顺序无所谓</span><br><span class="line"><span class="keyword">var</span> allCurrentUsernames = document.getElementsByClassName(<span class="variable">"username current"</span>);</span><br><span class="line">//取得ID 为<span class="variable">"myDiv"</span>的元素中带有类名<span class="variable">"selected"</span>的所有元素</span><br><span class="line"><span class="keyword">var</span> selected = document.getElementById(<span class="variable">"myDiv"</span>).getElementsByClassName(<span class="variable">"selected"</span>);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h3 id="classList">classList</h3></blockquote>
+<p><code>&lt;div class=&quot;bd user disabled&quot;&gt;...&lt;/div&gt;</code><br>这个<code>&lt;div&gt;</code>元素一共有三个类名。要从中删除一个类名，需要把这三个类名拆开，删除不想要的那个，然后再把其他类名拼成一个新字符串。请看下面的例子。<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除"user"类</span></span><br><span class="line"><span class="comment">//首先，取得类名字符串并拆分成数组</span></span><br><span class="line"><span class="keyword">var</span> classNames = div.className.split(/\s+/);</span><br><span class="line"><span class="comment">//找到要删的类名</span></span><br><span class="line"><span class="keyword">var</span> pos = -<span class="number">1</span>,</span><br><span class="line">i,</span><br><span class="line"><span class="built_in">len</span>;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>, <span class="built_in">len</span>=classNames.length; i &lt; <span class="built_in">len</span>; i++)&#123;</span><br><span class="line"><span class="keyword">if</span> (classNames[i] == <span class="string">"user"</span>)&#123;</span><br><span class="line">	pos = i;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除类名</span></span><br><span class="line">classNames.splice(i,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//把剩下的类名拼成字符串并重新设置</span></span><br><span class="line">div.className = classNames.join(<span class="string">" "</span>);</span><br></pre></td></tr></table></figure></p>
+<p>然而上面的方法非常麻烦</p>
+<p>HTML5 新增了一种操作类名的方式，可以让操作更简单也更安全，那就是为所有元素添加<br>classList 属性</p>
+<ul>
+<li><code>add(value)</code>：将给定的字符串值添加到列表中。如果值已经存在，就不添加了。</li>
+<li><code>contains(value)</code>：表示列表中是否存在给定的值，如果存在则返回true，否则返回false。</li>
+<li><code>remove(value)</code>：从列表中删除给定的字符串。</li>
+<li><code>toggle(value)</code>：如果列表中已经存在给定的值，删除它；如果列表中没有给定的值，添加它。</li>
+</ul>
+<p>这样，前面那么多行代码用下面这一行代码就可以代替了：<br><figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span>.classList.remove(<span class="string">"user"</span>);</span><br><span class="line"><span class="comment">//删除"disabled"类</span></span><br><span class="line"><span class="keyword">div</span>.classList.remove(<span class="string">"disabled"</span>);</span><br><span class="line"><span class="comment">//添加"current"类</span></span><br><span class="line"><span class="keyword">div</span>.classList.add(<span class="string">"current"</span>);</span><br><span class="line"><span class="comment">//切换"user"类</span></span><br><span class="line"><span class="keyword">div</span>.classList.toggle(<span class="string">"user"</span>);</span><br><span class="line"><span class="comment">//确定元素中是否包含既定的类名</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">div</span>.classList.contains(<span class="string">"bd"</span>) &amp;&amp; !<span class="keyword">div</span>.classList.contains(<span class="string">"disabled"</span>))&#123;</span><br><span class="line"><span class="comment">//执行操作</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">//迭代类名</span></span><br><span class="line"><span class="keyword">for</span> (var i=<span class="number">0</span>, len=<span class="keyword">div</span>.classList.length; i &lt; len; i++)&#123;</span><br><span class="line">doSomething(<span class="keyword">div</span>.classList[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Firefox 3.6+</code>和<code>Chrome</code></p>
+<blockquote>
+<h1 id="焦点管理">焦点管理</h1></blockquote>
+<p><strong><code>document.activeElement</code></strong>，这个属性始终会引用DOM 中当前获得了焦点的元素<br>focus()</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"myButton"</span>);</span><br><span class="line">button.focus();</span><br><span class="line">alert(<span class="built_in">document</span>.activeElement === button); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>默认情况下，<br>文档刚刚加载完成时，<code>document.activeElement</code> 中保存的是<code>document.body</code> 元素的引用。<br>文档加载期间，<code>document.activeElement</code> 的值为<code>null</code>。</p>
+<p><code>document.hasFocus()</code>:这个方法用于确定文档是否获得了焦点<br><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"myButton"</span>);</span><br><span class="line">button.focus();</span><br><span class="line">alert(<span class="built_in">document</span>.hasFocus()); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>实现了这两个属性的浏览器的包括<code>IE 4+</code>、<code>Firefox 3+</code>、<code>Safari 4+</code>、<code>Chrome</code> 和<code>Opera 8+</code>。</p>
+<blockquote>
+<h1 id="HTMLDocument的变化">HTMLDocument的变化</h1><h3 id="readyState_属性">readyState 属性</h3></blockquote>
+<p>Document 的readyState 属性有两个可能的值：</p>
+<ul>
+<li>loading，正在加载文档；</li>
+<li>complete，已经加载完文档。</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">"complete"</span>)&#123;</span><br><span class="line"><span class="comment">//执行操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>支持<code>readyState</code> 属性的浏览器有<code>IE4+</code>、<code>Firefox 3.6+</code>、<code>Safari</code>、<code>Chrome</code> 和<code>Opera 9+</code>。</p>
+<blockquote>
+<h1 id="兼容模式">兼容模式</h1></blockquote>
+<p>IE 给document 添加了一个名为<strong><code>compatMode</code></strong>的属性，<br>这个属性就是为了告诉开发人员浏览器采用了哪种渲染模式。<br>就像下面例子中所展示的那样，</p>
+<ul>
+<li>在标准模式下，<strong><code>document.compatMode</code></strong>的值等于”CSS1Compat”，</li>
+<li>在混杂模式下，<strong><code>document.compatMode</code></strong>的值等于”BackCompat”。</li>
+</ul>
+<blockquote>
+<h3 id="官方解释：">官方解释：</h3></blockquote>
+<ul>
+<li><code>BackCompat</code>：标准兼容模式关闭。</li>
+<li><p><code>CSS1Compat</code>：标准兼容模式开启。</p>
+</li>
+<li><p>当document.compatMode等于BackCompat时，浏览器客户区宽度是document.body.clientWidth；</p>
+</li>
+<li>当document.compatMode等于CSS1Compat时，浏览器客户区宽度是document.documentElement.clientWidth。</li>
+</ul>
+<p>浏览器客户区高度、滚动条高度、滚动条的Left、滚动条的Top等等都是上面的情况。</p>
+<p>一个准确获取网页客户区的宽高、滚动条宽高、滚动条Left和Top的代码：</p>
+<figure class="highlight roboconf"><table><tr><td class="code"><pre><span class="line"><span class="component">if (document.compatMode == \"BackCompat\") &#123;</span><br><span class="line">cWidth = document<span class="string">.body.clientWidth</span>;</span><br><span class="line">cHeight = document<span class="string">.body.clientHeight</span>;</span><br><span class="line">sWidth = document<span class="string">.body.scrollWidth</span>;</span><br><span class="line">sHeight = document<span class="string">.body.scrollHeight</span>;</span><br><span class="line">sLeft = document<span class="string">.body.scrollLeft</span>;</span><br><span class="line">sTop = document<span class="string">.body.scrollTop</span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="component">else &#123; //document<span class="string">.compatMode</span> == \"CSS1Compat\"</span><br><span class="line">cWidth = document<span class="string">.documentElement.clientWidth</span>;</span><br><span class="line">cHeight = document<span class="string">.documentElement.clientHeight</span>;</span><br><span class="line">sWidth = document<span class="string">.documentElement.scrollWidth</span>;</span><br><span class="line">sHeight = document<span class="string">.documentElement.scrollHeight</span>;</span><br><span class="line">sLeft = document<span class="string">.documentElement.scrollLeft</span> == 0 ? document<span class="string">.body.scrollLeft</span> : document<span class="string">.documentElement.scrollLeft</span>;</span><br><span class="line">sTop = document<span class="string">.documentElement.scrollTop</span> == 0 ? document<span class="string">.body.scrollTop</span> : document<span class="string">.documentElement.scrollTop</span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>浏览器支持情况: <code>IE6+</code>、<code>Firefox</code>、<code>Safari 3.1+</code>、<code>Opera</code> 和<code>Chrome</code></p>
+<hr>
+<blockquote>
+<h3 id="head属性">head属性</h3></blockquote>
+<p>var head = document.head || document.getElementsByTagName(“head”)[0];</p>
+<p>如果可用，就使用document.head，否则仍然使用getElementsByTagName()方法。<br>实现document.head 属性的浏览器包括Chrome 和Safari 5。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -153,7 +211,7 @@ querySelector()方法
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/API/">API</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a>
+  <span></span> <a href="/tags/API/">API</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/focus/">focus</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a>
   </div>
 
 </div>
@@ -175,6 +233,14 @@ querySelector()方法
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/10/30/red-16/" title="小红书-(16)-DOM(4)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  小红书-(16)-DOM(4)</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/10/30/red-14/"  title="小红书-(13)-DOM(2)">
@@ -198,7 +264,7 @@ querySelector()方法
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#选择符API"><span class="toc-number">1.</span> <span class="toc-text">选择符API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#querySelector()方法"><span class="toc-number">1.0.1.</span> <span class="toc-text">querySelector()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#querySelectorAll()方法"><span class="toc-number">1.0.2.</span> <span class="toc-text">querySelectorAll()方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#matchesSelector()方法"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">matchesSelector()方法</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#元素遍历"><span class="toc-number">2.</span> <span class="toc-text">元素遍历</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#选择符API"><span class="toc-number">1.</span> <span class="toc-text">选择符API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#querySelector()方法"><span class="toc-number">1.0.1.</span> <span class="toc-text">querySelector()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#querySelectorAll()方法"><span class="toc-number">1.0.2.</span> <span class="toc-text">querySelectorAll()方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#matchesSelector()方法"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">matchesSelector()方法</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#元素遍历"><span class="toc-number">2.</span> <span class="toc-text">元素遍历</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#与类相关的扩充"><span class="toc-number">3.</span> <span class="toc-text">与类相关的扩充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getElementsByClassName()方法"><span class="toc-number">3.0.1.</span> <span class="toc-text">getElementsByClassName()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#classList"><span class="toc-number">3.0.2.</span> <span class="toc-text">classList</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#焦点管理"><span class="toc-number">4.</span> <span class="toc-text">焦点管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTMLDocument的变化"><span class="toc-number">5.</span> <span class="toc-text">HTMLDocument的变化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#readyState_属性"><span class="toc-number">5.0.1.</span> <span class="toc-text">readyState 属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#兼容模式"><span class="toc-number">6.</span> <span class="toc-text">兼容模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#官方解释："><span class="toc-number">6.0.1.</span> <span class="toc-text">官方解释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#head属性"><span class="toc-number">6.0.2.</span> <span class="toc-text">head属性</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -216,7 +282,7 @@ querySelector()方法
 		  
 		
 		  
-			<li><a href="/categories/小红书/" title="小红书">小红书<sup>15</sup></a></li>
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>16</sup></a></li>
 		  
 		
 		</ul>
@@ -229,19 +295,19 @@ querySelector()方法
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>19</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>20</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小红书/" title="小红书">小红书<sup>15</sup></a></li>
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>16</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>15</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>16</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>15</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>16</sup></a></li>
 			
 		
 			
@@ -253,11 +319,11 @@ querySelector()方法
 			
 		
 			
-				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
+				<li><a href="/tags/基本包装类型/" title="基本包装类型">基本包装类型<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/引用类型/" title="引用类型">引用类型<sup>1</sup></a></li>
+				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
 			
 		
 			
@@ -273,7 +339,7 @@ querySelector()方法
 			
 		
 			
-				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
+				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
 			
 		
 			
@@ -285,11 +351,15 @@ querySelector()方法
 			
 		
 			
+				<li><a href="/tags/focus/" title="focus">focus<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+				<li><a href="/tags/文本节点/" title="文本节点">文本节点<sup>1</sup></a></li>
 			
 		
 			
@@ -297,15 +367,11 @@ querySelector()方法
 			
 		
 			
-				<li><a href="/tags/基本包装类型/" title="基本包装类型">基本包装类型<sup>1</sup></a></li>
+				<li><a href="/tags/引用类型/" title="引用类型">引用类型<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/string方法汇总/" title="string方法汇总">string方法汇总<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/function/" title="function">function<sup>1</sup></a></li>
 			
 		
 		</ul>
