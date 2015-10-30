@@ -4,26 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>my-first-post | hinami</title>
+    <title>小红书-(13)-DOM(2) | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧谈一下遇到的问题因为git在线安装放到了亚马逊的服务器上，被墙了（´Д`），没有全局翻墙，然而所以只能去CSDN下了个野生客户端，不知道干不干净(°ー°〃)然后Node.js首页也被墙了，幸好浏览器的可以翻了，可以打开。然后发现hexo非常好用,简单几步搭建个人博客
-最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹">
+    <meta name="description" content="appendData(text)：将text 添加到节点的末尾。
+deleteData(offset, count)：从offset 指定的位置开始删除count 个字符。
+insertData(offset, text)：在offset 指定的位置插入text。
+replaceData(offset, count, text)：用text 替换从offset 指定的位置开始到offset+cou">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my-first-post">
-<meta property="og:url" content="hinami.xyz/2015/10/05/my-first-post/index.html">
+<meta property="og:title" content="小红书-(13)-DOM(2)">
+<meta property="og:url" content="hinami.xyz/2015/10/30/red-14/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧谈一下遇到的问题因为git在线安装放到了亚马逊的服务器上，被墙了（´Д`），没有全局翻墙，然而所以只能去CSDN下了个野生客户端，不知道干不干净(°ー°〃)然后Node.js首页也被墙了，幸好浏览器的可以翻了，可以打开。然后发现hexo非常好用,简单几步搭建个人博客
-最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹">
-<meta property="og:updated_time" content="2015-10-22T11:35:58.800Z">
+<meta property="og:description" content="appendData(text)：将text 添加到节点的末尾。
+deleteData(offset, count)：从offset 指定的位置开始删除count 个字符。
+insertData(offset, text)：在offset 指定的位置插入text。
+replaceData(offset, count, text)：用text 替换从offset 指定的位置开始到offset+cou">
+<meta property="og:updated_time" content="2015-10-30T11:40:51.886Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my-first-post">
-<meta name="twitter:description" content="今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧谈一下遇到的问题因为git在线安装放到了亚马逊的服务器上，被墙了（´Д`），没有全局翻墙，然而所以只能去CSDN下了个野生客户端，不知道干不干净(°ー°〃)然后Node.js首页也被墙了，幸好浏览器的可以翻了，可以打开。然后发现hexo非常好用,简单几步搭建个人博客
-最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹">
+<meta name="twitter:title" content="小红书-(13)-DOM(2)">
+<meta name="twitter:description" content="appendData(text)：将text 添加到节点的末尾。
+deleteData(offset, count)：从offset 指定的位置开始删除count 个字符。
+insertData(offset, text)：在offset 指定的位置插入text。
+replaceData(offset, count, text)：用text 替换从offset 指定的位置开始到offset+cou">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -84,29 +90,56 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/05/my-first-post/" title="my-first-post" itemprop="url">my-first-post</a>
+      <a href="/2015/10/30/red-14/" title="小红书-(13)-DOM(2)" itemprop="url">小红书-(13)-DOM(2)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-05T13:53:34.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
+    <time datetime="2015-10-30T07:35:39.000Z" itemprop="datePublished"> 发表于 2015-10-30</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h1 id="今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧">今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧</h1><h4 id="谈一下遇到的问题">谈一下遇到的问题</h4><p>因为git在线安装放到了亚马逊的服务器上，被墙了（´Д`），没有全局翻墙，然而所以只能去CSDN下了个野生客户端，不知道干不干净(°ー°〃)<br>然后Node.js首页也被墙了，幸好浏览器的可以翻了，可以打开。<br>然后发现<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>非常好用,简单几步搭建个人博客</p>
-<h2 id="最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹_)，找时间把他除了。">最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹 )，找时间把他除了。</h2>  
+		<ul>
+<li><code>appendData(text)</code>：将text 添加到节点的末尾。</li>
+<li><code>deleteData(offset, count)</code>：从offset 指定的位置开始删除count 个字符。</li>
+<li><code>insertData(offset, text)</code>：在offset 指定的位置插入text。</li>
+<li><code>replaceData(offset, count, text)</code>：用text 替换从offset 指定的位置开始到offset+count 为止处的文本。</li>
+<li><code>splitText(offset)</code>：从offset 指定的位置将当前文本节点分成两个文本节点。</li>
+<li><code>substringData(offset, count)</code>：提取从offset 指定的位置开始到offset+count 为止处的字符串。</li>
+</ul>
+<blockquote>
+<h1 id="创建文本节点">创建文本节点</h1></blockquote>
+<p><code>document.createTextNode()</code>创建文本节点；</p>
+<p><code>var element = document.createTextNode(&quot;&lt;strong&gt;hello&lt;/strong&gt;world!&quot;);</code></p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);   <span class="comment">//添加元素</span></span><br><span class="line">element.className = <span class="string">"message"</span>;                <span class="comment">//为元素添加类明</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello world!"</span>);   <span class="comment">//创建文本节点</span></span><br><span class="line">element.appendChild(textNode);                           <span class="comment">//添加文本节点</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(element);       <span class="comment">// 在body第一个子节点添加元素</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="规范化(合并)文本节点">规范化(合并)文本节点</h1></blockquote>
+<p>用<code>normalize()</code>将所有文本节点合并成一个节点</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">element.className = <span class="string">"message"</span>;</span><br><span class="line">······················</span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello world!"</span>);</span><br><span class="line">element.appendChild(textNode);         <span class="comment">//为element添加文本节点1</span></span><br><span class="line">······················</span><br><span class="line"><span class="keyword">var</span> anotherTextNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Yippee!"</span>);</span><br><span class="line">element.appendChild(anotherTextNode);   <span class="comment">//为element添加文本节点2</span></span><br><span class="line">·······················</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(element);</span><br><span class="line">······················</span><br><span class="line">alert(element.childNodes.length); <span class="comment">//2</span></span><br><span class="line">element.normalize();              <span class="comment">//拼合文本节点</span></span><br><span class="line">alert(element.childNodes.length); <span class="comment">//1</span></span><br><span class="line">alert(element.firstChild.nodeValue); <span class="comment">// "Hello world!Yippee!"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="分割文本节点">分割文本节点</h1></blockquote>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">element.className = <span class="string">"message"</span>;</span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello world!"</span>);</span><br><span class="line">element.appendChild(textNode);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(element);</span><br><span class="line"><span class="keyword">var</span> newNode = element.firstChild.splitText(<span class="number">5</span>);</span><br><span class="line">alert(element.firstChild.nodeValue); <span class="comment">//"Hello"</span></span><br><span class="line">alert(newNode.nodeValue); <span class="comment">//" world!"</span></span><br><span class="line">alert(element.childNodes.length); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="动态样式">动态样式</h1></blockquote>
+<figure class="highlight lasso"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">link</span> rel=<span class="string">"stylesheet"</span> <span class="keyword">type</span>=<span class="string">"text/css"</span> href=<span class="string">"styles.css"</span>&gt;</span><br><span class="line">使用DOM 代码可以很容易地动态创建出这个元素：</span><br><span class="line"><span class="built_in">var</span> <span class="keyword">link</span> = document<span class="built_in">.</span>createElement(<span class="string">"link"</span>);</span><br><span class="line"><span class="keyword">link</span><span class="built_in">.</span>rel = <span class="string">"stylesheet"</span>;</span><br><span class="line"><span class="keyword">link</span><span class="built_in">.</span><span class="keyword">type</span> = <span class="string">"text/css"</span>;</span><br><span class="line"><span class="keyword">link</span><span class="built_in">.</span>href = <span class="string">"style.css"</span>;</span><br><span class="line"><span class="built_in">var</span> head = document<span class="built_in">.</span>getElementsByTagName(<span class="string">"head"</span>)<span class="preprocessor">[</span><span class="number">0</span><span class="preprocessor">]</span><span class="markup">;</span><br><span class="line">head.appendChild(link);</span></span><br></pre></td></tr></table></figure>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/hexo/">hexo</a>
+  <span></span> <a href="/tags/DOM/">DOM</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a><a href="/tags/文本节点/">文本节点</a>
   </div>
 
 </div>
@@ -115,7 +148,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/05/my-first-post/" data-title="my-first-post | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/30/red-14/" data-title="小红书-(13)-DOM(2) | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -129,18 +162,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/10/05/hello-world/" title="Hello World">
+ <a href="/2015/10/30/red-15/" title="小红书-(15)-DOM(3)">
   <strong>上一篇：</strong><br/>
   <span>
-  Hello World</span>
+  小红书-(15)-DOM(3)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/10/04/README_zh/"  title="">
+<a href="/2015/10/29/red-13/"  title="小红书-(13)-DOM(1)">
  <strong>下一篇：</strong><br/> 
- <span>(no title)
+ <span>小红书-(13)-DOM(1)
 </span>
 </a>
 </div>
@@ -149,7 +182,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/05/my-first-post/" data-title="my-first-post" data-url="hinami.xyz/2015/10/05/my-first-post/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/30/red-14/" data-title="小红书-(13)-DOM(2)" data-url="hinami.xyz/2015/10/30/red-14/"></div>
 </section>
 
 
@@ -159,7 +192,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧"><span class="toc-number">1.</span> <span class="toc-text">今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#谈一下遇到的问题"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">谈一下遇到的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹_)，找时间把他除了。"><span class="toc-number">1.1.</span> <span class="toc-text">最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹 )，找时间把他除了。</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建文本节点"><span class="toc-number">1.</span> <span class="toc-text">创建文本节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#规范化(合并)文本节点"><span class="toc-number">2.</span> <span class="toc-text">规范化(合并)文本节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分割文本节点"><span class="toc-number">3.</span> <span class="toc-text">分割文本节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态样式"><span class="toc-number">4.</span> <span class="toc-text">动态样式</span></a></li></ol>
  
   </div>
 
