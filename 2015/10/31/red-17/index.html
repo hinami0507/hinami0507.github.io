@@ -4,23 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>hinami</title>
+    <title>小红书-(16)-DOM2与DOM3 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="Where you go?">
+    <meta name="description" content="12.2 样式
+访问元素样式····CSS···························javascript·····background-image·············style.backgroundImagecolor························style.colordisplay······················style.displayfont-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hinami">
+<meta property="og:title" content="小红书-(16)-DOM2与DOM3">
 <meta property="og:url" content="hinami.xyz/2015/10/31/red-17/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="Where you go?">
-<meta property="og:updated_time" content="2015-10-31T02:46:25.933Z">
+<meta property="og:description" content="12.2 样式
+访问元素样式····CSS···························javascript·····background-image·············style.backgroundImagecolor························style.colordisplay······················style.displayfont-">
+<meta property="og:updated_time" content="2015-10-31T12:26:44.817Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hinami">
-<meta name="twitter:description" content="Where you go?">
+<meta name="twitter:title" content="小红书-(16)-DOM2与DOM3">
+<meta name="twitter:description" content="12.2 样式
+访问元素样式····CSS···························javascript·····background-image·············style.backgroundImagecolor························style.colordisplay······················style.displayfont-">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -81,7 +84,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/31/red-17/" title="" itemprop="url"></a>
+      <a href="/2015/10/31/red-17/" title="小红书-(16)-DOM2与DOM3" itemprop="url">小红书-(16)-DOM2与DOM3</a>
   </h1>
   <p class="article-author">By
        
@@ -94,7 +97,26 @@
 </header>
 	<div class="article-content">
 		
-		  
+		<blockquote>
+<h1 id="12-2_样式">12.2 样式</h1></blockquote>
+<p>访问元素样式<br>····CSS···························javascript·····<br>background-image·············style.backgroundImage<br>color························style.color<br>display······················style.display<br>font-family··················style.fontFamily</p>
+<p>由于float 是JavaScript 中的保留字，因此不能用作属性名。</p>
+<p>写模式：<br><figure class="highlight processing"><table><tr><td class="code"><pre><span class="line">只要取得一个有效的DOM元素的引用，就可以随时使用JavaScript 为其设置样式。以下是几个例子。</span><br><span class="line">var myDiv = document.getElementById(<span class="string">"myDiv"</span>);</span><br><span class="line"><span class="comment">//设置背景颜色</span></span><br><span class="line">myDiv.style.backgroundColor = <span class="string">"red"</span>;</span><br><span class="line"><span class="comment">//改变大小</span></span><br><span class="line">myDiv.style.<span class="variable">width</span> = <span class="string">"100px"</span>;</span><br><span class="line">myDiv.style.<span class="variable">height</span> = <span class="string">"200px"</span>;</span><br><span class="line"><span class="comment">//指定边框</span></span><br><span class="line">myDiv.style.border = <span class="string">"1px solid black"</span>;</span><br><span class="line">在以这种方式改变样式时，元素的外观会自动被更新。</span><br><span class="line">若要删除该style，则直接把属性字符串设为空:</span><br><span class="line">myDiv.style.<span class="variable">width</span> = <span class="string">""</span>;</span><br></pre></td></tr></table></figure></p>
+<p>读模式:<br><figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myDiv"</span> style=<span class="string">"background-color:blue; width:10px; height:25px"</span>&gt;&lt;/div&gt;</span><br><span class="line">alert<span class="comment">(myDiv.style.backgroundColor)</span>; <span class="comment">//"blue"</span></span><br><span class="line">alert<span class="comment">(myDiv.style.width)</span>; <span class="comment">//"10px"</span></span><br><span class="line">alert<span class="comment">(myDiv.style.height)</span>; <span class="comment">//"25px"</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h2 id="DOM属性和方法">DOM属性和方法</h2></blockquote>
+<ul>
+<li><a href="http://www.runoob.com/jsref/prop-style-csstext.html" target="_blank" rel="external">cssText</a>：如前所述，通过它能够访问到style 特性中的CSS 代码。</li>
+<li>length：应用给元素的CSS 属性的数量。</li>
+<li>parentRule：表示CSS 信息的CSSRule 对象。本节后面将讨论CSSRule 类型。</li>
+<li>getPropertyCSSValue(propertyName)：返回包含给定属性值的CSSValue 对象。</li>
+<li>getPropertyPriority(propertyName)：如果给定的属性使用了!important 设置，则返回<br>“important”；否则，返回空字符串。</li>
+<li>getPropertyValue(propertyName)：返回给定属性的字符串值。</li>
+<li>item(index)：返回给定位置的CSS 属性的名称。</li>
+<li>removeProperty(propertyName)：从样式中删除给定属性。</li>
+<li>setProperty(propertyName,value,priority)：将给定属性设置为相应的值，并加上优先权标志（”important”或者一个空字符串）。</li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -102,7 +124,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a>
+  <span></span> <a href="/tags/DOM2/">DOM2</a><a href="/tags/DOM3/">DOM3</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a>
   </div>
 
 </div>
@@ -111,7 +133,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/31/red-17/" data-title="hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/31/red-17/" data-title="小红书-(16)-DOM2与DOM3 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -137,7 +159,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/31/red-17/" data-title="" data-url="hinami.xyz/2015/10/31/red-17/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/31/red-17/" data-title="小红书-(16)-DOM2与DOM3" data-url="hinami.xyz/2015/10/31/red-17/"></div>
 </section>
 
 
@@ -147,7 +169,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#12-2_样式"><span class="toc-number">1.</span> <span class="toc-text">12.2 样式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM属性和方法"><span class="toc-number">1.1.</span> <span class="toc-text">DOM属性和方法</span></a></li></ol></li></ol>
  
   </div>
 
@@ -230,7 +252,11 @@
 			
 		
 			
-				<li><a href="/tags/目标/" title="目标">目标<sup>1</sup></a></li>
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>1</sup></a></li>
 			
 		
 			
@@ -238,11 +264,11 @@
 			
 		
 			
-				<li><a href="/tags/API/" title="API">API<sup>1</sup></a></li>
+				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+				<li><a href="/tags/focus/" title="focus">focus<sup>1</sup></a></li>
 			
 		
 			
@@ -251,10 +277,6 @@
 		
 			
 				<li><a href="/tags/文本节点/" title="文本节点">文本节点<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/函数表达式与闭包/" title="函数表达式与闭包">函数表达式与闭包<sup>1</sup></a></li>
 			
 		
 		</ul>
