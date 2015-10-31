@@ -11,16 +11,37 @@
     
 
     
-    <meta name="description" content="Where you go?">
+    <meta name="description" content="html511.3.4字符集属性
+
+charset 属性:默认的为UTF-16,是个浏览器就支持
+defaultCharset属性:默认浏览器及操作系统设置
+
+
+自定义属性数据
+HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，目的是为元素提供与渲染无关的信息，或者提供语义信息。这些属性可以任意添加、随便命名，只要以data-开头即可。来看一个例子。&amp;lt;div id=&amp;quo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小红书-(16)-DOM(4)">
 <meta property="og:url" content="hinami.xyz/2015/10/30/red-16/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="Where you go?">
-<meta property="og:updated_time" content="2015-10-30T14:30:56.241Z">
+<meta property="og:description" content="html511.3.4字符集属性
+
+charset 属性:默认的为UTF-16,是个浏览器就支持
+defaultCharset属性:默认浏览器及操作系统设置
+
+
+自定义属性数据
+HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，目的是为元素提供与渲染无关的信息，或者提供语义信息。这些属性可以任意添加、随便命名，只要以data-开头即可。来看一个例子。&amp;lt;div id=&amp;quo">
+<meta property="og:updated_time" content="2015-10-31T02:45:58.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(16)-DOM(4)">
-<meta name="twitter:description" content="Where you go?">
+<meta name="twitter:description" content="html511.3.4字符集属性
+
+charset 属性:默认的为UTF-16,是个浏览器就支持
+defaultCharset属性:默认浏览器及操作系统设置
+
+
+自定义属性数据
+HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，目的是为元素提供与渲染无关的信息，或者提供语义信息。这些属性可以任意添加、随便命名，只要以data-开头即可。来看一个例子。&amp;lt;div id=&amp;quo">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -94,7 +115,66 @@
 </header>
 	<div class="article-content">
 		
-		  
+		<blockquote>
+<h1 id="html5">html5</h1><h3 id="11-3-4字符集属性">11.3.4字符集属性</h3></blockquote>
+<ul>
+<li><code>charset</code> 属性:默认的为<code>UTF-16</code>,是个浏览器就支持</li>
+<li><code>defaultCharset</code>属性:默认浏览器及操作系统设置</li>
+</ul>
+<blockquote>
+<h3 id="自定义属性数据">自定义属性数据</h3></blockquote>
+<p>HTML5 规定可以为元素添加非标准的属性，<strong>但要添加前缀<code>data-</code></strong>，目的是为元素提供与渲染无关的信息，或者提供语义信息。这些属性可以任意添加、随便命名，只要以data-开头即可。来看一个例子。<br><code>&lt;div id=&quot;myDiv&quot; data-appId=&quot;12345&quot; data-myname=&quot;Nicholas&quot;&gt;&lt;/div&gt;</code></p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line"><span class="comment">//本例中使用的方法仅用于演示</span></span><br><span class="line">var <span class="keyword">div</span> = document.getElementById(<span class="string">"myDiv"</span>);</span><br><span class="line"><span class="comment">//取得自定义属性的值</span></span><br><span class="line">var appId = <span class="keyword">div</span>.dataset.appId;</span><br><span class="line">var myName = <span class="keyword">div</span>.dataset.myname;</span><br><span class="line"><span class="comment">//设置值</span></span><br><span class="line"><span class="keyword">div</span>.dataset.appId = <span class="number">23456</span>;</span><br><span class="line"><span class="keyword">div</span>.dataset.myname = <span class="string">"Michael"</span>;</span><br><span class="line"><span class="comment">//有没有"myname"值呢？</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">div</span>.dataset.myname)&#123;</span><br><span class="line">alert(<span class="string">"Hello, "</span> + <span class="keyword">div</span>.dataset.myname);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="11-3-6插入标记">11.3.6插入标记</h1><h3 id="innerHTML属性">innerHTML属性</h3></blockquote>
+<ul>
+<li><p><strong>在读模式下</strong>，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML 标记</p>
+</li>
+<li><p><strong>在写模式下</strong>，innerHTML 会根据指定的值创建新的DOM树，然后用这个DOM树完全替换调用元素原先的所有子节点。下面是一个例子。</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="title">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">对于上面的<span class="tag">&lt;<span class="title">div</span>&gt;</span>元素来说，它的innerHTML 属性会返回如下字符串。</span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="title">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在写模式下：如果没标签则是纯文本<br><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span>.innerHTML = <span class="string">"Hello world!"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>如果有标签则就嵌入元素<br><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span>.innerHTML = <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>并不是所有元素都支持innerHTML 属性。<br>不支持innerHTML 的元素有：<br><code>&lt;col&gt;</code>、<code>&lt;colgroup&gt;</code>、<code>&lt;frameset&gt;</code>、<code>&lt;head&gt;</code>、<code>&lt;html&gt;</code>、<code>&lt;style&gt;</code>、<code>&lt;table&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;thead&gt;</code>、<code>&lt;tfoot&gt;</code>和<code>&lt;tr&gt;</code>。<br>此外，在IE8 及更早版本中，<code>&lt;title&gt;</code>元素也没有innerHTML 属性。</p>
+<blockquote>
+<h3 id="outerHTML">outerHTML</h3></blockquote>
+<ul>
+<li><strong>在读模式下</strong>，outerHTML 返回调用它的元素及所有子节点的HTML 标签。</li>
+<li><strong>在写模式下</strong>，outerHTML会根据指定的HTML 字符串创建新的DOM 子树，然后用这个DOM子树完全替换调用元素。    </li>
+</ul>
+<p>下边例子调用outerHTML就会返回原来的代码<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="title">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>支持<strong><code>outerHTML</code></strong> 属性的浏览器有<code>IE4+</code>、<code>Safari 4+</code>、<code>Chrome</code> 和<code>Opera 8+</code>。<br><code>Firefox 7</code> 及之前版本都不支持outerHTML 属性。</p>
+<blockquote>
+<h4 id="innerHTML和outerHTML性能问题">innerHTML和outerHTML性能问题</h4></blockquote>
+<p>运行这两个函数会创造 HTML解析器(C++)中运行，这会带来性能损失，所以最好能够将设置innerHTML或outerHTML 的次数控制在合理的范围内。<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, <span class="built_in">len</span>=values.length; i &lt; <span class="built_in">len</span>; i++)&#123;</span><br><span class="line">ul.innerHTML += <span class="string">"&lt;li&gt;"</span> + values[i] + <span class="string">"&lt;/li&gt;"</span>; <span class="comment">//要避免这种频繁操作！！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>每次循环插入<code>&lt;li&gt;</code>都要读一次<code>innerHTML</code>写一次<code>innerHTML</code>，很浪费内存！！因此要这样改</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> itemsHtml = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, <span class="built_in">len</span>=values.length; i &lt; <span class="built_in">len</span>; i++)&#123;</span><br><span class="line">itemsHtml += <span class="string">"&lt;li&gt;"</span> + values[i] + <span class="string">"&lt;/li&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line">ul.innerHTML = itemsHtml;</span><br></pre></td></tr></table></figure>
+<p>一次性插♂入!!节省内存！</p>
+<blockquote>
+<h3 id="inserAdjacentHTML()">inserAdjacentHTML()</h3></blockquote>
+<p>insertAdjacentHTML()方法<br>它接收两个参数：插入位置和要插入的HTML 文本。<br>第一个参数必须是下列值之一<strong>(必须小写)</strong>：</p>
+<ul>
+<li><strong><code>beforebegin</code></strong>，在当前元素之前插入一个紧邻的同辈元素；</li>
+<li><strong><code>afterbegin</code></strong>，在当前元素之下插入一个新的子元素或在第一个子元素之前再插入新的子元素；</li>
+<li><strong><code>beforeend</code></strong>，在当前元素之下插入一个新的子元素或在最后一个子元素之后再插入新的子元素；</li>
+<li><strong><code>afterend</code></strong>，在当前元素之后插入一个紧邻的同辈元素。</li>
+</ul>
+<p>第二个参数是一个HTML 字符串（与innerHTML 和outerHTML<br>的值相同），下边例子：<br><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//作为前一个同辈元素插入</span></span><br><span class="line">element.insertAdjacentHTML(<span class="string">"beforebegin"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</span><br><span class="line"><span class="comment">//作为第一个子元素插入</span></span><br><span class="line">element.insertAdjacentHTML(<span class="string">"afterbegin"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</span><br><span class="line"><span class="comment">//作为最后一个子元素插入</span></span><br><span class="line">element.insertAdjacentHTML(<span class="string">"beforeend"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</span><br><span class="line"><span class="comment">//作为后一个同辈元素插入</span></span><br><span class="line">element.insertAdjacentHTML(<span class="string">"afterend"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>支持<code>insertAdjacentHTML()</code>方法的浏览器有<code>IE</code>、<code>Firefox 8+</code>、<code>Safari</code>、<code>Opera</code> 和<code>Chrome</code>。</p>
+<blockquote>
+<h1 id="滚动~~~">滚动~~~</h1></blockquote>
+<p>最喜欢的大概就是这个方法了了ヾ(´·ω·｀)ノ之后会开个专题专门将滚动~~</p>
+<p>scrollIntoView()可以在所有HTML 元素上调用</p>
+<p>窗口会滚动(不算滚动，算跳吧)到调用这个方法的元素那里，<br>如果传入<code>true</code>，或者不传入任何参数:，那么窗口滚动之后会让<strong>调用元素的顶部与视口顶部尽可能平齐</strong><br>如果传入<code>false</code>:，调用元素会尽可能全部出现在视口中，(可能的话，调用元素的底部会与视口顶部平齐)</p>
+<ul>
+<li>scrollIntoViewIfNeeded(alignCenter)：只在当前元素在视口中不可见的情况下，才滚动浏览器窗口或容器元素，最终让它可见。如果当前元素在视口中可见，这个方法什么也不做。如果将可选的alignCenter参数设置为true，则表示尽量将元素显示在视口中部（垂直方向）。</li>
+<li>scrollByLines(lineCount)：将元素的内容滚动指定的行高，lineCount值可以是正值也可以是负值。</li>
+<li>scrollByPages(pageCount)：将元素的内容滚动指定的页面高度，具体高度由元素的高度决定。</li>
+</ul>
+<p>注意：<code>scrollIntoView()</code>和<code>scrollIntoViewIfNeed()</code>的作用对象是元素的容器，而<code>scrollByLines()</code>和<code>scrollByPages()</code>影响的则是元素自身。</p>
+<p>由于<strong><code>scrollIntoView()</code></strong>是<strong>唯一一个所有浏览器都支持的方法</strong>，因此还是这个方法最常用。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -107,7 +187,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a>
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/html5/">html5</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a>
   </div>
 
 </div>
@@ -129,11 +209,19 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/10/31/red-17/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/10/30/red-15/"  title="小红书-(15)-DOM(3)">
+<a href="/2015/10/30/red-15/"  title="小红书-(15)-DOM(3)&amp;html5">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(15)-DOM(3)
+ <span>小红书-(15)-DOM(3)&amp;html5
 </span>
 </a>
 </div>
@@ -152,7 +240,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#html5"><span class="toc-number">1.</span> <span class="toc-text">html5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-4字符集属性"><span class="toc-number">1.0.1.</span> <span class="toc-text">11.3.4字符集属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义属性数据"><span class="toc-number">1.0.2.</span> <span class="toc-text">自定义属性数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-3-6插入标记"><span class="toc-number">2.</span> <span class="toc-text">11.3.6插入标记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#innerHTML属性"><span class="toc-number">2.0.1.</span> <span class="toc-text">innerHTML属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#outerHTML"><span class="toc-number">2.0.2.</span> <span class="toc-text">outerHTML</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#innerHTML和outerHTML性能问题"><span class="toc-number">2.0.2.1.</span> <span class="toc-text">innerHTML和outerHTML性能问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inserAdjacentHTML()"><span class="toc-number">2.0.3.</span> <span class="toc-text">inserAdjacentHTML()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滚动~~~"><span class="toc-number">3.</span> <span class="toc-text">滚动~~~</span></a></li></ol>
  
   </div>
 
@@ -183,7 +271,15 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>20</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>17</sup></a></li>
 			
 		
 			
@@ -191,15 +287,11 @@
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>16</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>16</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
 			
 		
 			
@@ -207,11 +299,7 @@
 			
 		
 			
-				<li><a href="/tags/基本包装类型/" title="基本包装类型">基本包装类型<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
+				<li><a href="/tags/引用类型/" title="引用类型">引用类型<sup>1</sup></a></li>
 			
 		
 			
@@ -227,7 +315,7 @@
 			
 		
 			
-				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
 			
 		
 			
@@ -235,15 +323,23 @@
 			
 		
 			
-				<li><a href="/tags/API/" title="API">API<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/focus/" title="focus">focus<sup>1</sup></a></li>
+				<li><a href="/tags/目标/" title="目标">目标<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/API/" title="API">API<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
 			
 		
 			
@@ -252,14 +348,6 @@
 		
 			
 				<li><a href="/tags/函数表达式与闭包/" title="函数表达式与闭包">函数表达式与闭包<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/引用类型/" title="引用类型">引用类型<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/string方法汇总/" title="string方法汇总">string方法汇总<sup>1</sup></a></li>
 			
 		
 		</ul>
