@@ -4,32 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红书-(1)-js脚本加载问题 | hinami</title>
+    <title>小红书-(16)-style元素大小 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
+    <meta name="description" content="元素大小
 
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
+offsetHeight：元素在垂直方向上占用的空间大小，以像素计。包括元素的高度、（可见的）水平滚动条的高度、上边框高度和下边框高度。
+offsetWidth：元素在水平方向上占用的空间大小，以像素计。包括元素的宽度、（可见的）垂直滚动条的宽度、左边框宽度和右边框宽度。
+offsetLeft：元素的左外边框至包含元素的左内边框之间的像素距离。
+offsetTop：元素的上外边框至包含">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红书-(1)-js脚本加载问题">
-<meta property="og:url" content="hinami.xyz/2015/10/18/red-1-15-10-18/index.html">
+<meta property="og:title" content="小红书-(16)-style元素大小">
+<meta property="og:url" content="hinami.xyz/2015/10/31/red-18/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
+<meta property="og:description" content="元素大小
 
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
-<meta property="og:updated_time" content="2015-10-22T12:27:19.050Z">
+offsetHeight：元素在垂直方向上占用的空间大小，以像素计。包括元素的高度、（可见的）水平滚动条的高度、上边框高度和下边框高度。
+offsetWidth：元素在水平方向上占用的空间大小，以像素计。包括元素的宽度、（可见的）垂直滚动条的宽度、左边框宽度和右边框宽度。
+offsetLeft：元素的左外边框至包含元素的左内边框之间的像素距离。
+offsetTop：元素的上外边框至包含">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/offsetParent.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/clientDimension.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/crollDimension.png">
+<meta property="og:updated_time" content="2015-10-31T15:02:24.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红书-(1)-js脚本加载问题">
-<meta name="twitter:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
+<meta name="twitter:title" content="小红书-(16)-style元素大小">
+<meta name="twitter:description" content="元素大小
 
-
-async：可选。表示应该立即下载脚本，但不应妨碍页面">
+offsetHeight：元素在垂直方向上占用的空间大小，以像素计。包括元素的高度、（可见的）水平滚动条的高度、上边框高度和下边框高度。
+offsetWidth：元素在水平方向上占用的空间大小，以像素计。包括元素的宽度、（可见的）垂直滚动条的宽度、左边框宽度和右边框宽度。
+offsetLeft：元素的左外边框至包含元素的左内边框之间的像素距离。
+offsetTop：元素的上外边框至包含">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -90,55 +99,75 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/18/red-1-15-10-18/" title="小红书-(1)-js脚本加载问题" itemprop="url">小红书-(1)-js脚本加载问题</a>
+      <a href="/2015/10/31/red-18/" title="小红书-(16)-style元素大小" itemprop="url">小红书-(16)-style元素大小</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-18T01:31:03.000Z" itemprop="datePublished"> 发表于 2015-10-18</time>
+    <time datetime="2015-10-31T14:30:01.000Z" itemprop="datePublished"> 发表于 2015-10-31</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h3 id="网页中&lt;script_type=&quot;text/javascript&quot;_src=&quot;-&quot;&gt;&lt;/script&gt;标记可以加载脚本，能够无阻塞加载的属性是：defer">网页中<code>&lt;script type=&quot;text/javascript&quot; src=&quot;...&quot;&gt;&lt;/script&gt;</code>标记可以加载脚本，能够无阻塞加载的属性是：<code>defer</code></h3><p>这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。</p>
-<hr>
+		<blockquote>
+<h1 id="元素大小">元素大小</h1></blockquote>
 <ul>
-<li>async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。</li>
+<li><strong><code>offsetHeight</code></strong>：元素在垂直方向上占用的空间大小，以像素计。包括元素的高度、（可见的）水平滚动条的高度、上边框高度和下边框高度。</li>
+<li><strong><code>offsetWidth</code></strong>：元素在水平方向上占用的空间大小，以像素计。包括元素的宽度、（可见的）垂直滚动条的宽度、左边框宽度和右边框宽度。</li>
+<li><strong><code>offsetLeft</code></strong>：元素的左外边框至包含元素的左内边框之间的像素距离。</li>
+<li><strong><code>offsetTop</code></strong>：元素的上外边框至包含元素的上内边框之间的像素距离。</li>
 </ul>
+<p>所有这些偏移量属性都是<strong>只读</strong>的，而且每次访问它们都需要<strong>重新计算</strong>，性能损耗！！</p>
+<p>上图!<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/offsetParent.png" alt="offsetParent"></p>
+<p>用回溯方法，逐层累计值来定位元素位置</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//左边距</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElementLeft</span><span class="params">(element)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> actualLeft = element.offsetLeft;</span><br><span class="line">	<span class="keyword">var</span> current = element.offsetParent;</span><br><span class="line">	<span class="keyword">while</span> (current !== <span class="literal">null</span>)&#123;</span><br><span class="line">		actualLeft += current.offsetLeft;</span><br><span class="line">		current = current.offsetParent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> actualLeft;</span><br><span class="line"><span class="comment">//上边距</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElementTop</span><span class="params">(element)</span></span>&#123;</span><br><span class="line"><span class="keyword">var</span> actualTop = element.offsetTop;</span><br><span class="line">	<span class="keyword">var</span> current = element.offsetParent;</span><br><span class="line">	<span class="keyword">while</span> (current !== <span class="literal">null</span>)&#123;</span><br><span class="line">		actualTop += current. offsetTop;</span><br><span class="line">		current = current.offsetParent;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> actualTop;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>在XHTML 文档中，要把async 属性设置为async=”async”。</p>
+<p>客户区大小</p>
 </blockquote>
-<hr>
+<p>从字面上看，客户区大小就是元素内部的空间大小，因此滚动条占用的空间不计算在内。</p>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/clientDimension.png" alt=""></p>
+<p>可以用以下方法获取用户区宽和高</p>
 <ul>
-<li>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。立即下载，但是延迟执行</li>
+<li><strong><code>document.documentElement.clientWidth</code></strong></li>
+<li><strong><code>document.documentElement.clientHeight</code></strong></li>
 </ul>
+<p>IE 7前用</p>
+<ul>
+<li><strong><code>document.body.clientWidth</code></strong></li>
+<li><strong><code>document.body.clientHeight</code></strong></li>
+</ul>
+<p>要跨浏览器的话~<br><figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="tag">function</span> <span class="tag">getViewport</span>()&#123;</span><br><span class="line"><span class="tag">if</span> (document.compatMode == <span class="string">"BackCompat"</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="tag">return</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: document.body.clientWidth,</span><br><span class="line">	<span class="attribute">height</span>: document.body.clientHeight</span><br><span class="line">			&#125;;</span><br><span class="line">&#125; </span><br><span class="line"><span class="tag">else</span> &#123;</span><br><span class="line">	<span class="tag">return</span> &#123;</span><br><span class="line">			<span class="attribute">width</span>: document.documentElement.clientWidth,</span><br><span class="line">			<span class="attribute">height</span>: document.documentElement.clientHeight</span><br><span class="line">		   &#125;;</span><br><span class="line">	   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>在XHTML 文档中，要把defer 属性设置为defer=”defer”。</p>
-</blockquote>
-<hr>
-<h3 id="包含在&lt;script&gt;元素内部的JavaScript_代码将被从上至下依次解释。">包含在<code>&lt;script&gt;</code>元素内部的JavaScript 代码将被从上至下依次解释。</h3><p>解释器会解释一个函数的定义，然后将该定义保存在自己的环境当中。在解释器对<code>&lt;script&gt;</code>元素内部的所有代码求值完毕以前，页面中的其余内容都不会被浏览器加载或显示。</p>
-<hr>
+<h1 id="滚动大小">滚动大小</h1></blockquote>
+<p><code>scrollWidth</code>和<code>scrollHeight</code> 主要用于确定元素内容的实际大小。</p>
+<ul>
+<li><strong><code>scrollHeight</code></strong>：在没有滚动条的情况下，元素内容的总高度。</li>
+<li><strong><code>scrollWidth</code></strong>：在没有滚动条的情况下，元素内容的总宽度。</li>
+<li><strong><code>scrollLeft</code></strong>：被隐藏在内容区域左侧的像素数。通过设置这个属性可以改变元素的滚动位置。</li>
+<li><strong><code>scrollTop</code></strong>：被隐藏在内容区域上方的像素数。通过设置这个属性可以改变元素的滚动位置。</li>
+</ul>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/crollDimension.png" alt="crollDimension"></p>
+<ul>
+<li><code>Firefox</code> 中这两组属性始终都是相等的，但大小代表的是文档内容区域的实际尺寸，而非视口的尺寸。</li>
+<li><code>Opera</code>、<code>Safari 3.1</code> 及更高版本、<code>Chrome</code> 中的这两组属性是有差别的，其中<code>scrollWidth</code> 和<br><code>scrollHeight</code> 等于视口大小，而<code>clientWidth</code> 和<code>clientHeight</code> 等于文档内容区域的大小。</li>
+<li>IE（在标准模式）中的这两组属性不相等，其中<code>scrollWidth</code> 和<code>scrollHeight</code> 等于文档内容区域的大小，而<code>clientWidth</code> 和<code>clientHeight</code> 等于视口大小。</li>
+</ul>
+<p>这精分一样的区别！！  (╯°Д°)╯︵ ┻━┻<br>只能取其大值来算了<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> docHeight = <span class="built_in">Math</span>.max(<span class="built_in">document</span>.documentElement.scrollHeight,</span><br><span class="line"><span class="built_in">document</span>.documentElement.clientHeight);</span><br><span class="line"><span class="keyword">var</span> docWidth = <span class="built_in">Math</span>.max(<span class="built_in">document</span>.documentElement.scrollWidth,</span><br><span class="line"><span class="built_in">document</span>.documentElement.clientWidth);</span><br></pre></td></tr></table></figure></p>
+<p><code>scrollLeft</code>和<code>scrollTop</code> 可以用来滚动窗口<br><code>document.body.scrollTop = 200</code><br>(不用给单位，默认像素，给单位会报错)</p>
 <blockquote>
-<p>需要注意的是</p>
-</blockquote>
-<p>带有src 属性的<code>&lt;script&gt;</code>元素不应该在其<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签之间再<br>包含额外的JavaScript 代码。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码<br>会被忽略。</p>
+<h1 id="确定元素大小">确定元素大小</h1></blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/小红书/">小红书</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a><a href="/tags/脚本加载/">脚本加载</a>
+  <span></span> <a href="/tags/DOM2/">DOM2</a><a href="/tags/DOM3/">DOM3</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/style/">style</a><a href="/tags/元素大小/">元素大小</a><a href="/tags/前端/">前端</a>
   </div>
 
 </div>
@@ -147,7 +176,7 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/18/red-1-15-10-18/" data-title="小红书-(1)-js脚本加载问题 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/10/31/red-18/" data-title="小红书-(16)-style元素大小 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -160,19 +189,11 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/21/red-2-15-10-21/" title="小红书-(2)-ECMAscript变量">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红书-(2)-ECMAscript变量</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/17/15-10-17Recruitment/"  title="去招聘会玩耍">
+<a href="/2015/10/31/red-17/"  title="小红书-(16)-DOM2与DOM3">
  <strong>下一篇：</strong><br/> 
- <span>去招聘会玩耍
+ <span>小红书-(16)-DOM2与DOM3
 </span>
 </a>
 </div>
@@ -181,7 +202,7 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/18/red-1-15-10-18/" data-title="小红书-(1)-js脚本加载问题" data-url="hinami.xyz/2015/10/18/red-1-15-10-18/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/31/red-18/" data-title="小红书-(16)-style元素大小" data-url="hinami.xyz/2015/10/31/red-18/"></div>
 </section>
 
 
@@ -191,7 +212,7 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#网页中<script_type="text/javascript"_src="-"></script>标记可以加载脚本，能够无阻塞加载的属性是：defer"><span class="toc-number">1.</span> <span class="toc-text">网页中<script type="text/javascript" src="..."></script>标记可以加载脚本，能够无阻塞加载的属性是：defer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含在<script>元素内部的JavaScript_代码将被从上至下依次解释。"><span class="toc-number">2.</span> <span class="toc-text">包含在<script>元素内部的JavaScript 代码将被从上至下依次解释。</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#元素大小"><span class="toc-number">1.</span> <span class="toc-text">元素大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#滚动大小"><span class="toc-number">2.</span> <span class="toc-text">滚动大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#确定元素大小"><span class="toc-number">3.</span> <span class="toc-text">确定元素大小</span></a></li></ol>
  
   </div>
 

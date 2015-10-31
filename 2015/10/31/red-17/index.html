@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="12.2 样式
 访问元素样式····CSS···························javascript·····background-image·············style.backgroundImagecolor························style.colordisplay······················style.displayfont-">
-<meta property="og:updated_time" content="2015-10-31T12:26:44.817Z">
+<meta property="og:updated_time" content="2015-10-31T15:02:34.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(16)-DOM2与DOM3">
 <meta name="twitter:description" content="12.2 样式
@@ -106,16 +106,46 @@
 <blockquote>
 <h2 id="DOM属性和方法">DOM属性和方法</h2></blockquote>
 <ul>
-<li><a href="http://www.runoob.com/jsref/prop-style-csstext.html" target="_blank" rel="external">cssText</a>：如前所述，通过它能够访问到style 特性中的CSS 代码。</li>
-<li>length：应用给元素的CSS 属性的数量。</li>
-<li>parentRule：表示CSS 信息的CSSRule 对象。本节后面将讨论CSSRule 类型。</li>
-<li>getPropertyCSSValue(propertyName)：返回包含给定属性值的CSSValue 对象。</li>
-<li>getPropertyPriority(propertyName)：如果给定的属性使用了!important 设置，则返回<br>“important”；否则，返回空字符串。</li>
-<li>getPropertyValue(propertyName)：返回给定属性的字符串值。</li>
-<li>item(index)：返回给定位置的CSS 属性的名称。</li>
-<li>removeProperty(propertyName)：从样式中删除给定属性。</li>
-<li>setProperty(propertyName,value,priority)：将给定属性设置为相应的值，并加上优先权标志（”important”或者一个空字符串）。</li>
+<li><a href="http://www.runoob.com/jsref/prop-style-csstext.html" target="_blank" rel="external">style.cssText</a>：如前所述，通过它能够访问到style 特性中的CSS 代码。</li>
+<li>style.length：应用给元素的CSS 属性的数量。</li>
+<li>style.parentRule：表示CSS 信息的CSSRule 对象。本节后面将讨论CSSRule 类型。</li>
+<li>style.getPropertyCSSValue(propertyName)：返回包含给定属性值的CSSValue 对象。</li>
+<li>style.getPropertyPriority(propertyName)：如果给定的属性使用了!important 设置，则返回<br>“important”；否则，返回空字符串。</li>
+<li>style.getPropertyValue(propertyName)：返回给定属性的字符串值。</li>
+<li>style.item(index)：返回给定位置的CSS 属性的名称。</li>
+<li>style.removeProperty(propertyName)：从样式中删除给定属性。</li>
+<li>style.setProperty(propertyName,value,priority)：将给定属性设置为相应的值，并加上优先权标志（”important”或者一个空字符串）。</li>
 </ul>
+<blockquote>
+<h1 id="计算(最终)样式">计算(最终)样式</h1><h2 id="getComputedStyle()">getComputedStyle()</h2></blockquote>
+<p>这个方法接受两个参数：</p>
+<ul>
+<li>要取得计算样式的元素</li>
+<li>一个伪元素字符串（例如”:after”）。如果不需要伪元素信息，第二个参数可以是null。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">title</span>&gt;</span>Computed Styles Example<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line"><span class="id">#myDiv</span> <span class="rules">&#123;</span><br><span class="line"><span class="rule"><span class="attribute">background-color</span>:<span class="value"> blue</span></span>;</span><br><span class="line"><span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line"><span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"myDiv"</span> <span class="attribute">style</span>=<span class="value">"background-color: red; border: 1px solid black"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上边代码中设置亮两次<code>background-color</code>,可用<code>getElementById()</code>方法获取最终值<br><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</span><br><span class="line"><span class="keyword">var</span> computedStyle = <span class="built_in">document</span>.defaultView.getComputedStyle(myDiv, <span class="keyword">null</span>);</span><br><span class="line">alert(computedStyle.backgroundColor); <span class="comment">// "red"</span></span><br><span class="line">alert(computedStyle.width); <span class="comment">// "100px"</span></span><br><span class="line">alert(computedStyle.height); <span class="comment">// "200px"</span></span><br><span class="line">alert(computedStyle.border); <span class="comment">// 在某些浏览器中是"1px solid black"</span></span><br></pre></td></tr></table></figure></p>
+<p>然而<strong><code>愚蠢的IE</code></strong>并不支持<code>getComputedStyle()</code>,但是有一个<code>currentStyle</code>属性,用起来差不多<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> myDiv</span> = document.getElementById(<span class="string">"myDiv"</span>);</span><br><span class="line"><span class="variable"><span class="keyword">var</span> computedStyle</span> = myDiv.currentStyle;</span><br><span class="line">alert(computedStyle.backgroundColor); <span class="comment">//"red"</span></span><br><span class="line">alert(computedStyle.width); <span class="comment">//"100px"</span></span><br><span class="line">alert(computedStyle.height); <span class="comment">//"200px"</span></span><br><span class="line">alert(computedStyle.border); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></p>
+<p>第二句可以写成<br><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> computedStyle = myDiv.currentStyle || <span class="built_in">document</span>.defaultView.getComputedStyle(myDiv, <span class="keyword">null</span>)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="操作符样式表">操作符样式表</h1></blockquote>
+<p>CSSStyleSheet 类型表示的是样式表，包括通过<code>&lt;link&gt;</code>元素包含的样式表和在<code>&lt;style&gt;</code>元素中定义的样式表。<br>这两个元素本身分别是由<code>HTMLLinkElement</code>和<code>HTMLStyleElement(更加通用)</code>类型表示的。</p>
+<p>假设这条规则位于页面中的第一个样式表中，而且这个样式表中只有这一条样式规则，那么通过下<br>列代码可以取得这条规则的各种信息。<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> sheet</span> = document.styleSheets[<span class="number">0</span>];</span><br><span class="line"><span class="variable"><span class="keyword">var</span> rules</span> = sheet.cssRules || sheet.rules; <span class="comment">//取得规则列表</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> rule</span> = rules[<span class="number">0</span>]; <span class="comment">//取得第一条规则</span></span><br><span class="line">alert(rule.selectorText); <span class="comment">//"div.box"</span></span><br><span class="line">alert(rule.style.cssText); <span class="comment">//完整的CSS 代码</span></span><br><span class="line">alert(rule.style.backgroundColor); <span class="comment">//"blue"</span></span><br><span class="line">alert(rule.style.width); <span class="comment">//"100px"</span></span><br><span class="line">alert(rule.style.height); <span class="comment">//"200px"</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> sheet</span> = document.styleSheets[<span class="number">0</span>];</span><br><span class="line"><span class="variable"><span class="keyword">var</span> rules</span> = sheet.cssRules || sheet.rules; <span class="comment">//取得规则列表</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> rule</span> = rules[<span class="number">0</span>]; <span class="comment">//取得第一条规则</span></span><br><span class="line">rule.style.backgroundColor = <span class="string">"red"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="创建规则">创建规则</h1><h2 id="insertRule()方法">insertRule()方法</h2></blockquote>
+<p>接受两个参数：</p>
+<ul>
+<li>规则文本</li>
+<li>插入位置的索引</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">sheet.insertRule(<span class="string">"body &#123; background-color: silver &#125;"</span>, <span class="number">0</span>);</span><br><span class="line">sheet.addRule(<span class="string">"body"</span>, <span class="string">"background-color: silver"</span>, <span class="number">0</span>); <span class="comment">//仅对IE 有效</span></span><br></pre></td></tr></table></figure>
+<p>要跨浏览器支持插入规则，可以用以下方法<br><figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="label">function</span> insertRule(sheet, <span class="keyword">selectorText, </span>cssText, position)&#123;</span><br><span class="line">	<span class="preprocessor">if</span> (sheet.insertRule)&#123;</span><br><span class="line">	sheet.insertRule(<span class="keyword">selectorText </span>+ <span class="string">"&#123;"</span> + cssText + <span class="string">"&#125;"</span>, position)<span class="comment">;</span></span><br><span class="line">	&#125; <span class="preprocessor">else</span> <span class="preprocessor">if</span> (sheet.<span class="keyword">addRule)&#123;</span><br><span class="line"></span>	sheet.<span class="keyword">addRule(selectorText, </span>cssText, position)<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="删除规则">删除规则</h1></blockquote>
+<p>IE用<code>removeRule()</code>,其他浏览器用<code>deleteRule()</code><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">sheet.deleteRule(<span class="number">0</span>); <span class="comment">//DOM 方法</span></span><br></pre></td></tr></table></figure></p>
+<p>IE 支持的类似方法叫<code>removeRule()</code>，使用方法相同，如下所示：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">sheet.removeRule(<span class="number">0</span>); <span class="comment">//仅对IE 有效</span></span><br></pre></td></tr></table></figure></p>
+<p>下面是一个能够跨浏览器删除规则的函数。第一个参数是要操作的样式表，第二个参数是要删除的规则的索引。<br><figure class="highlight fortran"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span></span> deleteRule(sheet, <span class="built_in">index</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span> (sheet.deleteRule)&#123;</span><br><span class="line">	sheet.deleteRule(<span class="built_in">index</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (sheet.removeRule)&#123;</span><br><span class="line">	sheet.removeRule(<span class="built_in">index</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -124,7 +154,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/DOM2/">DOM2</a><a href="/tags/DOM3/">DOM3</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a>
+  <span></span> <a href="/tags/CSS/">CSS</a><a href="/tags/DOM2/">DOM2</a><a href="/tags/DOM3/">DOM3</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/style/">style</a><a href="/tags/前端/">前端</a>
   </div>
 
 </div>
@@ -146,6 +176,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/10/31/red-18/" title="小红书-(16)-style元素大小">
+  <strong>上一篇：</strong><br/>
+  <span>
+  小红书-(16)-style元素大小</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/10/30/red-16/"  title="小红书-(16)-DOM(4)">
@@ -169,7 +207,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#12-2_样式"><span class="toc-number">1.</span> <span class="toc-text">12.2 样式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM属性和方法"><span class="toc-number">1.1.</span> <span class="toc-text">DOM属性和方法</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#12-2_样式"><span class="toc-number">1.</span> <span class="toc-text">12.2 样式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM属性和方法"><span class="toc-number">1.1.</span> <span class="toc-text">DOM属性和方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算(最终)样式"><span class="toc-number">2.</span> <span class="toc-text">计算(最终)样式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#getComputedStyle()"><span class="toc-number">2.1.</span> <span class="toc-text">getComputedStyle()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作符样式表"><span class="toc-number">3.</span> <span class="toc-text">操作符样式表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建规则"><span class="toc-number">4.</span> <span class="toc-text">创建规则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#insertRule()方法"><span class="toc-number">4.1.</span> <span class="toc-text">insertRule()方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除规则"><span class="toc-number">5.</span> <span class="toc-text">删除规则</span></a></li></ol>
  
   </div>
 
@@ -200,15 +238,15 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>21</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>22</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>17</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>18</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>17</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>18</sup></a></li>
 			
 		
 			
@@ -216,11 +254,11 @@
 			
 		
 			
-				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
 			
 		
 			
@@ -228,7 +266,31 @@
 			
 		
 			
-				<li><a href="/tags/引用类型/" title="引用类型">引用类型<sup>1</sup></a></li>
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/作用域/" title="作用域">作用域<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
 			
 		
 			
@@ -240,23 +302,11 @@
 			
 		
 			
-				<li><a href="/tags/作用域/" title="作用域">作用域<sup>1</sup></a></li>
+				<li><a href="/tags/元素大小/" title="元素大小">元素大小<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>1</sup></a></li>
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
 			
 		
 			
@@ -264,19 +314,7 @@
 			
 		
 			
-				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/focus/" title="focus">focus<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/文本节点/" title="文本节点">文本节点<sup>1</sup></a></li>
+				<li><a href="/tags/API/" title="API">API<sup>1</sup></a></li>
 			
 		
 		</ul>
