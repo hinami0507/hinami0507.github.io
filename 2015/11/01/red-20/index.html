@@ -29,7 +29,9 @@ DOM2 级在Document 类型中定义了createRange()方法。在兼容DOM 的浏�
 
 startContainer：包含范围起点的节点（即选区中第一个节点的父节点）。
 startOffset：范围">
-<meta property="og:updated_time" content="2015-11-01T02:55:55.085Z">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/range.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/range2.png">
+<meta property="og:updated_time" content="2015-11-01T03:26:07.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(20)-范围">
 <meta name="twitter:description" content="范围
@@ -123,6 +125,30 @@ startOffset：范围">
 <li><strong><code>endContainer</code></strong>：包含范围终点的节点（即选区中最后一个节点的父节点）。</li>
 <li><strong><code>endOffset</code></strong>：范围在endContainer 中终点的偏移量（与startOffset 遵循相同的取值规则）。</li>
 <li><strong><code>commonAncestorContainer</code></strong>：startContainer 和endContainer 共同的祖先节点在文档树中位置最深的那个。</li>
+</ul>
+<hr>
+<p>selectNode()或selectNodeContents()选取文档中一部分，他们都接受一个参数：DOM节点</p>
+<ul>
+<li><code>selectNode()</code>选取整个节点</li>
+<li><code>selectNodeContents()</code>选取节点的子节点</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"p1"</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">b</span>&gt;</span> world!<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>创建范围</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> range1 = <span class="built_in">document</span>.createRange();</span><br><span class="line">range2 = <span class="built_in">document</span>.createRange();</span><br><span class="line">p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</span><br><span class="line">range1.selectNode(p1);</span><br><span class="line">range2.selectNodeContents(p1);</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/range.png" alt=""></p>
+<p>在调用selectNode()时，<br><code>startContainer</code>、<code>endContainer</code> 和<code>commonAncestorContainer</code><br>都等于传入节点的父节点，也就是这个例子中的document.body。</p>
+<p>而<code>startOffset</code> 属性等于给定节点在其父节点的childNodes 集合中的索引（在这个例子中是1——因为兼容DOM的浏览器将空格算作一个文本节点），<br><code>endOffset</code> 等于startOffset 加1（因为只选择了一个节点）。<br>看图！<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/range2.png" alt=""></p>
+<hr>
+<p>更加精确的定位</p>
+<ul>
+<li><p><code>setStartBefore(refNode)</code>：将范围的起点设置在refNode 之前， 范围内第一个子节点</p>
+</li>
+<li><p><code>setStartAfter(refNode)</code>：将范围的起点设置在refNode 之后，refNode在范围之外。</p>
+</li>
+<li><p><code>setEndBefore(refNode)</code>：将范围的终点设置在refNode 之前，refNode在范围孩之外。</p>
+</li>
+<li><p><code>setEndAfter(refNode)</code>：将范围的终点设置在refNode 之后，范围之内最后一个子节点。</p>
+</li>
 </ul>
   
 	</div>
