@@ -31,7 +31,7 @@ defaultCharset属性:默认浏览器及操作系统设置
 
 自定义属性数据
 HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，目的是为元素提供与渲染无关的信息，或者提供语义信息。这些属性可以任意添加、随便命名，只要以data-开头即可。来看一个例子。&amp;lt;div id=&amp;quo">
-<meta property="og:updated_time" content="2015-10-31T04:07:40.147Z">
+<meta property="og:updated_time" content="2015-10-31T15:04:29.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(16)-DOM(4)">
 <meta name="twitter:description" content="html511.3.4字符集属性
@@ -170,12 +170,12 @@ HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，
 <blockquote>
 <h1 id="滚动~~~">滚动~~~</h1></blockquote>
 <p>最喜欢的大概就是这个方法了了ヾ(´·ω·｀)ノ之后会开个专题专门将滚动~~</p>
-<p>scrollIntoView()可以在所有HTML 元素上调用</p>
+<p><code>scrollIntoView()</code>可以在所有HTML 元素上调用</p>
 <p>窗口会滚动(不算滚动，算跳吧)到调用这个方法的元素那里，<br>如果传入<code>true</code>，或者不传入任何参数:，那么窗口滚动之后会让<strong>调用元素的顶部与视口顶部尽可能平齐</strong><br>如果传入<code>false</code>:，调用元素会尽可能全部出现在视口中，(可能的话，调用元素的底部会与视口顶部平齐)</p>
 <ul>
-<li>scrollIntoViewIfNeeded(alignCenter)：只在当前元素在视口中不可见的情况下，才滚动浏览器窗口或容器元素，最终让它可见。如果当前元素在视口中可见，这个方法什么也不做。如果将可选的alignCenter参数设置为true，则表示尽量将元素显示在视口中部（垂直方向）。</li>
-<li>scrollByLines(lineCount)：将元素的内容滚动指定的行高，lineCount值可以是正值也可以是负值。</li>
-<li>scrollByPages(pageCount)：将元素的内容滚动指定的页面高度，具体高度由元素的高度决定。</li>
+<li><code>scrollIntoViewIfNeeded(alignCenter)</code>：只在当前元素在视口中不可见的情况下，才滚动浏览器窗口或容器元素，最终让它可见。如果当前元素在视口中可见，这个方法什么也不做。如果将可选的alignCenter参数设置为true，则表示尽量将元素显示在视口中部（垂直方向）。</li>
+<li><code>scrollByLines(lineCount)</code>：将元素的内容滚动指定的行高，lineCount值可以是正值也可以是负值。</li>
+<li><code>scrollByPages(pageCount)</code>：将元素的内容滚动指定的页面高度，具体高度由元素的高度决定。</li>
 </ul>
 <p>注意：<code>scrollIntoView()</code>和<code>scrollIntoViewIfNeed()</code>的作用对象是元素的容器，而<code>scrollByLines()</code>和<code>scrollByPages()</code>影响的则是元素自身。</p>
 <p>由于<strong><code>scrollIntoView()</code></strong>是<strong>唯一一个所有浏览器都支持的方法</strong>，因此还是这个方法最常用。</p>
@@ -215,10 +215,10 @@ HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/10/31/red-17/" title="小红书-(16)-DOM2与DOM3">
+ <a href="/2015/10/31/red-17/" title="小红书-(17)-DOM2与DOM3">
   <strong>上一篇：</strong><br/>
   <span>
-  小红书-(16)-DOM2与DOM3</span>
+  小红书-(17)-DOM2与DOM3</span>
 </a>
 </div>
 
