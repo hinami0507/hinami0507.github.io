@@ -31,7 +31,11 @@ startContainer：包含范围起点的节点（即选区中第一个节点的父
 startOffset：范围">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/range.png">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/range2.png">
-<meta property="og:updated_time" content="2015-11-01T04:04:20.316Z">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/setstart.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/12-7.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/12-8.png">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/12-9.png">
+<meta property="og:updated_time" content="2015-11-07T13:25:49.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(20)-范围">
 <meta name="twitter:description" content="范围
@@ -150,6 +154,49 @@ startOffset：范围">
 <li><p><code>setEndAfter(refNode)</code>：将范围的终点设置在refNode 之后，范围之内最后一个子节点。</p>
 </li>
 </ul>
+<p>看图来理解吧~<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/setstart.png" alt="setstart"></p>
+<blockquote>
+<h1 id="DOM范围实现复杂选择">DOM范围实现复杂选择</h1></blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"p1"</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">b</span>&gt;</span> world!<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>同样取前边的例子进行操作<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//取得节点引用</span></span><br><span class="line"><span class="keyword">var</span> p1 = document.getElementById(<span class="string">"p1"</span>);</span><br><span class="line">helloNode = p1.firstChild.firstChild;   </span><br><span class="line">worldNode = p1.lastChild;</span><br><span class="line"><span class="comment">//利用刚才创建的节点设置范围</span></span><br><span class="line"><span class="keyword">var</span> <span class="keyword">range</span> = document.createRange();</span><br><span class="line"><span class="keyword">range</span>.setStart(helloNode, <span class="number">2</span>);   <span class="comment">//helloNode节点后偏移2个单位</span></span><br><span class="line"><span class="keyword">range</span>.setEnd(worldNode, <span class="number">3</span>);     <span class="comment">//worldNode节点后篇</span></span><br></pre></td></tr></table></figure></p>
+<p>//注意！这里因为Hello包裹了<code>&lt;b&gt;</code>标签，所以是<code>&lt;p&gt;</code>标签的孙子节点<br>上述操作之后选择的范围为<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/12-7.png" alt=""><br>注意，结束点在<code>world</code>中<code>o</code>和<code>r</code>之间(以为world前有个空格)</p>
+<blockquote>
+<h1 id="操作DOM范围中的内容">操作DOM范围中的内容</h1></blockquote>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line">var p1 = document.getElementById("p1")<span class="comment">;</span></span><br><span class="line">helloNode = p1.firstChild.firstChild<span class="comment">;</span></span><br><span class="line">worldNode = p1.lastChild<span class="comment">;</span></span><br><span class="line">range = document.createRange()<span class="comment">;</span></span><br><span class="line">range.setStart(helloNode, 2)<span class="comment">;</span></span><br><span class="line">range.setEnd(worldNode, 3)<span class="comment">;</span></span><br><span class="line">range.deleteContents()<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>执行上边代码后会页面中<code>&lt;p1&gt;</code>标签会变成<code>&lt;p&gt;&lt;b&gt;He&lt;/b&gt;rld!&lt;/p&gt;</code></p>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/12-8.png" alt=""></p>
+<h4 id="extractContents()【剪切】">extractContents()【剪切】</h4><p>与deleteContents()方法相似，extractContents()也会从文档中移除范围选区。但这两个方法的区别在于，extractContents()会返回范围的文档片段。利用这个返回的值，可以将范围的内容插入到文档中的其他地方。</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">var p1 = document.getElementById(<span class="string">"p1"</span>);</span><br><span class="line">helloNode = p1.firstChild.firstChild;</span><br><span class="line">worldNode = p1.lastChild;</span><br><span class="line">range = document.createRange();</span><br><span class="line">range.setStart(helloNode, <span class="number">2</span>);</span><br><span class="line">range.setEnd(worldNode, <span class="number">3</span>);</span><br><span class="line"><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span></span><br><span class="line">var fragment = range.extractContents();</span><br><span class="line">p1.parentNode.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+<p>运行后结果<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span>He<span class="tag">&lt;/<span class="title">b</span>&gt;</span>rld!<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">b</span>&gt;</span>llo<span class="tag">&lt;/<span class="title">b</span>&gt;</span> wo</span><br></pre></td></tr></table></figure></p>
+<h4 id="cloneContents()【复制黏贴】">cloneContents()【复制黏贴】</h4><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">var p1 = document.getElementById(<span class="string">"p1"</span>),</span><br><span class="line">helloNode = p1.firstChild.firstChild,</span><br><span class="line">worldNode = p1.lastChild,</span><br><span class="line">range = document.createRange();</span><br><span class="line">range.setStart(helloNode, <span class="number">2</span>);</span><br><span class="line">range.setEnd(worldNode, <span class="number">3</span>);</span><br><span class="line"><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span><span class="regexp">//</span></span><br><span class="line">var fragment = range.cloneContents();</span><br><span class="line">p1.parentNode.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+<p>运行结果<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">b</span>&gt;</span> world!<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">b</span>&gt;</span>llo<span class="tag">&lt;/<span class="title">b</span>&gt;</span> wo</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="插入DOM范围中的内容">插入DOM范围中的内容</h1></blockquote>
+<h4 id="insertNode()">insertNode()</h4><p>使用insertNode()方法可以向<strong>范围选区的开始处</strong>插入一个节点。</p>
+<p>这里要用到<a href="http://www.runoob.com/jsref/met-node-appendchild.html" target="_blank" rel="external">appendChild</a></p>
+<p>原先例子中要想加入<code>&lt;span style=&quot;color: red&quot;&gt;Inserted text&lt;/span&gt;</code><br>那么，就可以使用下列代码：</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</span><br><span class="line">helloNode = p1.firstChild.firstChild;</span><br><span class="line">worldNode = p1.lastChild;</span><br><span class="line">range = <span class="built_in">document</span>.createRange();</span><br><span class="line">range.setStart(helloNode, <span class="number">2</span>);</span><br><span class="line">range.setEnd(worldNode, <span class="number">3</span>);</span><br><span class="line"><span class="comment"><span class="markdown">///////////</span></span></span><br><span class="line"><span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">"span"</span>);   <span class="comment">//创建span</span></span><br><span class="line">span.style.color = <span class="string">"red"</span>;                    <span class="comment">//更改span的color属性</span></span><br><span class="line">span.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Inserted text"</span>));<span class="comment">//span中注入文本</span></span><br><span class="line">range.insertNode(span);                      <span class="comment">//在范围开始楚插入span</span></span><br></pre></td></tr></table></figure>
+<p>结果代码<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"p1"</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span>He<span class="tag">&lt;<span class="title">span</span> <span class="attribute">style</span>=<span class="value">"color: red"</span>&gt;</span>Inserted text<span class="tag">&lt;/<span class="title">span</span>&gt;</span>llo<span class="tag">&lt;/<span class="title">b</span>&gt;</span> world<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="折叠DOM范围">折叠DOM范围</h1></blockquote>
+<p>所谓折叠范围，就是指范围中未选择文档的任何部分。可以用文本框来描述折叠范围的过程。<br>假设文本框中有一行文本，你用鼠标选择了其中一个完整的单词。然后，你单击鼠标左键，选区消失，而光标则落在了其中两个字母之间。<br>同样，在折叠范围时，其位置会落在文档中的两个部分之间，可能是范围选区的开始位置，也可能是结束位置</p>
+<p>collapse()方法来折叠范围，这个方法接受一个参数，一个布尔值</p>
+<ul>
+<li><code>true</code> 表示折叠到开始</li>
+<li><code>false</code> 表示折叠到结束</li>
+</ul>
+<p>检查collapsed属性可以知道是否这点完成</p>
+<p>range.collapse(true); //折叠到起点<br>alert(range.collapsed); //输出true</p>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/12-9.png" alt=""></p>
+<blockquote>
+<h1 id="复制DOM_范围">复制DOM 范围</h1><p>可以使用cloneRange()方法复制范围。这个方法会创建调用它的范围的一个副本。</p>
+</blockquote>
+<p><code>var newRange = range.cloneRange();</code></p>
+<p>新创建的范围与原来的范围包含相同的属性，而修改它的端点不会影响原来的范围。</p>
+<blockquote>
+<h1 id="清理DOM_范围">清理DOM 范围</h1><p>在使用完范围之后，最好是调用detach()方法，以便从创建范围的文档中分离出该范围。<br>调用detach()之后，就可以放心地解除对范围的引用，从而让垃圾回收机制回收其内存了。来看下面的例子。<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">range</span>.detach(); <span class="comment">//从文档中分离</span></span><br><span class="line"><span class="keyword">range</span> = null; <span class="comment">//解除引用</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>在使用范围的最后再执行这两个步骤是我们推荐的方式。一旦分离范围，就不能再恢复使用了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -216,7 +263,7 @@ startOffset：范围">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#范围"><span class="toc-number">1.</span> <span class="toc-text">范围</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#范围"><span class="toc-number">1.</span> <span class="toc-text">范围</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM范围实现复杂选择"><span class="toc-number">2.</span> <span class="toc-text">DOM范围实现复杂选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作DOM范围中的内容"><span class="toc-number">3.</span> <span class="toc-text">操作DOM范围中的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#extractContents()【剪切】"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">extractContents()【剪切】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cloneContents()【复制黏贴】"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">cloneContents()【复制黏贴】</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插入DOM范围中的内容"><span class="toc-number">4.</span> <span class="toc-text">插入DOM范围中的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#insertNode()"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">insertNode()</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#折叠DOM范围"><span class="toc-number">5.</span> <span class="toc-text">折叠DOM范围</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#复制DOM_范围"><span class="toc-number">6.</span> <span class="toc-text">复制DOM 范围</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#清理DOM_范围"><span class="toc-number">7.</span> <span class="toc-text">清理DOM 范围</span></a></li></ol>
  
   </div>
 
