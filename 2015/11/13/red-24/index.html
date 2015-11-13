@@ -13,6 +13,7 @@
     
     <meta name="description" content=".exbt
 {
+    text-align: center;
     background-color:#678FC6;
     border:none;
     border-radius: 1px;
@@ -20,17 +21,14 @@
     height: 35px;
     color: #fff;
     font-family: microsoft Yahei; 
-}
-
-
-
-    var EventUtil = {">
+}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小红书-(24)-事件类型(2)">
 <meta property="og:url" content="hinami.xyz/2015/11/13/red-24/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content=".exbt
 {
+    text-align: center;
     background-color:#678FC6;
     border:none;
     border-radius: 1px;
@@ -38,16 +36,13 @@
     height: 35px;
     color: #fff;
     font-family: microsoft Yahei; 
-}
-
-
-
-    var EventUtil = {">
-<meta property="og:updated_time" content="2015-11-13T15:11:29.174Z">
+}">
+<meta property="og:updated_time" content="2015-11-13T15:22:27.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(24)-事件类型(2)">
 <meta name="twitter:description" content=".exbt
 {
+    text-align: center;
     background-color:#678FC6;
     border:none;
     border-radius: 1px;
@@ -55,11 +50,7 @@
     height: 35px;
     color: #fff;
     font-family: microsoft Yahei; 
-}
-
-
-
-    var EventUtil = {">
+}">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -136,6 +127,7 @@
 		<style type="text/css">
 .exbt
 {
+    text-align: center;
     background-color:#678FC6;
     border:none;
     border-radius: 1px;
@@ -308,29 +300,40 @@
 <hr>
 <p>只有在同一个元素上相继触发mousedown 和mouseup 事件，才会触发click 事件；如果mousedown 或mouseup 中的一个被取消，就不会触发click 事件。类似地，只有触发两次click 事件，才会触发一次dblclick 事件。如果有代码阻止了连续两次触发click 事件（可能是直接取消click事件，也可能通过取消mousedown 或mouseup 间接实现），那么就不会触发dblclick 事件了。<br>这4个事件触发的顺序始终如下：<br>(1) mousedown<br>(2) mouseup<br>(3) click<br>(4) mousedown<br>(5) mouseup<br>(6) click<br>(7) dblclick<br>显然，click 和dblclick 事件都会依赖于其他先行事件的触发；而mousedown 和mouseup 则不受其他事件的影响。IE8 及之前版本中的实现有一个小bug，因此在双击事件中，会跳过第二个mousedown 和click事件，其顺序如下：<br>(1) mousedown<br>(2) mouseup<br>(3) click<br>(4) mouseup<br>(5) dblclick<br>IE9 修复了这个bug，之后顺序就正确了。</p>
 <hr>
-<blockquote>
-<h1 id="鼠标位置">鼠标位置</h1><h4 id="这里是你鼠标的客户端(client)坐标信息：">这里是你鼠标的<strong>客户端(client)</strong>坐标信息：</h4></blockquote>
+<h2 id="鼠标位置">鼠标位置</h2><blockquote>
+<h4 id="这里是你鼠标的客户端(client)坐标信息：">这里是你鼠标的<strong>客户端(client)</strong>坐标信息：</h4></blockquote>
 <input id="clientxy" value="这里会显示你鼠标的位置" class="exbt"> 
 
 <blockquote>
 <h4 id="这里是你鼠标的页面(page)坐标信息：">这里是你鼠标的<strong>页面(page)</strong>坐标信息：</h4></blockquote>
 <input id="pagexy" value="这里会显示你鼠标的位置" class="exbt"> 
 
+<blockquote>
+<h4 id="这里是你鼠标的整个屏幕(screen)坐标信息：">这里是你鼠标的<strong>整个屏幕(screen)</strong>坐标信息：</h4></blockquote>
+<input id="screenxy" value="这里会显示你鼠标的位置" class="exbt"> 
+
 <p>在没有滚动条的情况下：<br><strong><code>event.clientX = event.pageX</code></strong><br><strong><code>event.clientY = event.pageY</code></strong></p>
 <script type="text/javascript">
         var cli = document.getElementById("clientxy");
         var pag = document.getElementById("pagexy");
+        var scr = document.getElementById("screenxy");
 
         EventUtil.addHandler(window, "mousemove", function(event){
             event = EventUtil.getEvent(event);
             var cx = event.clientX;
-            var cy = event.clientY;
+            var cy = event.clientY;   //用户区
             var px = event.pageX;
-            var py = event.pageY;
-            cli.value="       X:"+ cx + "      Y:" +cy;
-            pag.value="       X:"+ px + "      Y:" +py;    
+            var py = event.pageY;     //页面区
+            var sx = event.screenX;
+            var sy = event.screenY;   //整个屏幕
+            cli.value="X:"+ cx + "      Y:" +cy;
+            pag.value="X:"+ px + "      Y:" +py;
+            scr.value="X:"+ sx + "      Y:" +sy;    
         });
 </script>
+
+<h4 id="源码在这里~">源码在这里~</h4><figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">&lt;input id=<span class="string">"clientxy"</span> <span class="keyword">value</span>=<span class="string">"这里会显示你鼠标的位置"</span>  <span class="keyword">class</span>=<span class="string">"exbt"</span>&gt; </span><br><span class="line">&lt;input id=<span class="string">"pagexy"</span> <span class="keyword">value</span>=<span class="string">"这里会显示你鼠标的位置"</span>  <span class="keyword">class</span>=<span class="string">"exbt"</span>&gt; </span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    	<span class="keyword">var</span> cli = document.getElementById(<span class="string">"clientxy"</span>); <span class="comment">//用户区</span></span><br><span class="line">    	<span class="keyword">var</span> pag = document.getElementById(<span class="string">"pagexy"</span>);   <span class="comment">//页面区</span></span><br><span class="line">    	<span class="keyword">var</span> scr = document.getElementById(<span class="string">"screenxy"</span>); <span class="comment">//整个屏幕</span></span><br><span class="line"></span><br><span class="line">        EventUtil.addHandler(window, <span class="string">"mousemove"</span>, function(<span class="keyword">event</span>)&#123;</span><br><span class="line">            <span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line">            <span class="keyword">var</span> cx = <span class="keyword">event</span>.clientX;</span><br><span class="line">            <span class="keyword">var</span> cy = <span class="keyword">event</span>.clientY;   <span class="comment">//用户区</span></span><br><span class="line">            <span class="keyword">var</span> px = <span class="keyword">event</span>.pageX;</span><br><span class="line">            <span class="keyword">var</span> py = <span class="keyword">event</span>.pageY;     <span class="comment">//页面区</span></span><br><span class="line">            <span class="keyword">var</span> sx = <span class="keyword">event</span>.screenX;</span><br><span class="line">            <span class="keyword">var</span> sy = <span class="keyword">event</span>.screenY;   <span class="comment">//整个屏幕</span></span><br><span class="line">            cli.<span class="keyword">value</span>=<span class="string">"X:"</span>+ cx + <span class="string">"      Y:"</span> +cy;</span><br><span class="line">            pag.<span class="keyword">value</span>=<span class="string">"X:"</span>+ px + <span class="string">"      Y:"</span> +py;</span><br><span class="line">            scr.<span class="keyword">value</span>=<span class="string">"X:"</span>+ sx + <span class="string">"      Y:"</span> +sy;    </span><br><span class="line">        &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>IE8 及更早版本不支持事件对象上的页面坐标，不过使用客户区坐标和滚动信息可以计算出来。这时候需要用到document.body（混杂模式）或document.documentElement（标准模式）中的<code>scrollLeft</code> 和<code>scrollTop</code> 属性。计算过程如下所示：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</span><br><span class="line">EventUtil.addHandler(div, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">event = EventUtil.getEvent(event);</span><br><span class="line"><span class="keyword">var</span> pageX = event.pageX,</span><br><span class="line">pageY = event.pageY;</span><br><span class="line"><span class="keyword">if</span> (pageX === <span class="literal">undefined</span>)&#123;</span><br><span class="line">pageX = event.clientX + (<span class="built_in">document</span>.body.scrollLeft ||</span><br><span class="line"><span class="built_in">document</span>.documentElement.scrollLeft);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (pageY === <span class="literal">undefined</span>)&#123;</span><br><span class="line">pageY = event.clientY + (<span class="built_in">document</span>.body.scrollTop ||</span><br><span class="line"><span class="built_in">document</span>.documentElement.scrollTop);</span><br><span class="line">&#125;</span><br><span class="line">alert(<span class="string">"Page coordinates: "</span> + pageX + <span class="string">","</span> + pageY);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -389,7 +392,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-number">1.</span> <span class="toc-text">鼠标与滚轮事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意，如果在HTML中定义事件，一定要在前边加on"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">注意，如果在HTML中定义事件，一定要在前边加on</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标位置"><span class="toc-number">2.</span> <span class="toc-text">鼠标位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的客户端(client)坐标信息："><span class="toc-number">2.0.0.1.</span> <span class="toc-text">这里是你鼠标的客户端(client)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的页面(page)坐标信息："><span class="toc-number">2.0.0.2.</span> <span class="toc-text">这里是你鼠标的页面(page)坐标信息：</span></a></li></ol></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-number">1.</span> <span class="toc-text">鼠标与滚轮事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意，如果在HTML中定义事件，一定要在前边加on"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">注意，如果在HTML中定义事件，一定要在前边加on</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标位置"><span class="toc-number">1.1.</span> <span class="toc-text">鼠标位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的客户端(client)坐标信息："><span class="toc-number">1.1.0.1.</span> <span class="toc-text">这里是你鼠标的客户端(client)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的页面(page)坐标信息："><span class="toc-number">1.1.0.2.</span> <span class="toc-text">这里是你鼠标的页面(page)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的整个屏幕(screen)坐标信息："><span class="toc-number">1.1.0.3.</span> <span class="toc-text">这里是你鼠标的整个屏幕(screen)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#源码在这里~"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">源码在这里~</span></a></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 
