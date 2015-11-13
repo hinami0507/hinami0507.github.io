@@ -24,9 +24,7 @@
 
 
 
-
-鼠标与滚轮事件
-DOM3 级事件中定义了9 个鼠标事">
+    var EventUtil = {">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小红书-(24)-事件类型(2)">
 <meta property="og:url" content="hinami.xyz/2015/11/13/red-24/index.html">
@@ -44,10 +42,8 @@ DOM3 级事件中定义了9 个鼠标事">
 
 
 
-
-鼠标与滚轮事件
-DOM3 级事件中定义了9 个鼠标事">
-<meta property="og:updated_time" content="2015-11-13T14:29:31.745Z">
+    var EventUtil = {">
+<meta property="og:updated_time" content="2015-11-13T15:11:29.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(24)-事件类型(2)">
 <meta name="twitter:description" content=".exbt
@@ -63,9 +59,7 @@ DOM3 级事件中定义了9 个鼠标事">
 
 
 
-
-鼠标与滚轮事件
-DOM3 级事件中定义了9 个鼠标事">
+    var EventUtil = {">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -152,6 +146,116 @@ DOM3 级事件中定义了9 个鼠标事">
 }
 </style>
 
+<script type="text/javascript">
+    var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    },
+
+    getButton: function(event){
+        if (document.implementation.hasFeature("MouseEvents", "2.0")){
+            return event.button;
+        } else {
+            switch(event.button){
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4: return 1;
+            }
+        }
+    },
+
+    getCharCode: function(event){
+        if (typeof event.charCode == "number"){
+            return event.charCode;
+        } else {
+            return event.keyCode;
+        }
+    },
+
+    getClipboardText: function(event){
+        var clipboardData =  (event.clipboardData || window.clipboardData);
+        return clipboardData.getData("text");
+    },
+
+    getEvent: function(event){
+        return event ? event : window.event;
+    },
+
+    getRelatedTarget: function(event){
+        if (event.relatedTarget){
+            return event.relatedTarget;
+        } else if (event.toElement){
+            return event.toElement;
+        } else if (event.fromElement){
+            return event.fromElement;
+        } else {
+            return null;
+        }
+
+    },
+
+    getTarget: function(event){
+        return event.target || event.srcElement;
+    },
+
+    getWheelDelta: function(event){
+        if (event.wheelDelta){
+            return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
+        } else {
+            return -event.detail * 40;
+        }
+    },
+
+    preventDefault: function(event){
+        if (event.preventDefault){
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+
+    removeHandler: function(element, type, handler){
+        if (element.removeEventListener){
+            element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent){
+            element.detachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = null;
+        }
+    },
+
+    setClipboardText: function(event, value){
+        if (event.clipboardData){
+            event.clipboardData.setData("text/plain", value);
+        } else if (window.clipboardData){
+            window.clipboardData.setData("text", value);
+        }
+    },
+
+    stopPropagation: function(event){
+        if (event.stopPropagation){
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+
+};
+</script>
 
 <blockquote>
 <h1 id="鼠标与滚轮事件">鼠标与滚轮事件</h1></blockquote>
@@ -202,6 +306,31 @@ DOM3 级事件中定义了9 个鼠标事">
 <button class="exbt" onmouseup="alert('mouseup')">鼠标按下后松开mouseup</button>
 
 <hr>
+<p>只有在同一个元素上相继触发mousedown 和mouseup 事件，才会触发click 事件；如果mousedown 或mouseup 中的一个被取消，就不会触发click 事件。类似地，只有触发两次click 事件，才会触发一次dblclick 事件。如果有代码阻止了连续两次触发click 事件（可能是直接取消click事件，也可能通过取消mousedown 或mouseup 间接实现），那么就不会触发dblclick 事件了。<br>这4个事件触发的顺序始终如下：<br>(1) mousedown<br>(2) mouseup<br>(3) click<br>(4) mousedown<br>(5) mouseup<br>(6) click<br>(7) dblclick<br>显然，click 和dblclick 事件都会依赖于其他先行事件的触发；而mousedown 和mouseup 则不受其他事件的影响。IE8 及之前版本中的实现有一个小bug，因此在双击事件中，会跳过第二个mousedown 和click事件，其顺序如下：<br>(1) mousedown<br>(2) mouseup<br>(3) click<br>(4) mouseup<br>(5) dblclick<br>IE9 修复了这个bug，之后顺序就正确了。</p>
+<hr>
+<blockquote>
+<h1 id="鼠标位置">鼠标位置</h1><h4 id="这里是你鼠标的客户端(client)坐标信息：">这里是你鼠标的<strong>客户端(client)</strong>坐标信息：</h4></blockquote>
+<input id="clientxy" value="这里会显示你鼠标的位置" class="exbt"> 
+
+<blockquote>
+<h4 id="这里是你鼠标的页面(page)坐标信息：">这里是你鼠标的<strong>页面(page)</strong>坐标信息：</h4></blockquote>
+<input id="pagexy" value="这里会显示你鼠标的位置" class="exbt"> 
+
+<p>在没有滚动条的情况下：<br><strong><code>event.clientX = event.pageX</code></strong><br><strong><code>event.clientY = event.pageY</code></strong></p>
+<script type="text/javascript">
+        var cli = document.getElementById("clientxy");
+        var pag = document.getElementById("pagexy");
+
+        EventUtil.addHandler(window, "mousemove", function(event){
+            event = EventUtil.getEvent(event);
+            var cx = event.clientX;
+            var cy = event.clientY;
+            var px = event.pageX;
+            var py = event.pageY;
+            cli.value="       X:"+ cx + "      Y:" +cy;
+            pag.value="       X:"+ px + "      Y:" +py;    
+        });
+</script>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -260,7 +389,7 @@ DOM3 级事件中定义了9 个鼠标事">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-number">1.</span> <span class="toc-text">鼠标与滚轮事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意，如果在HTML中定义事件，一定要在前边加on"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">注意，如果在HTML中定义事件，一定要在前边加on</span></a></li></ol></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-number">1.</span> <span class="toc-text">鼠标与滚轮事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意，如果在HTML中定义事件，一定要在前边加on"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">注意，如果在HTML中定义事件，一定要在前边加on</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标位置"><span class="toc-number">2.</span> <span class="toc-text">鼠标位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的客户端(client)坐标信息："><span class="toc-number">2.0.0.1.</span> <span class="toc-text">这里是你鼠标的客户端(client)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的页面(page)坐标信息："><span class="toc-number">2.0.0.2.</span> <span class="toc-text">这里是你鼠标的页面(page)坐标信息：</span></a></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 
