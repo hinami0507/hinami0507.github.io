@@ -40,7 +40,7 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 
 IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具体的元素（文档中嵌">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/13-1.png">
-<meta property="og:updated_time" content="2015-11-07T15:35:08.025Z">
+<meta property="og:updated_time" content="2015-11-13T12:07:18.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(21)-事件">
 <meta name="twitter:description" content="JavaScript 与HTML 之间的交互是通过事件实现的。
@@ -174,6 +174,29 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 <p>下边常用的this法获取当前元素的各种属性和方法</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.id); <span class="comment">//"myBtn"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>单击按钮显示的是元素的ID，这个ID 是通过<code>this.id</code>取得的。<br>不仅仅是ID，实际上可以在事件处理程序中通过this 访问元素的任何属性和方法。<br>以这种方式添加的事件处理程序会在事件流的冒泡<br><code>btn.onclick = null;</code>//删除事件处理程序<br>将事件处理程序设置为null 之后，再单击按钮将不会有任何动作发生。</p>
+<blockquote>
+<h1 id="DOM2级处理程序事件">DOM2级处理程序事件</h1></blockquote>
+<p>“DOM2级事件”定义了两个方法，用于处理指定和删除事件处理程序的操作</p>
+<ul>
+<li><strong><code>addEventListener()</code></strong>添加</li>
+<li><strong><code>removeEventListener()</code></strong>删除</li>
+</ul>
+<p>并且它们都接受3个参数：</p>
+<ul>
+<li>要处理的事件名</li>
+<li>作为事件处理程序的函数</li>
+<li>一个布尔值,true(事件捕获),flase(事件冒泡)</li>
+</ul>
+<p>true，表示在捕获阶段调用事件处理程序；<br>false，表示在冒泡阶段调用事件处理程序。</p>
+<blockquote>
+<h3 id="addEventListener()">addEventListener()</h3></blockquote>
+<p>例子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></p>
+<p>如果连续添加多个事件，会按照添加顺序执行<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(<span class="keyword">this</span>.id);                <span class="comment">//先显示ID</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(<span class="string">"Hello world!"</span>);         <span class="comment">//后显示Hello world!</span></span><br><span class="line">&#125;, f alse);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h3 id="removeEventListener()">removeEventListener()</h3></blockquote>
+<p>通过addEventListener()添加的事件处理程序只能使用removeEventListener()来移除<br>注意要使用相同的函数<br>下边的例子就不能实现：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//这里省略了其他代码</span></span><br><span class="line">btn.removeEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//没有用！</span></span><br><span class="line">alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></p>
+<p>重写后的例子<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;;</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">//这里省略了其他代码</span></span><br><span class="line">btn.removeEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>); <span class="comment">//有效！</span></span><br></pre></td></tr></table></figure></p>
+<p><code>IE9</code>、<code>Firefox</code>、<code>Safari</code>、<code>Chrome</code> 和<code>Opera</code> 支持DOM2 级事件处理程序。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -209,6 +232,14 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/11/08/JsDomArt-1/" title="JsDomArt-1">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JsDomArt-1</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/11/04/first-gold/"  title="青年实习家H5项目">
@@ -232,7 +263,7 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件"><span class="toc-number">1.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件流"><span class="toc-number">2.</span> <span class="toc-text">事件流</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件处理程序"><span class="toc-number"></span> <span class="toc-text">事件处理程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML_事件处理程序"><span class="toc-number">0.0.1.</span> <span class="toc-text">HTML 事件处理程序</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件"><span class="toc-number">1.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件流"><span class="toc-number">2.</span> <span class="toc-text">事件流</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件处理程序"><span class="toc-number"></span> <span class="toc-text">事件处理程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML_事件处理程序"><span class="toc-number">0.0.1.</span> <span class="toc-text">HTML 事件处理程序</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM2级处理程序事件"><span class="toc-number"></span> <span class="toc-text">DOM2级处理程序事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#addEventListener()"><span class="toc-number">0.1.</span> <span class="toc-text">addEventListener()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#removeEventListener()"><span class="toc-number">0.2.</span> <span class="toc-text">removeEventListener()</span></a></li></ol></li></ol>
  
   </div>
 
@@ -250,7 +281,7 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 		  
 		
 		  
-			<li><a href="/categories/小红书/" title="小红书">小红书<sup>21</sup></a></li>
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>22</sup></a></li>
 		  
 		
 		</ul>
@@ -263,15 +294,15 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>25</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>21</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>22</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>21</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>22</sup></a></li>
 			
 		
 			
@@ -283,15 +314,19 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 			
 		
 			
-				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
 			
 		
 			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
 			
 		
 			
@@ -303,15 +338,15 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 			
 		
 			
-				<li><a href="/tags/作用域/" title="作用域">作用域<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/事件/" title="事件">事件<sup>1</sup></a></li>
+				<li><a href="/tags/招聘/" title="招聘">招聘<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
 			
 		
 			
@@ -323,7 +358,7 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 			
 		
 			
-				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
 			
 		
 			
@@ -331,15 +366,11 @@ IE 的事件流叫做事件冒泡（event bubbling）即事件开始时由最具
 			
 		
 			
-				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/元素大小/" title="元素大小">元素大小<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/引用类型/" title="引用类型">引用类型<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/类/" title="类">类<sup>1</sup></a></li>
 			
 		
 		</ul>
