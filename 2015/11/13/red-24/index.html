@@ -37,7 +37,7 @@
     color: #fff;
     font-family: microsoft Yahei; 
 }">
-<meta property="og:updated_time" content="2015-11-13T15:22:27.062Z">
+<meta property="og:updated_time" content="2015-11-13T15:44:50.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(24)-事件类型(2)">
 <meta name="twitter:description" content=".exbt
@@ -334,6 +334,44 @@
 
 <h4 id="源码在这里~">源码在这里~</h4><figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">&lt;input id=<span class="string">"clientxy"</span> <span class="keyword">value</span>=<span class="string">"这里会显示你鼠标的位置"</span>  <span class="keyword">class</span>=<span class="string">"exbt"</span>&gt; </span><br><span class="line">&lt;input id=<span class="string">"pagexy"</span> <span class="keyword">value</span>=<span class="string">"这里会显示你鼠标的位置"</span>  <span class="keyword">class</span>=<span class="string">"exbt"</span>&gt; </span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    	<span class="keyword">var</span> cli = document.getElementById(<span class="string">"clientxy"</span>); <span class="comment">//用户区</span></span><br><span class="line">    	<span class="keyword">var</span> pag = document.getElementById(<span class="string">"pagexy"</span>);   <span class="comment">//页面区</span></span><br><span class="line">    	<span class="keyword">var</span> scr = document.getElementById(<span class="string">"screenxy"</span>); <span class="comment">//整个屏幕</span></span><br><span class="line"></span><br><span class="line">        EventUtil.addHandler(window, <span class="string">"mousemove"</span>, function(<span class="keyword">event</span>)&#123;</span><br><span class="line">            <span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line">            <span class="keyword">var</span> cx = <span class="keyword">event</span>.clientX;</span><br><span class="line">            <span class="keyword">var</span> cy = <span class="keyword">event</span>.clientY;   <span class="comment">//用户区</span></span><br><span class="line">            <span class="keyword">var</span> px = <span class="keyword">event</span>.pageX;</span><br><span class="line">            <span class="keyword">var</span> py = <span class="keyword">event</span>.pageY;     <span class="comment">//页面区</span></span><br><span class="line">            <span class="keyword">var</span> sx = <span class="keyword">event</span>.screenX;</span><br><span class="line">            <span class="keyword">var</span> sy = <span class="keyword">event</span>.screenY;   <span class="comment">//整个屏幕</span></span><br><span class="line">            cli.<span class="keyword">value</span>=<span class="string">"X:"</span>+ cx + <span class="string">"      Y:"</span> +cy;</span><br><span class="line">            pag.<span class="keyword">value</span>=<span class="string">"X:"</span>+ px + <span class="string">"      Y:"</span> +py;</span><br><span class="line">            scr.<span class="keyword">value</span>=<span class="string">"X:"</span>+ sx + <span class="string">"      Y:"</span> +sy;    </span><br><span class="line">        &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>IE8 及更早版本不支持事件对象上的页面坐标，不过使用客户区坐标和滚动信息可以计算出来。这时候需要用到document.body（混杂模式）或document.documentElement（标准模式）中的<code>scrollLeft</code> 和<code>scrollTop</code> 属性。计算过程如下所示：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</span><br><span class="line">EventUtil.addHandler(div, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">event = EventUtil.getEvent(event);</span><br><span class="line"><span class="keyword">var</span> pageX = event.pageX,</span><br><span class="line">pageY = event.pageY;</span><br><span class="line"><span class="keyword">if</span> (pageX === <span class="literal">undefined</span>)&#123;</span><br><span class="line">pageX = event.clientX + (<span class="built_in">document</span>.body.scrollLeft ||</span><br><span class="line"><span class="built_in">document</span>.documentElement.scrollLeft);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (pageY === <span class="literal">undefined</span>)&#123;</span><br><span class="line">pageY = event.clientY + (<span class="built_in">document</span>.body.scrollTop ||</span><br><span class="line"><span class="built_in">document</span>.documentElement.scrollTop);</span><br><span class="line">&#125;</span><br><span class="line">alert(<span class="string">"Page coordinates: "</span> + pageX + <span class="string">","</span> + pageY);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<h1 id="修改键">修改键</h1></blockquote>
+<p>虽然鼠标事件主要是使用鼠标来触发的，但在按下鼠标时键盘上的某些键的状态也可以影响到所要采取的操作。<br>这些修改键就是<code>Shift</code>、<code>Ctrl</code>、<code>Alt</code>和<code>Meta</code>（在Windows 键盘中是Windows 键，在苹果机中是Cmd 键），它们经常被用来修改鼠标事件的行为。DOM 为此规定了4 个属性，表示这些修改键的状态：</p>
+<ul>
+<li>shiftKey</li>
+<li>ctrlKey</li>
+<li>altKey</li>
+<li>metaKey<br>这些属性中包含的都是布尔值，如果相应的键被按下了，则值为true，否则值为false。</li>
+</ul>
+<h2 id="下边这里显示你鼠标单击同时按下的按钮(shift,ctrl,alt)">下边这里显示你鼠标单击同时按下的按钮(shift,ctrl,alt)</h2><input id="kkey" value="这里会显示你鼠标单击同时按下的按钮" class="exbt"> 
+
+<script type="text/javascript">
+    var kkey = document.getElementById("kkey");
+    EventUtil.addHandler(window,"click",function(event){
+    event = EventUtil.getEvent(event);
+    var keys = new Array();
+    if (event.shiftKey){
+        keys.push("shift");
+    }
+
+    if (event.ctrlKey){
+        keys.push("ctrl");
+    }
+
+    if (event.altKey){
+        keys.push("alt");
+    }
+
+    if (event.metaKey){
+        keys.push("meta");
+    }
+
+    kkey.value= keys.join(",");
+    }
+
+)
+</script>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -392,7 +430,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-number">1.</span> <span class="toc-text">鼠标与滚轮事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意，如果在HTML中定义事件，一定要在前边加on"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">注意，如果在HTML中定义事件，一定要在前边加on</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标位置"><span class="toc-number">1.1.</span> <span class="toc-text">鼠标位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的客户端(client)坐标信息："><span class="toc-number">1.1.0.1.</span> <span class="toc-text">这里是你鼠标的客户端(client)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的页面(page)坐标信息："><span class="toc-number">1.1.0.2.</span> <span class="toc-text">这里是你鼠标的页面(page)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的整个屏幕(screen)坐标信息："><span class="toc-number">1.1.0.3.</span> <span class="toc-text">这里是你鼠标的整个屏幕(screen)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#源码在这里~"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">源码在这里~</span></a></li></ol></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-number">1.</span> <span class="toc-text">鼠标与滚轮事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意，如果在HTML中定义事件，一定要在前边加on"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">注意，如果在HTML中定义事件，一定要在前边加on</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标位置"><span class="toc-number">1.1.</span> <span class="toc-text">鼠标位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的客户端(client)坐标信息："><span class="toc-number">1.1.0.1.</span> <span class="toc-text">这里是你鼠标的客户端(client)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的页面(page)坐标信息："><span class="toc-number">1.1.0.2.</span> <span class="toc-text">这里是你鼠标的页面(page)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的整个屏幕(screen)坐标信息："><span class="toc-number">1.1.0.3.</span> <span class="toc-text">这里是你鼠标的整个屏幕(screen)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#源码在这里~"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">源码在这里~</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改键"><span class="toc-number">2.</span> <span class="toc-text">修改键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下边这里显示你鼠标单击同时按下的按钮(shift,ctrl,alt)"><span class="toc-number">2.1.</span> <span class="toc-text">下边这里显示你鼠标单击同时按下的按钮(shift,ctrl,alt)</span></a></li></ol></li></ol>
  
   </div>
 
