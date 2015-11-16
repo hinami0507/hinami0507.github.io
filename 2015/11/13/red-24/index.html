@@ -37,7 +37,8 @@
     color: #fff;
     font-family: microsoft Yahei; 
 }">
-<meta property="og:updated_time" content="2015-11-13T15:44:50.110Z">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/13-6.png">
+<meta property="og:updated_time" content="2015-11-15T09:02:41.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(24)-事件类型(2)">
 <meta name="twitter:description" content=".exbt
@@ -372,6 +373,51 @@
 
 )
 </script>
+
+<p>源码<br><figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">&lt;input id=<span class="string">"kkey"</span> <span class="keyword">value</span>=<span class="string">"这里会显示你鼠标单击同时按下的按钮"</span>  <span class="keyword">class</span>=<span class="string">"exbt"</span>&gt; </span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	<span class="keyword">var</span> kkey = document.getElementById(<span class="string">"kkey"</span>);</span><br><span class="line">	EventUtil.addHandler(window,<span class="string">"click"</span>,function(<span class="keyword">event</span>)&#123;</span><br><span class="line">	<span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line">	<span class="keyword">var</span> keys = <span class="keyword">new</span> Array();</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">event</span>.shiftKey)&#123;</span><br><span class="line">        keys.push(<span class="string">"shift"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">event</span>.ctrlKey)&#123;</span><br><span class="line">        keys.push(<span class="string">"ctrl"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">event</span>.altKey)&#123;</span><br><span class="line">        keys.push(<span class="string">"alt"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">event</span>.metaKey)&#123;</span><br><span class="line">        keys.push(<span class="string">"meta"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    kkey.<span class="keyword">value</span>= keys.<span class="keyword">join</span>(<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="相关元素">相关元素</h1></blockquote>
+<div id="myDiv1" class="exbt" style="width:400px;">Move the mouse from here to the white</div>
+
+<script type="text/javascript">
+    var div = document.getElementById("myDiv1");
+    EventUtil.addHandler(div, "mouseout", function(event){
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getTarget(event);
+        var relatedTarget = EventUtil.getRelatedTarget(event);
+        alert("Moused out of " + target.tagName + " to " + relatedTarget.tagName);        
+    }); 
+</script>
+
+<p>在发生mouseover 和mouserout事件时，还会涉及更多的元素。<br>这两个事件都会涉及把鼠标指针从一个元素的边界之内移动到另一个元素的边界之内.<br>对mouseover 事件而言，事件的主目标是<strong>获得光标</strong>的元素，而相关元素就是那个<strong>失去光标</strong>的元素。<br>对mouseout 事件而言，事件的主目标是<strong>失去光标</strong>的元素，而相关元素则是<strong>获得光标</strong>的元素</p>
+<p>以下是兼容光标的事件的JS<br><figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> EventUtil = &#123;</span><br><span class="line"><span class="comment">//省略了其他代码</span></span><br><span class="line">getRelatedTarget: function(<span class="keyword">event</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">event</span>.relatedTarget)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">event</span>.relatedTarget;</span><br><span class="line">		&#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> (<span class="params"><span class="keyword">event</span>.toElement</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">event</span>.toElement;</span><br><span class="line">		&#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> (<span class="params"><span class="keyword">event</span>.fromElement</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">event</span>.fromElement;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line"><span class="comment">//省略了其他代码</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"myDiv1"</span> <span class="attribute">class</span>=<span class="value">"exbt"</span> <span class="attribute">style</span>=<span class="value">"width:400px;"</span>&gt;</span>Move the mouse from here to the white<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv1"</span>);</span><br><span class="line">    EventUtil.addHandler(div, <span class="string">"mouseout"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        event = EventUtil.getEvent(event);</span><br><span class="line">        <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line">        <span class="keyword">var</span> relatedTarget = EventUtil.getRelatedTarget(event);</span><br><span class="line">        alert(<span class="string">"Moused out of "</span> + target.tagName + <span class="string">" to "</span> + relatedTarget.tagName);        </span><br><span class="line">    &#125;); </span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<h1 id="相关元素-1">相关元素</h1></blockquote>
+<p>兼容鼠标事件的JS<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">getButton: function(event)&#123;</span><br><span class="line">    <span class="keyword">if</span> (document.implementation.hasFeature(<span class="string">"MouseEvents"</span>, <span class="string">"2.0"</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> event.button;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span>(event.button)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>: <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="鼠标滚轮事件">鼠标滚轮事件</h1></blockquote>
+<p>mousewheel事件反馈鼠标滚轮，<br><code>IE6.0</code> <code>.Opera</code> <code>Chrome</code> <code>Safari</code>都实现了该事件。<br>与mousewheel事件对应的event对象除包含鼠标事件的所有标准信息外，还包含一个特殊的wheelDelta 属性。<br>当用户向前滚动鼠标滚轮时，wheelDelta 是120 的倍数；<br>当用户向后滚动鼠标滚轮时，wheelDelta 是-120 的倍数；</p>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/13-6.png" alt=""></p>
+<input id="whell" value="这里会响应你鼠标滚轮" class="exbt"> 
+
+<script type="text/javascript">
+    var whell = document.getElementById("whell");
+    EventUtil.addHandler(document, "mousewheel", function(event){
+        event = EventUtil.getEvent(event);
+        var delta = event.wheelDelta;
+        if(delta>0)
+            whell.value="鼠标上滚  :"+delta;
+        else
+            whell.value="鼠标下滚  :"+delta;
+    });
+</script>
+
+<p>上边例子的代码<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"whell"</span> <span class="attribute">value</span>=<span class="value">"这里会响应你鼠标滚轮"</span>  <span class="attribute">class</span>=<span class="value">"exbt"</span>&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">	<span class="keyword">var</span> whell = <span class="built_in">document</span>.getElementById(<span class="string">"whell"</span>);</span><br><span class="line">    EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"mousewheel"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        event = EventUtil.getEvent(event);</span><br><span class="line">        <span class="keyword">var</span> delta = event.wheelDelta;</span><br><span class="line">        <span class="keyword">if</span>(delta&gt;<span class="number">0</span>)</span><br><span class="line">        	whell.value=<span class="string">"鼠标上滚  :"</span>+delta;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        	whell.value=<span class="string">"鼠标下滚  :"</span>+delta;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>然而要兼容firefox要注意用兼容浏览器方法</p>
+<p>EventUtil对象中的方法</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">getWheelDelta: function(<span class="keyword">event</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">event</span>.wheelDelta)&#123;</span><br><span class="line">        <span class="keyword">return</span> (client.engine.opera &amp;&amp; client.engine.opera &lt; <span class="number">9.5</span> ? -<span class="keyword">event</span>.wheelDelta : <span class="keyword">event</span>.wheelDelta);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="keyword">event</span>.detail * <span class="number">40</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -407,6 +453,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/11/15/red-25/" title="小红本-(25)-键盘事件">
+  <strong>上一篇：</strong><br/>
+  <span>
+  小红本-(25)-键盘事件</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/11/13/EventUtilCode/"  title="EventUtilCode">
@@ -430,7 +484,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-number">1.</span> <span class="toc-text">鼠标与滚轮事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意，如果在HTML中定义事件，一定要在前边加on"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">注意，如果在HTML中定义事件，一定要在前边加on</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标位置"><span class="toc-number">1.1.</span> <span class="toc-text">鼠标位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的客户端(client)坐标信息："><span class="toc-number">1.1.0.1.</span> <span class="toc-text">这里是你鼠标的客户端(client)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的页面(page)坐标信息："><span class="toc-number">1.1.0.2.</span> <span class="toc-text">这里是你鼠标的页面(page)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的整个屏幕(screen)坐标信息："><span class="toc-number">1.1.0.3.</span> <span class="toc-text">这里是你鼠标的整个屏幕(screen)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#源码在这里~"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">源码在这里~</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改键"><span class="toc-number">2.</span> <span class="toc-text">修改键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下边这里显示你鼠标单击同时按下的按钮(shift,ctrl,alt)"><span class="toc-number">2.1.</span> <span class="toc-text">下边这里显示你鼠标单击同时按下的按钮(shift,ctrl,alt)</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-number">1.</span> <span class="toc-text">鼠标与滚轮事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意，如果在HTML中定义事件，一定要在前边加on"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">注意，如果在HTML中定义事件，一定要在前边加on</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标位置"><span class="toc-number">1.1.</span> <span class="toc-text">鼠标位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的客户端(client)坐标信息："><span class="toc-number">1.1.0.1.</span> <span class="toc-text">这里是你鼠标的客户端(client)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的页面(page)坐标信息："><span class="toc-number">1.1.0.2.</span> <span class="toc-text">这里是你鼠标的页面(page)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#这里是你鼠标的整个屏幕(screen)坐标信息："><span class="toc-number">1.1.0.3.</span> <span class="toc-text">这里是你鼠标的整个屏幕(screen)坐标信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#源码在这里~"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">源码在这里~</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改键"><span class="toc-number">2.</span> <span class="toc-text">修改键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下边这里显示你鼠标单击同时按下的按钮(shift,ctrl,alt)"><span class="toc-number">2.1.</span> <span class="toc-text">下边这里显示你鼠标单击同时按下的按钮(shift,ctrl,alt)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关元素"><span class="toc-number">3.</span> <span class="toc-text">相关元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关元素-1"><span class="toc-number">4.</span> <span class="toc-text">相关元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标滚轮事件"><span class="toc-number">5.</span> <span class="toc-text">鼠标滚轮事件</span></a></li></ol>
  
   </div>
 
@@ -448,7 +502,7 @@
 		  
 		
 		  
-			<li><a href="/categories/小红书/" title="小红书">小红书<sup>25</sup></a></li>
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>26</sup></a></li>
 		  
 		
 		</ul>
@@ -461,15 +515,15 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/前端/" title="前端">前端<sup>29</sup></a></li>
+				<li><a href="/tags/前端/" title="前端">前端<sup>30</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>25</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>25</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>26</sup></a></li>
 			
 		
 			
@@ -493,7 +547,7 @@
 			
 		
 			
-				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>3</sup></a></li>
 			
 		
 			
@@ -501,7 +555,7 @@
 			
 		
 			
-				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>2</sup></a></li>
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
 			
 		
 			
@@ -509,15 +563,15 @@
 			
 		
 			
-				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文本节点/" title="文本节点">文本节点<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/作用域/" title="作用域">作用域<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/UI事件，焦点事件/" title="UI事件，焦点事件">UI事件，焦点事件<sup>1</sup></a></li>
 			
 		
 			
