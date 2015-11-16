@@ -1,0 +1,854 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>小红本-(26)-HTML5事件 | hinami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hinami">
+    
+
+    
+    <meta name="description" content="var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小红本-(26)-HTML5事件">
+<meta property="og:url" content="hinami.xyz/2015/11/16/red-26/index.html">
+<meta property="og:site_name" content="hinami">
+<meta property="og:description" content="var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attac">
+<meta property="og:updated_time" content="2015-11-16T15:36:03.307Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小红本-(26)-HTML5事件">
+<meta name="twitter:description" content="var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attac">
+<meta name="twitter:creator" content="@346565386Toms">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/fav.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hinami" title="hinami"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hinami">hinami</a></h1>
+				<h2 class="blog-motto">↖give me five~(๑•̀▽•́)و✧</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hinami.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/16/red-26/" title="小红本-(26)-HTML5事件" itemprop="url">小红本-(26)-HTML5事件</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-16T13:46:40.000Z" itemprop="datePublished"> 发表于 2015-11-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<script type="text/javascript">
+    var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    },
+
+    getButton: function(event){
+        if (document.implementation.hasFeature("MouseEvents", "2.0")){
+            return event.button;
+        } else {
+            switch(event.button){
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4: return 1;
+            }
+        }
+    },
+
+    getCharCode: function(event){
+        if (typeof event.charCode == "number"){
+            return event.charCode;
+        } else {
+            return event.keyCode;
+        }
+    },
+
+    getClipboardText: function(event){
+        var clipboardData =  (event.clipboardData || window.clipboardData);
+        return clipboardData.getData("text");
+    },
+
+    getEvent: function(event){
+        return event ? event : window.event;
+    },
+
+    getRelatedTarget: function(event){
+        if (event.relatedTarget){
+            return event.relatedTarget;
+        } else if (event.toElement){
+            return event.toElement;
+        } else if (event.fromElement){
+            return event.fromElement;
+        } else {
+            return null;
+        }
+
+    },
+
+    getTarget: function(event){
+        return event.target || event.srcElement;
+    },
+
+    getWheelDelta: function(event){
+        if (event.wheelDelta){
+            return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
+        } else {
+            return -event.detail * 40;
+        }
+    },
+
+    preventDefault: function(event){
+        if (event.preventDefault){
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+
+    removeHandler: function(element, type, handler){
+        if (element.removeEventListener){
+            element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent){
+            element.detachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = null;
+        }
+    },
+
+    setClipboardText: function(event, value){
+        if (event.clipboardData){
+            event.clipboardData.setData("text/plain", value);
+        } else if (window.clipboardData){
+            window.clipboardData.setData("text", value);
+        }
+    },
+
+    stopPropagation: function(event){
+        if (event.stopPropagation){
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+
+};
+</script>
+
+<style type="text/css">
+.exbt
+{
+    text-align: center;
+    background-color:#678FC6;
+    border:none;
+    border-radius: 1px;
+    padding: 10px;
+    height: 35px;
+    color: #fff;
+    font-family: microsoft Yahei; 
+}
+</style>
+
+<blockquote>
+<h1 id="HTML5事件！">HTML5事件！</h1></blockquote>
+<hr>
+<h2 id="contextmenu事件!">contextmenu事件!</h2><p>可以自己写右键菜单了！！！这是坠吼滴啊！！</p>
+<p>就像这样！！</p>
+<style type="text/css">
+#myDiv1
+{
+    text-align: center;
+    background-color:#678FC6;
+    border:none;
+    border-radius: 1px;
+    padding: 10px;
+    height: 35px;
+    color: #fff;
+    font-family: microsoft Yahei; 
+}
+#myMenu1
+{
+    position:absolute;
+    visibility:hidden;
+    padding: 0px;
+    background-color: #ffffff;
+    z-index: 10;
+}
+#myMenu1 li
+{
+    list-style: none;
+
+}
+</style>
+
+<div id="myDiv1">用window的点右键，用mac的富帅请ctrl+单击</div>
+
+<p><ul id="myMenu1"><br>    <li><a href="http://www.hinami.xyz" target="_blank" rel="external">我的博客</a></li><br>    <li><a href="http://i.hinami.xyz" target="_blank" rel="external">我的服务器</a></li><br>    <li><a href="http://i.hinami.xyz/Demo/qnsxj/" target="_blank" rel="external">青年实习家H5</a></li><br></ul></p>
+<script type="text/javascript">
+    EventUtil.addHandler(window, "load", function(event){
+        var div = document.getElementById("myDiv1");
+
+        EventUtil.addHandler(div, "contextmenu", function(event){
+            event = EventUtil.getEvent(event);
+            EventUtil.preventDefault(event);
+
+            var menu = document.getElementById("myMenu1");
+            menu.style.left = event.clientX + "px";
+            menu.style.top = event.clientY + "px";
+            menu.style.visibility = "visible";
+        });
+
+        EventUtil.addHandler(document, "click", function(event){
+            document.getElementById("myMenu1").style.visibility = "hidden";
+        });
+    });
+</script>
+
+
+<p>下边是源码~注意，如果不给背景的话，右键菜单背景为透明的</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line"><span class="id">#myDiv1</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"><span class="hexcolor">#678FC6</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border</span>:<span class="value">none</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border-radius</span>:<span class="value"> <span class="number">1px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">35px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">font-family</span>:<span class="value"> microsoft Yahei</span></span>; </span><br><span class="line">&#125;</span></span><br><span class="line"><span class="id">#myMenu1</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">visibility</span>:<span class="value">hidden</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#ffffff</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">z-index</span>:<span class="value"> <span class="number">10</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="id">#myMenu1</span> <span class="tag">li</span></span><br><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">list-style</span>:<span class="value"> none</span></span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"myDiv1"</span>&gt;</span>用window的点右键，用mac的富帅请ctrl+单击<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"myMenu1"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.hinami.xyz"</span>&gt;</span>我的博客<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://i.hinami.xyz"</span>&gt;</span>我的服务器<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://i.hinami.xyz/Demo/qnsxj/"</span>&gt;</span>青年实习家H5<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv1"</span>);</span><br><span class="line">                    </span><br><span class="line">        EventUtil.addHandler(div, <span class="string">"contextmenu"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">            event = EventUtil.getEvent(event);</span><br><span class="line">            EventUtil.preventDefault(event);<span class="comment">//阻止常规右键菜单</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">var</span> menu = <span class="built_in">document</span>.getElementById(<span class="string">"myMenu1"</span>);</span><br><span class="line">            menu.style.left = event.clientX + <span class="string">"px"</span>;</span><br><span class="line">            menu.style.top = event.clientY + <span class="string">"px"</span>;</span><br><span class="line">            menu.style.visibility = <span class="string">"visible"</span>;   <span class="comment">//确定菜单位置</span></span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">document</span>.getElementById(<span class="string">"myMenu1"</span>).style.visibility = <span class="string">"hidden"</span>;  <span class="comment">//点击左键收回右键菜单</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>支持<code>contextmenu</code>事件的浏览器有<code>IE</code>、<code>Firefox</code>、<code>Safari</code>、<code>Chrome</code> 和<code>Opera 11+</code>。</p>
+<h2 id="beforeunload_事件">beforeunload 事件</h2><p>这个事件是当页面即将被卸载的时候触发，常用来询问用户是否要离开本页面</p>
+<ul>
+<li>event.returnValue 的值设置为要显示给用户的字符串</li>
+</ul>
+<script type="text/javascript">
+    EventUtil.addHandler(window, "beforeunload", function(event){
+    event = EventUtil.getEvent(event);
+    var message = "你真的要离开么？不多看看么┭┮﹏┭┮我写的好辛苦的";
+    event.returnValue = message;
+    return message;
+});
+</script>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">	EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"beforeunload"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">	event = EventUtil.getEvent(event);</span><br><span class="line">	<span class="keyword">var</span> message = <span class="string">"你真的要离开么？不多看看么┭┮﹏┭┮我写的好辛苦的"</span>;</span><br><span class="line">	event.returnValue = message;</span><br><span class="line">	<span class="keyword">return</span> message;</span><br><span class="line">&#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>IE</code> 和<code>Firefox</code>、<code>Safari</code> 和<code>Chrome</code> 都支持<code>beforeunload</code> 事件，也都会弹出这个对话框询问用户是否真想离开。<br>Opera 11 及之前的版本不支持beforeunload 事件。</p>
+<h2 id="DOMContentLoaded_事件">DOMContentLoaded 事件</h2><p>而DOMContentLoaded 事件则在形成完整的DOM 树之后就会触发，不理会图像、JavaScript 文件、CSS 文件或其他资源是否已经下载完毕<br>与load 事件不同<br>DOMContentLoaded 支持在页面下载的早期添加事件处理程序，这也就意味着用户能够尽早地与页面进行交互。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"DOMContentLoaded"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">alert(<span class="string">"Content loaded"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>IE9+</code>、<code>Firefox</code>、<code>Chrome</code>、<code>Safari 3.1+</code>和<code>Opera 9+</code>都支持<code>DOMContentLoaded</code>事件，<br>通常这个事件既可以添加事件处理程序，也可以执行其他DOM 操作。</p>
+<p>这个事件始终都会在load 事件之前触发。</p>
+<p>对于不支持DOMContentLoaded 的浏览器，我们建议在页面加载期间设置一个时间为0 毫秒的超时调用，如下面的例子所示。<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//在此添加事件处理程序</span></span><br><span class="line">&#125;, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这段代码的实际意思就是：“在当前JavaScript 处理完成后立即运行这个函数。”<br>在页面下载和构建期间，只有一个JavaScript 处理过程，因此超时调用会在该过程结束时立即触发</p>
+<h2 id="readystatechange_事件">readystatechange 事件</h2><p>支持readystatechange 事件的每个对象都有一个readyState 属性，可能包含下列5 个值中的一个。</p>
+<ul>
+<li>uninitialized（未初始化）：对象存在但尚未初始化。</li>
+<li>loading（正在加载）：对象正在加载数据。</li>
+<li>loaded（加载完毕）：对象加载数据完成。</li>
+<li>interactive（交互）：可以操作对象了，但还没有完全加载。</li>
+<li>complete（完成）：对象已经加载完毕。</li>
+</ul>
+<p>支持<code>readystatechange</code> 事件的浏览器有IE、Firfox 4+和Opera。</p>
+<p>可以用来检测CSS和JS加载</p>
+<h5 id="检测JS加载">检测JS加载</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">EventUtil.addHandler(script, <span class="string">"readystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">event = EventUtil.getEvent(event);</span><br><span class="line"><span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line"><span class="keyword">if</span> (target.readyState == <span class="string">"loaded"</span> || target.readyState == <span class="string">"complete"</span>)&#123;</span><br><span class="line">EventUtil.removeHandler(target, <span class="string">"readystatechange"</span>, <span class="built_in">arguments</span>. callee);</span><br><span class="line">alert(<span class="string">"Script Loaded"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">script.src = <span class="string">"example.js"</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="检测CSS加载">检测CSS加载</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);</span><br><span class="line">link.type = <span class="string">"text/css"</span>;</span><br><span class="line">link.rel= <span class="string">"stylesheet"</span>;</span><br><span class="line">EventUtil.addHandler(script, <span class="string">"readystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">event = EventUtil.getEvent(event);</span><br><span class="line"><span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line"><span class="keyword">if</span> (target.readyState == <span class="string">"loaded"</span> || target.readyState == <span class="string">"complete"</span>)&#123;</span><br><span class="line">EventUtil.removeHandler(target, <span class="string">"readystatechange"</span>, <span class="built_in">arguments</span>. callee);</span><br><span class="line">alert(<span class="string">"CSS Loaded"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">link.href = <span class="string">"example.css"</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(link);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="pageshow_和pagehide_事件">pageshow 和pagehide 事件</h2><p>往返缓存”（back-forward cache，或bfcache），可以在用户使<br>用浏览器的“后退”和“前进”按钮时加快页面的转换速度。这个缓存中不仅保存着页面数据，还保存了DOM 和JavaScript 的状态；实际上是将整个页面都保存在了内存里。</p>
+<p>支持pageshow 和pagehide 事件的浏览器有Firefox、Safari 5+、Chrome 和Opera。IE9 及之前版本不支持这两个事件。</p>
+<p>第一个事件就是pageshow，这个事件在页面显示时触发，无论该页面是否来自bfcache。<br>在重新加载的页面中，pageshow 会在load 事件触发后触发；<br>而对于bfcache 中的页面，pageshow 会在页面状态完全恢复的那一刻触发。</p>
+<p>另外要注意的是，虽然这个事件的目标是document，但必须将其事件处理程序添加到window。来看下面的例子。</p>
+<figure class="highlight clojure"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">&#123;</span><br><span class="line">var showCount = <span class="number">0</span><span class="comment">;</span></span><br><span class="line">EventUtil.addHandler<span class="list">(<span class="keyword">window</span>, <span class="string">"load"</span>, function<span class="list">()</span><span class="collection">&#123;</span><br><span class="line">	alert<span class="list">(<span class="string">"Load fired"</span>)</span><span class="comment">;</span></span><br><span class="line">	&#125;</span>)</span><span class="comment">;</span></span><br><span class="line">EventUtil.addHandler<span class="list">(<span class="keyword">window</span>, <span class="string">"pageshow"</span>, function<span class="list">()</span><span class="collection">&#123;</span><br><span class="line">	showCount++;</span><br><span class="line">	alert<span class="list">(<span class="string">"Show has been fired "</span> + showCount + <span class="string">" times."</span>)</span><span class="comment">;</span></span><br><span class="line">	&#125;</span>)</span><span class="comment">;</span></span><br><span class="line">&#125;</span>)</span><span class="list">()</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>这个例子使用了私有作用域，以防止变量showCount 进入全局作用域。</p>
+<p>当页面首次加载完成时，showCount 的值为0。</p>
+<p>此后，每当触发pageshow 事件，showCount 的值就会递增并通过警告框显示出来。</p>
+<p>如果你在离开包含以上代码的页面之后，又单击“后退”按钮返回该页面，就会看到showCount每次递增的值。</p>
+<p>这是因为该变量的状态，乃至整个页面的状态，都被保存在了内存中，当你返回这个页面时，它们的状态得到了恢复。</p>
+<p>如果你单击了浏览器的“刷新”按钮，那么showCount 的值就会被重置为0，因为页面已经完全重新加载了。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> showCount = <span class="number">0</span>;</span><br><span class="line">		EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="string">"Load fired"</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">		EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"pageshow"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		showCount++;</span><br><span class="line">		alert(<span class="string">"Show has been fired "</span> + showCount + <span class="string">" times."</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">	)</span><br><span class="line">	();</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="你问我chrome滋布滋词这个东西啊？！w(·Д·)w">你问我chrome滋布滋词这个东西啊？！w(·Д·)w</h1></blockquote>
+<p><strong>然而chrome似乎不支持这个东西QAQ</strong></p>
+<p>event.persisted == true 的话就支持，否则不支持</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"pagehide"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">	alert(<span class="string">"Hiding. Persisted? "</span> + event.persisted);</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+<script type="text/javascript">
+    (function(){
+        var showCount = 0;
+        EventUtil.addHandler(window, "load", function(){
+        alert("Load fired");
+        });
+        EventUtil.addHandler(window, "pageshow", function(){
+        showCount++;
+        alert("Show has been fired " + showCount + " times.");
+        });
+        }
+    )
+    ();
+</script>
+
+<h2 id="hashchange_事件">hashchange 事件</h2><p>HTML5 新增了hashchange 事件，以便在URL 的参数列表（及URL 中“#”号后面的所有字符串）发生变化时通知开发人员。<br>之所以新增这个事件，是因为在Ajax 应用中，开发人员经常要利用URL 参数列表来保存状态或导航信息。</p>
+<p>必须要把hashchange 事件处理程序添加给window 对象，然后URL 参数列表只要变化就会调用它</p>
+<p>此时的<code>event</code> 对象应该额外包含两个属性:<code>oldURL</code>和<code>newURL</code>。这两个属性分别保存着参数列表变化前后的完整URL</p>
+<p>支持hashchange 事件的浏览器有IE8+、Firefox 3.6+、Safari 5+、Chrome 和Opera 10.6+。<br>在这些浏览器中，<br>只有Firefox 6+、Chrome 和Opera 支持oldURL 和newURL属性。</p>
+<p>为此，最好是使用location对象来确定当前的参数列表。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"hashchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">alert(<span class="string">"Current hash: "</span> + location.hash);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>如果IE8 是在IE7 文档模式下运行，即使功能无效它也会返回true。为解决这个问题，可以使用<br>以下这个更稳妥的检测方式：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> isSupported = (<span class="string">"onhashchange"</span> <span class="keyword">in</span> <span class="built_in">window</span>)&amp;&amp;(<span class="built_in">document</span>.documentMode ===</span><br><span class="line"><span class="literal">undefined</span> || <span class="built_in">document</span>.documentMode &gt; <span class="number">7</span>);</span><br></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/HTML5事件/">HTML5事件</a><a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/事件类型/">事件类型</a><a href="/tags/前端/">前端</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2015/11/16/red-26/" data-title="小红本-(26)-HTML5事件 | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/11/15/red-25/"  title="小红本-(25)-键盘事件">
+ <strong>下一篇：</strong><br/> 
+ <span>小红本-(25)-键盘事件
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/11/16/red-26/" data-title="小红本-(26)-HTML5事件" data-url="hinami.xyz/2015/11/16/red-26/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5事件！"><span class="toc-number">1.</span> <span class="toc-text">HTML5事件！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#contextmenu事件!"><span class="toc-number">1.1.</span> <span class="toc-text">contextmenu事件!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beforeunload_事件"><span class="toc-number">1.2.</span> <span class="toc-text">beforeunload 事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOMContentLoaded_事件"><span class="toc-number">1.3.</span> <span class="toc-text">DOMContentLoaded 事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readystatechange_事件"><span class="toc-number">1.4.</span> <span class="toc-text">readystatechange 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#检测JS加载"><span class="toc-number">1.4.0.0.1.</span> <span class="toc-text">检测JS加载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#检测CSS加载"><span class="toc-number">1.4.0.0.2.</span> <span class="toc-text">检测CSS加载</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pageshow_和pagehide_事件"><span class="toc-number">1.5.</span> <span class="toc-text">pageshow 和pagehide 事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#你问我chrome滋布滋词这个东西啊？！w(·Д·)w"><span class="toc-number">2.</span> <span class="toc-text">你问我chrome滋布滋词这个东西啊？！w(·Д·)w</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hashchange_事件"><span class="toc-number">2.1.</span> <span class="toc-text">hashchange 事件</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>27</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>31</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>27</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>27</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5事件/" title="HTML5事件">HTML5事件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UI事件，焦点事件/" title="UI事件，焦点事件">UI事件，焦点事件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境/" title="环境">环境<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/类/" title="类">类<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/范围/" title="范围">范围<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://tms.im" target="_blank" title="梦石真人">谭  总</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="cateaf.com" target="_blank" title="这人是个死基佬">小礼服</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="全球最大同性交友社区">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://home.cnblogs.com/u/yxy99/" target="_blank" title="yxy">yxy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m hinami in HNU. <br/>
+			This is my school,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hinami0507" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/346565386Toms" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/hinami.sin" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/po-xiao-14-75" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:346565386@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="hinami">hinami</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd65912a25436b0b55db731ce75f5c981' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
