@@ -11,28 +11,16 @@
     
 
     
-    <meta name="description" content="在HTML 中，表单是由&amp;lt;form&amp;gt;元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。
-HTMLFormElement 继承了HTMLElement，因而与其他HTML 元素具有相同的默认属性。
-不过，HTMLFormElement 也有它自己下列独有的属性和方法。
-
-acceptCharset：服务器能够处理的字符集；等价于HTML 中">
+    <meta name="description" content="表单的获取，提交，重制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小红本-(29)-表单脚本">
 <meta property="og:url" content="hinami.xyz/2015/11/18/red-29/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="在HTML 中，表单是由&amp;lt;form&amp;gt;元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。
-HTMLFormElement 继承了HTMLElement，因而与其他HTML 元素具有相同的默认属性。
-不过，HTMLFormElement 也有它自己下列独有的属性和方法。
-
-acceptCharset：服务器能够处理的字符集；等价于HTML 中">
-<meta property="og:updated_time" content="2015-11-23T15:12:26.010Z">
+<meta property="og:description" content="表单的获取，提交，重制">
+<meta property="og:updated_time" content="2015-11-23T15:26:01.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红本-(29)-表单脚本">
-<meta name="twitter:description" content="在HTML 中，表单是由&amp;lt;form&amp;gt;元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。
-HTMLFormElement 继承了HTMLElement，因而与其他HTML 元素具有相同的默认属性。
-不过，HTMLFormElement 也有它自己下列独有的属性和方法。
-
-acceptCharset：服务器能够处理的字符集；等价于HTML 中">
+<meta name="twitter:description" content="表单的获取，提交，重制">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -106,7 +94,118 @@ acceptCharset：服务器能够处理的字符集；等价于HTML 中">
 </header>
 	<div class="article-content">
 		
-		<p>在HTML 中，表单是由<code>&lt;form&gt;</code>元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。</p>
+		<script type="text/javascript">
+    var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    },
+
+    getButton: function(event){
+        if (document.implementation.hasFeature("MouseEvents", "2.0")){
+            return event.button;
+        } else {
+            switch(event.button){
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4: return 1;
+            }
+        }
+    },
+
+    getCharCode: function(event){
+        if (typeof event.charCode == "number"){
+            return event.charCode;
+        } else {
+            return event.keyCode;
+        }
+    },
+
+    getClipboardText: function(event){
+        var clipboardData =  (event.clipboardData || window.clipboardData);
+        return clipboardData.getData("text");
+    },
+
+    getEvent: function(event){
+        return event ? event : window.event;
+    },
+
+    getRelatedTarget: function(event){
+        if (event.relatedTarget){
+            return event.relatedTarget;
+        } else if (event.toElement){
+            return event.toElement;
+        } else if (event.fromElement){
+            return event.fromElement;
+        } else {
+            return null;
+        }
+
+    },
+
+    getTarget: function(event){
+        return event.target || event.srcElement;
+    },
+
+    getWheelDelta: function(event){
+        if (event.wheelDelta){
+            return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
+        } else {
+            return -event.detail * 40;
+        }
+    },
+
+    preventDefault: function(event){
+        if (event.preventDefault){
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+
+    removeHandler: function(element, type, handler){
+        if (element.removeEventListener){
+            element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent){
+            element.detachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = null;
+        }
+    },
+
+    setClipboardText: function(event, value){
+        if (event.clipboardData){
+            event.clipboardData.setData("text/plain", value);
+        } else if (window.clipboardData){
+            window.clipboardData.setData("text", value);
+        }
+    },
+
+    stopPropagation: function(event){
+        if (event.stopPropagation){
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+
+};
+</script>
+
+<p>在HTML 中，表单是由<code>&lt;form&gt;</code>元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。</p>
 <p>HTMLFormElement 继承了HTMLElement，因而与其他HTML 元素具有相同的默认属<br>性。</p>
 <p>不过，HTMLFormElement 也有它自己下列独有的属性和方法。</p>
 <ul>
@@ -223,154 +322,45 @@ acceptCharset：服务器能够处理的字符集；等价于HTML 中">
 
 
 <script type="text/javascript">
-    EventUtil.addHandler(window, "load", function(event){
-        var textbox = document.getElementById("myForm");
+EventUtil.addHandler(window, "load", function(event){
+    var textbox = document.getElementById("myForm");
+    EventUtil.addHandler(textbox, "focus", function(event){
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getTarget(event);
 
-        EventUtil.addHandler(textbox, "focus", function(event){
-            event = EventUtil.getEvent(event);
-            var target = EventUtil.getTarget(event);
+        target.style.backgroundColor = "yellow";
+    });
 
-            target.style.backgroundColor = "yellow";
-        });
+    EventUtil.addHandler(textbox, "blur", function(event){
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getTarget(event);
 
-        EventUtil.addHandler(textbox, "blur", function(event){
-            event = EventUtil.getEvent(event);
-            var target = EventUtil.getTarget(event);
+        if (/[^\d]/.test(target.value)){
+            target.style.backgroundColor = "red";
+        } else {
+            target.style.backgroundColor = "";
+        }
+    });
 
-            if (/[^\d]/.test(target.value)){
-                target.style.backgroundColor = "red";
-            } else {
-                target.style.backgroundColor = "";
-            }
-        });
+    EventUtil.addHandler(textbox, "change", function(event){
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getTarget(event);
 
-        EventUtil.addHandler(textbox, "change", function(event){
-            event = EventUtil.getEvent(event);
-            var target = EventUtil.getTarget(event);
+        if (/[^\d]/.test(target.value)){
+            target.style.backgroundColor = "red";
+        } else {
+            target.style.backgroundColor = "";
+        }
+    });
 
-            if (/[^\d]/.test(target.value)){
-                target.style.backgroundColor = "red";
-            } else {
-                target.style.backgroundColor = "";
-            }
-        });
-
-        textbox.focus();
-    });               
+    textbox.focus();
+});               
 </script>
+
 
 <p>下边是源码，<strong>要注意的是:不同浏览器中<code>blur事件</code>和<code>change事件</code>触发顺序不同</strong></p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">method</span>=<span class="value">"post"</span> <span class="attribute">action</span>=<span class="value">"javascript:alert('Form submitted!')"</span> <span class="attribute">id</span>=<span class="value">"myForm"</span>&gt;</span>        </span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"comments"</span>&gt;</span>Type numbers:<span class="tag">&lt;/<span class="title">label</span>&gt;</span><span class="tag">&lt;<span class="title">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">id</span>=<span class="value">"txtNumbers"</span> <span class="attribute">name</span>=<span class="value">"numbers"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"Submit Form"</span> <span class="attribute">id</span>=<span class="value">"submit-btn"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">form</span>&gt;</span>     </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> textbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="number">0</span>];</span><br><span class="line">        </span><br><span class="line">        EventUtil.addHandler(textbox, <span class="string">"focus"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">            event = EventUtil.getEvent(event);</span><br><span class="line">            <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line">            </span><br><span class="line">            target.style.backgroundColor = <span class="string">"yellow"</span>;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        EventUtil.addHandler(textbox, <span class="string">"blur"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">            event = EventUtil.getEvent(event);</span><br><span class="line">            <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (<span class="regexp">/[^\d]/</span>.test(target.value))&#123;</span><br><span class="line">                target.style.backgroundColor = <span class="string">"red"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                target.style.backgroundColor = <span class="string">""</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        EventUtil.addHandler(textbox, <span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">            event = EventUtil.getEvent(event);</span><br><span class="line">            <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (<span class="regexp">/[^\d]/</span>.test(target.value))&#123;</span><br><span class="line">                target.style.backgroundColor = <span class="string">"red"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                target.style.backgroundColor = <span class="string">""</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        textbox.focus();</span><br><span class="line">    &#125;);               </span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<script type="text/javascript">
-    var EventUtil = {
-
-    addHandler: function(element, type, handler){
-        if (element.addEventListener){
-            element.addEventListener(type, handler, false);
-        } else if (element.attachEvent){
-            element.attachEvent("on" + type, handler);
-        } else {
-            element["on" + type] = handler;
-        }
-    },
-
-    getButton: function(event){
-        if (document.implementation.hasFeature("MouseEvents", "2.0")){
-            return event.button;
-        } else {
-            switch(event.button){
-                case 0:
-                case 1:
-                case 3:
-                case 5:
-                case 7:
-                    return 0;
-                case 2:
-                case 6:
-                    return 2;
-                case 4: return 1;
-            }
-        }
-    },
-
-    getCharCode: function(event){
-        if (typeof event.charCode == "number"){
-            return event.charCode;
-        } else {
-            return event.keyCode;
-        }
-    },
-
-    getClipboardText: function(event){
-        var clipboardData =  (event.clipboardData || window.clipboardData);
-        return clipboardData.getData("text");
-    },
-
-    getEvent: function(event){
-        return event ? event : window.event;
-    },
-
-    getRelatedTarget: function(event){
-        if (event.relatedTarget){
-            return event.relatedTarget;
-        } else if (event.toElement){
-            return event.toElement;
-        } else if (event.fromElement){
-            return event.fromElement;
-        } else {
-            return null;
-        }
-
-    },
-
-    getTarget: function(event){
-        return event.target || event.srcElement;
-    },
-
-    getWheelDelta: function(event){
-        if (event.wheelDelta){
-            return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
-        } else {
-            return -event.detail * 40;
-        }
-    },
-
-    preventDefault: function(event){
-        if (event.preventDefault){
-            event.preventDefault();
-        } else {
-            event.returnValue = false;
-        }
-    },
-
-    removeHandler: function(element, type, handler){
-        if (element.removeEventListener){
-            element.removeEventListener(type, handler, false);
-        } else if (element.detachEvent){
-            element.detachEvent("on" + type, handler);
-        } else {
-            element["on" + type] = null;
-        }
-    },
-
-    setClipboardText: function(event, value){
-        if (event.clipboardData){
-            event.clipboardData.setData("text/plain", value);
-        } else if (window.clipboardData){
-            window.clipboardData.setData("text", value);
-        }
-    },
-
-    stopPropagation: function(event){
-        if (event.stopPropagation){
-            event.stopPropagation();
-        } else {
-            event.cancelBubble = true;
-        }
-    }
-
-};
-</script>  
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
