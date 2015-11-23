@@ -1,0 +1,816 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>小红本-(31)-过滤输入 | hinami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hinami">
+    
+
+    
+    <meta name="description" content="var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小红本-(31)-过滤输入">
+<meta property="og:url" content="hinami.xyz/2015/11/21/red-31/index.html">
+<meta property="og:site_name" content="hinami">
+<meta property="og:description" content="var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attac">
+<meta property="og:updated_time" content="2015-11-21T15:54:53.256Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小红本-(31)-过滤输入">
+<meta name="twitter:description" content="var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attac">
+<meta name="twitter:creator" content="@346565386Toms">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/fav.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hinami" title="hinami"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hinami">hinami</a></h1>
+				<h2 class="blog-motto">↖give me five~(๑•̀▽•́)و✧</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hinami.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/21/red-31/" title="小红本-(31)-过滤输入" itemprop="url">小红本-(31)-过滤输入</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-21T13:26:07.000Z" itemprop="datePublished"> 发表于 2015-11-21</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<script type="text/javascript">
+    var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    },
+
+    getButton: function(event){
+        if (document.implementation.hasFeature("MouseEvents", "2.0")){
+            return event.button;
+        } else {
+            switch(event.button){
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4: return 1;
+            }
+        }
+    },
+
+    getCharCode: function(event){
+        if (typeof event.charCode == "number"){
+            return event.charCode;
+        } else {
+            return event.keyCode;
+        }
+    },
+
+    getClipboardText: function(event){
+        var clipboardData =  (event.clipboardData || window.clipboardData);
+        return clipboardData.getData("text");
+    },
+
+    getEvent: function(event){
+        return event ? event : window.event;
+    },
+
+    getRelatedTarget: function(event){
+        if (event.relatedTarget){
+            return event.relatedTarget;
+        } else if (event.toElement){
+            return event.toElement;
+        } else if (event.fromElement){
+            return event.fromElement;
+        } else {
+            return null;
+        }
+
+    },
+
+    getTarget: function(event){
+        return event.target || event.srcElement;
+    },
+
+    getWheelDelta: function(event){
+        if (event.wheelDelta){
+            return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
+        } else {
+            return -event.detail * 40;
+        }
+    },
+
+    preventDefault: function(event){
+        if (event.preventDefault){
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+
+    removeHandler: function(element, type, handler){
+        if (element.removeEventListener){
+            element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent){
+            element.detachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = null;
+        }
+    },
+
+    setClipboardText: function(event, value){
+        if (event.clipboardData){
+            event.clipboardData.setData("text/plain", value);
+        } else if (window.clipboardData){
+            window.clipboardData.setData("text", value);
+        }
+    },
+
+    stopPropagation: function(event){
+        if (event.stopPropagation){
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+
+};
+</script>
+
+<style type="text/css">
+.exbt
+{
+    text-align: center;
+    background-color:#678FC6;
+    border:none;
+    border-radius: 1px;
+    padding: 10px;
+    height: 35px;
+    color: #fff;
+    font-family: microsoft Yahei; 
+}
+</style>
+
+
+<blockquote>
+<h1 id="过滤输入">过滤输入</h1></blockquote>
+<p>屏蔽所有按键</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">EventUtil<span class="typename">.addHandler</span>(textbox, <span class="string">"keypress"</span>, <span class="keyword">function</span>(<span class="keyword">event</span>)<span class="keyword">&#123;</span></span><br><span class="line">	<span class="keyword">event</span> <span class="keyword">=</span> EventUtil<span class="typename">.getEvent</span>(<span class="keyword">event</span>);</span><br><span class="line">	EventUtil<span class="typename">.preventDefault</span>(<span class="keyword">event</span>);</span><br><span class="line"><span class="keyword">&#125;</span>);</span><br></pre></td></tr></table></figure>
+<p>屏蔽用户输入的非字符和屏蔽ctrl按键<br><figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">EventUtil.addHandler(textbox, <span class="string">"keypress"</span>, function(<span class="keyword">event</span>)&#123;</span><br><span class="line"><span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line"><span class="keyword">var</span> target = EventUtil.getTarget(<span class="keyword">event</span>);</span><br><span class="line"><span class="keyword">var</span> charCode = EventUtil.getCharCode(<span class="keyword">event</span>);</span><br><span class="line"><span class="keyword">if</span> (!/\d/.test(String.fromCharCode(charCode)) &amp;&amp; charCode &gt; <span class="number">9</span> &amp;&amp;</span><br><span class="line">	!<span class="keyword">event</span>.ctrlKey)&#123;</span><br><span class="line">	EventUtil.preventDefault(<span class="keyword">event</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="操作剪贴板">操作剪贴板</h1></blockquote>
+<ul>
+<li>beforecopy：在发生复制操作前触发。</li>
+<li>copy：在发生复制操作时触发。</li>
+<li>beforecut：在发生剪切操作前触发。</li>
+<li>cut：在发生剪切操作时触发。</li>
+<li>beforepaste：在发生粘贴操作前触发。</li>
+<li>paste：在发生粘贴操作时触发。</li>
+</ul>
+<p>用<code>before</code>可以事件可以在向剪贴板发送数据，或者从剪贴板取得数据之前修改数据。</p>
+<p>然而，取消这些事件并不会取消对剪贴板的操作——只有取消copy、cut 和paste 事件，才能阻止相应操作发生。</p>
+<input type="text" id="myText6" onpaste="pasteym(); return false;" value="这里输入禁止粘贴！( ｀д′)" style="width:500px;" class="exbt">
+
+<script type="text/javascript">
+    function pasteym()
+    {
+        alert("都说了不让粘贴了(╯°Д°)╯（┻━┻");
+    }
+</script>
+
+<p><strong>要注意return false必须放在 HTML中onpaste=””里才能阻止粘贴；</strong><br>放在调用函数里阻止不了粘贴，目前原因不明</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">id</span>=<span class="value">"myText6"</span> <span class="attribute">onpaste</span>=<span class="value">"pasteym(); return false;"</span> <span class="attribute">value</span>=<span class="value">"这里输入禁止粘贴！( ｀д′)"</span> <span class="attribute">style</span>=<span class="value">"width:500px;"</span> <span class="attribute">class</span>=<span class="value">"exbt"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">pasteym</span><span class="params">()</span></span><br><span class="line">	</span>&#123;</span><br><span class="line">		alert(<span class="string">"都说了不让粘贴了(╯°Д°)╯（┻━┻"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="访问剪切板">访问剪切板</h4><p>clipboardData 对象(最好只在它内容改变的时候访问他)~</p>
+<p>clipboardData</p>
+<ul>
+<li>getData() 获取剪切板内容，接收一个参数(即要取得的数据的格式)</li>
+<li>setData() 设置剪切板内容，接收两个参数(数据类型,文本)</li>
+<li>clearData() 清空剪切板内容。</li>
+</ul>
+<h4 id="出于安全性问题！这个东西被chrome等浏览器禁用！！！"><strong>出于安全性问题！这个东西被chrome等浏览器禁用！！！</strong></h4><p>但是网上有人做出了一个JS包可以实现复制<a href="http://blog.csdn.net/skyboxgogo/article/details/8768683" target="_blank" rel="external">传送门</a></p>
+<blockquote>
+<h1 id="自动切换焦点">自动切换焦点</h1></blockquote>
+<p>用户填写完当前字段时，自动将焦点切换到下一个字段,通常，在自动切换焦点之前，必须知道用户已经输入了既定长度的数据（例如电话号码）。</p>
+<p>例如，<br>美国的电话号码通常会分为三部分：区号、局号和另外4 位数字。</p>
+<p>就像下边的例子一样 </p>
+<p>这是优化之前,要挨个转换焦点</p>
+<p><input type="text" name="tel1" maxlength="3"></p>
+<p><input type="text" name="tel2" maxlength="3"></p>
+<input type="text" name="tel3" maxlength="4">
+
+<p>这是优化之后,输入满后自动转化焦点</p>
+<form method="post" action="http://www.nczonline.net"><br><p>Enter your telephone number:</p><br><input type="text" name="tel1" id="txtTel1" size="3" maxlength="3"><br><input type="text" name="tel2" id="txtTel2" size="3" maxlength="3"><br><input type="text" name="tel3" id="txtTel3" size="4" maxlength="4"><br><input type="submit" value="Submit"><br></form>
+
+<script type="text/javascript">
+(function(){
+
+    function tabForward(event){            
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getTarget(event);
+
+        if (target.value.length == target.maxLength){
+            var form = target.form;
+
+            for (var i=0, len=form.elements.length; i < len; i++) {
+                if (form.elements[i] == target) {
+                    if (form.elements[i+1]){
+                        form.elements[i+1].focus();
+                    }
+                    return;
+                }
+            }
+        }
+    }
+
+    var textbox1 = document.getElementById("txtTel1"),
+        textbox2 = document.getElementById("txtTel2"),
+        textbox3 = document.getElementById("txtTel3");
+
+    EventUtil.addHandler(textbox1, "keyup", tabForward);        
+    EventUtil.addHandler(textbox2, "keyup", tabForward);        
+    EventUtil.addHandler(textbox3, "keyup", tabForward);        
+
+})();
+</script>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">method</span>=<span class="value">"post"</span> <span class="attribute">action</span>=<span class="value">"http://www.nczonline.net"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>Enter your telephone number:<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"tel1"</span> <span class="attribute">id</span>=<span class="value">"txtTel1"</span> <span class="attribute">size</span>=<span class="value">"3"</span> <span class="attribute">maxlength</span>=<span class="value">"3"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"tel2"</span> <span class="attribute">id</span>=<span class="value">"txtTel2"</span> <span class="attribute">size</span>=<span class="value">"3"</span> <span class="attribute">maxlength</span>=<span class="value">"3"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"tel3"</span> <span class="attribute">id</span>=<span class="value">"txtTel3"</span> <span class="attribute">size</span>=<span class="value">"4"</span> <span class="attribute">maxlength</span>=<span class="value">"4"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"Submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">tabForward</span>(<span class="params">event</span>)</span>&#123;            </span><br><span class="line">        event = EventUtil.getEvent(event);</span><br><span class="line">        <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (target.value.length == target.maxLength)&#123;</span><br><span class="line">            <span class="keyword">var</span> form = target.form;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=form.elements.length; i &lt; len; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (form.elements[i] == target) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (form.elements[i+<span class="number">1</span>])&#123;</span><br><span class="line">                        form.elements[i+<span class="number">1</span>].focus();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">                </span><br><span class="line">    <span class="keyword">var</span> textbox1 = <span class="built_in">document</span>.getElementById(<span class="string">"txtTel1"</span>),</span><br><span class="line">        textbox2 = <span class="built_in">document</span>.getElementById(<span class="string">"txtTel2"</span>),</span><br><span class="line">        textbox3 = <span class="built_in">document</span>.getElementById(<span class="string">"txtTel3"</span>);</span><br><span class="line">    </span><br><span class="line">    EventUtil.addHandler(textbox1, <span class="string">"keyup"</span>, tabForward);        </span><br><span class="line">    EventUtil.addHandler(textbox2, <span class="string">"keyup"</span>, tabForward);        </span><br><span class="line">    EventUtil.addHandler(textbox3, <span class="string">"keyup"</span>, tabForward);        </span><br><span class="line">        </span><br><span class="line">&#125;)();</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>由于keyup事件会在用户输入了新字符之后触发，所以此时是检测文本框中内容长度的最佳时机。<br>这样一来，用户在填写这个简单的表单时，就不必再通过按制表键切换表单字段和提交表单了。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/过滤输入/">过滤输入</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2015/11/21/red-31/" data-title="小红本-(31)-过滤输入 | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/11/21/red-32/" title="小红本-(32)-H5验证！">
+  <strong>上一篇：</strong><br/>
+  <span>
+  小红本-(32)-H5验证！</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/11/21/red-30/"  title="小红本-(30)-文本框脚本">
+ <strong>下一篇：</strong><br/> 
+ <span>小红本-(30)-文本框脚本
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/11/21/red-31/" data-title="小红本-(31)-过滤输入" data-url="hinami.xyz/2015/11/21/red-31/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤输入"><span class="toc-number">1.</span> <span class="toc-text">过滤输入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作剪贴板"><span class="toc-number">2.</span> <span class="toc-text">操作剪贴板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#访问剪切板"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">访问剪切板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#出于安全性问题！这个东西被chrome等浏览器禁用！！！"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">出于安全性问题！这个东西被chrome等浏览器禁用！！！</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自动切换焦点"><span class="toc-number">3.</span> <span class="toc-text">自动切换焦点</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>33</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>37</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>33</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>33</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/约束验证API/" title="约束验证API">约束验证API<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文本框脚本/" title="文本框脚本">文本框脚本<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/表单脚本/" title="表单脚本">表单脚本<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件模拟/" title="事件模拟">事件模拟<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件委托/" title="事件委托">事件委托<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://tms.im" target="_blank" title="梦石真人">谭  总</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="cateaf.com" target="_blank" title="这人是个死基佬">小礼服</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="全球最大同性交友社区">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://home.cnblogs.com/u/yxy99/" target="_blank" title="yxy">yxy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m hinami in HNU. <br/>
+			This is my school,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hinami0507" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/346565386Toms" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/hinami.sin" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/po-xiao-14-75" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:346565386@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="hinami">hinami</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd65912a25436b0b55db731ce75f5c981' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

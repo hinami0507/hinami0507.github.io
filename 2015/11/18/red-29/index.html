@@ -1,0 +1,868 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>小红本-(29)-表单脚本 | hinami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hinami">
+    
+
+    
+    <meta name="description" content="在HTML 中，表单是由&amp;lt;form&amp;gt;元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。
+HTMLFormElement 继承了HTMLElement，因而与其他HTML 元素具有相同的默认属性。
+不过，HTMLFormElement 也有它自己下列独有的属性和方法。
+
+acceptCharset：服务器能够处理的字符集；等价于HTML 中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小红本-(29)-表单脚本">
+<meta property="og:url" content="hinami.xyz/2015/11/18/red-29/index.html">
+<meta property="og:site_name" content="hinami">
+<meta property="og:description" content="在HTML 中，表单是由&amp;lt;form&amp;gt;元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。
+HTMLFormElement 继承了HTMLElement，因而与其他HTML 元素具有相同的默认属性。
+不过，HTMLFormElement 也有它自己下列独有的属性和方法。
+
+acceptCharset：服务器能够处理的字符集；等价于HTML 中">
+<meta property="og:updated_time" content="2015-11-23T15:12:26.010Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小红本-(29)-表单脚本">
+<meta name="twitter:description" content="在HTML 中，表单是由&amp;lt;form&amp;gt;元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。
+HTMLFormElement 继承了HTMLElement，因而与其他HTML 元素具有相同的默认属性。
+不过，HTMLFormElement 也有它自己下列独有的属性和方法。
+
+acceptCharset：服务器能够处理的字符集；等价于HTML 中">
+<meta name="twitter:creator" content="@346565386Toms">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/fav.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hinami" title="hinami"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hinami">hinami</a></h1>
+				<h2 class="blog-motto">↖give me five~(๑•̀▽•́)و✧</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hinami.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/18/red-29/" title="小红本-(29)-表单脚本" itemprop="url">小红本-(29)-表单脚本</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-18T15:38:27.000Z" itemprop="datePublished"> 发表于 2015-11-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>在HTML 中，表单是由<code>&lt;form&gt;</code>元素来表示的，而在JavaScript 中，表单对应的则是HTMLForm-Element 类型。</p>
+<p>HTMLFormElement 继承了HTMLElement，因而与其他HTML 元素具有相同的默认属<br>性。</p>
+<p>不过，HTMLFormElement 也有它自己下列独有的属性和方法。</p>
+<ul>
+<li>acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。</li>
+<li>action：接受请求的URL；等价于HTML 中的action 特性。</li>
+<li>elements：表单中所有控件的集合（HTMLCollection）。</li>
+<li>enctype：请求的编码类型；等价于HTML 中的enctype 特性。</li>
+<li>length：表单中控件的数量。</li>
+<li>method：要发送的HTTP 请求类型，通常是”get”或”post”；等价于HTML 的method 特性。</li>
+<li>name：表单的名称；等价于HTML 的name 特性。</li>
+<li>reset()：将所有表单域重置为默认值。</li>
+<li>submit()：提交表单。</li>
+<li>target：用于发送请求和接收响应的窗口名称；等价于HTML 的target 特性。</li>
+</ul>
+<p>获取表单：</p>
+<p>小提示：可以通过<code>document.forms</code>取得页面中所有表单，返回的是一个数组。<br><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> firstForm = <span class="built_in">document</span>.forms[<span class="number">0</span>]; <span class="comment">//取得页面中的第一个表单</span></span><br><span class="line"><span class="keyword">var</span> myForm = <span class="built_in">document</span>.forms[<span class="string">"form2"</span>]; <span class="comment">//取得页面中名称为"form2"的表单</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h1 id="提交表单">提交表单</h1></blockquote>
+<p>使用<code>&lt;input&gt;</code>或<code>&lt;button&gt;</code>都可以定义表单提交按钮</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 通用提交按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"Submit Form"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 自定义提交按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span>&gt;</span>Submit Form<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 图像按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"image"</span> <span class="attribute">src</span>=<span class="value">"graphic.gif"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>只要表单中存在上面列出的任何一种按钮，那么在相应表单控件拥有焦点的情况下，按回车键就可以提交该表单。<br>（textarea是一个例外，在文本区中回车会换行。）</p>
+<p>如果表单里没有提交按钮，按回车键不会提交表单。</p>
+<p>以这种方式提交表单时，浏览器会在将请求发送给服务器之前触发submit 事件。</p>
+<p>这样，我们就有机会验证表单数据，并据以决定是否允许表单提交。<br>阻止这个事件的默认行为就可以取消表单提交。</p>
+<p>例如，下列代码会阻止表单提交。</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> form = document.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line">EventUtil.addHandler(form, <span class="string">"submit"</span>, function(<span class="keyword">event</span>)&#123;</span><br><span class="line">	<span class="comment">//取得事件对象</span></span><br><span class="line">	<span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line">	<span class="comment">//阻止默认事件</span></span><br><span class="line">	EventUtil.preventDefault(<span class="keyword">event</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">form</span> = document.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line"><span class="comment">//提交表单</span></span><br><span class="line"><span class="keyword">form</span>.submit();</span><br></pre></td></tr></table></figure>
+<p>在以调用submit()方法的形式提交表单时，不会触发submit 事件，因此要记得在调用此方法之<br>前先验证表单数据。</p>
+<p>提交表单时可能出现的最大问题，就是重复提交表单。</p>
+<p>在第一次提交表单后，如果长时间没有反应，用户可能会变得不耐烦。这时候，他们也许会反复单击提交按钮。<br>结果往往很麻烦（因为服务器要处理重复的请求），或者会造成错误（如果用户是下订单，那么可能会多订好几份）。<br>解决这一问题的办法有两个：在第一次提交表单后就禁用提交按钮，或者利用onsubmit 事件处理程序取消后续的表单提交操作。</p>
+<blockquote>
+<h1 id="重置表单">重置表单</h1></blockquote>
+<p>在用户单击重置按钮时，表单会被重置。使用type 特性值为”reset”的<code>&lt;input&gt;</code>或<code>&lt;button&gt;</code>都可以创建重置按钮，如下面的例子所示。<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 通用重置按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> <span class="attribute">value</span>=<span class="value">"Reset Form"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 自定义重置按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"reset"</span>&gt;</span>Reset Form<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>重制后，表单会变为刚加载页面时候的样子。</p>
+<p>用户单击重置按钮重置表单时，会触发reset 事件，可以借此机会阻止reset</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> form = document.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line">EventUtil.addHandler(form, <span class="string">"reset"</span>, function(<span class="keyword">event</span>)&#123;</span><br><span class="line"><span class="comment">//取得事件对象</span></span><br><span class="line"><span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line"><span class="comment">//阻止表单重置</span></span><br><span class="line">EventUtil.preventDefault(<span class="keyword">event</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>JS方法重制表单</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">form</span> = document.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line"><span class="comment">//重置表单</span></span><br><span class="line"><span class="keyword">form</span>.reset();</span><br></pre></td></tr></table></figure>
+<p>然而这个东西很少用，<br>用户辛辛苦苦填完表，<br>误点了一下重制，<br>想掀桌子 (╯°Д°)╯︵ ┻━┻</p>
+<hr>
+<blockquote>
+<h1 id="表单字段">表单字段</h1></blockquote>
+<p>这个常用于验证表单<br>可以像访问页面中的其他元素一样，使用原生DOM 方法访问表单元素。<br>此外，每个表单都有elements 属性，该属性是表单中所有表单元素（字段）的集合。</p>
+<p>这个elements 集合是一个有序列表，其中包含着表单中的所有字段，</p>
+<p>例如：</p>
+<ul>
+<li><code>&lt;input&gt;</code></li>
+<li><code>&lt;textarea&gt;</code></li>
+<li><code>&lt;button&gt;</code></li>
+<li><code>&lt;fieldset&gt;</code></li>
+</ul>
+<p>每个表单字段在elements 集合中的顺序，与它们出现在标记中的顺序相同，可以按照位置和name 特性来访问它们。下面来看一个例子。</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">form</span> method=<span class="string">"post"</span> id=<span class="string">"myForm"</span>&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;<span class="keyword">li</span>&gt;&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"radio"</span> name=<span class="string">"color1"</span> value=<span class="string">"red"</span>&gt;Red&lt;/<span class="keyword">li</span>&gt;</span><br><span class="line">		&lt;<span class="keyword">li</span>&gt;&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"radio"</span> name=<span class="string">"color2"</span> value=<span class="string">"green"</span>&gt;Green&lt;/<span class="keyword">li</span>&gt;</span><br><span class="line">		&lt;<span class="keyword">li</span>&gt;&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"radio"</span> name=<span class="string">"color3"</span> value=<span class="string">"blue"</span>&gt;Blue&lt;/<span class="keyword">li</span>&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> form</span> = document.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line">······································</span><br><span class="line"></span><br><span class="line"><span class="comment">//取得表单中的第一个字段</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> field1</span> = form.elements[<span class="number">0</span>];   </span><br><span class="line">                      <span class="comment">//&lt;input type="radio" name="color" value="red"&gt;</span></span><br><span class="line"></span><br><span class="line">·······························</span><br><span class="line"><span class="comment">//取得表单中的第一个字段的文本值</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> field1</span> = form.elements[<span class="number">0</span>].value;  <span class="comment">//red</span></span><br><span class="line">·······························</span><br><span class="line"><span class="comment">//取得名为"color2"的字段</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> field2</span> = form.elements[<span class="string">"color2"</span>];</span><br><span class="line">                     <span class="comment">//&lt;input type="radio" name="color" value="green"&gt;</span></span><br><span class="line">·························</span><br><span class="line"><span class="comment">//取得表单中包含的字段的数量</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> fieldCount</span> = form.elements.length;   <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<p>为了兼容性，我们应该尽可能使用elements。</p>
+<blockquote>
+<h1 id="共有的表单字段属性">共有的表单字段属性</h1></blockquote>
+<ul>
+<li>disabled：布尔值，表示当前字段是否被禁用。</li>
+<li>form：指向当前字段所属表单的指针；只读。</li>
+<li>name：当前字段的名称。</li>
+<li>readOnly：布尔值，表示当前字段是否只读。</li>
+<li>tabIndex：表示当前字段的切换（tab）序号。</li>
+<li>type：当前字段的类型，如”checkbox”、”radio”，等等。</li>
+<li>value：当前字段将被提交给服务器的值。对文件字段来说，这个属性是只读的，包含着文件在计算机中的路径。</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">form</span> = document.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> field = <span class="keyword">form</span>.elements[0];</span><br><span class="line">································</span><br><span class="line"><span class="comment">//修改value 属性</span></span><br><span class="line">field.value = <span class="string">"Another value"</span>;</span><br><span class="line">·····················</span><br><span class="line"><span class="comment">//检查form 属性的值</span></span><br><span class="line">alert(field.<span class="keyword">form</span> === <span class="keyword">form</span>); <span class="comment">//true</span></span><br><span class="line">·································</span><br><span class="line"><span class="comment">//把焦点设置到当前字段</span></span><br><span class="line">field.focus();</span><br><span class="line">····························</span><br><span class="line"><span class="comment">//禁用当前字段</span></span><br><span class="line">field.disabled = true;</span><br><span class="line">····················</span><br><span class="line"><span class="comment">//修改type 属性（不推荐，但对&lt;input&gt;来说是可行的）</span></span><br><span class="line">field.<span class="keyword">type</span> = <span class="string">"checkbox"</span>;</span><br></pre></td></tr></table></figure>
+<p>付费系统经常要禁止多次提交，onclick虽然能实现，**但是在不同浏览器中<code>onclick</code>和<code>submit</code>事件执行顺序不同，所以最好用<code>submit</code>来阻止多次提交</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment">//避免多次提交表单</span></span><br><span class="line">EventUtil.addHandler(form, <span class="string">"submit"</span>, function(<span class="keyword">event</span>)&#123;</span><br><span class="line">	<span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line">	<span class="keyword">var</span> target = EventUtil.getTarget(<span class="keyword">event</span>);</span><br><span class="line">	<span class="comment">//取得提交按钮</span></span><br><span class="line">	<span class="keyword">var</span> btn = target.elements[<span class="string">"submit-btn"</span>];</span><br><span class="line">	<span class="comment">//禁用它</span></span><br><span class="line">	btn.disabled = <span class="keyword">true</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>下边是各个的type属性值</p>
+<ul>
+<li>单选列表         <code>&lt;select&gt;...&lt;/select&gt;</code>               “select-one”</li>
+<li>多选列表        <code>&lt;select multiple&gt;...&lt;/select&gt;</code>    “select-multiple”</li>
+<li>自定义按钮      <code>&lt;button&gt;...&lt;/button&gt;</code>                 “submit”</li>
+<li>自定义非提交按钮 <code>&lt;button type=&quot;button&quot;&gt;...&lt;/button&gt;</code>   “button”</li>
+<li>自定义重置按钮 <code>&lt;button type=&quot;reset&quot;&gt;...&lt;/buton&gt;</code>       “reset”</li>
+<li>自定义提交按钮 <code>&lt;button type=&quot;submit&quot;&gt;...&lt;/buton&gt;</code>      “submit”</li>
+</ul>
+<blockquote>
+<h1 id="共有的表单字段方法">共有的表单字段方法</h1></blockquote>
+<p>两个大家都有的方法:</p>
+<ul>
+<li>focus(),获取焦点···<code>document.forms[0].elements[0].focus();</code></li>
+<li>blur(),移走焦点···<code>document.forms[0].elements[0].blur();</code></li>
+</ul>
+<p>使用focus()要注意的是:</p>
+<ul>
+<li><p>如果第一个表单字段是一个<code>&lt;input&gt;</code>元素，且其type 特性的值为”hidden”，那么以上代码会导致错误。</p>
+</li>
+<li><p>另外，如果使用CSS 的display 和visibility 属性隐藏了该字段，同样也会导致错误。</p>
+</li>
+</ul>
+<p>还有一个autofocus兼容问题，就不讲了</p>
+<blockquote>
+<h1 id="共有的表单字段事件">共有的表单字段事件</h1></blockquote>
+<ul>
+<li><code>focus</code>：当前字段获得焦点时触发。</li>
+<li><code>blur</code>：当前字段失去焦点时触发。</li>
+<li><code>change</code>：对于<code>&lt;input&gt;</code>和<code>&lt;textarea&gt;</code>元素，在它们失去焦点且value 值改变时触发；对于<code>&lt;select&gt;</code>元素，在其选项改变时触发。</li>
+</ul>
+<p><code>blur</code>和<code>focus</code>都很好理解</p>
+<h5 id="但是change_事件在不同表单控件中触发的次数会有所不同:">但是change 事件在不同表单控件中触发的次数会有所不同:</h5><ul>
+<li><p>对于<code>&lt;input&gt;</code>和<code>&lt;textarea&gt;</code>元素，当它们从获得焦点到失去焦点且value 值改变时，才会触发change 事件。</p>
+</li>
+<li><p>对于<code>&lt;select&gt;</code>元素，只要用户选择了不同的选项，就会触发change 事件；换句话说，不失去焦点也会触发change 事件。</p>
+</li>
+</ul>
+<p>下边的例子，</p>
+<ul>
+<li>用<code>focus事件</code>响应用户焦点(输入框变黄)</li>
+<li>用<code>change事件</code>和<code>blur事件</code>检测用户输入是否为数字<code>/[^\d]/.test()</code>(输入框变红)响应用户失去焦点(输入框无背景)</li>
+</ul>
+<form method="post" action="javascript:alert('Form submitted!')" id="myForm"><br><div><br><label for="comments">Type numbers:</label><br><br><input type="text" id="txtNumbers" name="numbers" style="height:30px;"><br></div><br><input type="submit" value="Submit Form" id="submit-btn"><br></form>     
+
+
+<script type="text/javascript">
+    EventUtil.addHandler(window, "load", function(event){
+        var textbox = document.getElementById("myForm");
+
+        EventUtil.addHandler(textbox, "focus", function(event){
+            event = EventUtil.getEvent(event);
+            var target = EventUtil.getTarget(event);
+
+            target.style.backgroundColor = "yellow";
+        });
+
+        EventUtil.addHandler(textbox, "blur", function(event){
+            event = EventUtil.getEvent(event);
+            var target = EventUtil.getTarget(event);
+
+            if (/[^\d]/.test(target.value)){
+                target.style.backgroundColor = "red";
+            } else {
+                target.style.backgroundColor = "";
+            }
+        });
+
+        EventUtil.addHandler(textbox, "change", function(event){
+            event = EventUtil.getEvent(event);
+            var target = EventUtil.getTarget(event);
+
+            if (/[^\d]/.test(target.value)){
+                target.style.backgroundColor = "red";
+            } else {
+                target.style.backgroundColor = "";
+            }
+        });
+
+        textbox.focus();
+    });               
+</script>
+
+<p>下边是源码，<strong>要注意的是:不同浏览器中<code>blur事件</code>和<code>change事件</code>触发顺序不同</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">method</span>=<span class="value">"post"</span> <span class="attribute">action</span>=<span class="value">"javascript:alert('Form submitted!')"</span> <span class="attribute">id</span>=<span class="value">"myForm"</span>&gt;</span>        </span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"comments"</span>&gt;</span>Type numbers:<span class="tag">&lt;/<span class="title">label</span>&gt;</span><span class="tag">&lt;<span class="title">br</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">id</span>=<span class="value">"txtNumbers"</span> <span class="attribute">name</span>=<span class="value">"numbers"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"Submit Form"</span> <span class="attribute">id</span>=<span class="value">"submit-btn"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">form</span>&gt;</span>     </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> textbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="number">0</span>];</span><br><span class="line">        </span><br><span class="line">        EventUtil.addHandler(textbox, <span class="string">"focus"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">            event = EventUtil.getEvent(event);</span><br><span class="line">            <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line">            </span><br><span class="line">            target.style.backgroundColor = <span class="string">"yellow"</span>;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        EventUtil.addHandler(textbox, <span class="string">"blur"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">            event = EventUtil.getEvent(event);</span><br><span class="line">            <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (<span class="regexp">/[^\d]/</span>.test(target.value))&#123;</span><br><span class="line">                target.style.backgroundColor = <span class="string">"red"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                target.style.backgroundColor = <span class="string">""</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        EventUtil.addHandler(textbox, <span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">            event = EventUtil.getEvent(event);</span><br><span class="line">            <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (<span class="regexp">/[^\d]/</span>.test(target.value))&#123;</span><br><span class="line">                target.style.backgroundColor = <span class="string">"red"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                target.style.backgroundColor = <span class="string">""</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        textbox.focus();</span><br><span class="line">    &#125;);               </span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<script type="text/javascript">
+    var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    },
+
+    getButton: function(event){
+        if (document.implementation.hasFeature("MouseEvents", "2.0")){
+            return event.button;
+        } else {
+            switch(event.button){
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4: return 1;
+            }
+        }
+    },
+
+    getCharCode: function(event){
+        if (typeof event.charCode == "number"){
+            return event.charCode;
+        } else {
+            return event.keyCode;
+        }
+    },
+
+    getClipboardText: function(event){
+        var clipboardData =  (event.clipboardData || window.clipboardData);
+        return clipboardData.getData("text");
+    },
+
+    getEvent: function(event){
+        return event ? event : window.event;
+    },
+
+    getRelatedTarget: function(event){
+        if (event.relatedTarget){
+            return event.relatedTarget;
+        } else if (event.toElement){
+            return event.toElement;
+        } else if (event.fromElement){
+            return event.fromElement;
+        } else {
+            return null;
+        }
+
+    },
+
+    getTarget: function(event){
+        return event.target || event.srcElement;
+    },
+
+    getWheelDelta: function(event){
+        if (event.wheelDelta){
+            return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
+        } else {
+            return -event.detail * 40;
+        }
+    },
+
+    preventDefault: function(event){
+        if (event.preventDefault){
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+
+    removeHandler: function(element, type, handler){
+        if (element.removeEventListener){
+            element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent){
+            element.detachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = null;
+        }
+    },
+
+    setClipboardText: function(event, value){
+        if (event.clipboardData){
+            event.clipboardData.setData("text/plain", value);
+        } else if (window.clipboardData){
+            window.clipboardData.setData("text", value);
+        }
+    },
+
+    stopPropagation: function(event){
+        if (event.stopPropagation){
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+
+};
+</script>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/表单脚本/">表单脚本</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2015/11/18/red-29/" data-title="小红本-(29)-表单脚本 | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/11/21/red-30/" title="小红本-(30)-文本框脚本">
+  <strong>上一篇：</strong><br/>
+  <span>
+  小红本-(30)-文本框脚本</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/11/18/red-28/"  title="小红本-(28)-事件模拟">
+ <strong>下一篇：</strong><br/> 
+ <span>小红本-(28)-事件模拟
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/11/18/red-29/" data-title="小红本-(29)-表单脚本" data-url="hinami.xyz/2015/11/18/red-29/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#提交表单"><span class="toc-number">1.</span> <span class="toc-text">提交表单</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重置表单"><span class="toc-number">2.</span> <span class="toc-text">重置表单</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表单字段"><span class="toc-number">3.</span> <span class="toc-text">表单字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#共有的表单字段属性"><span class="toc-number">4.</span> <span class="toc-text">共有的表单字段属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#共有的表单字段方法"><span class="toc-number">5.</span> <span class="toc-text">共有的表单字段方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#共有的表单字段事件"><span class="toc-number">6.</span> <span class="toc-text">共有的表单字段事件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#但是change_事件在不同表单控件中触发的次数会有所不同:"><span class="toc-number">6.0.0.0.1.</span> <span class="toc-text">但是change 事件在不同表单控件中触发的次数会有所不同:</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>33</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>37</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>33</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>33</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/约束验证API/" title="约束验证API">约束验证API<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文本框脚本/" title="文本框脚本">文本框脚本<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/表单脚本/" title="表单脚本">表单脚本<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件模拟/" title="事件模拟">事件模拟<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件委托/" title="事件委托">事件委托<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://tms.im" target="_blank" title="梦石真人">谭  总</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="cateaf.com" target="_blank" title="这人是个死基佬">小礼服</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="全球最大同性交友社区">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://home.cnblogs.com/u/yxy99/" target="_blank" title="yxy">yxy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m hinami in HNU. <br/>
+			This is my school,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hinami0507" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/346565386Toms" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/hinami.sin" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/po-xiao-14-75" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:346565386@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="hinami">hinami</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd65912a25436b0b55db731ce75f5c981' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
