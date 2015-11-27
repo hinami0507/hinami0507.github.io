@@ -17,7 +17,7 @@
 <meta property="og:url" content="hinami.xyz/2015/11/26/red-32/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="不用JS去验证表单">
-<meta property="og:updated_time" content="2015-11-27T13:32:20.714Z">
+<meta property="og:updated_time" content="2015-11-27T13:41:42.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红本-(32)-HTML5约束验证API">
 <meta name="twitter:description" content="不用JS去验证表单">
@@ -154,6 +154,20 @@
 <blockquote>
 <h1 id="选择框脚本">选择框脚本</h1></blockquote>
 <p>选择框是通过<code>&lt;select&gt;</code>和<code>&lt;option&gt;</code>元素创建的</p>
+<ul>
+<li>add(newOption, relOption)：向控件中插入新<code>&lt;option&gt;</code>元素，其位置在相关项（relOption）之前。</li>
+<li>multiple：布尔值，表示是否允许多项选择；等价于HTML 中的multiple 特性。</li>
+<li>options：控件中所有<code>&lt;option&gt;</code>元素的HTMLCollection。</li>
+<li>remove(index)：移除给定位置的选项。</li>
+<li>selectedIndex：基于0 的选中项的索引，如果没有选中项，则值为-1。对于支持多选的控件，只保存选中项中第一项的索引。</li>
+<li>size：选择框中可见的行数；等价于HTML 中的size 特性。</li>
+</ul>
+<p>选择框的type属性只能是：</p>
+<ul>
+<li>select-one</li>
+<li>multiple</li>
+</ul>
+<p>下边是自己写的例子~</p>
 <select id="sele" size="10"><br>    <option>hinami</option><br>    <option>hello</option><br>    <option>bitch</option><br>    <option>dowith</option><br></select>
 
 <p><br></p>
@@ -191,32 +205,19 @@ lengh12.onclick = function(){
 
 var adshow12 = document.getElementById("adshow12");
 adshow12.onclick = function(){
-    selectId.size+=1;
+    selectId.size++;
 }
 
 var redushow12 = document.getElementById("redushow12");
-adshow12.onclick = function(){
-    selectId.size-=1;
+redushow12.onclick = function(){
+    selectId.size--;
 }
 
 </script>
 
 
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">select</span> <span class="attribute">size</span>=<span class="value">"3"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>hinami<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>hello<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>bitch<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>dowith<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>yoursele<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>add(newOption, relOption)：向控件中插入新<code>&lt;option&gt;</code>元素，其位置在相关项（relOption）之前。</li>
-<li>multiple：布尔值，表示是否允许多项选择；等价于HTML 中的multiple 特性。</li>
-<li>options：控件中所有<code>&lt;option&gt;</code>元素的HTMLCollection。</li>
-<li>remove(index)：移除给定位置的选项。</li>
-<li>selectedIndex：基于0 的选中项的索引，如果没有选中项，则值为-1。对于支持多选的控件，只保存选中项中第一项的索引。</li>
-<li>size：选择框中可见的行数；等价于HTML 中的size 特性。</li>
-</ul>
-<p>选择框的type属性只能是：</p>
-<ul>
-<li>select-one</li>
-<li>multiple</li>
-</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">select</span> <span class="attribute">id</span>=<span class="value">"sele"</span> <span class="attribute">size</span>=<span class="value">"10"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>hinami<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>hello<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>bitch<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>dowith<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"add12"</span>&gt;</span>添加选项<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"remove12"</span>&gt;</span>删除选项<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"lengh12"</span>&gt;</span>删除所有选项<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"adshow12"</span>&gt;</span>添加选项显示<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"redushow12"</span>&gt;</span>减少选项显示<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> selectId = <span class="built_in">document</span>.getElementById(<span class="string">"sele"</span>);</span><br><span class="line">i=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add12 = <span class="built_in">document</span>.getElementById(<span class="string">"add12"</span>);</span><br><span class="line"></span><br><span class="line">add12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	i = i +<span class="number">1</span>; <span class="comment">//用与记录</span></span><br><span class="line">	selectId.options.add(<span class="keyword">new</span> Option(<span class="string">"new op"</span>+i,<span class="number">4</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> remove12 = <span class="built_in">document</span>.getElementById(<span class="string">"remove12"</span>);</span><br><span class="line">remove12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	selectId.options.remove(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lengh12 = <span class="built_in">document</span>.getElementById(<span class="string">"lengh12"</span>);</span><br><span class="line">lengh12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	selectId.options.length=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> adshow12 = <span class="built_in">document</span>.getElementById(<span class="string">"adshow12"</span>);</span><br><span class="line">adshow12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	selectId.size++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> redushow12 = <span class="built_in">document</span>.getElementById(<span class="string">"redushow12"</span>);</span><br><span class="line">redushow12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	selectId.size--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
