@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>JsDomArt-1 | hinami</title>
+    <title>小红本-(32)-HTML5约束验证API | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="新坑~JavaScriptDOM变成艺术">
+    <meta name="description" content="不用JS去验证表单">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JsDomArt-1">
-<meta property="og:url" content="hinami.xyz/2015/11/08/JsDomArt-1/index.html">
+<meta property="og:title" content="小红本-(32)-HTML5约束验证API">
+<meta property="og:url" content="hinami.xyz/2015/11/26/red-32/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="新坑~JavaScriptDOM变成艺术">
-<meta property="og:updated_time" content="2015-11-10T07:15:44.652Z">
+<meta property="og:description" content="不用JS去验证表单">
+<meta property="og:updated_time" content="2015-11-27T13:32:20.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JsDomArt-1">
-<meta name="twitter:description" content="新坑~JavaScriptDOM变成艺术">
+<meta name="twitter:title" content="小红本-(32)-HTML5约束验证API">
+<meta name="twitter:description" content="不用JS去验证表单">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -81,24 +81,157 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/08/JsDomArt-1/" title="JsDomArt-1" itemprop="url">JsDomArt-1</a>
+      <a href="/2015/11/26/red-32/" title="小红本-(32)-HTML5约束验证API" itemprop="url">小红本-(32)-HTML5约束验证API</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-08T02:07:51.000Z" itemprop="datePublished"> 发表于 2015-11-08</time>
+    <time datetime="2015-11-26T14:01:48.000Z" itemprop="datePublished"> 发表于 2015-11-26</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h1 id="新坑~JavaScriptDOM变成艺术">新坑~JavaScriptDOM变成艺术</h1>  
+		<style type="text/css">
+.exbt
+{
+    text-align: center;
+    background-color:#678FC6;
+    border:none;
+    border-radius: 1px;
+    padding: 10px;
+    height: 35px;
+    color: #fff;
+    font-family: microsoft Yahei; 
+}
+</style>
+
+
+<p>HTML5验证表单—支持的浏览器：<br><code>Firefox 4+</code>、<code>Safari 5+</code>、<code>Chrome</code> 和<code>Opera 10+</code>。</p>
+<blockquote>
+<h1 id="必填字段">必填字段</h1></blockquote>
+<p><code>&lt;input type=&quot;text&quot; name=&quot;username&quot; required&gt;</code></p>
+<form><br><br><input type="text" name="username" class="exbt" placeholder="不能为空" required><br><br><br><input type="submit" class="exbt" style="cursor:pointer;" value="Submit"><br><br></form>
+
+
+<p>这个属性适用于<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>和<code>&lt;select&gt;</code>字段（Opera 11 及之前版本还不支持<code>&lt;select&gt;</code>的required 属性）。</p>
+<p>在JavaScript 中，通过对应的required 属性，可以检查某个表单字段是否为必填字段。</p>
+<blockquote>
+<h1 id="其他输入类型">其他输入类型</h1></blockquote>
+<form><br><br><input type="email" class="exbt" placeholder="请输入邮箱" name="email"><br><br><input type="url" class="exbt" placeholder="请输入链接" name="homepage"><br><br><br><input type="submit" class="exbt" style="cursor:pointer;" value="Submit"><br><br></form><br><code>&lt;input type=&quot;email&quot; name =&quot;email&quot;&gt;</code><br><code>&lt;input type=&quot;url&quot; name=&quot;homepage&quot;&gt;</code><br><br>注意：”-@-“会被当成一个有效的电子邮件地<br><br>要注意的是，如果不给<code>&lt;input&gt;</code>元素设置required 属性，那么空文本框也会验证通过。<br><br>这几个元素都要求填写某种基于数字的值：”number”、”range”、”datetime”、”datetime-local”、”date”、”month”、”week”，还有”time”。<br>然而他们的支持范围并不是很广，所以暂时不看<br><br>&gt; # 输入模式<br><br><code>&lt;input type=&quot;text&quot; pattern=&quot;\d+&quot; name=&quot;count&quot;&gt;</code><br><br><form><br><input type="text" pattern="\d+" class="exbt" placeholder="请输入数字" name="count"><br><br><input type="submit" class="exbt" style="cursor:pointer;" value="Submit"><br></form>
+
+
+<p>注意，模式的开头和末尾不用加^和$符号（假定已经有了）。<br>这两个符号表示输入的值必须从头到尾都与模式匹配。</p>
+<p>与其他输入类型相似，指定pattern 也不能阻止用户输入无效的文本。</p>
+<p>这个模式应用给值，浏览器来判断值是有效，还是无效。</p>
+<p>在JavaScript 中可以通过pattern 属性访问模式。<br><code>var pattern = document.forms[0].elements[&quot;count&quot;].pattern;</code><br>使用以下代码可以检测浏览器是否支持pattern 属性。<br><code>var isPatternSupported = &quot;pattern&quot; in document.createElement(&quot;input&quot;);</code></p>
+<p>要检测整个表单是否有效，可以在表单自身调用checkValidity()方法。</p>
+<p>如果所有表单字段都有效，这个方法返回true；即使有一个字段无效，这个方法也会返回false。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(document.forms[<span class="number">0</span>].checkValidity())&#123;</span><br><span class="line"><span class="comment">//表单有效，继续</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//表单无效</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="validity属性">validity属性</h1></blockquote>
+<p>checkValidity()方法简单地告诉你字段是否有效相比</p>
+<p>validity 属性则会告诉你为什么字段有效或无效。这个对象中包含一系列属性，每个属性会返回一个布尔值。</p>
+<ul>
+<li>customError ：如果设置了setCustomValidity()，则为true，否则返回false。</li>
+<li>patternMismatch：如果值与指定的pattern 属性不匹配，返回true。</li>
+<li>rangeOverflow：如果值比max 值大，返回true。</li>
+<li>rangeUnderflow：如果值比min 值小，返回true。</li>
+<li>stepMisMatch：如果min 和max 之间的步长值不合理，返回true。</li>
+<li>tooLong：如果值的长度超过了maxlength 属性指定的长度，返回true。有的浏览器（如Firefox 4）会自动约束字符数量，因此这个值可能永远都返回false。</li>
+<li>typeMismatch：如果值不是”mail”或”url”要求的格式，返回true。</li>
+<li>valid：如果这里的其他属性都是false，返回true。checkValidity()也要求相同的值。</li>
+<li>valueMissing：如果标注为required 的字段中没有值，返回true。</li>
+</ul>
+<blockquote>
+<h1 id="禁用验证">禁用验证</h1></blockquote>
+<p>通过设置novalidate 属性，可以告诉表单不进行验证。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">method</span>=<span class="value">"post"</span> <span class="attribute">action</span>=<span class="value">"signup.php"</span> <span class="attribute">novalidate</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--这里插入表单元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在JavaScript 中使用noValidate 属性可以取得或设置这个值，如果这个属性存在，值为true，如果不存在，值为false。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">document.forms[<span class="number">0</span>].noValidate = <span class="literal">true</span>; <span class="comment">//禁用验证</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="选择框脚本">选择框脚本</h1></blockquote>
+<p>选择框是通过<code>&lt;select&gt;</code>和<code>&lt;option&gt;</code>元素创建的</p>
+<select id="sele" size="10"><br>    <option>hinami</option><br>    <option>hello</option><br>    <option>bitch</option><br>    <option>dowith</option><br></select>
+
+<p><br></p>
+<button class="exbt" style="cursor:pointer;" id="add12">添加选项</button>
+
+<button class="exbt" style="cursor:pointer;" id="remove12">删除选项</button>
+
+<button class="exbt" style="cursor:pointer;" id="lengh12">删除所有选项</button>
+
+<button class="exbt" style="cursor:pointer;" id="adshow12">添加选项显示</button>
+
+<button class="exbt" style="cursor:pointer;" id="redushow12">减少选项显示</button>
+
+<script type="text/javascript">
+var selectId = document.getElementById("sele");
+i=0;
+
+
+var add12 = document.getElementById("add12");
+
+add12.onclick = function(){
+    i = i +1
+    selectId.options.add(new Option("new op"+i,4))
+}
+
+var remove12 = document.getElementById("remove12");
+remove12.onclick = function(){
+    selectId.options.remove(2)
+}
+
+var lengh12 = document.getElementById("lengh12");
+lengh12.onclick = function(){
+    selectId.options.length=0;
+}
+
+var adshow12 = document.getElementById("adshow12");
+adshow12.onclick = function(){
+    selectId.size+=1;
+}
+
+var redushow12 = document.getElementById("redushow12");
+adshow12.onclick = function(){
+    selectId.size-=1;
+}
+
+</script>
+
+
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">select</span> <span class="attribute">size</span>=<span class="value">"3"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>hinami<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>hello<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>bitch<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>dowith<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>yoursele<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>add(newOption, relOption)：向控件中插入新<code>&lt;option&gt;</code>元素，其位置在相关项（relOption）之前。</li>
+<li>multiple：布尔值，表示是否允许多项选择；等价于HTML 中的multiple 特性。</li>
+<li>options：控件中所有<code>&lt;option&gt;</code>元素的HTMLCollection。</li>
+<li>remove(index)：移除给定位置的选项。</li>
+<li>selectedIndex：基于0 的选中项的索引，如果没有选中项，则值为-1。对于支持多选的控件，只保存选中项中第一项的索引。</li>
+<li>size：选择框中可见的行数；等价于HTML 中的size 特性。</li>
+</ul>
+<p>选择框的type属性只能是：</p>
+<ul>
+<li>select-one</li>
+<li>multiple</li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a><a href="/tags/过滤输入/">过滤输入</a>
+  </div>
 
 </div>
 
@@ -106,7 +239,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/11/08/JsDomArt-1/" data-title="JsDomArt-1 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/11/26/red-32/" data-title="小红本-(32)-HTML5约束验证API | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -119,19 +252,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/11/10/red-22/" title="小红书-(22)-事件对象">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红书-(22)-事件对象</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/11/07/red-21/"  title="小红书-(21)-事件">
+<a href="/2015/11/21/red-31/"  title="小红本-(31)-过滤输入">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(21)-事件
+ <span>小红本-(31)-过滤输入
 </span>
 </a>
 </div>
@@ -140,7 +265,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/11/08/JsDomArt-1/" data-title="JsDomArt-1" data-url="hinami.xyz/2015/11/08/JsDomArt-1/"></div>
+	<div class="ds-thread" data-thread-key="2015/11/26/red-32/" data-title="小红本-(32)-HTML5约束验证API" data-url="hinami.xyz/2015/11/26/red-32/"></div>
 </section>
 
 
@@ -150,7 +275,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#新坑~JavaScriptDOM变成艺术"><span class="toc-number">1.</span> <span class="toc-text">新坑~JavaScriptDOM变成艺术</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#必填字段"><span class="toc-number">1.</span> <span class="toc-text">必填字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他输入类型"><span class="toc-number">2.</span> <span class="toc-text">其他输入类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#validity属性"><span class="toc-number">3.</span> <span class="toc-text">validity属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#禁用验证"><span class="toc-number">4.</span> <span class="toc-text">禁用验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择框脚本"><span class="toc-number">5.</span> <span class="toc-text">选择框脚本</span></a></li></ol>
  
   </div>
 
