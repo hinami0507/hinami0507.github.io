@@ -17,7 +17,7 @@
 <meta property="og:url" content="hinami.xyz/2015/11/26/red-32/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="不用JS去验证表单">
-<meta property="og:updated_time" content="2015-11-27T13:49:22.417Z">
+<meta property="og:updated_time" content="2015-11-27T15:13:39.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红本-(32)-HTML5约束验证API">
 <meta name="twitter:description" content="不用JS去验证表单">
@@ -218,7 +218,20 @@ redushow12.onclick = function(){
 
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">select</span> <span class="attribute">id</span>=<span class="value">"sele"</span> <span class="attribute">size</span>=<span class="value">"10"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>hinami<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>hello<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>bitch<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">option</span>&gt;</span>dowith<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"add12"</span>&gt;</span>添加选项<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"remove12"</span>&gt;</span>删除选项<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"lengh12"</span>&gt;</span>删除所有选项<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"adshow12"</span>&gt;</span>添加选项显示<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"exbt"</span>  <span class="attribute">id</span>=<span class="value">"redushow12"</span>&gt;</span>减少选项显示<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> selectId = <span class="built_in">document</span>.getElementById(<span class="string">"sele"</span>);</span><br><span class="line">i=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add12 = <span class="built_in">document</span>.getElementById(<span class="string">"add12"</span>);</span><br><span class="line">add12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	i = i +<span class="number">1</span>; <span class="comment">//用与记录</span></span><br><span class="line">	selectId.options.add(<span class="keyword">new</span> Option(<span class="string">"new op"</span>+i,<span class="string">"new op"</span>+i))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> remove12 = <span class="built_in">document</span>.getElementById(<span class="string">"remove12"</span>);</span><br><span class="line">remove12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	selectId.options.remove(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lengh12 = <span class="built_in">document</span>.getElementById(<span class="string">"lengh12"</span>);</span><br><span class="line">lengh12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	selectId.options.length=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> adshow12 = <span class="built_in">document</span>.getElementById(<span class="string">"adshow12"</span>);</span><br><span class="line">adshow12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	selectId.size++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> redushow12 = <span class="built_in">document</span>.getElementById(<span class="string">"redushow12"</span>);</span><br><span class="line">redushow12.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	selectId.size--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-  
+<p>在DOM 中，每个<code>&lt;option&gt;</code>元素都有一个HTMLOptionElement 对象表示。为便于访问数据，HTMLOptionElement 对象添加了下列属性：</p>
+<ul>
+<li>index：当前选项在options 集合中的索引。</li>
+<li>label：当前选项的标签；等价于HTML 中的label 特性。</li>
+<li>selected：布尔值，表示当前选项是否被选中。将这个属性设置为true 可以选中当前选项。</li>
+<li>text：选项的文本。</li>
+<li>value：选项的值（等价于HTML 中的value 特性）。</li>
+</ul>
+<p>可以与下面使用选项属性的代<br>码作一比较：<br>var selectbox = document.forms[0]. elements[“location”];<br>//推荐<br>var text = selectbox.options[0].text; //选项的文本<br>var value = selectbox.options[0].value; //选项的值<br>在操作选项时，我们建议最好是使用特定于选项的属性，因为所有浏览器都支持这些属性。<br>在将表单控件作为DOM 节点的情况下，实际的交互方式则会因浏览器而异。我们不推荐使用标准DOM技术</p>
+<p>修改<code>&lt;option&gt;</code>元素的文本或者值。</p>
+<p>最后，我们还想提醒读者注意一点：选择框的change 事件与其他表单字段的change 事件触发的条件不一样。<br>其他表单字段的change 事件是在值被修改且焦点离开当前字段时触发，而选择框的change 事件只要选中了选项就会触发。</p>
+<blockquote>
+<h1 id="选择选项">选择选项</h1></blockquote>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -253,6 +266,14 @@ redushow12.onclick = function(){
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/12/03/shengdian/" title="shengdian">
+  <strong>上一篇：</strong><br/>
+  <span>
+  shengdian</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/11/21/red-31/"  title="小红本-(31)-过滤输入">
@@ -276,7 +297,7 @@ redushow12.onclick = function(){
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#必填字段"><span class="toc-number">1.</span> <span class="toc-text">必填字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他输入类型"><span class="toc-number">2.</span> <span class="toc-text">其他输入类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#validity属性"><span class="toc-number">3.</span> <span class="toc-text">validity属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#禁用验证"><span class="toc-number">4.</span> <span class="toc-text">禁用验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择框脚本"><span class="toc-number">5.</span> <span class="toc-text">选择框脚本</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#必填字段"><span class="toc-number">1.</span> <span class="toc-text">必填字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他输入类型"><span class="toc-number">2.</span> <span class="toc-text">其他输入类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#validity属性"><span class="toc-number">3.</span> <span class="toc-text">validity属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#禁用验证"><span class="toc-number">4.</span> <span class="toc-text">禁用验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择框脚本"><span class="toc-number">5.</span> <span class="toc-text">选择框脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择选项"><span class="toc-number">6.</span> <span class="toc-text">选择选项</span></a></li></ol>
  
   </div>
 
@@ -290,6 +311,10 @@ redushow12.onclick = function(){
 		<ul>
 		
 		  
+			<li><a href="/categories/HTML5/" title="HTML5">HTML5<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
 		  
 		
@@ -298,7 +323,7 @@ redushow12.onclick = function(){
 		  
 		
 		  
-			<li><a href="/categories/项目经验/" title="项目经验">项目经验<sup>1</sup></a></li>
+			<li><a href="/categories/项目经验/" title="项目经验">项目经验<sup>2</sup></a></li>
 		  
 		
 		</ul>
@@ -327,19 +352,11 @@ redushow12.onclick = function(){
 			
 		
 			
-				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
 			
 		
 			
@@ -347,11 +364,23 @@ redushow12.onclick = function(){
 			
 		
 			
-				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
 			
 		
 			
@@ -363,11 +392,7 @@ redushow12.onclick = function(){
 			
 		
 			
-				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/表单脚本/" title="表单脚本">表单脚本<sup>1</sup></a></li>
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
 			
 		
 			
@@ -383,7 +408,7 @@ redushow12.onclick = function(){
 			
 		
 			
-				<li><a href="/tags/数组/" title="数组">数组<sup>1</sup></a></li>
+				<li><a href="/tags/引用类型/" title="引用类型">引用类型<sup>1</sup></a></li>
 			
 		
 			
