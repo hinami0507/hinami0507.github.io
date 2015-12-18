@@ -12,31 +12,53 @@
 
     
     <meta name="description" content="HTML5新增的原生拖放功能！
-设置元素为可以拖放，加入draggable=&amp;quot;true&amp;quot;标签例如：&amp;lt;img draggable=&quot;true&quot;&amp;gt;
 
 拖放事件流
 
-dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事件，唯一一个支持dataTransfer通过setData调用来设置数据的事件">
+dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事件，唯一一个支持dataTransfer通过setData调用来设置数据的事件
+
+drag:拖动过程中持续发生的事
+
+dragenter:拖动进入页面中新元素的时候，触发的事件，
+
+dragleave:拖动出元素的时候触发的事
+
+dragover:在元素上时，频繁调用dra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML5原生拖放">
 <meta property="og:url" content="hinami.xyz/2015/12/15/DragAnddrop/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="HTML5新增的原生拖放功能！
-设置元素为可以拖放，加入draggable=&amp;quot;true&amp;quot;标签例如：&amp;lt;img draggable=&quot;true&quot;&amp;gt;
 
 拖放事件流
 
-dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事件，唯一一个支持dataTransfer通过setData调用来设置数据的事件">
+dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事件，唯一一个支持dataTransfer通过setData调用来设置数据的事件
+
+drag:拖动过程中持续发生的事
+
+dragenter:拖动进入页面中新元素的时候，触发的事件，
+
+dragleave:拖动出元素的时候触发的事
+
+dragover:在元素上时，频繁调用dra">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/draganddrop.png">
-<meta property="og:updated_time" content="2015-12-15T01:44:26.405Z">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/logo.png">
+<meta property="og:updated_time" content="2015-12-16T14:34:19.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5原生拖放">
 <meta name="twitter:description" content="HTML5新增的原生拖放功能！
-设置元素为可以拖放，加入draggable=&amp;quot;true&amp;quot;标签例如：&amp;lt;img draggable=&quot;true&quot;&amp;gt;
 
 拖放事件流
 
-dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事件，唯一一个支持dataTransfer通过setData调用来设置数据的事件">
+dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事件，唯一一个支持dataTransfer通过setData调用来设置数据的事件
+
+drag:拖动过程中持续发生的事
+
+dragenter:拖动进入页面中新元素的时候，触发的事件，
+
+dragleave:拖动出元素的时候触发的事
+
+dragover:在元素上时，频繁调用dra">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -111,13 +133,65 @@ dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事�
 	<div class="article-content">
 		
 		<p>HTML5新增的原生拖放功能！</p>
-<p>设置元素为可以拖放，加入<code>draggable=&quot;true&quot;</code>标签<br>例如：<br><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> draggable=<span class="string">"true"</span>&gt;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <h1 id="拖放事件流">拖放事件流</h1></blockquote>
 <ul>
-<li><code>dragstart</code>:用户开始拖动页面中的元素的时候，会触发dragstart事件，唯一一个支持dataTransfer通过setData调用来设置数据的事件</li>
+<li><p><code>dragstart</code>:用户开始拖动页面中的元素的时候，会触发dragstart事件，唯一一个支持dataTransfer通过setData调用来设置数据的事件</p>
+</li>
+<li><p><code>drag</code>:拖动过程中持续发生的事</p>
+</li>
+<li><p><code>dragenter</code>:拖动进入页面中新元素的时候，触发的事件，</p>
+</li>
+<li><p><code>dragleave</code>:拖动出元素的时候触发的事</p>
+</li>
+<li><p><code>dragover</code>:在元素上时，频繁调用dragover事件，不同于drag，drag在拖动源上嗲用，而dragover在当前鼠标停留的目标上调用</p>
+</li>
+<li><p><code>drop</code>:用户释放鼠标时，drop事件会在当前停留的目标上调用，因此，基于dataTransfer对象的结果，这里应该放置动作的代码。</p>
+</li>
+<li><p><code>dragend</code>:拖放事件链上的最后一个事件。拖动源上触发，适用于清空拖动过程中的状态</p>
+</li>
 </ul>
 <p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/draganddrop.png" alt="拖放事件流"></p>
+<p>设置元素为可以拖放，加入<code>draggable=&quot;true&quot;</code>标签<br>例如：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> draggable=<span class="string">"true"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>拖动什么<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span><span class="params">(ev)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">ev.dataTransfer.setData(<span class="string">"Text"</span>,ev.target.id);  <span class="comment">//实际上拖动的是ID</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>放到何处<br><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">event.<span class="function"><span class="title">preventDefault</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure></p>
+<p>进行放置 - ondrop<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drop</span>(<span class="params">ev</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">ev.preventDefault(); <span class="comment">//阻止默认行为</span></span><br><span class="line"><span class="keyword">var</span> data=ev.dataTransfer.getData(<span class="string">"Text"</span>);</span><br><span class="line">ev.target.appendChild(<span class="built_in">document</span>.getElementById(data)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>试着拖动看看↓</p>
+<style type="text/css">
+.ddd
+{
+    width:100px; 
+    height:150px; 
+    margin-left:10px;
+    padding:10px;
+    border:1px solid #aaaaaa;}
+</style>
+
+<script>
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev)
+{
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+
+</script>
+
+<div class="ddd" ondrop="drop(event)" ondragover="allowDrop(event)"><br>  <img src="http://7xnp0k.com1.z0.glb.clouddn.com/logo.png" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31"></div><br><div class="ddd" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line"><span class="class">.ddd</span></span><br><span class="line"><span class="rules">&#123;	<span class="rule"><span class="attribute">float</span>:<span class="value">left</span></span>; </span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>; </span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">150px</span></span></span>; </span><br><span class="line">	<span class="rule"><span class="attribute">margin-left</span>:<span class="value"><span class="number">10px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">padding</span>:<span class="value"><span class="number">10px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid <span class="hexcolor">#aaaaaa</span></span></span>;&#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">allowDrop</span>(<span class="params">ev</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">ev</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">ev.dataTransfer.setData(<span class="string">"Text"</span>,ev.target.id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drop</span>(<span class="params">ev</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line"><span class="keyword">var</span> data=ev.dataTransfer.getData(<span class="string">"Text"</span>);</span><br><span class="line">ev.target.appendChild(<span class="built_in">document</span>.getElementById(data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ddd"</span> <span class="attribute">ondrop</span>=<span class="value">"drop(event)"</span> <span class="attribute">ondragover</span>=<span class="value">"allowDrop(event)"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://7xnp0k.com1.z0.glb.clouddn.com/logo.png"</span> <span class="attribute">draggable</span>=<span class="value">"true"</span> <span class="attribute">ondragstart</span>=<span class="value">"drag(event)"</span> <span class="attribute">id</span>=<span class="value">"drag1"</span> <span class="attribute">width</span>=<span class="value">"88"</span> <span class="attribute">height</span>=<span class="value">"31"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ddd"</span> <span class="attribute">ondrop</span>=<span class="value">"drop(event)"</span> <span class="attribute">ondragover</span>=<span class="value">"allowDrop(event)"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -153,6 +227,14 @@ dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事�
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/12/18/ng-1/" title="angularJS-(1)-">
+  <strong>上一篇：</strong><br/>
+  <span>
+  angularJS-(1)-</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/12/14/QueAndCom/"  title="QueAndCom">
@@ -188,6 +270,10 @@ dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事�
 <div class="categorieslist">
 	<p class="asidetitle">分类</p>
 		<ul>
+		
+		  
+			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>1</sup></a></li>
+		  
 		
 		  
 			<li><a href="/categories/HTML5/" title="HTML5">HTML5<sup>1</sup></a></li>
@@ -271,7 +357,7 @@ dragstart:用户开始拖动页面中的元素的时候，会触发dragstart事�
 			
 		
 			
-				<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
 			
 		
 			

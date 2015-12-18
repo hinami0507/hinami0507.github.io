@@ -4,22 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>hinami</title>
+    <title>angularJS-(1)- | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="Where you go?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="hinami">
-<meta property="og:url" content="hinami.xyz/page/5/index.html">
+    <meta name="description" content="开始点新技能了~AngularJS
+控制器控制器实现数字加减
+&amp;lt;html ng-App=&quot;myApp&quot;&amp;gt;	&amp;lt;div ng-controller=&quot;firstController&quot;&amp;gt;		&amp;lt;button ng-click=&quot;add(1)&quot;&amp;gt;add&amp;lt;/button&amp;gt;		&amp;lt;button ng-click=&quot;substract(1)&quot;&amp;gt;substr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angularJS-(1)-">
+<meta property="og:url" content="hinami.xyz/2015/12/18/ng-1/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="Where you go?">
+<meta property="og:description" content="开始点新技能了~AngularJS
+控制器控制器实现数字加减
+&amp;lt;html ng-App=&quot;myApp&quot;&amp;gt;	&amp;lt;div ng-controller=&quot;firstController&quot;&amp;gt;		&amp;lt;button ng-click=&quot;add(1)&quot;&amp;gt;add&amp;lt;/button&amp;gt;		&amp;lt;button ng-click=&quot;substract(1)&quot;&amp;gt;substr">
+<meta property="og:updated_time" content="2015-12-18T12:18:15.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hinami">
-<meta name="twitter:description" content="Where you go?">
+<meta name="twitter:title" content="angularJS-(1)-">
+<meta name="twitter:description" content="开始点新技能了~AngularJS
+控制器控制器实现数字加减
+&amp;lt;html ng-App=&quot;myApp&quot;&amp;gt;	&amp;lt;div ng-controller=&quot;firstController&quot;&amp;gt;		&amp;lt;button ng-click=&quot;add(1)&quot;&amp;gt;add&amp;lt;/button&amp;gt;		&amp;lt;button ng-click=&quot;substract(1)&quot;&amp;gt;substr">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -74,271 +81,98 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/27/red-9/" title="小红书-(9)-RegExp" itemprop="url">
-  
-    <h1 itemprop="name">小红书-(9)-RegExp</h1>
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >什么是 RegExp？正则表达式描述了字符的模式对象。当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。简单的模式可以是一个单独的字符。更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。您可以规定字符串中的检索位置，以及要检索的字符</p>
-        
+      <a href="/2015/12/18/ng-1/" title="angularJS-(1)-" itemprop="url">angularJS-(1)-</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-18T12:07:32.000Z" itemprop="datePublished"> 发表于 2015-12-18</time>
     
-    <time datetime="2015-10-27T01:28:43.000Z" itemprop="datePublished">2015-10-27</time>
-  </a>
-  <script type="text/javascript">
-var duoshuoQuery = {short_name:"hinami"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>开始点新技能了~AngularJS</p>
+<h1 id="控制器">控制器</h1><p>控制器实现数字加减</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;html ng-App=<span class="string">"myApp"</span>&gt;</span><br><span class="line">	&lt;div ng-controller=<span class="string">"firstController"</span>&gt;</span><br><span class="line">		&lt;button ng-click=<span class="string">"add(1)"</span>&gt;add&lt;/button&gt;</span><br><span class="line">		&lt;button ng-click=<span class="string">"substract(1)"</span>&gt;substract&lt;/button&gt;</span><br><span class="line">		&lt;h2&gt;current count: &#123;&#123;count&#125;&#125;&lt;/h2&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var myApp = angular.module(<span class="string">'myApp'</span>,[]);</span><br><span class="line">myApp.controller(<span class="string">'firstController'</span>,<span class="keyword">function</span> (<span class="variable">$scope</span>) &#123;</span><br><span class="line">	<span class="variable">$scope</span>.count = <span class="number">0</span>;</span><br><span class="line">	<span class="variable">$scope</span>.add = function(amount) &#123; <span class="variable">$scope</span>.count += amount; &#125;;</span><br><span class="line">	<span class="variable">$scope</span>.substract = function(amount) &#123; <span class="variable">$scope</span>.count -= amount; &#125;;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>一个简单的实现加减数据的功能：</p>
+<ul>
+<li><p><code>ng-App=&quot;myApp&quot;</code>这个是定义 myApp模块的作用域，在这个作用域里，angularJS才能生效,一般在html标签里用了。</p>
+</li>
+<li><p><code>firstController</code>控制器，将myApp中再切成一个一个小块，每个小块有自己单独的作用域，互不干扰。</p>
+</li>
+<li><p><code>$scope</code>对象，<code>变量</code>和<code>方法</code>都是绑定在$scope上的。</p>
+</li>
+</ul>
+<h1 id="过滤器">过滤器</h1>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+</div>
+
+
+  <div class="article-tags">
   
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/25/red-8/" title="小红书-(8)-Array数组" itemprop="url">
-  
-    <h1 itemprop="name">小红书-(8)-Array数组</h1>
-    
-     
-           <p itemprop="description" >创建数组var colors = new Array();var colors = Array(20);  // 创建一个包含20项的数组var colors = Array(); //new可以省略var colors = Array(&quot;red&quot;, &quot;blue&quot;, &quot;green</p>
-        
-    
-    <time datetime="2015-10-25T12:58:34.000Z" itemprop="datePublished">2015-10-25</time>
-  </a>
-  <script type="text/javascript">
-var duoshuoQuery = {short_name:"hinami"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-
-  
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/25/red-7/" title="小红书-(7)-引用类型&gt;对象&gt;属性" itemprop="url">
-  
-    <h1 itemprop="name">小红书-(7)-引用类型&gt;对象&gt;属性</h1>
-    
-     
-           <p itemprop="description" >文章开头特别提示~虽然引用类型与类看起来相似，然而他们的概念并不相同,要区分开来！
-用类型的值（对象）是引用类型的一个实例.
-新对象是使用new 操作符后跟一个构造函数来创建的用以下姿势来创建引用对象var person= new object();
-有两种方法为对象添加属性：
-</p>
-        
-    
-    <time datetime="2015-10-25T12:08:04.000Z" itemprop="datePublished">2015-10-25</time>
-  </a>
-  <script type="text/javascript">
-var duoshuoQuery = {short_name:"hinami"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-
-  
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/25/Target/" title="关于前端工程师的要求" itemprop="url">
-  
-    <h1 itemprop="name">关于前端工程师的要求</h1>
-    
-     
-           <p itemprop="description" >多图预警！！手机用户请撤离！！w(·Д·)w
-随意看了以上网上对前端工程师的要求，给自己的目标同时，也勉励自己。(๑•̀ㅂ•́)و✧
-
-总结一下~
-
-html+css+Javascript三辆马车是板子上钉钉的，扎实的功底是一切的前提
-再来就是jquery+angularJS一些</p>
-        
-    
-    <time datetime="2015-10-25T11:26:26.000Z" itemprop="datePublished">2015-10-25</time>
-  </a>
-  <script type="text/javascript">
-var duoshuoQuery = {short_name:"hinami"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-
-  
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/25/red-6/" title="小红书-(6)-执行环境和作用域" itemprop="url">
-  
-    <h1 itemprop="name">小红书-(6)-执行环境和作用域</h1>
-    
-     
-           <p itemprop="description" >环境是JavaScript中很重要的东西
-
-全局执行环境是最外围的一个执行环境。根据ECMAScript 实现所在的宿主环境不同，表示执行环境的对象也不一样。在Web 浏览器中，全局执行环境被认为是window 对象（第7 章将详细讨论），因此所有全局变量和函数都是作为windo</p>
-        
-    
-    <time datetime="2015-10-25T02:03:14.000Z" itemprop="datePublished">2015-10-25</time>
-  </a>
-  <script type="text/javascript">
-var duoshuoQuery = {short_name:"hinami"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-
-  
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/24/detection-type/" title="检测类型" itemprop="url">
-  
-    <h1 itemprop="name">检测类型</h1>
-    
-     
-           <p itemprop="description" >又一个前端面试题
-typeof操作符
-
-检测类型？首先想到的是他:string,boolean,number,undefined统统秒杀var s = &quot;hinami&quot;;var b = true;var i = 22;var u;var n = null;var o = new </p>
-        
-    
-    <time datetime="2015-10-24T08:56:06.000Z" itemprop="datePublished">2015-10-24</time>
-  </a>
-  <script type="text/javascript">
-var duoshuoQuery = {short_name:"hinami"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-
-  
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2015/10/24/red-5-15-10-24/" title="小红书-(5)-基本类型值和引用类型" itemprop="url">
-  
-    <h1 itemprop="name">小红书-(5)-基本类型值和引用类型</h1>
-    
-     
-           <p itemprop="description" >文章开头祝大家程序员节日快乐ヽ(✿·▽·)ノ摇起来！！！
-看书啦！撸代码啦！严肃点！(￣ε(#￣)☆╰╮o(￣皿￣///)
-哦(。﹏。*)
-
-基本类型和引用类型的值ECMAscript有两种不同数据类型的值：
-
-基本类型 -简单数据段
-引用类型 -可能由多个值构成的对象
-
-
-举例</p>
-        
-    
-    <time datetime="2015-10-24T03:04:39.000Z" itemprop="datePublished">2015-10-24</time>
-  </a>
-  <script type="text/javascript">
-var duoshuoQuery = {short_name:"hinami"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-
-  
-</section>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/page/4/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next<span></span></a>
-  </nav>
+  <span></span> <a href="/tags/AngularJS/">AngularJS</a>
+  </div>
 
 </div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2015/12/18/ng-1/" data-title="angularJS-(1)- | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/12/15/DragAnddrop/"  title="HTML5原生拖放">
+ <strong>下一篇：</strong><br/> 
+ <span>HTML5原生拖放
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/18/ng-1/" data-title="angularJS-(1)-" data-url="hinami.xyz/2015/12/18/ng-1/"></div>
+</section>
+
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#控制器"><span class="toc-number">1.</span> <span class="toc-text">控制器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤器"><span class="toc-number">2.</span> <span class="toc-text">过滤器</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -604,6 +438,11 @@ $(document).ready(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
   
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
   $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
@@ -612,12 +451,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -695,4 +611,4 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
