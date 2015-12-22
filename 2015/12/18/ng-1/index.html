@@ -4,29 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>angularJS-(1)- | hinami</title>
+    <title>angularJS-(1)-初探 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="开始点新技能了~AngularJS
-控制器控制器实现数字加减
-&amp;lt;html ng-App=&quot;myApp&quot;&amp;gt;	&amp;lt;div ng-controller=&quot;firstController&quot;&amp;gt;		&amp;lt;button ng-click=&quot;add(1)&quot;&amp;gt;add&amp;lt;/button&amp;gt;		&amp;lt;button ng-click=&quot;substract(1)&quot;&amp;gt;substr">
+    <meta name="description" content="控制器，过滤器，指令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="angularJS-(1)-">
+<meta property="og:title" content="angularJS-(1)-初探">
 <meta property="og:url" content="hinami.xyz/2015/12/18/ng-1/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="开始点新技能了~AngularJS
-控制器控制器实现数字加减
-&amp;lt;html ng-App=&quot;myApp&quot;&amp;gt;	&amp;lt;div ng-controller=&quot;firstController&quot;&amp;gt;		&amp;lt;button ng-click=&quot;add(1)&quot;&amp;gt;add&amp;lt;/button&amp;gt;		&amp;lt;button ng-click=&quot;substract(1)&quot;&amp;gt;substr">
-<meta property="og:updated_time" content="2015-12-18T12:18:15.069Z">
+<meta property="og:description" content="控制器，过滤器，指令">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/ng-1.png">
+<meta property="og:updated_time" content="2015-12-22T14:54:55.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="angularJS-(1)-">
-<meta name="twitter:description" content="开始点新技能了~AngularJS
-控制器控制器实现数字加减
-&amp;lt;html ng-App=&quot;myApp&quot;&amp;gt;	&amp;lt;div ng-controller=&quot;firstController&quot;&amp;gt;		&amp;lt;button ng-click=&quot;add(1)&quot;&amp;gt;add&amp;lt;/button&amp;gt;		&amp;lt;button ng-click=&quot;substract(1)&quot;&amp;gt;substr">
+<meta name="twitter:title" content="angularJS-(1)-初探">
+<meta name="twitter:description" content="控制器，过滤器，指令">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -87,7 +82,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/12/18/ng-1/" title="angularJS-(1)-" itemprop="url">angularJS-(1)-</a>
+      <a href="/2015/12/18/ng-1/" title="angularJS-(1)-初探" itemprop="url">angularJS-(1)-初探</a>
   </h1>
   <p class="article-author">By
        
@@ -101,18 +96,43 @@
 	<div class="article-content">
 		
 		<p>开始点新技能了~AngularJS</p>
-<h1 id="控制器">控制器</h1><p>控制器实现数字加减</p>
+<h1 id="控制器">控制器</h1><p>控制器实现数字加减<br>这里是<a href="">数字加减Demo</a></p>
 <figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;html ng-App=<span class="string">"myApp"</span>&gt;</span><br><span class="line">	&lt;div ng-controller=<span class="string">"firstController"</span>&gt;</span><br><span class="line">		&lt;button ng-click=<span class="string">"add(1)"</span>&gt;add&lt;/button&gt;</span><br><span class="line">		&lt;button ng-click=<span class="string">"substract(1)"</span>&gt;substract&lt;/button&gt;</span><br><span class="line">		&lt;h2&gt;current count: &#123;&#123;count&#125;&#125;&lt;/h2&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var myApp = angular.module(<span class="string">'myApp'</span>,[]);</span><br><span class="line">myApp.controller(<span class="string">'firstController'</span>,<span class="keyword">function</span> (<span class="variable">$scope</span>) &#123;</span><br><span class="line">	<span class="variable">$scope</span>.count = <span class="number">0</span>;</span><br><span class="line">	<span class="variable">$scope</span>.add = function(amount) &#123; <span class="variable">$scope</span>.count += amount; &#125;;</span><br><span class="line">	<span class="variable">$scope</span>.substract = function(amount) &#123; <span class="variable">$scope</span>.count -= amount; &#125;;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>一个简单的实现加减数据的功能：</p>
+<h1 id="过滤器">过滤器</h1><ul>
+<li>currency    格式化数字为货币格式。</li>
+<li>filter    从数组项中选择一个子集。</li>
+<li>lowercase    格式化字符串为小写。</li>
+<li>orderBy    根据某个表达式排列数组。</li>
+<li>uppercase    格式化字符串为大写。</li>
+</ul>
+<p>真正强大之处在于可以自定义过滤器</p>
+<p>自定义首字母大写过滤器：</p>
+<p><a href="">首字母大写过滤Demo</a></p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">ng-model</span>=<span class="value">"name"</span> <span class="attribute">placeholder</span>=<span class="value">"enter"</span>&gt;</span></span><br><span class="line"></span><span class="expression">&#123;&#123; <span class="variable">name</span> | <span class="variable">capitalize</span> &#125;&#125;</span><span class="xml"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript"></span><br><span class="line">angular.module(<span class="string">'myApp'</span>, [<span class="string">'myApp.filters'</span>]);</span><br><span class="line"><span class="keyword">var</span> myfil = angular.module(<span class="string">'myApp.filters'</span>, [])</span><br><span class="line">myfil.filter(<span class="string">'capitalize'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(input)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// input will be the string we pass in</span></span><br><span class="line">    <span class="keyword">if</span> (input) &#123;</span><br><span class="line">      <span class="keyword">return</span> input[<span class="number">0</span>].toUpperCase() + input.slice(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p><code>ng-App=&quot;myApp&quot;</code>这个是定义 myApp模块的作用域，在这个作用域里，angularJS才能生效,一般在html标签里用了。</p>
+<li><p>首先<code>angular.module(&#39;myApp&#39;, [&#39;myApp.filters&#39;]);</code>引入过滤器模块</p>
 </li>
-<li><p><code>firstController</code>控制器，将myApp中再切成一个一个小块，每个小块有自己单独的作用域，互不干扰。</p>
+<li><p>然后<code>angular.module(&#39;myApp.filters&#39;, [])</code>开始编辑过滤器模块</p>
 </li>
-<li><p><code>$scope</code>对象，<code>变量</code>和<code>方法</code>都是绑定在$scope上的。</p>
+<li><p>接着开始编辑过滤器模块,可以在上一步中<code>var myfil = angular.module(&#39;myApp.filters&#39;, [])</code>。</p>
+</li>
+<li><p>可以连续定义多个过滤器模块，就像这样<code>myfil.filterA.fileterB</code></p>
 </li>
 </ul>
-<h1 id="过滤器">过滤器</h1>  
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">myfil</span><br><span class="line">.filter( <span class="string">'【过滤器A名】'</span>),<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;&#125; )</span><br><span class="line">.filter( <span class="string">'【过滤器B名】'</span>),<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;&#125; );</span><br></pre></td></tr></table></figure>
+<p>下边是<a href="">Demo</a><br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">angular.module(<span class="string">'myApp'</span>, [<span class="string">'myApp.filters'</span>]);</span><br><span class="line">angular.module(<span class="string">'myApp.filters'</span>, [])</span><br><span class="line">.filter(<span class="string">'capitalize'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(input)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// input will be the string we pass in</span></span><br><span class="line">    <span class="keyword">if</span> (input) &#123;</span><br><span class="line">      <span class="keyword">return</span> input[<span class="number">0</span>].toUpperCase() + input.slice(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.filter(<span class="string">'blankIfNegative'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(input)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (input &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="string">' '</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> input;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.filter(<span class="string">'welcome'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(input)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(input == <span class="string">'hinami'</span>) <span class="keyword">return</span> <span class="string">'welcome hinami'</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> input;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="自定义指令">自定义指令</h1><p>创建指令的三个姿势:</p>
+<ul>
+<li><code>&lt;my-directive&gt;</code>:restrict: <strong>‘E’</strong></li>
+<li><code>&lt;div my-directive&gt;&lt;/div&gt;</code>:restrict: <strong>‘A’</strong></li>
+<li><code>&lt;div class=&quot;my-directive&quot;&gt;&lt;/div&gt;</code>restrict: <strong>‘C’</strong></li>
+<li><code>&lt;!-- directive:my-directive --&gt;</code>restrict: <strong>‘M’</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">my-directive</span>&gt;</span><span class="tag">&lt;/<span class="title">my-directive</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript"></span><br><span class="line">angular.module(<span class="string">'myApp'</span>, [])</span><br><span class="line">.directive(<span class="string">'myDirective'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		restrict: <span class="string">'E'</span>,     <span class="comment">//表示用元素的方式插入</span></span><br><span class="line">		replace: <span class="literal">true</span>,    <span class="comment">//去掉&lt;my-directive&gt;标签指令</span></span><br><span class="line">		template: <span class="string">'&lt;a href="http://www.hinami.xyz"&gt; click me&lt;/a&gt;'</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="作用域">作用域</h1><p>和JS的作用域范围一样，<strong>子层作用域</strong> 可以调用 <strong>父层作用域</strong>的数据</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="id">#parentCtrl</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background-color</span>:<span class="value"> yellow</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="id">#childCtrl</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background-color</span>:<span class="value"> green</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>We can access: </span><span class="expression">&#123;&#123; <span class="variable">rootProperty</span> &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"parentCtrl"</span> <span class="attribute">ng-controller</span>=<span class="value">"ParentCtrl"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>We can access: </span><span class="expression">&#123;&#123; <span class="variable">rootProperty</span> &#125;&#125;</span><span class="xml"> and </span><span class="expression">&#123;&#123; <span class="variable">parentProperty</span> &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"childCtrl"</span> <span class="attribute">ng-controller</span>=<span class="value">"ChildCtrl"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">p</span>&gt;</span></span><br><span class="line">    We can access:</span><br><span class="line">    </span><span class="expression">&#123;&#123; <span class="variable">rootProperty</span> &#125;&#125;</span><span class="xml"> and</span><br><span class="line">    </span><span class="expression">&#123;&#123; <span class="variable">parentProperty</span> &#125;&#125;</span><span class="xml"> and</span><br><span class="line">    </span><span class="expression">&#123;&#123; <span class="variable">childProperty</span> &#125;&#125;</span><span class="xml"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">p</span>&gt;</span></span><span class="expression">&#123;&#123; <span class="variable">fullSentenceFromChild</span> &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript"></span><br><span class="line">angular.module(<span class="string">'myApp'</span>, [])</span><br><span class="line">.run(<span class="function"><span class="keyword">function</span><span class="params">($rootScope)</span> </span>&#123;</span><br><span class="line">  $rootScope.rootProperty = <span class="string">'root scope'</span>;</span><br><span class="line">&#125;)</span><br><span class="line">.controller(<span class="string">'ParentCtrl'</span>, <span class="function"><span class="keyword">function</span><span class="params">($scope)</span> </span>&#123;</span><br><span class="line">  $scope.parentProperty = <span class="string">'parent scope'</span>;</span><br><span class="line">&#125;)</span><br><span class="line">.controller(<span class="string">'ChildCtrl'</span>, <span class="function"><span class="keyword">function</span><span class="params">($scope)</span> </span>&#123;</span><br><span class="line">  $scope.childProperty = <span class="string">'child scope'</span>;</span><br><span class="line">  $scope.fullSentenceFromChild = <span class="string">'Same $scope: We can access: '</span> +</span><br><span class="line">                                 $scope.rootProperty + <span class="string">' and '</span> +</span><br><span class="line">                                 $scope.parentProperty + <span class="string">' and '</span> +</span><br><span class="line">                                 $scope.childProperty</span><br><span class="line">&#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/ng-1.png" alt=""></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -134,7 +154,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/12/18/ng-1/" data-title="angularJS-(1)- | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/12/18/ng-1/" data-title="angularJS-(1)-初探 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -160,7 +180,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/12/18/ng-1/" data-title="angularJS-(1)-" data-url="hinami.xyz/2015/12/18/ng-1/"></div>
+	<div class="ds-thread" data-thread-key="2015/12/18/ng-1/" data-title="angularJS-(1)-初探" data-url="hinami.xyz/2015/12/18/ng-1/"></div>
 </section>
 
 
@@ -170,7 +190,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#控制器"><span class="toc-number">1.</span> <span class="toc-text">控制器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤器"><span class="toc-number">2.</span> <span class="toc-text">过滤器</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#控制器"><span class="toc-number">1.</span> <span class="toc-text">控制器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过滤器"><span class="toc-number">2.</span> <span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义指令"><span class="toc-number">3.</span> <span class="toc-text">自定义指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作用域"><span class="toc-number">4.</span> <span class="toc-text">作用域</span></a></li></ol>
  
   </div>
 
