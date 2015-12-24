@@ -4,35 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>hinami</title>
+    <title>小红本-(33)-JSON | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="Jacman中文说明
-Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
-Jacman support Hexo 3.0 now !
-Demo | Jark’s Blog
-如何使用 Jacman">
+    <meta name="description" content="JSON解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hinami">
-<meta property="og:url" content="hinami.xyz/2015/10/04/README/index.html">
+<meta property="og:title" content="小红本-(33)-JSON">
+<meta property="og:url" content="hinami.xyz/2015/12/24/red-33/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="Jacman中文说明
-Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
-Jacman support Hexo 3.0 now !
-Demo | Jark’s Blog
-如何使用 Jacman">
-<meta property="og:updated_time" content="2015-10-04T15:15:13.541Z">
+<meta property="og:description" content="JSON解析">
+<meta property="og:updated_time" content="2015-12-24T01:27:23.271Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hinami">
-<meta name="twitter:description" content="Jacman中文说明
-Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
-Jacman support Hexo 3.0 now !
-Demo | Jark’s Blog
-如何使用 Jacman">
+<meta name="twitter:title" content="小红本-(33)-JSON">
+<meta name="twitter:description" content="JSON解析">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -93,93 +81,56 @@ Demo | Jark’s Blog
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/04/README/" title="" itemprop="url"></a>
+      <a href="/2015/12/24/red-33/" title="小红本-(33)-JSON" itemprop="url">小红本-(33)-JSON</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-04T15:15:13.541Z" itemprop="datePublished"> 发表于 2015-10-04</time>
+    <time datetime="2015-12-24T01:17:10.000Z" itemprop="datePublished"> 发表于 2015-12-24</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h1 id="Jacman">Jacman</h1><p><a href="/README_zh.md">中文说明</a></p>
-<p>Jacman is a fresh looking and responsive theme for <a href="http://hexo.io" target="_blank" rel="external">Hexo</a> with more features and some build-in Chinese service based on <a href="https://github.com/A-limon/pacman" target="_blank" rel="external">Pacman</a>.  </p>
-<p><strong>Jacman support Hexo 3.0 now !</strong></p>
-<p><a href="http://wuchong.me/jacman" target="_blank" rel="external">Demo</a> | <a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a></p>
-<p><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
-<p>##Installation</p>
-<p>###Install<br><figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/wuchong</span><span class="regexp">/jacman.git themes/jacman</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Jacman requires Hexo 2.7 and above.</strong> </p>
-<p>###Enable<br>Modify <code>theme</code> setting in blog folder<code>_config.yml</code> to <code>jacman</code>.</p>
-<p>###Update<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/jacman</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
-<p><strong>please backup your <code>_config.yml</code> file before update.</strong> </p>
-<p>##Configuration</p>
-<p>Modify settings in  <code>/themes/jacman/_config.yml</code>. <a href="https://github.com/wuchong/jacman/wiki/%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97" target="_blank" rel="external">Learn More</a>.</p>
-<p>##Features</p>
+		<p>用了那么久的JSON，一般用来表示配置信息。</p>
+<p>下边是angularJS的JSON配置<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.0"</span></span>,</span><br><span class="line">    "<span class="attribute">private</span>": <span class="value"><span class="literal">true</span></span>,</span><br><span class="line">    "<span class="attribute">name</span>": <span class="value"><span class="string">"angular-recommended"</span></span>,</span><br><span class="line">    "<span class="attribute">description</span>": <span class="value"><span class="string">"ng官方推荐的项目结构"</span></span>,</span><br><span class="line">    "<span class="attribute">license</span>": <span class="value"><span class="string">"MIT"</span></span>,</span><br><span class="line">    "<span class="attribute">devDependencies</span>": <span class="value">&#123;</span><br><span class="line">        "<span class="attribute">http-server</span>": <span class="value"><span class="string">"^0.6.1"</span></span>,</span><br><span class="line">        "<span class="attribute">bower</span>": <span class="value"><span class="string">"^1.3.1"</span></span><br><span class="line">    </span>&#125;</span>,</span><br><span class="line">    "<span class="attribute">scripts</span>": <span class="value">&#123;</span><br><span class="line">        "<span class="attribute">postinstall</span>": <span class="value"><span class="string">"bower install"</span></span>,</span><br><span class="line">        "<span class="attribute">prestart</span>": <span class="value"><span class="string">"npm install"</span></span>,</span><br><span class="line">        "<span class="attribute">start</span>": <span class="value"><span class="string">"http-server -p 8000"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>JSON 的语法可以表示以下三种类型的值。</p>
 <ul>
-<li><strong>menu</strong><br>Main navigation menu.</li>
-<li><strong>widget</strong><br>Widgets displaying in sidebar.The category,tag,rss,archive,tagcloud,links,weibo are supported.</li>
-<li><strong>Image</strong><br>Images about favicon, site logo, author image, banner image. Support different image styles like <code>img-logo</code>,<code>img-topic</code>,<code>img-center</code> etc.</li>
-<li><strong>index</strong><br>Two different home page display modes.You can visit <a href="http://wuchong.me/jacman" target="_blank" rel="external">Demo</a> &amp; <a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a> to check the difference.</li>
-<li><strong>author</strong><br>Author imformation, used to show your social network links on the bottom right. Including github, stackoverflow, twitter, facebook, linkedin, google+, weibo, douban, zhihu, email.</li>
-<li><strong>toc</strong><br>Show Table Of Contents in article &amp; aside.</li>
-<li><strong>comments</strong><br><a href="http://duoshuo.com/" target="_blank" rel="external">duoshuo</a> &amp; <a href="https://disqus.com/" target="_blank" rel="external">disqus</a> are supported.</li>
-<li><strong>jiathis</strong><br>Build-in share tool or <a href="http://www.jiathis.com/" target="_blank" rel="external">JiaThis</a> share buttons at the bottom of articles.</li>
-<li><strong>Analytiscs</strong><br><a href="http://www.google.com/analytics/" target="_blank" rel="external">Google analytics</a> &amp; <a href="http://tongji.baidu.com/" target="_blank" rel="external">Baidu tongji</a> &amp; <a href="http://www.cnzz.com/" target="_blank" rel="external">CNZZ tongji</a> are all supported.</li>
-<li><strong>Search</strong><br><a href="https://www.google.com/cse/" target="_blank" rel="external">Googlle Custom Search</a> &amp; <a href="http://zn.baidu.com/" target="_blank" rel="external">Baidu Site Search</a> &amp; <a href="http://tinysou.com/" target="_blank" rel="external">Tiny Search</a> are supported.</li>
-<li><strong>totop</strong><br>Scroll to top</li>
-<li><strong>rss</strong><br>RSS subscription link (change if using Feedburner).</li>
-<li><strong>fancybox</strong><br>Enable <a href="http://fancyapps.com/fancybox/" target="_blank" rel="external">Fancybox</a></li>
-<li><strong>custom theme color</strong><br>Mondify theme color in <code>_config.yaml</code> instead of finding unfamiliar stylus files.</li>
-<li><strong>others</strong><br>You can configure sidebar not show in post pages.</li>
+<li><p>简单值：使用与JavaScript 相同的语法，可以在JSON 中表示<code>字符串</code>、<code>数值</code>、<code>布尔值</code>和<code>null</code>。<strong>但JSON 不支持JavaScript 中的特殊值undefined</strong>。</p>
+</li>
+<li><p>对象：对象作为一种复杂数据类型，表示的是一组无序的键值对儿。而每个键值对儿中的值可以是简单值，也可以是复杂数据类型的值。</p>
+</li>
+<li><p>数组：数组也是一种复杂数据类型，表示一组有序的值的列表，可以通过数值索引来访问其中的值。数组的值也可以是任意类型——简单值、对象或数组。</p>
+</li>
 </ul>
-<p>You can learn how to use them from <a href="https://github.com/wuchong/jacman/wiki/配置指南" target="_blank" rel="external">Configuration</a>.</p>
-<p>##Sites</p>
+<p>JSON不支持变量、函数或对象实例，它就是一种表示结构化数据的格式，虽然与JavaScript 中表示数据的某些语法相同，但它并不局限于JavaScript 的范畴。</p>
+<p>JSON 中的对象与JavaScript 字面量稍微有一些不同。</p>
+<p>JavaScript中建立对象标准姿势<br><figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line"><span class="label">name:</span> <span class="string">"Nicholas"</span>,</span><br><span class="line"><span class="label">age:</span> <span class="number">29</span></span><br><span class="line">&#125;<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>但是JSON中有所不同</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">"<span class="attribute">name</span>": <span class="value"><span class="string">"Nicholas"</span></span>,</span><br><span class="line">"<span class="attribute">age</span>": <span class="value"><span class="number">29</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>Javascript与JSON的不同有两点:</p>
 <ul>
-<li><a href="http://wuchong.me/jacman" target="_blank" rel="external">Jacman Theme</a> - The demo site of Jacman Theme</li>
-<li><a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a> - The author’s blog of Jacman</li>
-<li><a href="http://ralphadu.com" target="_blank" rel="external">阿杜个人博客</a> - 阿杜个人博客</li>
-<li><a href="http://philosky.ml/" target="_blank" rel="external">PhiloSky’s Blog</a> - Personal blog</li>
-<li><a href="http://hiluluke.cn" target="_blank" rel="external">hiluSdream</a> - 梦想是无所谓无的，无所谓有的</li>
-<li><a href="http://melface.tk" target="_blank" rel="external">Melface</a> - Personal blog</li>
-<li><a href="http://heamon7.com" target="_blank" rel="external">heamon7’s Utopia</a> - 修行绝尘，悟道涉俗</li>
-<li><a href="http://ningning.today" target="_blank" rel="external">PegasusWang’s Blog</a> - 你的问题主要在于读书不多而想得太多</li>
-<li><a href="http://www.caoqq.net" target="_blank" rel="external">青劲草</a> - 学会记录成长点滴</li>
-<li><a href="http://cscao.com" target="_blank" rel="external">Vigorass</a> - Learn to record dripping growth</li>
-<li><a href="http://moqizhan.com" target="_blank" rel="external">MoqiZhan</a> - 人生就是不停的战斗</li>
-<li><a href="http://think-diff.me/" target="_blank" rel="external">Think Differently</a> - If You Can Think Differently, You Can Act Differently.</li>
-<li><a href="http://wangyangyang.gitcafe.com" target="_blank" rel="external">ylf</a> - 王洋洋</li>
-<li><a href="http://blog.igevin.info/" target="_blank" rel="external">Gevin’s blog</a> - Stay hungry, stay foolish; Stop when you are perfect.</li>
-<li><a href="http://keychar.com" target="_blank" rel="external">keychar</a> - A technology blog, design &amp; programming.</li>
-<li><a href="http://chenpengdsp.com" target="_blank" rel="external">peng的博客</a> - 人生就是不停的战斗</li>
-<li><a href="http://aeesky.github.io" target="_blank" rel="external">More and More</a> -刚起步：）</li>
-<li><a href="http://dpast.org" target="_blank" rel="external">好久不见</a> - Julian Zhu</li>
-<li><a href="http://jukezhang.com/" target="_blank" rel="external">keke2014’s blog</a> - Stay hungry, stay foolish - Steve Jobs</li>
-<li><a href="http://www.eurry.net" target="_blank" rel="external">Eurry</a> - Eurry’s Blog.</li>
-<li><a href="http://isencle.com" target="_blank" rel="external">sencle’s blog</a> -just do it</li>
-<li><a href="http://ioxymoron.me" target="_blank" rel="external">Oxymoron’s Blog</a> - Let’s start from here.</li>
-<li><a href="http://wsgzao.github.io" target="_blank" rel="external">HelloDog</a> - Keep Clam and Carry On</li>
-<li><a href="http://haomwei.com" target="_blank" rel="external">屠城｜屠夫9441的博客</a> - 苟全性命于乱世，不求闻达于诸侯。</li>
-<li><a href="http://icehe.github.io/" target="_blank" rel="external">Ice He. 何志遠</a> - Less is more. 寧靜致遠。</li>
-<li><a href="http://www.prokitty.com" target="_blank" rel="external">prokitty，侏罗纪公园</a> -Belive yourself,belive Cherry.</li>
-<li><a href="http://ceclinux.org" target="_blank" rel="external">Ceclinux</a> - Arch is the best</li>
-<li><a href="http://brucege.com" target="_blank" rel="external">BruceGe’s blog</a> - Start Blogging</li>
-<li><a href="http://yangxiaolei.me" target="_blank" rel="external">Yangxiaolei’s blog</a> - 让知识成为信仰，让优秀成为习惯</li>
-<li><a href="http://ccloveyou.org" target="_blank" rel="external">CC’s blog</a> - CC</li>
-<li><a href="http://watermeion.github.io" target="_blank" rel="external">TadGuo’s pages</a> - More is different.</li>
-<li><a href="http://mutse.github.io" target="_blank" rel="external">Mutse’s blog</a> - Love Life, Love open source</li>
+<li>首先，没有声明变量（JSON 中没有变量的概念）</li>
+<li>其次，没有末尾的分号（因为这不是JavaScript 语句，所以不需要分号）。</li>
 </ul>
-<p>If you are using Jacman,you can add your site <a href="https://github.com/wuchong/jacman/wiki/Sites" target="_blank" rel="external">here</a> ! I’ll push the available sites here.</p>
-<p>##License<br><a href="/LICENSE">MIT</a></p>
+<p>JSON中变量可以是简单的值，也可以嵌套对象<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"<span class="attribute">name</span>": <span class="value"><span class="string">"Nicholas"</span></span>,</span><br><span class="line">	"<span class="attribute">age</span>": <span class="value"><span class="number">29</span></span>,</span><br><span class="line">	"<span class="attribute">school</span>": <span class="value">&#123;</span><br><span class="line">			"<span class="attribute">name</span>": <span class="value"><span class="string">"Merrimack College"</span></span>,</span><br><span class="line">			"<span class="attribute">location</span>": <span class="value"><span class="string">"North Andover, MA"</span></span><br><span class="line">			</span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JSON/">JSON</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/前端/">前端</a>
+  </div>
 
 </div>
 
@@ -187,7 +138,7 @@ Demo | Jark’s Blog
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/04/README/" data-title="hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/12/24/red-33/" data-title="小红本-(33)-JSON | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -200,20 +151,20 @@ Demo | Jark’s Blog
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/04/README_zh/" title="">
-  <strong>上一篇：</strong><br/>
-  <span>
-  (no title)</span>
+
+<div class="next">
+<a href="/2015/12/18/ng-1/"  title="angularJS-(1)-初探">
+ <strong>下一篇：</strong><br/> 
+ <span>angularJS-(1)-初探
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/04/README/" data-title="" data-url="hinami.xyz/2015/10/04/README/"></div>
+	<div class="ds-thread" data-thread-key="2015/12/24/red-33/" data-title="小红本-(33)-JSON" data-url="hinami.xyz/2015/12/24/red-33/"></div>
 </section>
 
 
@@ -223,7 +174,7 @@ Demo | Jark’s Blog
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jacman"><span class="toc-number">1.</span> <span class="toc-text">Jacman</span></a></li></ol>
+ 
  
   </div>
 
