@@ -4,35 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红本-(28)-事件模拟 | hinami</title>
+    <title>red-34 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="举个例子：模拟鼠标点击事件，就是当这个事件被触发的时候，就相当(其实就是了)于你的鼠标在对应的地方点了一下，
-
-模拟鼠标事件
-创建鼠标事件对象的方法是为createEvent()传入字符串”MouseEvents”。就像这样：var event = document.createEvent(&amp;quot;MouseEvents&amp;quot;);
-然后你会得到一个名为initMouseEvent()方法">
+    <meta name="description" content="this到底指向谁？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红本-(28)-事件模拟">
-<meta property="og:url" content="hinami.xyz/2015/11/18/red-28/index.html">
+<meta property="og:title" content="red-34">
+<meta property="og:url" content="hinami.xyz/2015/12/26/red-34/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="举个例子：模拟鼠标点击事件，就是当这个事件被触发的时候，就相当(其实就是了)于你的鼠标在对应的地方点了一下，
-
-模拟鼠标事件
-创建鼠标事件对象的方法是为createEvent()传入字符串”MouseEvents”。就像这样：var event = document.createEvent(&amp;quot;MouseEvents&amp;quot;);
-然后你会得到一个名为initMouseEvent()方法">
-<meta property="og:updated_time" content="2015-11-18T15:36:01.594Z">
+<meta property="og:description" content="this到底指向谁？">
+<meta property="og:updated_time" content="2015-12-28T01:20:12.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红本-(28)-事件模拟">
-<meta name="twitter:description" content="举个例子：模拟鼠标点击事件，就是当这个事件被触发的时候，就相当(其实就是了)于你的鼠标在对应的地方点了一下，
-
-模拟鼠标事件
-创建鼠标事件对象的方法是为createEvent()传入字符串”MouseEvents”。就像这样：var event = document.createEvent(&amp;quot;MouseEvents&amp;quot;);
-然后你会得到一个名为initMouseEvent()方法">
+<meta name="twitter:title" content="red-34">
+<meta name="twitter:description" content="this到底指向谁？">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -93,46 +81,34 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/18/red-28/" title="小红本-(28)-事件模拟" itemprop="url">小红本-(28)-事件模拟</a>
+      <a href="/2015/12/26/red-34/" title="red-34" itemprop="url">red-34</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-18T14:34:59.000Z" itemprop="datePublished"> 发表于 2015-11-18</time>
+    <time datetime="2015-12-26T14:10:35.000Z" itemprop="datePublished"> 发表于 2015-12-26</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<p>举个例子：<br>模拟鼠标点击事件，就是当这个事件被触发的时候，就相当(其实就是了)于你的鼠标在对应的地方点了一下，</p>
-<blockquote>
-<h1 id="模拟鼠标事件">模拟鼠标事件</h1></blockquote>
-<p>创建鼠标事件对象的方法是为createEvent()传入字符串”MouseEvents”。<br>就像这样：<br><code>var event = document.createEvent(&quot;MouseEvents&quot;);</code></p>
-<p>然后你会得到一个名为initMouseEvent()方法，用于指定与该鼠标事件有关的信息</p>
-<p>这个方法接受<strong>15个参数</strong> Σ( ° △ °|||)︴，没错!是15个！！！(°ー°〃)</p>
-<p>这些参数的含义如下：</p>
+		<p>一个困扰了很久的问题，this常常用，到底指向谁。</p>
+<h1 id="谁调用它，他就指向谁">谁调用它，他就指向谁</h1><p>一句话显然很难理解，下边我会分为四种情况进行区别</p>
 <ul>
-<li>type（字符串）：表示要触发的事件类型，例如”click”。</li>
-<li>bubbles（布尔值）：表示事件是否应该冒泡。为精确地模拟鼠标事件，应该把这个参数设置为<br>true。</li>
-<li>cancelable（布尔值）：表示事件是否可以取消。为精确地模拟鼠标事件，应该把这个参数设<br>置为true。</li>
-<li>view（AbstractView）：与事件关联的视图。这个参数几乎总是要设置为document.defaultView。</li>
-<li>detail（整数）：与事件有关的详细信息。这个值一般只有事件处理程序使用，但通常都设置为0。</li>
-<li>screenX（整数）：事件相对于屏幕的X 坐标。</li>
-<li>screenY（整数）：事件相对于屏幕的Y 坐标。</li>
-<li>clientX（整数）：事件相对于视口的X 坐标。</li>
-<li>clientY（整数）：事件想对于视口的Y 坐标。</li>
-<li>ctrlKey（布尔值）：表示是否按下了Ctrl 键。默认值为false。</li>
-<li>altKey（布尔值）：表示是否按下了Alt 键。默认值为false。</li>
-<li>shiftKey（布尔值）：表示是否按下了Shift 键。默认值为false。</li>
-<li>metaKey（布尔值）：表示是否按下了Meta 键。默认值为false。</li>
-<li>button（整数）：表示按下了哪一个鼠标键。默认值为0。</li>
-<li>relatedTarget（对象）：表示与事件相关的对象。这个参数只在模拟mouseover 或mouseout时使用。</li>
+<li>函数调用模式</li>
+<li>方法调用模式</li>
+<li>构造器调用模式</li>
+<li>apply/call调用模式</li>
 </ul>
-<p>下边是例子：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var btn = document.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"><span class="comment">//创建事件对象</span></span><br><span class="line">var event = document.createEvent(<span class="string">"MouseEvents"</span>);</span><br><span class="line"><span class="comment">//初始化事件对象</span></span><br><span class="line">event.initMouseEvent(<span class="string">"click"</span>, <span class="literal">true</span>, <span class="literal">true</span>, document.defaultView, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,<span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="number">0</span>, null);</span><br><span class="line"><span class="comment">//触发事件</span></span><br><span class="line">btn.dispatchEvent(event);</span><br></pre></td></tr></table></figure></p>
-<p>这里是<a href="http://i.hinami.xyz/Demo/redcode/Ch13/SimulateDOMClickExample01.htm" target="_blank" rel="external">Demo</a></p>
-<p>用的比较少，以后需要的时候再看吧、</p>
+<blockquote>
+<h1 id="①函数调用模式">①函数调用模式</h1></blockquote>
+<p>当一个<code>函数</code>在全局空间被创建，在调用该<code>函数</code>的时候，<code>函数</code>中的this指向全局对象(window)<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">21</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAge</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line">getAge();  <span class="comment">//21</span></span><br></pre></td></tr></table></figure></p>
+<p>此时<code>getAge()</code>所处环境就在window中，上边的<code>getAge()</code>,就等于<code>window.getAge()</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">21</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAge</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.getAge();  <span class="comment">//21</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">21</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAge</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> age = <span class="number">10</span>;</span><br><span class="line">	alert(<span class="keyword">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line">getAge();  <span class="comment">//21</span></span><br></pre></td></tr></table></figure>
+<hr>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -146,7 +122,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/事件模拟/">事件模拟</a><a href="/tags/前端/">前端</a>
+  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/this/">this</a><a href="/tags/前端/">前端</a>
   </div>
 
 </div>
@@ -155,7 +131,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/11/18/red-28/" data-title="小红本-(28)-事件模拟 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/12/26/red-34/" data-title="red-34 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -168,19 +144,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/11/18/red-29/" title="小红本-(29)-表单脚本">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红本-(29)-表单脚本</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/11/16/red-27/"  title="小红本-(27)-内存和性能">
+<a href="/2015/12/24/red-33/"  title="小红本-(33)-JSON">
  <strong>下一篇：</strong><br/> 
- <span>小红本-(27)-内存和性能
+ <span>小红本-(33)-JSON
 </span>
 </a>
 </div>
@@ -189,7 +157,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/11/18/red-28/" data-title="小红本-(28)-事件模拟" data-url="hinami.xyz/2015/11/18/red-28/"></div>
+	<div class="ds-thread" data-thread-key="2015/12/26/red-34/" data-title="red-34" data-url="hinami.xyz/2015/12/26/red-34/"></div>
 </section>
 
 
@@ -199,7 +167,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#模拟鼠标事件"><span class="toc-number">1.</span> <span class="toc-text">模拟鼠标事件</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#谁调用它，他就指向谁"><span class="toc-number">1.</span> <span class="toc-text">谁调用它，他就指向谁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#①函数调用模式"><span class="toc-number">2.</span> <span class="toc-text">①函数调用模式</span></a></li></ol>
  
   </div>
 
