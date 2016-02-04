@@ -15,7 +15,7 @@
 Cookie 基础知识
 cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb，如果 cookie 字符串的长度超过4kb，则该属性将返回空字符串。由于 cookie 最终都是以文件形式存放在客户端计算机中，所以查看和修改 cookie 都是很方便的，这就是为什么常说 cookie 不能存放重要信息的原因。
 
-+每个 cookie 的格式">
+每个 cookie 的格式都">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cookie">
 <meta property="og:url" content="hinami.xyz/2016/02/01/cookie/index.html">
@@ -24,15 +24,15 @@ cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb�
 Cookie 基础知识
 cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb，如果 cookie 字符串的长度超过4kb，则该属性将返回空字符串。由于 cookie 最终都是以文件形式存放在客户端计算机中，所以查看和修改 cookie 都是很方便的，这就是为什么常说 cookie 不能存放重要信息的原因。
 
-+每个 cookie 的格式">
-<meta property="og:updated_time" content="2016-02-01T13:59:57.094Z">
+每个 cookie 的格式都">
+<meta property="og:updated_time" content="2016-02-01T14:15:49.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie">
 <meta name="twitter:description" content="考试完后休息了几天，也要开始开工了–
 Cookie 基础知识
 cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb，如果 cookie 字符串的长度超过4kb，则该属性将返回空字符串。由于 cookie 最终都是以文件形式存放在客户端计算机中，所以查看和修改 cookie 都是很方便的，这就是为什么常说 cookie 不能存放重要信息的原因。
 
-+每个 cookie 的格式">
+每个 cookie 的格式都">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -108,28 +108,30 @@ cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb�
 		
 		<p>考试完后休息了几天，也要开始开工了–</p>
 <h1 id="Cookie_基础知识">Cookie 基础知识</h1><ul>
-<li>cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb，如果 cookie 字符串的长度超过4kb，则该属性将返回空字符串。<br>由于 cookie 最终都是以文件形式存放在客户端计算机中，所以查看和修改 cookie 都是很方便的，这就是为什么常说 cookie 不能存放重要信息的原因。</li>
-</ul>
-<p>+每个 cookie 的格式都是这样的：<code>&lt;cookie名&gt;</code>=&lt;值&gt;；名称和值都必须是合法的标示符。</p>
-<ul>
-<li>cookie 是存在 有效期的。在默认情况下，一个 cookie 的生命周期就是在浏览器关闭的时候结束。如果想要 cookie 能在浏览器关掉之后还可以使用，就必须要为该 cookie 设置有效期，也就是 cookie 的失效日期。</li>
-<li><p>alert(typeof document.cookie)　　结果是 string，</p>
+<li><p>cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb，如果 cookie 字符串的长度超过4kb，则该属性将返回空字符串。<br>由于 cookie 最终都是以文件形式存放在客户端计算机中，所以查看和修改 cookie 都是很方便的，这就是为什么常说 cookie 不能存放重要信息的原因。</p>
+</li>
+<li><p>每个 cookie 的格式都是这样的：<code>&lt;cookie名&gt;</code>=&lt;值&gt;；名称和值都必须是合法的标示符。</p>
+</li>
+<li><p>cookie 是存在 有效期的。在默认情况下，一个 cookie 的生命周期就是在浏览器关闭的时候结束。如果想要 cookie 能在浏览器关掉之后还可以使用，就必须要为该 cookie 设置有效期，也就是 cookie 的失效日期。</p>
+</li>
+<li><p>alert(typeof document.cookie)　　结果是 string，<strong>所以说cookie不是数组</strong></p>
 </li>
 <li><p>cookie 有域和路径这个概念。域就是domain的概念，因为浏览器是个注意安全的环境，所以不同的域之间是不能互相访问 cookie 的(当然可以通过特殊设置的达到 cookie 跨域访问)。路径就是routing的概念，一个网页所创建的 cookie 只能被与这个网页在同一目录或子目录下得所有网页访问，而不能被其他目录下得网页访问（这句话有点绕，一会看个例子就好理解了）。</p>
 </li>
 <li><p>其实创建cookie的方式和定义变量的方式有些相似，都需要使用 cookie 名称和 cookie 值。同个网站可以创建多个 cookie ，而多个 cookie 可以存放在同一个cookie 文件中。</p>
 </li>
 </ul>
-<p>我们经常要将A页面中的某些数据用在B页面中，但是当从A页面跳转到B页面的时候，A页面关闭的整个dom就销毁了，因此我们需要用的到cookie来保存变量</p>
+<p><strong>我们经常要将A页面中的某些数据用在B页面中，但是当从A页面跳转到B页面的时候，A页面关闭的整个dom就销毁了，因此我们需要用的到cookie来保存变量</strong></p>
 <h1 id="使用_JavaScript_创建Cookie">使用 JavaScript 创建Cookie</h1><p>JavaScript 可以使用 document.cookie 属性来创建 、读取、及删除 cookies。<br>JavaScript 中，创建 cookie 如下所示：<br><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"username=hinami"</span>;</span><br></pre></td></tr></table></figure></p>
 <p>您还可以为 cookie 添加一个过期时间（以 UTC 或 GMT 时间）。默认情况下，cookie 在浏览器关闭时删除：<br><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"username=John Doe; expires=Thu, 18 Dec 2020 12:00:00 GMT"</span>;</span><br></pre></td></tr></table></figure></p>
 <p>您可以使用 path 参数告诉浏览器 cookie 的路径。默认情况下，cookie 属于当前页面。<br><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie=<span class="string">"username=John Doe; expires=Thu, 18 Dec 2020 12:00:00 GMT; path=/"</span>;</span><br></pre></td></tr></table></figure></p>
 <p>使用 JavaScript 读取 Cookie<br>在 JavaScript 中, 可以使用以下代码来读取 cookies：<br><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="built_in">document</span>.cookie;</span><br></pre></td></tr></table></figure></p>
-<p>做了个简单的<a href="http://i.hinami.xyz/Demo/cookie2/" target="_blank" rel="external">demo</a><br>第一个页面输入名字，第二个页面输出名字</p>
-<p>下边是源码<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>您好,请输入您的名字，和内容<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">placeholder</span>=<span class="value">"输入"</span> <span class="attribute">id</span>=<span class="value">"uname"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">onclick</span>=<span class="value">"set()"</span>&gt;</span>登录<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">onclick</span>=<span class="value">"clearCookie()"</span>&gt;</span>清除所有cookie<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line">===============================</span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">set</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> na = <span class="built_in">document</span>.getElementById(<span class="string">'uname'</span>).value;</span><br><span class="line">    <span class="built_in">document</span>.cookie=<span class="string">"username= "</span>+na+<span class="string">"; expires=Thu, 18 Dec 2017 12:00:00 GMT"</span>;</span><br><span class="line">    <span class="built_in">window</span>.location.href=<span class="string">"wel.html"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clearCookie</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = <span class="built_in">document</span>.cookie.match(<span class="regexp">/[^ =;]+(?=\=)/g</span>);</span><br><span class="line">    <span class="keyword">if</span> (keys) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = keys.length; i--;)</span><br><span class="line">            <span class="built_in">document</span>.cookie = keys[i] + <span class="string">'=0;expires='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>).toUTCString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>做了个简单的<a href="http://i.hinami.xyz/Demo/cookie2/index.html" target="_blank" rel="external">demo</a><br>第一个页面输入名字，第二个页面输出名字</p>
+<p>下边是index源码<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>您好,请输入您的名字，和内容<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">placeholder</span>=<span class="value">"输入"</span> <span class="attribute">id</span>=<span class="value">"uname"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">onclick</span>=<span class="value">"set()"</span>&gt;</span>登录<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">onclick</span>=<span class="value">"clearCookie()"</span>&gt;</span>清除所有cookie<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line">===============================</span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">set</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> na = <span class="built_in">document</span>.getElementById(<span class="string">'uname'</span>).value;</span><br><span class="line">    <span class="built_in">document</span>.cookie=<span class="string">"username= "</span>+na+<span class="string">"; expires=Thu, 18 Dec 2017 12:00:00 GMT"</span>;</span><br><span class="line">    <span class="built_in">window</span>.location.href=<span class="string">"wel.html"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clearCookie</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = <span class="built_in">document</span>.cookie.match(<span class="regexp">/[^ =;]+(?=\=)/g</span>);</span><br><span class="line">    <span class="keyword">if</span> (keys) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = keys.length; i--;)</span><br><span class="line">            <span class="built_in">document</span>.cookie = keys[i] + <span class="string">'=0;expires='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>).toUTCString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>下边是页面二的源码<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">"&lt;h1&gt;欢迎光临！"</span>+name+<span class="string">"&lt;/h1&gt;"</span>);</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"index.html"</span>&gt;</span>点我回主页<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">onclick</span>=<span class="value">"clearCookie()"</span>&gt;</span>清除所有cookie<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line">====================================</span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clearCookie</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = <span class="built_in">document</span>.cookie.match(<span class="regexp">/[^ =;]+(?=\=)/g</span>);</span><br><span class="line">    <span class="keyword">if</span> (keys) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = keys.length; i--;)</span><br><span class="line">            <span class="built_in">document</span>.cookie = keys[i] + <span class="string">'=0;expires='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>).toUTCString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>然而网上有已经写好的function</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//设置cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">cname, cvalue, exdays</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    d.setTime(d.getTime() + (exdays * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>));</span><br><span class="line">    <span class="keyword">var</span> expires = <span class="string">"expires="</span> + d.toGMTString();</span><br><span class="line">    <span class="built_in">document</span>.cookie = cname + <span class="string">"="</span> + cvalue + <span class="string">"; "</span> + expires;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//获取cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">cname</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = cname + <span class="string">"="</span>;</span><br><span class="line">    <span class="keyword">var</span> ca = <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; ca.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> c = ca[i].trim();</span><br><span class="line">        <span class="keyword">if</span> (c.indexOf(name) == <span class="number">0</span>) <span class="keyword">return</span> c.substring(name.length, c.length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//清除所有cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clearCookie</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = <span class="built_in">document</span>.cookie.match(<span class="regexp">/[^ =;]+(?=\=)/g</span>);</span><br><span class="line">    <span class="keyword">if</span> (keys) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = keys.length; i--;)</span><br><span class="line">            <span class="built_in">document</span>.cookie = keys[i] + <span class="string">'=0;expires='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>).toUTCString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这是改进后的<a href="http://i.hinami.xyz/Demo/cookie3/setc2.html" target="_blank" rel="external">demo</a></p>
+<p>这是改进后的<a href="http://i.hinami.xyz/Demo/cookie3/index.html" target="_blank" rel="external">demo</a></p>
 <p>实现了cookie的增删改查</p>
   
 	</div>
@@ -161,11 +163,19 @@ cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb�
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/02/02/cookie2/" title="cookieUtil">
+  <strong>上一篇：</strong><br/>
+  <span>
+  cookieUtil</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/12/26/red-34/"  title="red-34">
+<a href="/2016/01/30/行内元素和块级元素/"  title="行内元素和块级元素">
  <strong>下一篇：</strong><br/> 
- <span>red-34
+ <span>行内元素和块级元素
 </span>
 </a>
 </div>
@@ -231,11 +241,11 @@ cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb�
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
 			
 		
 			
@@ -243,19 +253,15 @@ cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb�
 			
 		
 			
-				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
 			
 		
 			
@@ -263,15 +269,19 @@ cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb�
 			
 		
 			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
 			
 		
 			
@@ -279,11 +289,19 @@ cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb�
 			
 		
 			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
 			
 		
 			
@@ -296,14 +314,6 @@ cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb�
 		
 			
 				<li><a href="/tags/事件模拟/" title="事件模拟">事件模拟<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/事件委托/" title="事件委托">事件委托<sup>1</sup></a></li>
 			
 		
 		</ul>
