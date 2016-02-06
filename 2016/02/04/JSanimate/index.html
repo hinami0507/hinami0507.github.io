@@ -1,0 +1,674 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JSanimate | hinami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hinami">
+    
+
+    
+    <meta name="description" content="昨天在慕课网-JS动画学习，这里来总结一下
+源码挂在服务器上
+匀速动画animate1-长度运动animate2-不透明度运动
+var timer = null;function startMove(iTarget) &amp;#123;    clearInterval(timer);    var oDiv = document.getElementById(&apos;div1&apos;);    timer = s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSanimate">
+<meta property="og:url" content="hinami.xyz/2016/02/04/JSanimate/index.html">
+<meta property="og:site_name" content="hinami">
+<meta property="og:description" content="昨天在慕课网-JS动画学习，这里来总结一下
+源码挂在服务器上
+匀速动画animate1-长度运动animate2-不透明度运动
+var timer = null;function startMove(iTarget) &amp;#123;    clearInterval(timer);    var oDiv = document.getElementById(&apos;div1&apos;);    timer = s">
+<meta property="og:updated_time" content="2016-02-06T10:07:25.275Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSanimate">
+<meta name="twitter:description" content="昨天在慕课网-JS动画学习，这里来总结一下
+源码挂在服务器上
+匀速动画animate1-长度运动animate2-不透明度运动
+var timer = null;function startMove(iTarget) &amp;#123;    clearInterval(timer);    var oDiv = document.getElementById(&apos;div1&apos;);    timer = s">
+<meta name="twitter:creator" content="@346565386Toms">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/fav.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hinami" title="hinami"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hinami">hinami</a></h1>
+				<h2 class="blog-motto">↖give me five~(๑•̀▽•́)و✧</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hinami.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/04/JSanimate/" title="JSanimate" itemprop="url">JSanimate</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-04T04:26:19.000Z" itemprop="datePublished"> 发表于 2016-02-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>昨天在<a href="http://www.imooc.com/learn/167" target="_blank" rel="external">慕课网-JS动画学习</a>，这里来总结一下</p>
+<p>源码挂在服务器上</p>
+<h1 id="匀速动画">匀速动画</h1><p><a href="http://i.hinami.xyz/Demo/animate/animate1.html" target="_blank" rel="external">animate1-长度运动</a><br><a href="http://i.hinami.xyz/Demo/animate/animate2.html" target="_blank" rel="external">animate2-不透明度运动</a></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">iTarget</span>) </span>&#123;</span><br><span class="line">    clearInterval(timer);</span><br><span class="line">    <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</span><br><span class="line">    timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> speed=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">var</span> curPos=oDiv.offsetLeft;<span class="comment">//当前位置</span></span><br><span class="line">        <span class="keyword">if</span>(curPos&gt;iTarget)<span class="comment">//判断当前位置是否大于目标值</span></span><br><span class="line">            speed=-<span class="number">10</span>;<span class="comment">//若大于则</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            speed=<span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span>(curPos == iTarget )</span><br><span class="line">            &#123;clearInterval(timer);&#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        oDiv.style.left=curPos+speed+<span class="string">'px'</span>;</span><br><span class="line">    &#125;, <span class="number">30</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个动作startMove函数的基本流程：</p>
+<ul>
+<li>clearInterval(timer) 先清理计时器，避免多次重复触发动作</li>
+<li>设置计时器</li>
+<li>计时器内部获取目标长度和当前长度，进行比对，相同则清理计时器，停止动画，不同则长度递增</li>
+</ul>
+<hr>
+<h1 id="变速缓冲运动">变速缓冲运动</h1><p><a href="http://i.hinami.xyz/Demo/animate/animate3.html" target="_blank" rel="external">animate3-变速缓冲运动</a></p>
+<p>在animate1的基础上改进在于 速度值来源于 <strong>目标值-当前值</strong>，<br>并且要对速度值取整，整的向上取整，负的向下取整。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var speed = (iTarget - curPos) / <span class="number">10</span>;</span><br><span class="line">speed = speed &gt; <span class="number">0</span> ? Math.<span class="built_in">ceil</span>(speed) : Math.<span class="built_in">floor</span>(speed);</span><br></pre></td></tr></table></figure></p>
+<p>IE9, Firefox, Chrome, Opera 和 Safari 使用属性 opacity 来设定透明度。opacity 属性能够设置的值从 0.0 到 1.0。值越小，越透明。<br>IE8 以及更早的版本使用滤镜 filter:alpha(opacity=x)。x 能够取的值从 0 到 100。值越小，越透明。</p>
+<hr>
+<h1 id="多物体运动">多物体运动</h1><p>多物体运动，不能共用计时器<br><a href="http://i.hinami.xyz/Demo/animate/animate4.html" target="_blank" rel="external">animate4-多物体运动</a></p>
+<p>可以发现，把鼠标移动到方块1上，然后迅速，移动到方块2上，发现方块1的动画也停止了，因为他们共用计时器导致的。</p>
+<p>所以要为每一个动画开一个计时器</p>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate4-fix1.html" target="_blank" rel="external">animate4-fix1</a></p>
+<p>这样每一个动画都有自己的计时器，不会冲突。</p>
+<p>但是fix1仍然有缺点，可以看到原来宽度为200px,鼠标移除，动画弹回是256px,</p>
+<p>来看一个例子<br><a href="http://i.hinami.xyz/Demo/animate/animate-style.html" target="_blank" rel="external">animate-style</a></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> odiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</span><br><span class="line">    setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        odiv.style.width = odiv.offsetWidth - <span class="number">1</span>+<span class="string">'px'</span>;</span><br><span class="line">    &#125;,<span class="number">30</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然是-1，但是条子仍然往变宽方向走<br>这是因为<br>offsetwidth:是元素相对父元素的偏移宽度。等于border+padding+width 而width仅仅是自身的宽度</p>
+<p>改进之后用getstyle()来获取当前值</p>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate-style-fix.html" target="_blank" rel="external">animate-style-fix</a></p>
+<p>所以要用getstyle()获取样式，解决兼容性</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getstyle</span><span class="params">(obj, attr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.currentStyle)</span><br><span class="line">        <span class="keyword">return</span> obj.currentStyle[attr];  <span class="comment">//兼容IE</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> getComputedStyle(obj, <span class="literal">false</span>)[attr];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate4-fix2.html" target="_blank" rel="external">animate4-fix2</a></p>
+<p>可以看到,fix2，长度成功回到了200px</p>
+<p>然后要让方块1长度变，方块2高度变，这需要封装的startMove多传一个参数<code>attr</code>进来</p>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate4-fix3.html" target="_blank" rel="external">animate4-fix3</a></p>
+<p>接着将不透明度的也做成多动画运动：</p>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate5.html" target="_blank" rel="external">animate5</a></p>
+<p>接着将不透明度的也做成多动画运动：</p>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate5-fix.html" target="_blank" rel="external">animate5-fix</a></p>
+<p>然后将<strong>不透明度</strong>和<strong>长度变化</strong>的动画进行融合：<br>在startMove中对传入的<code>attr</code>参数进行判断，然后做出相应的改变</p>
+<p>1、获取当前透明度不用parseInt<br>2、设置透明度要考虑兼容<br>obj.style.filter=’alpha(opacity:’+(当前透明度+变化速度)+’)’;<br>obj.style.opacity=(当前透明度+变化速度)/100;<br>3、透明度不加“px”<br>在使用parseInt()时处理透明度小数时,会有影响 单位设置<br>相应位置进行判断 IE/FireFox<br>取相应值 Math.round()四舍五入取整数值<br>Math.round(parseFloat(getStyle(obj,attr))*100)</p>
+<hr>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate6.html" target="_blank" rel="external">animate6-链式运动</a></p>
+<p>在原来基础上多传入一个回调函数<code>fn</code>，在动画停止的时候执行<br><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (iTarget == curWid) &#123;</span><br><span class="line">    clearInterval(obj.timer);</span><br><span class="line">    <span class="keyword">if</span>(fn)&#123;</span><br><span class="line">        fn();</span><br><span class="line">    &#125;</span><br><span class="line">`<span class="javascript"></span>``<span class="javascript"> </span><br><span class="line"></span><br><span class="line">[animate7-同时运动](http:<span class="comment">//i.hinami.xyz/Demo/animate/animate7.html)</span></span><br><span class="line"></span><br><span class="line">同时运动涉及了同一物体，多个运动，例如：长度和宽度同时改变，这需要用到json,就像数组一样</span><br><span class="line"></span><br><span class="line"><span class="built_in">JSON</span>格式：</span><br><span class="line"><span class="keyword">var</span> json = &#123;name1:key1,name2:key2,...&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> json)&#123;</span><br><span class="line">alert(i); <span class="comment">//遍历name</span></span><br><span class="line">alert(json[i]); <span class="comment">//遍历key</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">另外这里将setInterval的时间间隔也当成参数传入startMove</span><br><span class="line">下边就是startMove封装到最后的框架:</span></span><br></pre></td></tr></table></figure></p>
+<p>function startMove(obj, json,workspeed,fn) {<br>    clearInterval(obj.timer);</p>
+<pre><code>obj.timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> flag = <span class="literal">true</span>;
+    <span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> json) {
+
+        <span class="keyword">if</span> (attr == <span class="string">'opacity'</span>) {
+            <span class="keyword">var</span> icur = <span class="built_in">Math</span>.round(<span class="built_in">parseFloat</span>(getstyle(obj, attr)) * <span class="number">100</span>);
+        } <span class="keyword">else</span> {
+            <span class="keyword">var</span> icur = <span class="built_in">parseInt</span>(getstyle(obj, attr));
+        }
+        <span class="keyword">var</span> speed = (json[attr] - icur) / <span class="number">8</span>;
+        speed = speed &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(speed) : <span class="built_in">Math</span>.floor(speed);
+
+        <span class="keyword">if</span> (json[attr] != icur) {
+            flag = <span class="literal">false</span>;
+        }
+        <span class="keyword">if</span> (flag)
+        {
+            clearInterval(obj.timer);
+            <span class="keyword">if</span>(fn) fn();
+        }
+        <span class="keyword">else</span> {
+            <span class="keyword">if</span> (attr == <span class="string">'opacity'</span>) {
+                obj.style.filter = <span class="string">'alpha(opacity:'</span> + icur + speed + <span class="string">')'</span>;
+                obj.style.opacity = (icur + speed) / <span class="number">100</span>;
+            } <span class="keyword">else</span>
+                obj.style[attr] = icur + speed + <span class="string">'px'</span>;
+        }
+    }
+
+}, workspeed)
+</code></pre><p>}</p>
+<p>function getstyle(obj, attr) {<br>    if (obj.currentStyle)<br>        return obj.currentStyle[attr];<br>    else<br>        return getComputedStyle(obj, false)[attr];<br>}<br>```</p>
+<p>最后分别用startMove.js做的一个小动画</p>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate8.html" target="_blank" rel="external">animate8-startMove</a></p>
+<p>用了jquery实现了同样的效果，发现startMove的封装和jquery相近，想必jquery主要的封装思想应该就是startMove了</p>
+<p><a href="http://i.hinami.xyz/Demo/animate/animate8.html" target="_blank" rel="external">animate9-jquery</a></p>
+<p>最后祝大家新年快乐~</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2016/02/04/JSanimate/" data-title="JSanimate | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/02/03/vertical-align/"  title="vertical-align">
+ <strong>下一篇：</strong><br/> 
+ <span>vertical-align
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/02/04/JSanimate/" data-title="JSanimate" data-url="hinami.xyz/2016/02/04/JSanimate/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#匀速动画"><span class="toc-number">1.</span> <span class="toc-text">匀速动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#变速缓冲运动"><span class="toc-number">2.</span> <span class="toc-text">变速缓冲运动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多物体运动"><span class="toc-number">3.</span> <span class="toc-text">多物体运动</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/HTML5/" title="HTML5">HTML5<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>35</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目经验/" title="项目经验">项目经验<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>39</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文本框脚本/" title="文本框脚本">文本框脚本<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/表单脚本/" title="表单脚本">表单脚本<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件模拟/" title="事件模拟">事件模拟<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://tms.im" target="_blank" title="梦石真人">谭  总</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="cateaf.com" target="_blank" title="这人是个死基佬">小礼服</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="全球最大同性交友社区">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://home.cnblogs.com/u/yxy99/" target="_blank" title="yxy">yxy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m hinami in HNU. <br/>
+			This is my school,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hinami0507" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/346565386Toms" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/hinami.sin" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/po-xiao-14-75" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:346565386@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hinami">hinami</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd65912a25436b0b55db731ce75f5c981' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
