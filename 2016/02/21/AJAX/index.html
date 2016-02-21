@@ -4,59 +4,33 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>jq笔记 | hinami</title>
+    <title>AJAX | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="元素查找
-多个元素 , 例如：$(“#div1,#div2”)选择id为div1和div2的元素
-
-下一层级 &amp;gt; 例如：$(“div&amp;gt;span”)选择p之后一个同辈的span元素
-
-同级的下一个元素 + 例如：$(“p+span”)选择p之后一个同辈的span元素
-
-同级的之后所有元素 ~ 例如：$(“p~span”)选择p之后同辈所有的span元素
-
-过滤选择 : 
-
-
-$(“li:">
+    <meta name="description" content="Ajax三步骤：Asynchronous Javascript And XML1、运用HTML和CSS实现页面，表达信息；2、运用XMLHttpRequest(简称XHR)和web服务器进行数据的异步交换；3、运用JavaScript操作DOM，实现动态局部刷新；
+1.同步：就是用户填写完信息之后，全部提交给服务器，等待服务器的回应，是一次性全部的。
+2.异步：当用户填写完一条信息之后，这条信息会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jq笔记">
-<meta property="og:url" content="hinami.xyz/2016/02/16/jq笔记/index.html">
+<meta property="og:title" content="AJAX">
+<meta property="og:url" content="hinami.xyz/2016/02/21/AJAX/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="元素查找
-多个元素 , 例如：$(“#div1,#div2”)选择id为div1和div2的元素
-
-下一层级 &amp;gt; 例如：$(“div&amp;gt;span”)选择p之后一个同辈的span元素
-
-同级的下一个元素 + 例如：$(“p+span”)选择p之后一个同辈的span元素
-
-同级的之后所有元素 ~ 例如：$(“p~span”)选择p之后同辈所有的span元素
-
-过滤选择 : 
-
-
-$(“li:">
-<meta property="og:updated_time" content="2016-02-21T12:31:55.391Z">
+<meta property="og:description" content="Ajax三步骤：Asynchronous Javascript And XML1、运用HTML和CSS实现页面，表达信息；2、运用XMLHttpRequest(简称XHR)和web服务器进行数据的异步交换；3、运用JavaScript操作DOM，实现动态局部刷新；
+1.同步：就是用户填写完信息之后，全部提交给服务器，等待服务器的回应，是一次性全部的。
+2.异步：当用户填写完一条信息之后，这条信息会">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/%E5%90%8C%E6%AD%A5.jpg">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/%E5%BC%82%E6%AD%A5.jpg">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/HTTP%E8%AF%B7%E6%B1%82.jpg">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/HTTP%E5%93%8D%E5%BA%94.jpg">
+<meta property="og:updated_time" content="2016-02-21T13:57:39.391Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jq笔记">
-<meta name="twitter:description" content="元素查找
-多个元素 , 例如：$(“#div1,#div2”)选择id为div1和div2的元素
-
-下一层级 &amp;gt; 例如：$(“div&amp;gt;span”)选择p之后一个同辈的span元素
-
-同级的下一个元素 + 例如：$(“p+span”)选择p之后一个同辈的span元素
-
-同级的之后所有元素 ~ 例如：$(“p~span”)选择p之后同辈所有的span元素
-
-过滤选择 : 
-
-
-$(“li:">
+<meta name="twitter:title" content="AJAX">
+<meta name="twitter:description" content="Ajax三步骤：Asynchronous Javascript And XML1、运用HTML和CSS实现页面，表达信息；2、运用XMLHttpRequest(简称XHR)和web服务器进行数据的异步交换；3、运用JavaScript操作DOM，实现动态局部刷新；
+1.同步：就是用户填写完信息之后，全部提交给服务器，等待服务器的回应，是一次性全部的。
+2.异步：当用户填写完一条信息之后，这条信息会">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -117,49 +91,71 @@ $(“li:">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/16/jq笔记/" title="jq笔记" itemprop="url">jq笔记</a>
+      <a href="/2016/02/21/AJAX/" title="AJAX" itemprop="url">AJAX</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-16T13:10:15.000Z" itemprop="datePublished"> 发表于 2016-02-16</time>
+    <time datetime="2016-02-21T12:42:34.000Z" itemprop="datePublished"> 发表于 2016-02-21</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h1 id="元素查找">元素查找</h1><ul>
-<li><p>多个元素 <code>,</code> 例如：$(“#div1,#div2”)选择id为div1和div2的元素</p>
+		<p>Ajax三步骤：<br>Asynchronous Javascript And XML<br>1、运用HTML和CSS实现页面，表达信息；<br>2、运用XMLHttpRequest(简称XHR)和web服务器进行数据的异步交换；<br>3、运用JavaScript操作DOM，实现动态局部刷新；</p>
+<p>1.同步：就是用户填写完信息之后，全部提交给服务器，等待服务器的回应，是一次性全部的。<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/%E5%90%8C%E6%AD%A5.jpg" alt="同步"></p>
+<p>2.异步：当用户填写完一条信息之后，这条信息会自动向服务器提交，然后服务器响应客户端，在此过程中，用户依然在填写表格的信息，即向服务器请求多次，节省了用户的时间，提高了用户的体验。<br>3.XMLhttpRequest对象来实现这一功能，也需要javascript来操作DOM实现局部的信息更新。<br><img src="http://7xnp0k.com1.z0.glb.clouddn.com/%E5%BC%82%E6%AD%A5.jpg" alt="异步"></p>
+<h1 id="XMLHttpRequest(简称XHR)对象定义">XMLHttpRequest(简称XHR)对象定义</h1><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment">//兼容 IE6写法</span></span><br><span class="line"><span class="keyword">var</span> request;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">	request = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">//几乎所有</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	request = <span class="keyword">new</span> ActiveObject(<span class="string">"Microsoft.XMLHTTP"</span>);<span class="comment">//IE6,IE5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">================================</span><br><span class="line"><span class="keyword">var</span> request;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)</span><br><span class="line">&#123;</span><br><span class="line">request=<span class="keyword">new</span> XMLHttpRequest();<span class="comment">//IE7+ chrome,firefox,opera..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Http是计算机通过网络进行通信的规则">Http是计算机通过网络进行通信的规则</h1><p>http是一种无状态的协议(不建立持久的连接)</p>
+<p>没有记忆，</p>
+<h3 id="HTTP请求，7个步骤：">HTTP请求，7个步骤：</h3><p>1.建立tcp连接<br>2.web浏览器向web服务器发送请求命令<br>3.web浏览器发送请求头信息<br>4.web服务器应答<br>5.web服务器发送应答头信息<br>6.web服务器向浏览器发送数据<br>7.web服务器关闭tcp连接</p>
+<h3 id="HTTP请求">HTTP请求</h3><p>一个HTTP请求由四个部分组成：</p>
+<p>1.HTTP请求的方法或动作，post或get<br>2.正在请求的URL<br>3.请求头，包含一些客户端环境信息，身份验证信息等<br>4.请求体(请求正文)，包含要发送的一些字符串信息,表单信息等等<br>//请求头和请求体之间有一个空行，表面请求头已经结束</p>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/HTTP%E8%AF%B7%E6%B1%82.jpg" alt="HTTP请求"></p>
+<p>红色框框上边为请求方法动作和URL<br>红色框框为请求头<br>红色框框下边为请求体</p>
+<ul>
+<li><p>GET:一般用于信息的获取，使用URL传递参数，对发送信息的数量也有限制，一般在2000字符！默认方式，一般用于查询、获取操作,不是很安全，任何人可见，信息都显示在URL中<br>(UTF-8下，一个英文字符==一个字节，一个中文(含繁体)==三个字节)</p>
 </li>
-<li><p>下一层级 <code>&gt;</code> 例如：$(“div&gt;span”)选择p之后一个同辈的span元素</p>
-</li>
-<li><p>同级的下一个元素 <code>+</code> 例如：$(“p+span”)选择p之后一个同辈的span元素</p>
-</li>
-<li><p>同级的之后所有元素 <code>~</code> 例如：$(“p~span”)选择p之后同辈所有的span元素</p>
-</li>
-<li><p>过滤选择 <code>:</code> </p>
+<li><p>POST:一般用于修改服务器上的资源，对所发送的数量无限制。一般用于发送表单数据，新建，修改，删除等操作，要安全一些，不在URL中显示，对其他人不显示。</p>
 </li>
 </ul>
-<p>$(“li:first”)获取第一个li<br>$(“li:first-child”)获取所有li集合中的第一个li，重新组成一个集合<br>$(“li:last-child”)获取所有li集合中的最后一个li，重新组成一个集合<br>$(“li:even)获取所有奇数行li元素<br>$(“li:odd)获取所有偶数行li元素<br>$(“li:nth(n))获取第n+1个li，第一个是从0开始<br>$(“li:odd:last)获取最后一个偶数行li元素<br>$(“li:eq(3)”)选择第三个li<br>$(“li:contains(‘abc’)”)选择文本包含abc的li<br>$(“li:has(‘label’)”)选择li中包含label的元素</p>
-<p>:hidden过滤选择器的功能是获取全部不可见的元素<br>包括display：none ，type=”hidden”, style=”visiblity:hidden”~等等</p>
-<p>$(“p:hidden”)代码获取隐藏的p元素<br>$(“p:visible”)代码获取显示的p元素<br>$(“li[title=’蔬菜’]”)代码获取title=’蔬菜’的li元素<br>$(“li[title!=’蔬菜’]”)代码获取title不等于’蔬菜’的li元素<br>$(“li[title*=’果’]”)代码获取title中含有’果’的li元素</p>
-<h1 id="表单选择器">表单选择器</h1><p><strong>注意空格</strong></p>
-<p>$(“#id :input”)表单选择器代码获取了表单中的全部元素<br>$(“#id :text”)表单选择所有文本输入区域<br>$(“#id :password”)表单选择所有密码输入区域<br>$(“#id :radio”)表单选择所有单选框<br>$(“#id :checkbox”)表单选择所有复选框<br>$(“#id input:submit”)表单选择所有提交按钮</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://libs.baidu.com/jquery/1.9.0/jquery.js"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span>&gt;</span>更多<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    $(<span class="string">"a"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="keyword">this</span>).html(<span class="string">"简化"</span>);  <span class="comment">//正确，返回一个jquery对象</span></span><br><span class="line">        <span class="keyword">this</span>.html(<span class="string">"简化"</span>);    <span class="comment">//错误，this操作的是HTML对象</span></span><br><span class="line">        &#125;)</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>由于jquery要操作jquery对象，<br>所以$(this).是个转化,将this表示的dom对象转化为jquery对象，这样就可以使用jquery提供的方法操作。</p>
+<p>【幂等】:一个操作任意多次执行所产生的影响均与一次执行的影响相同。GET请求就是一种幂等操作。</p>
+<h3 id="【HTTP响应】：">【HTTP响应】：</h3><p>一个HTTP响应一般由3部分组成：</p>
+<p>①一个数字或文字组成的状态码，用来显示请求是成功还是失败<br>②响应头，和请求头一样包含许多有用信息，如服务器类型、日期时间、内容类型和长度等<br>③响应体，即响应正文//响应头和响应体之间有空行</p>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/HTTP%E5%93%8D%E5%BA%94.jpg" alt="HTTP响应"></p>
+<h3 id="【HTTP状态码】">【HTTP状态码】</h3><p>1XX:信息类，表示收到Web浏览器请求，正在进一步处理中<br>2XX:成功，表示用户请求被正确接收<br>3XX:重定向，表示请求没有成功，客户必须采取进一步动作<br>4XX:客户端错误，表示客户端提交的请求有错误，例如：404 NOT Found,意味着请求中所引用的文档不存在<br>5XX:服务器错误，表示服务器不能完成对请求的处理，如：500</p>
+<blockquote>
+<p>如何通过XHR发送请求</p>
+</blockquote>
+<p>XHR发送方法：</p>
+<h3 id="open(method,url,async)方法调用XHR,初始化_HTTP_请求参数，">open(method,url,async)方法调用XHR,初始化 HTTP 请求参数，</h3><p>三个参数依次是<a href="post,或者get;">请求方法</a>,<a href="绝对地址或者相对地址">请求地址</a>，<a href="(默认)ture为异步请求，false为同步七牛">请求异步</a></p>
+<h3 id="send(string)发送XHR请求到服务器">send(string)发送XHR请求到服务器</h3><p>①请求方式为”GET”时，可以省略，所有参数可以拼接到URL中，可以写none<br>②请求方式为”POST”时，必须填写<br>async:true/false(是否异步传输)</p>
+<p>下边是一些例子<br><figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line">//创建XHR请求</span><br><span class="line">var request;</span><br><span class="line">if(window.XMLHttpRequest)</span><br><span class="line">&#123;</span><br><span class="line">request=new XMLHttpRequest();//IE7+ chrome,firefox,opera..</span><br><span class="line">&#125;</span><br><span class="line">//发送XHR请求</span><br><span class="line">//例子一</span><br><span class="line">request.open(<span class="string">"<span class="keyword">GET</span>"</span>,<span class="string">"get.php"</span>,true);</span><br><span class="line">request.send();</span><br><span class="line">//例子二</span><br><span class="line">request.open(<span class="string">"<span class="keyword">POST</span>"</span>,<span class="string">"post.php"</span>,true);</span><br><span class="line">request.send();</span><br><span class="line">//例子三</span><br><span class="line">request.open(<span class="string">"<span class="keyword">POST</span>"</span>,<span class="string">"create.php"</span>,true);</span><br><span class="line">request.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line">request.send(<span class="string">"name=小明&amp;sex=男"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>**注意：request.setRequestHeader()必须写在open()和send()中间,否则会抛出异常</p>
+<h3 id="XMLHttpRequest取得响应">XMLHttpRequest取得响应</h3><ul>
+<li>responseText:获得字符串形式的响应数据</li>
+<li>responseXML：获得XML形式的响应数据（比较少）</li>
+<li>status和statusText:以数字和文本形式返回HTTP状态码 </li>
+<li>getAllResponseHeader()：获取所有的响应报头</li>
+<li>getResponseHeader()：查询响应中的某个字段的值</li>
+</ul>
+<h3 id="readyState属性的变化代表服务器响应的变化">readyState属性的变化代表服务器响应的变化</h3><p>0：请求未初始化，open还没有调用<br>1：服务器连接已建立，open已经调用了<br>2：请求已接收，也就是接收到头信息了<br>3：请求处理中，也就是接收到了响应主体<br>4：请求已完成，且响应已就绪，也就是响应完成了</p>
+<p>对服务器响应的监听例子：</p>
+<figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line">var request = new XMLHttpRequest();</span><br><span class="line">request.open(<span class="string">"<span class="keyword">GET</span>"</span>,<span class="string">"get.php"</span>,true);</span><br><span class="line">request.send();</span><br><span class="line">request.onreadystatechange = function()&#123;</span><br><span class="line">	if(request.readyState === <span class="number">4</span> &amp;&amp; request.status === <span class="number">200</span> )&#123;</span><br><span class="line">		//做一些事情 request.responseText</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>建立异步请求的过程4个步骤：</p>
+<ul>
+<li>1:new一个XHR对象</li>
+<li>2:调用open方法</li>
+<li>3:send一些数据</li>
+<li>4:对过程进行监听，来知道服务器是不是正确地做出了响应，接着可以做一些事情<br>（监听readyState,响应成功可以做一些事情，比如获取服务器响应的内容在页面上做一些呈现）</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/jq/">jq</a>
-  </div>
 
 </div>
 
@@ -167,7 +163,7 @@ $(“li:">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2016/02/16/jq笔记/" data-title="jq笔记 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2016/02/21/AJAX/" data-title="AJAX | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -180,19 +176,11 @@ $(“li:">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/02/21/189mail/" title="189mail">
-  <strong>上一篇：</strong><br/>
-  <span>
-  189mail</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/02/06/倒计时/"  title="倒计时">
+<a href="/2016/02/21/189mail/"  title="189mail">
  <strong>下一篇：</strong><br/> 
- <span>倒计时
+ <span>189mail
 </span>
 </a>
 </div>
@@ -201,7 +189,7 @@ $(“li:">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/02/16/jq笔记/" data-title="jq笔记" data-url="hinami.xyz/2016/02/16/jq笔记/"></div>
+	<div class="ds-thread" data-thread-key="2016/02/21/AJAX/" data-title="AJAX" data-url="hinami.xyz/2016/02/21/AJAX/"></div>
 </section>
 
 
@@ -211,7 +199,7 @@ $(“li:">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#元素查找"><span class="toc-number">1.</span> <span class="toc-text">元素查找</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表单选择器"><span class="toc-number">2.</span> <span class="toc-text">表单选择器</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XMLHttpRequest(简称XHR)对象定义"><span class="toc-number">1.</span> <span class="toc-text">XMLHttpRequest(简称XHR)对象定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Http是计算机通过网络进行通信的规则"><span class="toc-number">2.</span> <span class="toc-text">Http是计算机通过网络进行通信的规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP请求，7个步骤："><span class="toc-number">2.0.1.</span> <span class="toc-text">HTTP请求，7个步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP请求"><span class="toc-number">2.0.2.</span> <span class="toc-text">HTTP请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【HTTP响应】："><span class="toc-number">2.0.3.</span> <span class="toc-text">【HTTP响应】：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【HTTP状态码】"><span class="toc-number">2.0.4.</span> <span class="toc-text">【HTTP状态码】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#open(method,url,async)方法调用XHR,初始化_HTTP_请求参数，"><span class="toc-number">2.0.5.</span> <span class="toc-text">open(method,url,async)方法调用XHR,初始化 HTTP 请求参数，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#send(string)发送XHR请求到服务器"><span class="toc-number">2.0.6.</span> <span class="toc-text">send(string)发送XHR请求到服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRequest取得响应"><span class="toc-number">2.0.7.</span> <span class="toc-text">XMLHttpRequest取得响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readyState属性的变化代表服务器响应的变化"><span class="toc-number">2.0.8.</span> <span class="toc-text">readyState属性的变化代表服务器响应的变化</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
