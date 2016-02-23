@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/%E5%BC%82%E6%AD%A5.jpg">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/HTTP%E8%AF%B7%E6%B1%82.jpg">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/HTTP%E5%93%8D%E5%BA%94.jpg">
-<meta property="og:updated_time" content="2016-02-21T13:57:39.391Z">
+<meta property="og:updated_time" content="2016-02-23T13:40:22.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX">
 <meta name="twitter:description" content="Ajax三步骤：Asynchronous Javascript And XML1、运用HTML和CSS实现页面，表达信息；2、运用XMLHttpRequest(简称XHR)和web服务器进行数据的异步交换；3、运用JavaScript操作DOM，实现动态局部刷新；
@@ -151,6 +151,46 @@
 <li>3:send一些数据</li>
 <li>4:对过程进行监听，来知道服务器是不是正确地做出了响应，接着可以做一些事情<br>（监听readyState,响应成功可以做一些事情，比如获取服务器响应的内容在页面上做一些呈现）</li>
 </ul>
+<h1 id="实例">实例</h1><p>···<br><!-- index.html --></p>
+<body><br>    <form><br>        <label>请输入要查询用户的名字</label><br>        <input name="users" onkeyup="showUser(this.value)"><br>        <p>已经匹配到的名字</p><br>        <p id="txtHint"></p><br>    </form><br>    <br><br></body>
+
+<script type="text/javascript">
+function showUser(str) {
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "getuser.php?q=" + str, true);
+    xmlhttp.send();
+}
+</script>
+
+
+<!-- getuser.php -->
+<meta http-equiv="Content-Type" content="text/html" charset="utf8">
+
+<p>&lt;?php<br>$q=$_GET[“q”];  //获取从index.html传来的q</p>
+<p>$con = mysqli_connect(‘服务器’,’账户’,’密码’,’数据库’);//链接数据库<br>if (!$con)<br>{<br>  die(‘Could not connect: ‘ . mysqli_error($con));<br>}</p>
+<p>$sql=”SELECT * FROM 数据表 WHERE 1”;</p>
+<p>$result = mysqli_query($con,$sql);</p>
+<p>while($row = mysqli_fetch_array($result))<br>{<br>    if(strtolower($q)==strtolower(substr($row[‘name’],0,strlen($q))))<br>        {</p>
+<pre><code>    echo <span class="variable">$row</span>[<span class="string">'name'</span>].<span class="string">","</span>;
+}
+</code></pre><p>}</p>
+<p>mysqli_close($con);//关闭与服务器的连接<br>?&gt;</p>
+<p>···</p>
+<p>以下是两个Demo<br><a href="http://i.hinami.xyz/Demo/ajaxtest/" target="_blank" rel="external">Ajax_test1</a></p>
+<p><a href="http://i.hinami.xyz/Demo/ajaxtest2/" target="_blank" rel="external">Ajax_test2</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -199,7 +239,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XMLHttpRequest(简称XHR)对象定义"><span class="toc-number">1.</span> <span class="toc-text">XMLHttpRequest(简称XHR)对象定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Http是计算机通过网络进行通信的规则"><span class="toc-number">2.</span> <span class="toc-text">Http是计算机通过网络进行通信的规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP请求，7个步骤："><span class="toc-number">2.0.1.</span> <span class="toc-text">HTTP请求，7个步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP请求"><span class="toc-number">2.0.2.</span> <span class="toc-text">HTTP请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【HTTP响应】："><span class="toc-number">2.0.3.</span> <span class="toc-text">【HTTP响应】：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【HTTP状态码】"><span class="toc-number">2.0.4.</span> <span class="toc-text">【HTTP状态码】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#open(method,url,async)方法调用XHR,初始化_HTTP_请求参数，"><span class="toc-number">2.0.5.</span> <span class="toc-text">open(method,url,async)方法调用XHR,初始化 HTTP 请求参数，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#send(string)发送XHR请求到服务器"><span class="toc-number">2.0.6.</span> <span class="toc-text">send(string)发送XHR请求到服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRequest取得响应"><span class="toc-number">2.0.7.</span> <span class="toc-text">XMLHttpRequest取得响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readyState属性的变化代表服务器响应的变化"><span class="toc-number">2.0.8.</span> <span class="toc-text">readyState属性的变化代表服务器响应的变化</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XMLHttpRequest(简称XHR)对象定义"><span class="toc-number">1.</span> <span class="toc-text">XMLHttpRequest(简称XHR)对象定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Http是计算机通过网络进行通信的规则"><span class="toc-number">2.</span> <span class="toc-text">Http是计算机通过网络进行通信的规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP请求，7个步骤："><span class="toc-number">2.0.1.</span> <span class="toc-text">HTTP请求，7个步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP请求"><span class="toc-number">2.0.2.</span> <span class="toc-text">HTTP请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【HTTP响应】："><span class="toc-number">2.0.3.</span> <span class="toc-text">【HTTP响应】：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【HTTP状态码】"><span class="toc-number">2.0.4.</span> <span class="toc-text">【HTTP状态码】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#open(method,url,async)方法调用XHR,初始化_HTTP_请求参数，"><span class="toc-number">2.0.5.</span> <span class="toc-text">open(method,url,async)方法调用XHR,初始化 HTTP 请求参数，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#send(string)发送XHR请求到服务器"><span class="toc-number">2.0.6.</span> <span class="toc-text">send(string)发送XHR请求到服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRequest取得响应"><span class="toc-number">2.0.7.</span> <span class="toc-text">XMLHttpRequest取得响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readyState属性的变化代表服务器响应的变化"><span class="toc-number">2.0.8.</span> <span class="toc-text">readyState属性的变化代表服务器响应的变化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实例"><span class="toc-number">3.</span> <span class="toc-text">实例</span></a></li></ol>
  
   </div>
 
