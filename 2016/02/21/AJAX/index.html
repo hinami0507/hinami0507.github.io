@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/%E5%BC%82%E6%AD%A5.jpg">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/HTTP%E8%AF%B7%E6%B1%82.jpg">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/HTTP%E5%93%8D%E5%BA%94.jpg">
-<meta property="og:updated_time" content="2016-02-23T13:40:22.917Z">
+<meta property="og:updated_time" content="2016-03-04T12:58:39.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX">
 <meta name="twitter:description" content="Ajax三步骤：Asynchronous Javascript And XML1、运用HTML和CSS实现页面，表达信息；2、运用XMLHttpRequest(简称XHR)和web服务器进行数据的异步交换；3、运用JavaScript操作DOM，实现动态局部刷新；
@@ -151,44 +151,7 @@
 <li>3:send一些数据</li>
 <li>4:对过程进行监听，来知道服务器是不是正确地做出了响应，接着可以做一些事情<br>（监听readyState,响应成功可以做一些事情，比如获取服务器响应的内容在页面上做一些呈现）</li>
 </ul>
-<h1 id="实例">实例</h1><p>···<br><!-- index.html --></p>
-<body><br>    <form><br>        <label>请输入要查询用户的名字</label><br>        <input name="users" onkeyup="showUser(this.value)"><br>        <p>已经匹配到的名字</p><br>        <p id="txtHint"></p><br>    </form><br>    <br><br></body>
-
-<script type="text/javascript">
-function showUser(str) {
-    if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    }
-    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    } else { // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", "getuser.php?q=" + str, true);
-    xmlhttp.send();
-}
-</script>
-
-
-<!-- getuser.php -->
-<meta http-equiv="Content-Type" content="text/html" charset="utf8">
-
-<p>&lt;?php<br>$q=$_GET[“q”];  //获取从index.html传来的q</p>
-<p>$con = mysqli_connect(‘服务器’,’账户’,’密码’,’数据库’);//链接数据库<br>if (!$con)<br>{<br>  die(‘Could not connect: ‘ . mysqli_error($con));<br>}</p>
-<p>$sql=”SELECT * FROM 数据表 WHERE 1”;</p>
-<p>$result = mysqli_query($con,$sql);</p>
-<p>while($row = mysqli_fetch_array($result))<br>{<br>    if(strtolower($q)==strtolower(substr($row[‘name’],0,strlen($q))))<br>        {</p>
-<pre><code>    echo <span class="variable">$row</span>[<span class="string">'name'</span>].<span class="string">","</span>;
-}
-</code></pre><p>}</p>
-<p>mysqli_close($con);//关闭与服务器的连接<br>?&gt;</p>
-<p>···</p>
+<h1 id="实例">实例</h1><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;!-- index.html --&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form&gt;</span><br><span class="line">        &lt;label&gt;请输入要查询用户的名字&lt;/label&gt;</span><br><span class="line">        &lt;input name=<span class="string">"users"</span> onkeyup=<span class="string">"showUser(this.value)"</span>/&gt;</span><br><span class="line">        &lt;p&gt;已经匹配到的名字&lt;/p&gt;</span><br><span class="line">        &lt;p id=<span class="string">"txtHint"</span>&gt;&lt;/p&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;br/&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="keyword">function</span> showUser(str) &#123;</span><br><span class="line">    if (str == <span class="string">""</span>) &#123;</span><br><span class="line">        document.getElementById(<span class="string">"txtHint"</span>).innerHTML = <span class="string">""</span>;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if (window.XMLHttpRequest) &#123; // code for IE7+, Firefox, Chrome, Opera, Safari</span><br><span class="line">        xmlhttp = new XMLHttpRequest();</span><br><span class="line">    &#125; else &#123; // code for IE6, IE5</span><br><span class="line">        xmlhttp = new ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    xmlhttp.onreadystatechange = function() &#123;</span><br><span class="line">        if (xmlhttp.readyState == <span class="number">4</span> &amp;&amp; xmlhttp.status == <span class="number">200</span>) &#123;</span><br><span class="line">            document.getElementById(<span class="string">"txtHint"</span>).innerHTML = xmlhttp.responseText;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xmlhttp.open(<span class="string">"GET"</span>, <span class="string">"getuser.php?q="</span> + str, true);</span><br><span class="line">    xmlhttp.send();</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!-- getuser.php --&gt;</span><br><span class="line"></span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html"</span> charset=<span class="string">"utf8"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$q</span>=$_GET[<span class="string">"q"</span>];  //获取从index.html传来的q</span><br><span class="line"></span><br><span class="line"><span class="variable">$con</span> = mysqli_connect(<span class="string">'服务器'</span>,<span class="string">'账户'</span>,<span class="string">'密码'</span>,<span class="string">'数据库'</span>);//链接数据库</span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$con</span>)</span><br><span class="line">&#123;</span><br><span class="line">  die(<span class="string">'Could not connect: '</span> . mysqli_error(<span class="variable">$con</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$sql</span>=<span class="string">"SELECT * FROM 数据表 WHERE 1"</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$result</span> = mysqli_query(<span class="variable">$con</span>,<span class="variable">$sql</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="variable">$row</span> = mysqli_fetch_array(<span class="variable">$result</span>))</span><br><span class="line">&#123;</span><br><span class="line">	if(strtolower(<span class="variable">$q</span>)==strtolower(substr(<span class="variable">$row</span>[<span class="string">'name'</span>],<span class="number">0</span>,strlen(<span class="variable">$q</span>))))</span><br><span class="line">		&#123;</span><br><span class="line">			</span><br><span class="line">			echo <span class="variable">$row</span>[<span class="string">'name'</span>].<span class="string">","</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysqli_close(<span class="variable">$con</span>);//关闭与服务器的连接</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>以下是两个Demo<br><a href="http://i.hinami.xyz/Demo/ajaxtest/" target="_blank" rel="external">Ajax_test1</a></p>
 <p><a href="http://i.hinami.xyz/Demo/ajaxtest2/" target="_blank" rel="external">Ajax_test2</a></p>
   
