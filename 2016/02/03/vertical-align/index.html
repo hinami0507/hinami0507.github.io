@@ -41,7 +41,7 @@ block块级元素独占一行inline行内元素不占">
 
 
 block块级元素独占一行inline行内元素不占">
-<meta property="og:updated_time" content="2016-02-04T03:12:06.000Z">
+<meta property="og:updated_time" content="2016-03-08T07:53:41.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vertical-align">
 <meta name="twitter:description" content="vertical-align的属性慕课网-vertical-alignvertical-align属性测试面板vertical-align详细讲解
@@ -146,7 +146,10 @@ block块级元素独占一行inline行内元素不占">
 <h1 id="vertical-align起作用的前提">vertical-align起作用的前提</h1><p>1.不适用block<br>2.不适用float<br>3.不适用position</p>
 <p>vertical-align和line-height是一堆好基友(^o^)/~</p>
 <p><strong>vertical-align百分比是相对于line-height值来计算的</strong>所以必须要设置行高！</p>
-  
+<p>总结一下居中的方法吧：</p>
+<p>水平居中设置<br>      1、行内元素<br>            设置  text-align:center<br>      2、定宽块状元素<br>            设置  左右  margin  值为  auto<br>      3、不定宽块状元素<br>            a:在元素外加入  table  标签（完整的，包括  table、tbody、tr、td），该元素写在  td  内，然后设置  margin  的值为  auto<br>            b:给该元素设置  displa:inine  方法<br>            c:父元素设置  position:relative  和  left:50%，子元素设置  position:relative  和  left:50%<br>垂直居中设置<br>      1、父元素高度确定的单行文本<br>            设置  height = line-height<br>      2、父元素高度确定的多行文本<br>            a:插入  table （插入方法和水平居中一样），然后设置  vertical-align:middle<br>            b:先设置  display:table-cell  再设置  vertical-align:middle</p>
+<pre><code>3、<span class="tag">css3---left</span><span class="pseudo">:50</span>%;<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">50%</span></span></span>;<span class="rule"><span class="attribute">transform</span>:<span class="value"><span class="function">translate</span>(-<span class="number">50%</span>,-<span class="number">50%</span>)</span></span>;
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">

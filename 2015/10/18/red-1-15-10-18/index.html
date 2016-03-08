@@ -23,7 +23,7 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 
 
 async：可选。表示应该立即下载脚本，但不应妨碍页面">
-<meta property="og:updated_time" content="2015-10-22T12:27:20.000Z">
+<meta property="og:updated_time" content="2016-03-08T08:15:43.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小红书-(1)-js脚本加载问题">
 <meta name="twitter:description" content="网页中&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;...&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标记可以加载脚本，能够无阻塞加载的属性是：defer这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。
@@ -106,14 +106,14 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 		<h3 id="网页中&lt;script_type=&quot;text/javascript&quot;_src=&quot;-&quot;&gt;&lt;/script&gt;标记可以加载脚本，能够无阻塞加载的属性是：defer">网页中<code>&lt;script type=&quot;text/javascript&quot; src=&quot;...&quot;&gt;&lt;/script&gt;</code>标记可以加载脚本，能够无阻塞加载的属性是：<code>defer</code></h3><p>这里涉及的是script加载脚本的次序问题，帮一位同学调试的时候也遇到了该问题，把js代码剪切到html后边才能生效。</p>
 <hr>
 <ul>
-<li>async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。</li>
+<li>async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。<br>无阻塞加载，属性的目的是不让页面等待两个脚本下载和执行，使用此属性注意确保js库之间不相互依赖。</li>
 </ul>
 <blockquote>
 <p>在XHTML 文档中，要把async 属性设置为async=”async”。</p>
 </blockquote>
 <hr>
 <ul>
-<li>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。立即下载，但是延迟执行</li>
+<li>defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。IE7 及更早版本对嵌入脚本也支持这个属性。立即下载，但是延迟执行。</li>
 </ul>
 <blockquote>
 <p>在XHTML 文档中，要把defer 属性设置为defer=”defer”。</p>
@@ -125,6 +125,25 @@ async：可选。表示应该立即下载脚本，但不应妨碍页面">
 <p>需要注意的是</p>
 </blockquote>
 <p>带有src 属性的<code>&lt;script&gt;</code>元素不应该在其<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签之间再<br>包含额外的JavaScript 代码。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码<br>会被忽略。</p>
+<p>js 的阻塞特性：所有浏览器在下载 JS 的时候，会阻止一切其他活动，比如其他资源的下载，内容的呈现等等。直到 JS 下载、解析、执行完毕后才开始继续并行下载其他资源并呈现内容。为了提高用户体验，新一代浏览器都支持并行下载 JS，但是 JS 下载仍然会阻塞其它资源的下载（例如.图片，css文件等）。<br>由于浏览器为了防止出现 JS 修改 DOM 树，需要重新构建 DOM 树的情况，所以就会阻塞其他的下载和呈现。<br>嵌入 JS 会阻塞所有内容的呈现，而外部 JS 只会阻塞其后内容的显示，2 种方式都会阻塞其后资源的下载。也就是说外部样式不会阻塞外部脚本的加载，但会阻塞外部脚本的执行。</p>
+<p>CSS 怎么会阻塞加载了？CSS 本来是可以并行下载的，在什么情况下会出现阻塞加载了(在测试观察中，IE6 下 CSS 都是阻塞加载）<br>当 CSS 后面跟着嵌入的 JS 的时候，该 CSS 就会出现阻塞后面资源下载的情况。而当把嵌入 JS 放到 CSS 前面，就不会出现阻塞的情况了。<br>根本原因：因为浏览器会维持 html 中 css 和 js 的顺序，样式表必须在嵌入的 JS 执行前先加载、解析完。而嵌入的 JS 会阻塞后面的资源加载，所以就会出现上面 CSS 阻塞下载的情况。</p>
+<p>嵌入JS应该放在什么位置？</p>
+<ol>
+<li>放在底部，虽然放在底部照样会阻塞所有呈现，但不会阻塞资源下载。</li>
+<li>如果嵌入JS放在head中，请把嵌入JS放在CSS头部。</li>
+<li>使用 defer（只支持IE）</li>
+<li>不要在嵌入的JS中调用运行时间较长的函数，如果一定要用，可以用 setTimeout 来调用</li>
+</ol>
+<p>Javascript无阻塞加载具体方式：</p>
+<ol>
+<li>将脚本放在底部。<code>&lt;link&gt;</code>还是放在head中，用以保证在js加载前，能加载出正常显示的页面。<code>&lt;script&gt;</code>标签放在<code>&lt;/body&gt;</code>前。</li>
+<li>阻塞脚本：由于每个<code>&lt;script&gt;</code>标签下载时阻塞页面解析过程，所以限制页面的<code>&lt;script&gt;</code>总数也可以改善性能。适用于内联脚本和外部脚本。</li>
+<li>非阻塞脚本：等页面完成加载后，再加载js代码。也就是，在 window.onload 事件发出后开始下载代码。</li>
+<li>defer属性：支持IE4和fierfox3.5更高版本浏览器</li>
+<li>动态脚本元素：文档对象模型（DOM）允许你使用js动态创建HTML的几乎全部文档内容。代码如下：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">    script.type=<span class="string">"text/javascript"</span>;</span><br><span class="line">    script.src=<span class="string">"file.js"</span>;</span><br><span class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(script);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此技术的重点在于：无论在何处启动下载，文件额下载和运行都不会阻塞其他页面处理过程，即使在head里（除了用于下载文件的 http 链接）。</p>
   
 	</div>
 		<footer class="article-footer clearfix">

@@ -19,7 +19,7 @@
 <meta property="og:description" content="微信H5开发项目~">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/money.png">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/money2.png">
-<meta property="og:updated_time" content="2015-11-23T15:29:28.000Z">
+<meta property="og:updated_time" content="2016-03-06T12:08:55.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="青年实习家H5项目">
 <meta name="twitter:description" content="微信H5开发项目~">
@@ -108,6 +108,10 @@
 <p>2015/9/27:</p>
 <h2 id="用户加载图片问题：">用户加载图片问题：</h2><p>后来调试的时候发现，用户跳转到offer页面后才开始加载offer图片，这样图片未加载完毕的时候用户会看到一篇空白，<br>这影响了用户体验，于是我用jQuery事先隐藏offer页面在h5页面之下，当用户刷新页面，的时候一同加载所有图片，也就是说，用户在输入名字的时候，后台同时在加载offer页面和所有的功能。<br><strong>这样做还有一个好处，就是不用跨页面获取用户输入的名字，因为h5页面和offer页面就在同一个页面中！</strong></p>
 <p>==========</p>
+<p>=======</p>
+<h1 id="js加载问题">js加载问题</h1><p>js引用标签用放在<code>&lt;head&gt;</code>导致加载js的时候，html还没有解析，DOM树还没有建成，导致document.getElementById报错</p>
+<p>因此有两种方法:<br>1.将js引用标签放到body之后，在DOM树建成之后加载js.<br>2.在引用js标签里加上defer，延迟js运行.</p>
+<p>==========</p>
 <h1 id="随机数问题：">随机数问题：</h1><p>在加载页面的时候获取用户本地时间作为随机数种子，产生一个0-7的随机数，再用一个switch()函数根据随机数不同，加载不同的offer页面<br>随机数为0：阿里巴巴offer<br>随机数为1：百度offer<br>随机数为2：腾讯offer<br>随机数为3：谷歌offer<br>随机数为4：微软offer<br>随机数为5：苹果offer<br>随机数为6：facebook offer</p>
 <h2 id="微信转发朋友圈小图标问题：">微信转发朋友圈小图标问题：</h2><p>经过查询资料得知，微信转发时的小图标来源于页面中，微信会自动抓取页面中最左上角的图片作为转发时的小图标，于是在加载offer的同时加载相应的公司LOGO,并且将其隐藏display:none;之后多次试验，发现部分手机用户出现加载不出图片的问题，于是取消隐藏，并且将公司LOGO置于最底层（offer页面之下，用户不会看到，但是微信抓图会抓到）</p>
 <hr>
@@ -183,7 +187,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2015年10月10日~"><span class="toc-number">1.</span> <span class="toc-text">2015年10月10日~</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#人生第一桶金~♪(^∇^*)"><span class="toc-number">2.</span> <span class="toc-text">人生第一桶金~♪(^∇^*)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取用户输入的名字问题："><span class="toc-number">2.2.</span> <span class="toc-text">获取用户输入的名字问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户加载图片问题："><span class="toc-number">2.3.</span> <span class="toc-text">用户加载图片问题：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机数问题："><span class="toc-number">3.</span> <span class="toc-text">随机数问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微信转发朋友圈小图标问题："><span class="toc-number">3.1.</span> <span class="toc-text">微信转发朋友圈小图标问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹幕撑开用户屏幕问题："><span class="toc-number">3.2.</span> <span class="toc-text">弹幕撑开用户屏幕问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户缩放问题："><span class="toc-number">3.3.</span> <span class="toc-text">用户缩放问题：</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2015年10月10日~"><span class="toc-number">1.</span> <span class="toc-text">2015年10月10日~</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#人生第一桶金~♪(^∇^*)"><span class="toc-number">2.</span> <span class="toc-text">人生第一桶金~♪(^∇^*)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取用户输入的名字问题："><span class="toc-number">2.2.</span> <span class="toc-text">获取用户输入的名字问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户加载图片问题："><span class="toc-number">2.3.</span> <span class="toc-text">用户加载图片问题：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#js加载问题"><span class="toc-number">3.</span> <span class="toc-text">js加载问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机数问题："><span class="toc-number">4.</span> <span class="toc-text">随机数问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微信转发朋友圈小图标问题："><span class="toc-number">4.1.</span> <span class="toc-text">微信转发朋友圈小图标问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹幕撑开用户屏幕问题："><span class="toc-number">4.2.</span> <span class="toc-text">弹幕撑开用户屏幕问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户缩放问题："><span class="toc-number">4.3.</span> <span class="toc-text">用户缩放问题：</span></a></li></ol></li></ol>
  
   </div>
 
