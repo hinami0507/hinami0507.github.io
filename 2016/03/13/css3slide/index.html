@@ -4,26 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>my-first-post | hinami</title>
+    <title>css3slide | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧谈一下遇到的问题因为git在线安装放到了亚马逊的服务器上，被墙了（´Д`），没有全局翻墙，然而所以只能去CSDN下了个野生客户端，不知道干不干净(°ー°〃)然后Node.js首页也被墙了，幸好浏览器的可以翻了，可以打开。然后发现hexo非常好用,简单几步搭建个人博客
-最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹">
+    <meta name="description" content="只用css3实现的滑动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my-first-post">
-<meta property="og:url" content="hinami.xyz/2015/10/05/my-first-post/index.html">
+<meta property="og:title" content="css3slide">
+<meta property="og:url" content="hinami.xyz/2016/03/13/css3slide/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧谈一下遇到的问题因为git在线安装放到了亚马逊的服务器上，被墙了（´Д`），没有全局翻墙，然而所以只能去CSDN下了个野生客户端，不知道干不干净(°ー°〃)然后Node.js首页也被墙了，幸好浏览器的可以翻了，可以打开。然后发现hexo非常好用,简单几步搭建个人博客
-最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹">
-<meta property="og:updated_time" content="2015-10-22T11:36:00.000Z">
+<meta property="og:description" content="只用css3实现的滑动">
+<meta property="og:updated_time" content="2016-03-13T12:00:49.870Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my-first-post">
-<meta name="twitter:description" content="今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧谈一下遇到的问题因为git在线安装放到了亚马逊的服务器上，被墙了（´Д`），没有全局翻墙，然而所以只能去CSDN下了个野生客户端，不知道干不干净(°ー°〃)然后Node.js首页也被墙了，幸好浏览器的可以翻了，可以打开。然后发现hexo非常好用,简单几步搭建个人博客
-最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹">
+<meta name="twitter:title" content="css3slide">
+<meta name="twitter:description" content="只用css3实现的滑动">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -84,29 +81,62 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/05/my-first-post/" title="my-first-post" itemprop="url">my-first-post</a>
+      <a href="/2016/03/13/css3slide/" title="css3slide" itemprop="url">css3slide</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-05T13:53:34.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
+    <time datetime="2016-03-13T10:45:31.000Z" itemprop="datePublished"> 发表于 2016-03-13</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h1 id="今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧">今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧</h1><h4 id="谈一下遇到的问题">谈一下遇到的问题</h4><p>因为git在线安装放到了亚马逊的服务器上，被墙了（´Д`），没有全局翻墙，然而所以只能去CSDN下了个野生客户端，不知道干不干净(°ー°〃)<br>然后Node.js首页也被墙了，幸好浏览器的可以翻了，可以打开。<br>然后发现<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>非常好用,简单几步搭建个人博客</p>
-<h2 id="最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹_)，找时间把他除了。">最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹 )，找时间把他除了。</h2>  
+		<p>慕课网上的，仅用css3实现的页面滑动，<a href="http://i.hinami.xyz/Demo/css3slide/" target="_blank" rel="external">Demo-css3slide</a></p>
+<p><a href="http://www.imooc.com/" target="_blank" rel="external">慕课网</a></p>
+<p>以下是笔记:</p>
+<h1 id="自定义属性:">自定义属性:</h1><p>h5中自定义属性要以 <code>data-</code> 开头<br>例如：<br><code>&lt;div class=&quot;st-desc&quot; data-icon=&quot;H&quot;&gt;&lt;/div&gt;</code></p>
+<h1 id="translate3d开启硬件加速">translate3d开启硬件加速</h1><p>所以尽量用<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">transform</span>:<span class="value"><span class="function">translate3d</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line"><span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"><span class="function">translate3d</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<h1 id="-webkit-backface-visibility">-webkit-backface-visibility</h1><p><code>-webkit-backface-visibility</code>当元素不面向屏幕的时候是否可见</p>
+<p><code>visible</code>可见——–<code>hidden</code>不可见</p>
+<h1 id="css3元素选择器">css3元素选择器</h1><ul>
+<li><p><code>+</code>仅匹配紧跟在元素后的元素</p>
+</li>
+<li><p><code>~</code>匹配元素后边的元素（不要求挨着）</p>
+</li>
+<li><p><code>+</code>和<code>~</code>仅仅能找到兄弟节点</p>
+</li>
+</ul>
+<p><code>#st-control-1:checked ~ .st-scroll #st-panel-1 h2,</code><br>简化以下<br><code>#A:checked ~ .B #C h2,</code><br><code>id=A的元素</code>被选中后—-查找他后边所有<code>class=B的兄弟元素</code>—-查找他儿子节点中<code>id=C的元素</code>——查找他儿子节点中<code>h2元素</code></p>
+<h1 id=":after选择器+content">:after选择器+content</h1><p>:after 选择器<br>在当前选择的节点后创建一个节点<br>content插入内容，可以插入的值为:<br>①字符串<br>②URL<br>③attr()   获取属性内容</p>
+<h1 id="css3_@font-face插入图标">css3 @font-face插入图标</h1><p>功能<br>@font-face 是css3中模块，主要将自己定义的Web字体嵌入到网页中</p>
+<figure class="highlight fsharp"><table><tr><td class="code"><pre><span class="line">@font-face&#123;</span><br><span class="line">	font-family:&lt;YourWebFontName&gt;;</span><br><span class="line">	src:&lt;source&gt;<span class="annotation">[&lt;format&gt;]</span>[,&lt;source&gt;<span class="annotation">[&lt;format]]*;</span><br><span class="line">	[font-weight:&lt;weight&gt;]</span>;</span><br><span class="line">	[font-style:&lt;style&gt;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>取值说明<br><code>YourWebFontName</code>：自定义字体名字，最好是默认字体名字<br>引用时  font-family:”YourWebFontName”<br><code>source</code>:字体存放路径，可以是相对路径，也可是绝对路径<br>format:自定义字体格式，帮助浏览器识别,取值为</p>
+<p>truetype,opentype,truetype-aat,embedded-opentype,avg</p>
+<p>常用字体格式:<br>1.Turetpe(.ttf)<br>2.OpenType(.otf)<br>3.Web open Font Format(.woff)<br>4.Embedded Open Type(.eot)<br>5.SVG(.svg)</p>
+<p>示例<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">font-face</span></span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">"Raphaelicons"</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">url</span>(<span class="string">'fonts/raphaelicons-webfont.eot'</span>) <span class="function">format</span>(<span class="string">'eot'</span>), </span><br><span class="line">   		 <span class="function">url</span>(<span class="string">'fonts/raphaelicons-webfont.woff'</span>) <span class="function">format</span>(<span class="string">'woff'</span>), </span><br><span class="line">  		 <span class="function">url</span>(<span class="string">'fonts/raphaelicons-webfont.svg'</span>) <span class="function">format</span>(<span class="string">'svg'</span>), </span><br><span class="line">  	     <span class="function">url</span>(<span class="string">'fonts/raphaelicons-webfont.ttf'</span>) <span class="function">format</span>(<span class="string">'truetype'</span>)</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> normal</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>注意：fonts文件夹要放在css文件夹下，因为css文件在css文件夹下，注意路径问题。</p>
+<h1 id="animation_和_transition该用谁"><code>animation</code> 和 <code>transition</code>该用谁</h1><p>transition 当元素的一个属性从A到B的时候，设置其中间的<code>过渡动画</code></p>
+<p>animation 创建动画</p>
+<p><code>animation:moveDown 0.6s ease-in-out 0.2s backwards;</code>中<strong><code>backwards</code></strong>动画开始之前动画处于初始状态</p>
+<p>可以这样用css3<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="id">#mydiv</span><span class="pseudo">:checked</span> ~ <span class="id">#mybox</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">animation</span>:<span class="value"> moveDown <span class="number">0.6s</span> ease-in-out <span class="number">0.4s</span> backwards</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="at_rule">@<span class="keyword">keyframes</span> moveDown </span>&#123;</span><br><span class="line">    0% <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">translateY</span>(-<span class="number">40px</span>)</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">opacity</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    100% <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">translateY</span>(<span class="number">0px</span>)</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">opacity</span>:<span class="value"> <span class="number">1</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样每次选中<code>#mydiv</code>都能触发<code>#mybod</code>动画</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/css3/">css3</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/hexo/">hexo</a>
+  <span></span> <a href="/tags/css3/">css3</a>
   </div>
 
 </div>
@@ -115,7 +145,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/05/my-first-post/" data-title="my-first-post | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2016/03/13/css3slide/" data-title="css3slide | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -128,19 +158,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/05/hello-world/" title="Hello World">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Hello World</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/05/README_zh/"  title="hexo中文">
+<a href="/2016/03/05/smtpToSendEmail/"  title="smtpToSendEmail">
  <strong>下一篇：</strong><br/> 
- <span>hexo中文
+ <span>smtpToSendEmail
 </span>
 </a>
 </div>
@@ -149,7 +171,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/05/my-first-post/" data-title="my-first-post" data-url="hinami.xyz/2015/10/05/my-first-post/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/13/css3slide/" data-title="css3slide" data-url="hinami.xyz/2016/03/13/css3slide/"></div>
 </section>
 
 
@@ -159,7 +181,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧"><span class="toc-number">1.</span> <span class="toc-text">今天倒腾了一天，终于把hexo博客搭建起来了，好开心(๑•̀ㅂ•́)و✧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#谈一下遇到的问题"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">谈一下遇到的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹_)，找时间把他除了。"><span class="toc-number">1.1.</span> <span class="toc-text">最后建立完成后发现博客左下角有个恶心的百度LOGO凸(艹皿艹 )，找时间把他除了。</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义属性:"><span class="toc-number">1.</span> <span class="toc-text">自定义属性:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#translate3d开启硬件加速"><span class="toc-number">2.</span> <span class="toc-text">translate3d开启硬件加速</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-webkit-backface-visibility"><span class="toc-number">3.</span> <span class="toc-text">-webkit-backface-visibility</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#css3元素选择器"><span class="toc-number">4.</span> <span class="toc-text">css3元素选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#:after选择器+content"><span class="toc-number">5.</span> <span class="toc-text">:after选择器+content</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#css3_@font-face插入图标"><span class="toc-number">6.</span> <span class="toc-text">css3 @font-face插入图标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#animation_和_transition该用谁"><span class="toc-number">7.</span> <span class="toc-text">animation 和 transition该用谁</span></a></li></ol>
  
   </div>
 

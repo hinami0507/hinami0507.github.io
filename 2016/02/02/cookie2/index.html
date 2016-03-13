@@ -17,7 +17,7 @@
 <meta property="og:url" content="hinami.xyz/2016/02/02/cookie2/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="CookieUtil简化cookie的功能，读取、写入和删除var CookieUtil = &amp;#123;    get: function (name)&amp;#123;        var cookieName = encodeURIComponent(name) + &quot;=&quot;,            cookieStart = document.cookie.indexOf(cookieName)">
-<meta property="og:updated_time" content="2016-02-02T10:44:36.000Z">
+<meta property="og:updated_time" content="2016-03-08T08:28:47.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookieUtil">
 <meta name="twitter:description" content="CookieUtil简化cookie的功能，读取、写入和删除var CookieUtil = &amp;#123;    get: function (name)&amp;#123;        var cookieName = encodeURIComponent(name) + &quot;=&quot;,            cookieStart = document.cookie.indexOf(cookieName)">
@@ -101,6 +101,10 @@
 <p>//设置cookie，包括它的路径、域、失效日期<br><figure class="highlight lasso"><table><tr><td class="code"><pre><span class="line">CookieUtil<span class="built_in">.</span><span class="built_in">set</span>(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>, <span class="string">"/books/projs/"</span>, <span class="string">"www.wrox.com"</span>,</span><br><span class="line"><span class="literal">new</span> <span class="built_in">Date</span>(<span class="string">"January 1, 2010"</span>));</span><br></pre></td></tr></table></figure></p>
 <p>//删除刚刚设置的cookie<br><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">CookieUtil.<span class="keyword">unset</span>(<span class="string">"name"</span>, <span class="string">"/books/projs/"</span>, <span class="string">"www.wrox.com"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>//设置安全的cookie<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">CookieUtil.<span class="keyword">set</span>(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>方法二</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">name, value, expires, path, domain, secure</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cookieText = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(value);</span><br><span class="line">    <span class="keyword">if</span> (expires <span class="keyword">instanceof</span> <span class="built_in">Date</span>) &#123;</span><br><span class="line">        cookieText += <span class="string">'; expires='</span> + expires;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (path) &#123;</span><br><span class="line">        cookieText += <span class="string">'; expires='</span> + expires;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (domain) &#123;</span><br><span class="line">        cookieText += <span class="string">'; domain='</span> + domain;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (secure) &#123;</span><br><span class="line">        cookieText += <span class="string">'; secure'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.cookie = cookieText;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cookieName = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">'='</span>;</span><br><span class="line">    <span class="keyword">var</span> cookieStart = <span class="built_in">document</span>.cookie.indexOf(cookieName);</span><br><span class="line">    <span class="keyword">var</span> cookieValue = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (cookieStart &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> cookieEnd = <span class="built_in">document</span>.cookie.indexOf(<span class="string">';'</span>, cookieStart);</span><br><span class="line">        <span class="keyword">if</span> (cookieEnd == -<span class="number">1</span>) &#123;</span><br><span class="line">            cookieEnd = <span class="built_in">document</span>.cookie.length;</span><br><span class="line">        &#125;</span><br><span class="line">        cookieValue = <span class="built_in">decodeURIComponent</span>(<span class="built_in">document</span>.cookie.substring(cookieStart + cookieName.length, cookieEnd));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cookieValue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 删除cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unsetCookie</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.cookie = name + <span class="string">"= ; expires="</span> + <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -184,6 +188,10 @@
 		  
 		
 		  
+			<li><a href="/categories/css3/" title="css3">css3<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/hexo/" title="hexo">hexo<sup>2</sup></a></li>
 		  
 		
@@ -217,11 +225,11 @@
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
 			
 		
 			
@@ -229,27 +237,11 @@
 			
 		
 			
-				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
 			
 		
 			
@@ -257,19 +249,31 @@
 			
 		
 			
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
 			
 		
 			
@@ -281,7 +285,11 @@
 			
 		
 			
-				<li><a href="/tags/元素大小/" title="元素大小">元素大小<sup>1</sup></a></li>
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
 			
 		
 			
@@ -289,7 +297,7 @@
 			
 		
 			
-				<li><a href="/tags/Array/" title="Array">Array<sup>1</sup></a></li>
+				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
 			
 		
 		</ul>
