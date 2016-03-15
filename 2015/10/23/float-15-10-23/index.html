@@ -23,7 +23,7 @@
 &amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;title&amp;gt;float坍塌问题实验&amp;lt;/title&amp;gt;	&amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;style type=&quot;text/css&quot;&amp;gt;">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_1.png">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/15-10-23-float_2.png">
-<meta property="og:updated_time" content="2015-10-23T15:26:46.000Z">
+<meta property="og:updated_time" content="2016-03-15T06:55:23.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于float导致父层坍塌">
 <meta name="twitter:description" content="解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:
@@ -124,6 +124,11 @@
 <h2 id="解释一下方案3:">解释一下方案3:</h2></blockquote>
 <p><code>overflow:hidden&quot;</code>清除了子层div的浮动<br>说到这里，我们再来理解一下“浮动”这个词的含义。我们原先的理解是，在一个平面上的浮动，但是通过这个试验，我们发现，这不仅仅是一个平面上的浮动，而是一个立体的浮动！</p>
 <p>当我们没有给父层这个div设置高度的时候，子层这个div的高度，就会撑开父层这个div，而在另一个方面，我们要注意到的是，当我们给父层这个div加上一个高度值，那么无论子层这个div的高度是多少，父层这个高度都是我们设定的值。而当子层的高度超过父层的高度的时候，超出的部分就会被隐藏。这就是隐藏溢出的含义！</p>
+<h1 id="使用after伪类">使用after伪类</h1><p>#parent:after{<br>    content:”.”;<br>    height:0;<br>    visibility:hidden;<br>    display:block;<br>    clear:both;</p>
+<pre><code>}
+</code></pre><hr>
+<h1 id="总结">总结</h1><p>1，额外标签法，<code>&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</code>（缺点：不过这个办法会增加额外的标签使HTML结构看起来不够简洁。）<br>2，使用after伪类</p>
+<p>#parent:after{<br>    content:”.”;<br>    height:0;<br>    visibility:hidden;<br>    display:block;<br>    clear:both;<br>    }<br>3,浮动外部元素<br>4,设置<code>overflow</code>为<code>hidden</code>或者auto</p>
 <p>参考:<br><a href="http://www.chinaz.com/design/2008/0818/35473.shtml" target="_blank" rel="external">全面阐述overflow:hidden属性</a><br><a href="http://www.difangla.com/Html/jishu/css/88140.htm" target="_blank" rel="external">首发地址</a></p>
   
 	</div>
@@ -186,7 +191,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:"><span class="toc-number">1.</span> <span class="toc-text">解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析一下原因"><span class="toc-number">1.1.</span> <span class="toc-text">分析一下原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#于是找到了三种解决方法"><span class="toc-number">2.</span> <span class="toc-text">于是找到了三种解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案2:"><span class="toc-number">2.1.</span> <span class="toc-text">解释一下方案2:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案3:"><span class="toc-number">2.2.</span> <span class="toc-text">解释一下方案3:</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:"><span class="toc-number">1.</span> <span class="toc-text">解释一下浮动和他的工作原理，陈述消除浮动问题的技巧:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析一下原因"><span class="toc-number">1.1.</span> <span class="toc-text">分析一下原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#于是找到了三种解决方法"><span class="toc-number">2.</span> <span class="toc-text">于是找到了三种解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案2:"><span class="toc-number">2.1.</span> <span class="toc-text">解释一下方案2:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释一下方案3:"><span class="toc-number">2.2.</span> <span class="toc-text">解释一下方案3:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用after伪类"><span class="toc-number">3.</span> <span class="toc-text">使用after伪类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
  
   </div>
 
@@ -201,6 +206,10 @@
 		
 		  
 			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Demo/" title="Demo">Demo<sup>1</sup></a></li>
 		  
 		
 		  
