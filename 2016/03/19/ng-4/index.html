@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>ng-4 | hinami</title>
+    <title>ng-指令-(1) | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
@@ -13,13 +13,13 @@
     
     <meta name="description" content="指令的定义，执行三个阶段，指令之间通过控制器暴露公共方法来相互作用，指令的复用，运用【独立scope】来划分指令模块，scopeAnd，scopeEqual，scopeAt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ng-4">
+<meta property="og:title" content="ng-指令-(1)">
 <meta property="og:url" content="hinami.xyz/2016/03/19/ng-4/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="指令的定义，执行三个阶段，指令之间通过控制器暴露公共方法来相互作用，指令的复用，运用【独立scope】来划分指令模块，scopeAnd，scopeEqual，scopeAt">
-<meta property="og:updated_time" content="2016-03-19T12:20:27.973Z">
+<meta property="og:updated_time" content="2016-03-19T15:55:19.398Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ng-4">
+<meta name="twitter:title" content="ng-指令-(1)">
 <meta name="twitter:description" content="指令的定义，执行三个阶段，指令之间通过控制器暴露公共方法来相互作用，指令的复用，运用【独立scope】来划分指令模块，scopeAnd，scopeEqual，scopeAt">
 <meta name="twitter:creator" content="@346565386Toms">
 
@@ -81,7 +81,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/19/ng-4/" title="ng-4" itemprop="url">ng-4</a>
+      <a href="/2016/03/19/ng-4/" title="ng-指令-(1)" itemprop="url">ng-指令-(1)</a>
   </h1>
   <p class="article-author">By
        
@@ -108,6 +108,17 @@
 <h3 id="链接阶段">链接阶段</h3><p><strong>不要在controller中操作DOM</strong></p>
 <p>对每一条指令函数运行link函数<strong>(这里操作DOM)</strong></p>
 <p>link函数一般用来操作DOM、绑定事件监听器，可以绑定作用域。</p>
+<hr>
+<h1 id="指令中的参数">指令中的参数</h1><p>这里讲参数的<a href="https://segmentfault.com/q/1010000002400734/a-1020000002404154" target="_blank" rel="external">angularjs directive link 属性 问题</a></p>
+<p>先上例子<br><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">'docsTransclusionExample'</span>, [])</span><br><span class="line">.controller(<span class="string">'Controller'</span>, [<span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>) &#123;</span><br><span class="line">  <span class="variable">$scope</span>.name = <span class="string">'Tobias'</span>;</span><br><span class="line">&#125;])</span><br><span class="line">.directive(<span class="string">'myDialog'</span>, <span class="keyword">function</span>() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    restrict: <span class="string">'E'</span>,</span><br><span class="line">    transclude: true,</span><br><span class="line">    scope: &#123;&#125;,</span><br><span class="line">    templateUrl: <span class="string">'my-dialog.html'</span>,</span><br><span class="line">    link: function (scope, element) &#123;</span><br><span class="line">      scope.name = <span class="string">'Jeff'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="restrict">restrict</h4><p>E： 表示该directive仅能以element方式使用，即：<my-dialog></my-dialog><br>A： 表示该directive仅能以attribute方式使用，即：<div my-dialog=""></div><br>EA: 表示该directive既能以element方式使用，也能以attribute方式使用</p>
+<h4 id="transclude">transclude</h4><p>你的directive可能接受页面上的其他html内容时才会用到，建议你先去掉该参数。有些高阶了。</p>
+<h4 id="scope">scope</h4><p>当你写上该属性时，就表示这个directive不会从它的controller里继承$scope对象，而是会重新创建一个。</p>
+<h4 id="templateUrl">templateUrl</h4><p>你的directive里的html内容</p>
+<h4 id="link">link</h4><p>可以简单理解为，当directive被angular 编译后，执行该方法<br>这里你说的没错，link中的第一个参数scope基本上就是你说的上面写的那个scope。</p>
+<p>element简单说就是$(‘my-dialog’)</p>
+<p>attrs是个map，内容是你这个directive上的所有属性，例如：你在页面上如果这样写了directive:</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">&lt;my-dialog <span class="class"><span class="keyword">type</span>=</span><span class="string">"modal"</span> animation=<span class="string">"fade"</span>&gt;&lt;/my-dialog&gt;</span><br><span class="line">那attrs就是：</span><br><span class="line">&#123;</span><br><span class="line"><span class="class"><span class="keyword">type</span>:</span> <span class="symbol">'moda</span>l',</span><br><span class="line">animation: <span class="symbol">'fad</span>e'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h5 id="提示">提示</h5><ul>
 <li><p>compile函数用来对模板自身进行转换，而link函数负责在模型与试图进行动态关联，</p>
@@ -143,11 +154,14 @@
 <h3 id="scope绑定的策略">scope绑定的策略</h3><figure class="highlight d"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> @ ：把当前属性作为字符串传递，可以用来绑定外层<span class="keyword">scope</span>的值，在属性中插入<span class="string">`&#123;&#123;&#125;&#125;`</span>即可</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> = ：与父<span class="keyword">scope</span>中的属性进行双向绑定</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> &amp; ：传递一个来自父<span class="keyword">scope</span>的函数，稍后调用</span><br></pre></td></tr></table></figure>
 <h1 id="scopeAt">scopeAt</h1><p>来看例子<br><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div ng-controller=<span class="string">"MyCtrl"</span>&gt;</span><br><span class="line">        &lt;drink flavor=<span class="string">"&#123;&#123;ctrlFlavor&#125;&#125;"</span>&gt;&lt;/drink&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">===================js================</span><br><span class="line">var myModule = angular.module(<span class="string">"MyModule"</span>, []);</span><br><span class="line">myModule.controller(<span class="string">'MyCtrl'</span>, [<span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.ctrlFlavor=<span class="string">"hinami"</span>;</span><br><span class="line">&#125;])</span><br><span class="line">myModule.directive(<span class="string">"drink"</span>, <span class="keyword">function</span>() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        restrict:<span class="string">'AE'</span>,</span><br><span class="line">        scope:&#123;</span><br><span class="line">            flavor:<span class="string">'@'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        template:<span class="string">"&lt;div&gt;&#123;&#123;flavor&#125;&#125;&lt;/div&gt;"</span></span><br><span class="line">        // ,</span><br><span class="line">        // link:function(scope,element,attrs)&#123;</span><br><span class="line">        //  scope.flavor=attrs.flavor;</span><br><span class="line">        // &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>修改前：<br>这里可以看到<br>在<code>myModule.controller</code>中绑定<code>$scope.ctrlFlavor=&quot;hinami&quot;;</code><br>然后在<code>myModule.directive</code>中(注释部分)<br>把上一步绑定的<code>hinami</code>字符赋值为当前scope-<code>scope.flavor</code></p>
-</li>
-<li><p>修改后:<br>加了<code>scope:{flavor:&#39;@&#39;}</code>进行自动绑定，代替了link的作用</p>
-</li>
+<li>修改前(注释部分)：<br>scope代表的是<code>template:&quot;&lt;div&gt;&lt;/div&gt;&quot;</code>自己的作用域，如果没有的话，就默认继承<code>MyCtrl</code>中的scope作用域<br>而attrs代表的是父作用域中的flavor</li>
 </ul>
+<p>这里可以看到</p>
+<p>在<code>myModule.controller</code>中绑定<code>$scope.ctrlFlavor=&quot;hinami&quot;;</code><br>然后在<code>myModule.directive</code>中<br>把上一步绑定的<code>hinami</code>字符赋值为当前scope-<code>scope.flavor</code></p>
+<ul>
+<li>修改后:<br>加了<code>scope:{flavor:&#39;@&#39;}</code>进行自动绑定，代替了link的作用</li>
+</ul>
+<h4 id="hinami是如何打印出来的呢？">hinami是如何打印出来的呢？</h4><p>1.js中—–$scope.ctrlFlavor=”hinami”;  这里在MyCtrl中绑定<br>2.html中——flavor=”“   这里’hinami’传入flavor<br>3.js中——-scope:{flavor:’@’},绑定了 2中的flavor和 <code>template:&quot;&lt;div&gt;&lt;/div&gt;&quot;</code></p>
 <hr>
 <h1 id="scopeEqual">scopeEqual</h1><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div ng-controller=<span class="string">"MyCtrl"</span>&gt;</span><br><span class="line">        Ctrl:</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;input type=<span class="string">"text"</span> ng-model=<span class="string">"ctrlFlavor"</span>&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        Directive:</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;drink flavor=<span class="string">"ctrlFlavor"</span>&gt;&lt;/drink&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">==================js=====================</span><br><span class="line">var myModule = angular.module(<span class="string">"MyModule"</span>, []);</span><br><span class="line">myModule.controller(<span class="string">'MyCtrl'</span>, [<span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.ctrlFlavor=<span class="string">"百威"</span>;</span><br><span class="line">&#125;])</span><br><span class="line">myModule.directive(<span class="string">"drink"</span>, <span class="keyword">function</span>() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        restrict:<span class="string">'AE'</span>,</span><br><span class="line">        scope:&#123;</span><br><span class="line">            flavor:<span class="string">'='</span></span><br><span class="line">        &#125;,</span><br><span class="line">        template:<span class="string">'&lt;input type="text" ng-model="flavor"/&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>双向需求绑定：<br>不仅仅把<code>$scope.ctrlFlavor=&quot;百威&quot;</code>传递给指令，更要把控制器中的<code>$scope.ctrlFlavor</code>与指令中<code>ng-model=&quot;flavor&quot;</code>相互绑定</p>
@@ -181,7 +195,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2016/03/19/ng-4/" data-title="ng-4 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2016/03/19/ng-4/" data-title="ng-指令-(1) | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -194,6 +208,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/03/19/ng-5/" title="ng-指令-(2)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  ng-指令-(2)</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/03/19/ng-3/"  title="ng-3">
@@ -207,7 +229,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/03/19/ng-4/" data-title="ng-4" data-url="hinami.xyz/2016/03/19/ng-4/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/19/ng-4/" data-title="ng-指令-(1)" data-url="hinami.xyz/2016/03/19/ng-4/"></div>
 </section>
 
 
@@ -217,7 +239,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义指令"><span class="toc-number">1.</span> <span class="toc-text">自定义指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令执行三个阶段"><span class="toc-number">2.</span> <span class="toc-text">指令执行三个阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载阶段："><span class="toc-number">2.0.1.</span> <span class="toc-text">加载阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译阶段："><span class="toc-number">2.0.2.</span> <span class="toc-text">编译阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接阶段"><span class="toc-number">2.0.3.</span> <span class="toc-text">链接阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提示"><span class="toc-number">2.0.3.0.1.</span> <span class="toc-text">提示</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尝试在link中绑定滑动事件"><span class="toc-number">2.1.</span> <span class="toc-text">尝试在link中绑定滑动事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动感超人"><span class="toc-number">3.</span> <span class="toc-text">动感超人</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#独立scope"><span class="toc-number">4.</span> <span class="toc-text">独立scope</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#scope绑定的策略"><span class="toc-number">4.0.1.</span> <span class="toc-text">scope绑定的策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAt"><span class="toc-number">5.</span> <span class="toc-text">scopeAt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeEqual"><span class="toc-number">6.</span> <span class="toc-text">scopeEqual</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAnd"><span class="toc-number">7.</span> <span class="toc-text">scopeAnd</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义指令"><span class="toc-number">1.</span> <span class="toc-text">自定义指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令执行三个阶段"><span class="toc-number">2.</span> <span class="toc-text">指令执行三个阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载阶段："><span class="toc-number">2.0.1.</span> <span class="toc-text">加载阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译阶段："><span class="toc-number">2.0.2.</span> <span class="toc-text">编译阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接阶段"><span class="toc-number">2.0.3.</span> <span class="toc-text">链接阶段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令中的参数"><span class="toc-number">3.</span> <span class="toc-text">指令中的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#restrict"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">restrict</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transclude"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">transclude</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scope"><span class="toc-number">3.0.0.3.</span> <span class="toc-text">scope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#templateUrl"><span class="toc-number">3.0.0.4.</span> <span class="toc-text">templateUrl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#link"><span class="toc-number">3.0.0.5.</span> <span class="toc-text">link</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提示"><span class="toc-number">3.0.0.5.1.</span> <span class="toc-text">提示</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尝试在link中绑定滑动事件"><span class="toc-number">3.1.</span> <span class="toc-text">尝试在link中绑定滑动事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动感超人"><span class="toc-number">4.</span> <span class="toc-text">动感超人</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#独立scope"><span class="toc-number">5.</span> <span class="toc-text">独立scope</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#scope绑定的策略"><span class="toc-number">5.0.1.</span> <span class="toc-text">scope绑定的策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAt"><span class="toc-number">6.</span> <span class="toc-text">scopeAt</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hinami是如何打印出来的呢？"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">hinami是如何打印出来的呢？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeEqual"><span class="toc-number">7.</span> <span class="toc-text">scopeEqual</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAnd"><span class="toc-number">8.</span> <span class="toc-text">scopeAnd</span></a></li></ol>
  
   </div>
 
@@ -231,7 +253,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>4</sup></a></li>
+			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>5</sup></a></li>
 		  
 		
 		  
@@ -344,15 +366,15 @@
 			
 		
 			
+				<li><a href="/tags/ng-指令/" title="ng-指令">ng-指令<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/遍历/" title="遍历">遍历<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
 			
 		
 			
