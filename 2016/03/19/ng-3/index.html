@@ -1,0 +1,673 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>ng-3 | hinami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hinami">
+    
+
+    
+    <meta name="description" content="ng中的模块例如html&amp;lt;body ng-app&amp;gt;    &amp;lt;div ng-controller=&quot;HelloAngular&quot;&amp;gt;        &amp;lt;p&amp;gt;&amp;#123;&amp;#123;greeting.text&amp;#125;&amp;#125;,Angular&amp;lt;/p&amp;gt;    &amp;lt;/div&amp;gt;&amp;lt;/body&amp;gt;
+来看看不优雅的做法function Hello">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ng-3">
+<meta property="og:url" content="hinami.xyz/2016/03/19/ng-3/index.html">
+<meta property="og:site_name" content="hinami">
+<meta property="og:description" content="ng中的模块例如html&amp;lt;body ng-app&amp;gt;    &amp;lt;div ng-controller=&quot;HelloAngular&quot;&amp;gt;        &amp;lt;p&amp;gt;&amp;#123;&amp;#123;greeting.text&amp;#125;&amp;#125;,Angular&amp;lt;/p&amp;gt;    &amp;lt;/div&amp;gt;&amp;lt;/body&amp;gt;
+来看看不优雅的做法function Hello">
+<meta property="og:updated_time" content="2016-03-19T07:18:10.491Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ng-3">
+<meta name="twitter:description" content="ng中的模块例如html&amp;lt;body ng-app&amp;gt;    &amp;lt;div ng-controller=&quot;HelloAngular&quot;&amp;gt;        &amp;lt;p&amp;gt;&amp;#123;&amp;#123;greeting.text&amp;#125;&amp;#125;,Angular&amp;lt;/p&amp;gt;    &amp;lt;/div&amp;gt;&amp;lt;/body&amp;gt;
+来看看不优雅的做法function Hello">
+<meta name="twitter:creator" content="@346565386Toms">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/fav.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hinami" title="hinami"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hinami">hinami</a></h1>
+				<h2 class="blog-motto">↖give me five~(๑•̀▽•́)و✧</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hinami.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/19/ng-3/" title="ng-3" itemprop="url">ng-3</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-19T01:14:59.000Z" itemprop="datePublished"> 发表于 2016-03-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h1 id="ng中的模块">ng中的模块</h1><p>例如html<br><figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line">&lt;body ng-app&gt;</span><br><span class="line">    &lt;div ng-controller=<span class="string">"HelloAngular"</span>&gt;</span><br><span class="line">        &lt;p&gt;<span class="expansion">&#123;&#123;greeting.text&#125;&#125;</span>,<span class="constant">Angular</span>&lt;<span class="regexp">/p&gt;</span><br><span class="line">    &lt;/div</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>来看看不优雅的做法<br><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> HelloAngular(<span class="variable">$scope</span>) &#123;</span><br><span class="line">    <span class="variable">$scope</span>.greeting = &#123;</span><br><span class="line">        text: <span class="string">'Hello'</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上边的helloangular直接注册在根作用域上，污染全局环境</p>
+<p>来看看正确的姿势<br><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">var helloModule=angular.module(<span class="string">'HelloAngular'</span>,[]);</span><br><span class="line">helloModule.controller(<span class="string">'helloNgCtrl'</span>,[<span class="string">'$scope'</span>,<span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">	<span class="variable">$scope</span>.greeting = &#123;</span><br><span class="line">	text:<span class="string">'Hello'</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure></p>
+<p>这里注册了一个模块<code>helloModule</code>    </p>
+<h1 id="一个ng工程下的文件组成">一个ng工程下的文件组成</h1><ul>
+<li>css</li>
+<li>framework(依赖包)</li>
+<li>imgs</li>
+<li>js<br>{<pre><code>app<span class="class">.js</span> 主文件
+controller<span class="class">.js</span> 控制器
+directives<span class="class">.js</span> 指令
+filters<span class="class">.js</span>  过滤器
+services<span class="class">.js</span>  服务
+</code></pre>}</li>
+<li>tpls(ng中的html小模块)</li>
+<li>index.html</li>
+<li>node_modules (各种基于nodeJs的工具)</li>
+<li>package.json (npm配置项)</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;body&gt;</span></span><br><span class="line">    <span class="tag">&lt;div ng-view&gt;</span></span><br><span class="line">    <span class="tag">&lt;/div&gt;</span></span><br><span class="line"><span class="tag">&lt;/body&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>ng-view</code>ng视图</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">var bookStoreApp = angular.module(<span class="string">'bookStoreApp'</span>, [</span><br><span class="line">    <span class="string">'ngRoute'</span>, <span class="string">'ngAnimate'</span>, <span class="string">'bookStoreCtrls'</span>, <span class="string">'bookStoreFilters'</span>,</span><br><span class="line">    <span class="string">'bookStoreServices'</span>, <span class="string">'bookStoreDirectives'</span></span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">bookStoreApp.config(<span class="keyword">function</span>(<span class="variable">$routeProvider</span>) &#123;</span><br><span class="line">    <span class="variable">$routeProvider</span>.when(<span class="string">'/hello'</span>, &#123;</span><br><span class="line">        templateUrl: <span class="string">'tpls/hello.html'</span>,</span><br><span class="line">        controller: <span class="string">'HelloCtrl'</span></span><br><span class="line">    &#125;).when(<span class="string">'/list'</span>,&#123;</span><br><span class="line">    	templateUrl:<span class="string">'tpls/bookList.html'</span>,</span><br><span class="line">    	controller:<span class="string">'BookListCtrl'</span></span><br><span class="line">    &#125;).otherwise(&#123;</span><br><span class="line">        redirectTo: <span class="string">'/hello'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>app启动点</p>
+<p>module启动点，包括的模块<code>&#39;ngRoute&#39;, &#39;ngAnimate&#39;, &#39;bookStoreCtrls&#39;, &#39;bookStoreFilters&#39;,
+&#39;bookStoreServices&#39;, &#39;bookStoreDirectives&#39;</code></p>
+<p>URL中为<code>/hello</code><br>则调用模板<code>tpls/hello.html</code><br>运用控制器<code>HelloCtrl</code>控制上边视图</p>
+<p>如果识别为其他的url，则默认(redirectTo)为<code>/hello</code></p>
+<p>module启动点</p>
+<h1 id="ng官方推荐模块切分方式">ng官方推荐模块切分方式</h1><h5 id="app">app</h5><ul>
+<li>controllers</li>
+<li>directives</li>
+<li>services</li>
+<li>routes</li>
+<li>filters</li>
+</ul>
+<h5 id="在angularjs的应用中我们常常在地址栏里看到/#/，这个表示angularjs阻止我们想server提交路由请求，angularjs在client端利用自己的router_service就将路由给实现了，所以说angularjs的路由是客户端的路由。">在angularjs的应用中我们常常在地址栏里看到/#/，这个表示angularjs阻止我们想server提交路由请求，angularjs在client端利用自己的router service就将路由给实现了，所以说angularjs的路由是客户端的路由。</h5><h4 id="ng-路由">ng-路由</h4><p><strong>不能进行深层次嵌套路由</strong></p>
+<p>要需要用到插件UI-route</p>
+<p>前端路由的基本原理</p>
+<ul>
+<li>哈希#，通过锚点，页面内导航，url变，页面不变</li>
+<li>html5中新的history API，通过js修改url，但是页面不会跳转,通过封装向下兼容</li>
+<li>路由的核心是给用户定义‘状态’</li>
+<li>使用路由机制会影响到应用的整体编码方式（预先定义好状态）</li>
+<li>考虑兼容性问题与‘优雅降级’</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ng-依赖注入/">ng-依赖注入</a><a href="/tags/ng-模块/">ng-模块</a><a href="/tags/ng-路由/">ng-路由</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2016/03/19/ng-3/" data-title="ng-3 | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/19/ng-4/" title="ng-4">
+  <strong>上一篇：</strong><br/>
+  <span>
+  ng-4</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/03/18/ng-2/"  title="angularJS-(2)-MVC">
+ <strong>下一篇：</strong><br/> 
+ <span>angularJS-(2)-MVC
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/03/19/ng-3/" data-title="ng-3" data-url="hinami.xyz/2016/03/19/ng-3/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ng中的模块"><span class="toc-number">1.</span> <span class="toc-text">ng中的模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一个ng工程下的文件组成"><span class="toc-number">2.</span> <span class="toc-text">一个ng工程下的文件组成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ng官方推荐模块切分方式"><span class="toc-number">3.</span> <span class="toc-text">ng官方推荐模块切分方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#app"><span class="toc-number">3.0.0.0.1.</span> <span class="toc-text">app</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在angularjs的应用中我们常常在地址栏里看到/#/，这个表示angularjs阻止我们想server提交路由请求，angularjs在client端利用自己的router_service就将路由给实现了，所以说angularjs的路由是客户端的路由。"><span class="toc-number">3.0.0.0.2.</span> <span class="toc-text">在angularjs的应用中我们常常在地址栏里看到/#/，这个表示angularjs阻止我们想server提交路由请求，angularjs在client端利用自己的router service就将路由给实现了，所以说angularjs的路由是客户端的路由。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ng-路由"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">ng-路由</span></a></li></ol></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Demo/" title="Demo">Demo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/HTML5/" title="HTML5">HTML5<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/css3/" title="css3">css3<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/php/" title="php">php<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>35</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面试经验/" title="面试经验">面试经验<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目经验/" title="项目经验">项目经验<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>39</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/遍历/" title="遍历">遍历<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JSON/" title="JSON">JSON<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://tms.im" target="_blank" title="梦石真人">谭  总</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="cateaf.com" target="_blank" title="这人是个死基佬">小礼服</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="全球最大同性交友社区">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://home.cnblogs.com/u/yxy99/" target="_blank" title="yxy">yxy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m hinami in HNU. <br/>
+			This is my school,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hinami0507" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/346565386Toms" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/hinami.sin" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/po-xiao-14-75" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:346565386@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hinami">hinami</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd65912a25436b0b55db731ce75f5c981' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

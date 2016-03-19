@@ -23,7 +23,7 @@ MVC-Controller中的禁止做法1.angular不推荐用scope层级嵌套">
 为什么需要MVC?1.代码规模越来越大，切分职责是大势所趋2.为了代码复用，很多逻辑一模一样的可以复用3.为了后期维护方便，修改一块功能不影响其他功能
 MVC终极目标：模块化和复用
 MVC-Controller中的禁止做法1.angular不推荐用scope层级嵌套">
-<meta property="og:updated_time" content="2016-03-18T15:46:24.206Z">
+<meta property="og:updated_time" content="2016-03-19T01:13:10.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angularJS-(2)-MVC">
 <meta name="twitter:description" content="MVC全名是Model View Controller，是模型(model)－视图(view)－控制器(controller)的缩写
@@ -135,6 +135,14 @@ MVC-Controller中的禁止做法1.angular不推荐用scope层级嵌套">
 <li>$scope不仅是MVC的基础，也是后面实现双向数据绑定的基础</li>
 <li>可以用angular.element($0).scope()进行调试</li>
 </ul>
+<p>$scope生命周期</p>
+<ul>
+<li>生成</li>
+<li>注册事件监听</li>
+<li>根据事件变化相应事件</li>
+<li>检测脏值</li>
+<li>销毁</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -170,6 +178,14 @@ MVC-Controller中的禁止做法1.angular不推荐用scope层级嵌套">
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/03/19/ng-3/" title="ng-3">
+  <strong>上一篇：</strong><br/>
+  <span>
+  ng-3</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/03/18/nodejs-1/"  title="nodejs-1">
@@ -207,7 +223,7 @@ MVC-Controller中的禁止做法1.angular不推荐用scope层级嵌套">
 		<ul>
 		
 		  
-			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>2</sup></a></li>
+			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>4</sup></a></li>
 		  
 		
 		  
@@ -288,11 +304,11 @@ MVC-Controller中的禁止做法1.angular不推荐用scope层级嵌套">
 			
 		
 			
-				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
 			
 		
 			
@@ -324,7 +340,7 @@ MVC-Controller中的禁止做法1.angular不推荐用scope层级嵌套">
 			
 		
 			
-				<li><a href="/tags/变量/" title="变量">变量<sup>1</sup></a></li>
+				<li><a href="/tags/遍历/" title="遍历">遍历<sup>1</sup></a></li>
 			
 		
 			

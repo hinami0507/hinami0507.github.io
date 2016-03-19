@@ -1,0 +1,681 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>ng-4 | hinami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hinami">
+    
+
+    
+    <meta name="description" content="指令的定义，执行三个阶段，指令之间通过控制器暴露公共方法来相互作用，指令的复用，运用【独立scope】来划分指令模块，scopeAnd，scopeEqual，scopeAt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ng-4">
+<meta property="og:url" content="hinami.xyz/2016/03/19/ng-4/index.html">
+<meta property="og:site_name" content="hinami">
+<meta property="og:description" content="指令的定义，执行三个阶段，指令之间通过控制器暴露公共方法来相互作用，指令的复用，运用【独立scope】来划分指令模块，scopeAnd，scopeEqual，scopeAt">
+<meta property="og:updated_time" content="2016-03-19T12:20:27.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ng-4">
+<meta name="twitter:description" content="指令的定义，执行三个阶段，指令之间通过控制器暴露公共方法来相互作用，指令的复用，运用【独立scope】来划分指令模块，scopeAnd，scopeEqual，scopeAt">
+<meta name="twitter:creator" content="@346565386Toms">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/fav.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hinami" title="hinami"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hinami">hinami</a></h1>
+				<h2 class="blog-motto">↖give me five~(๑•̀▽•́)و✧</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hinami.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/19/ng-4/" title="ng-4" itemprop="url">ng-4</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-19T07:19:18.000Z" itemprop="datePublished"> 发表于 2016-03-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>原文来自<a href="http://www.imooc.com/" target="_blank" rel="external">慕课网</a></p>
+<h1 id="自定义指令">自定义指令</h1><p>创建指令的三个姿势:</p>
+<ul>
+<li><code>&lt;my-directive&gt;</code>:restrict: <strong>‘E’</strong></li>
+<li><code>&lt;div my-directive&gt;&lt;/div&gt;</code>:restrict: <strong>‘A’</strong></li>
+<li><code>&lt;div class=&quot;my-directive&quot;&gt;&lt;/div&gt;</code>restrict: <strong>‘C’</strong></li>
+<li><code>&lt;!-- directive:my-directive --&gt;</code>restrict: <strong>‘M’</strong></li>
+</ul>
+<p>默认使用A和E方式</p>
+<h1 id="指令执行三个阶段">指令执行三个阶段</h1><h3 id="加载阶段：">加载阶段：</h3><p>加载angular.js找到ng-app,确定应用便捷</p>
+<h3 id="编译阶段：">编译阶段：</h3><p>遍历DOM，找到所有指令，送到缓存中.<br>根据指令代码中的template、replace、transclue转换DOM结构<br>如果存在<strong>compile函数</strong>则调用</p>
+<h3 id="链接阶段">链接阶段</h3><p><strong>不要在controller中操作DOM</strong></p>
+<p>对每一条指令函数运行link函数<strong>(这里操作DOM)</strong></p>
+<p>link函数一般用来操作DOM、绑定事件监听器，可以绑定作用域。</p>
+<hr>
+<h5 id="提示">提示</h5><ul>
+<li><p>compile函数用来对模板自身进行转换，而link函数负责在模型与试图进行动态关联，</p>
+</li>
+<li><p>作用域在链接阶段才会被绑定到编译后的link函数上；</p>
+</li>
+<li><p>compile函数仅仅在编译阶段运行一次，而对于指令的每个实例，link函数都会执行一次；</p>
+</li>
+<li><p>compile可以返回preLink和postLink函数，而link函数只会返回postLink函数；</p>
+</li>
+<li><p>如果需要修改DOM结构，应该在postLink中来做这件事，而如果在preLink中做这件事情会导致错误；</p>
+</li>
+<li><p>大多数我们只要编写link函数就可以了；</p>
+</li>
+</ul>
+<hr>
+<h2 id="尝试在link中绑定滑动事件">尝试在link中绑定滑动事件</h2><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div ng-controller=<span class="string">"MyCtrl"</span>&gt;</span><br><span class="line">		&lt;loader howToLoad=<span class="string">"loadData()"</span>&gt;滑动加载&lt;/loader&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;div ng-controller=<span class="string">"MyCtrl2"</span>&gt;</span><br><span class="line">		&lt;loader howToLoad=<span class="string">"loadData2()"</span>&gt;滑动加载&lt;/loader&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">==========================js===========================</span><br><span class="line">var myModule = angular.module(<span class="string">"MyModule"</span>, []);</span><br><span class="line">myModule.controller(<span class="string">'MyCtrl'</span>, [<span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">	<span class="variable">$scope</span>.loadData=function()&#123;</span><br><span class="line">		console.log(<span class="string">"加载数据中..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;]);</span><br><span class="line">myModule.controller(<span class="string">'MyCtrl2'</span>, [<span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.loadData2=function()&#123;</span><br><span class="line">        console.log(<span class="string">"加载数据中...22222"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;]);</span><br><span class="line">myModule.directive(<span class="string">"loader"</span>, <span class="keyword">function</span>() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">    	restrict:<span class="string">"AE"</span>,</span><br><span class="line">    	link:function(scope,element,attrs)&#123;</span><br><span class="line">    		element.bind(<span class="string">'mouseenter'</span>, function(event) &#123;</span><br><span class="line">    			//scope.loadData();</span><br><span class="line">    			// scope.<span class="variable">$apply</span>(<span class="string">"loadData()"</span>);</span><br><span class="line">    			// 注意这里的坑，howToLoad会被转换成小写的howtoload</span><br><span class="line">    			scope.<span class="variable">$apply</span>(attrs.howtoload);</span><br><span class="line">    		&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>简单把JS看成三块，A定义<code>Myctrl控制器</code>,B定义<code>Myctrl2控制器</code>,C在<code>loader标签</code>上绑定<code>mouseenter监听事件</code>。</p>
+<p>例如:</p>
+<p>1.<code>myModule.directive(&quot;loader&quot;,function(){.......}</code>给<code>loader</code>标签绑定了指令，<br>2.其中<code>link</code>给<code>loader</code>标签绑定了<code>mouseenter</code>事件，<br>3.当<code>loader</code>标签中触发<code>mouseenter</code>事件，执行<code>scope.$apply(attrs.howtoload);</code>找到，其自己的<code>howtoload</code>方法</p>
+<p>指令复用！！<br>给很多配置项给指令，这样才能跟外部控制器交互</p>
+<h1 id="动感超人">动感超人</h1><figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"col-md-3"</span>&gt;</span><br><span class="line">        &lt;superman strength&gt;动感超人<span class="comment">---力量&lt;/superman&gt;</span></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"col-md-3"</span>&gt;</span><br><span class="line">        &lt;superman strength speed&gt;动感超人<span class="number">2</span><span class="comment">---力量+敏捷&lt;/superman&gt;</span></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"col-md-3"</span>&gt;</span><br><span class="line">        &lt;superman strength speed light&gt;动感超人<span class="number">3</span><span class="comment">---力量+敏捷+发光&lt;/superman&gt;</span></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">========================================</span><br><span class="line"></span><br><span class="line">var myModule = angular.<span class="built_in">module</span>(<span class="string">"MyModule"</span>, []);</span><br><span class="line">myModule.directive(<span class="string">"superman"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        scope: &#123;&#125;,</span><br><span class="line">        restrict: <span class="string">'AE'</span>,</span><br><span class="line">        controller: <span class="function"><span class="keyword">function</span><span class="params">($scope)</span></span> &#123;</span><br><span class="line">            $scope.abilities = [];</span><br><span class="line">            this.addStrength = <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">                $scope.abilities.push(<span class="string">"strength"</span>);</span><br><span class="line">            &#125;;</span><br><span class="line">            this.addSpeed = <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">                $scope.abilities.push(<span class="string">"speed"</span>);</span><br><span class="line">            &#125;;</span><br><span class="line">            this.addLight = <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">                $scope.abilities.push(<span class="string">"light"</span>);</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">        link: <span class="function"><span class="keyword">function</span><span class="params">(scope, element, attrs)</span></span> &#123;</span><br><span class="line">            element.addClass(<span class="string">'btn btn-primary'</span>);</span><br><span class="line">            element.bind(<span class="string">"mouseenter"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">                console.log(scope.abilities);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">myModule.directive(<span class="string">"strength"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="built_in">require</span>: <span class="string">'^superman'</span>,</span><br><span class="line">        link: <span class="function"><span class="keyword">function</span><span class="params">(scope, element, attrs, supermanCtrl)</span></span> &#123;</span><br><span class="line">            supermanCtrl.addStrength();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">myModule.directive(<span class="string">"speed"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="built_in">require</span>: <span class="string">'^superman'</span>,</span><br><span class="line">        link: <span class="function"><span class="keyword">function</span><span class="params">(scope, element, attrs, supermanCtrl)</span></span> &#123;</span><br><span class="line">            supermanCtrl.addSpeed();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">myModule.directive(<span class="string">"light"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="built_in">require</span>: <span class="string">'^superman'</span>,</span><br><span class="line">        link: <span class="function"><span class="keyword">function</span><span class="params">(scope, element, attrs, supermanCtrl)</span></span> &#123;</span><br><span class="line">            supermanCtrl.addLight();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里有四个指令，按顺序命名为ABCD，<br>A指令中的controller,给指令暴露public方法给外部使用</p>
+<p>controller：要让指令暴露一些方法给外部调用，就写在controller里边</p>
+<p>link：处理指令内部事件，绑定事件，绑定数据</p>
+<p>BCD：中require</p>
+<p>例如B，</p>
+<p>require: ‘^superman’,表示<code>strengh指令</code>依赖于<code>^superman指令</code></p>
+<p>通过link中的<code>supermanCtrl</code>就可以调用<code>A里superman</code>暴露的方法</p>
+<h1 id="独立scope">独立scope</h1><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = angular.module(<span class="string">"MyModule"</span>, []);</span><br><span class="line">myModule.directive(<span class="string">"hello"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        restrict: <span class="string">'AE'</span>,</span><br><span class="line">        scope:&#123;&#125;,</span><br><span class="line">        template: <span class="string">'&lt;div&gt;&lt;input type="text" ng-model="userName"/&gt;&#123;&#123;userName&#125;&#125;&lt;/div&gt;'</span>,</span><br><span class="line">        replace: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果没有独立scope的话，多个hello指令会捆绑到一块，改一个其他几个都改变</p>
+<hr>
+<h3 id="scope绑定的策略">scope绑定的策略</h3><figure class="highlight d"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> @ ：把当前属性作为字符串传递，可以用来绑定外层<span class="keyword">scope</span>的值，在属性中插入<span class="string">`&#123;&#123;&#125;&#125;`</span>即可</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> = ：与父<span class="keyword">scope</span>中的属性进行双向绑定</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> &amp; ：传递一个来自父<span class="keyword">scope</span>的函数，稍后调用</span><br></pre></td></tr></table></figure>
+<h1 id="scopeAt">scopeAt</h1><p>来看例子<br><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div ng-controller=<span class="string">"MyCtrl"</span>&gt;</span><br><span class="line">        &lt;drink flavor=<span class="string">"&#123;&#123;ctrlFlavor&#125;&#125;"</span>&gt;&lt;/drink&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">===================js================</span><br><span class="line">var myModule = angular.module(<span class="string">"MyModule"</span>, []);</span><br><span class="line">myModule.controller(<span class="string">'MyCtrl'</span>, [<span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.ctrlFlavor=<span class="string">"hinami"</span>;</span><br><span class="line">&#125;])</span><br><span class="line">myModule.directive(<span class="string">"drink"</span>, <span class="keyword">function</span>() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        restrict:<span class="string">'AE'</span>,</span><br><span class="line">        scope:&#123;</span><br><span class="line">            flavor:<span class="string">'@'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        template:<span class="string">"&lt;div&gt;&#123;&#123;flavor&#125;&#125;&lt;/div&gt;"</span></span><br><span class="line">        // ,</span><br><span class="line">        // link:function(scope,element,attrs)&#123;</span><br><span class="line">        //  scope.flavor=attrs.flavor;</span><br><span class="line">        // &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>修改前：<br>这里可以看到<br>在<code>myModule.controller</code>中绑定<code>$scope.ctrlFlavor=&quot;hinami&quot;;</code><br>然后在<code>myModule.directive</code>中(注释部分)<br>把上一步绑定的<code>hinami</code>字符赋值为当前scope-<code>scope.flavor</code></p>
+</li>
+<li><p>修改后:<br>加了<code>scope:{flavor:&#39;@&#39;}</code>进行自动绑定，代替了link的作用</p>
+</li>
+</ul>
+<hr>
+<h1 id="scopeEqual">scopeEqual</h1><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div ng-controller=<span class="string">"MyCtrl"</span>&gt;</span><br><span class="line">        Ctrl:</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;input type=<span class="string">"text"</span> ng-model=<span class="string">"ctrlFlavor"</span>&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        Directive:</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;drink flavor=<span class="string">"ctrlFlavor"</span>&gt;&lt;/drink&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">==================js=====================</span><br><span class="line">var myModule = angular.module(<span class="string">"MyModule"</span>, []);</span><br><span class="line">myModule.controller(<span class="string">'MyCtrl'</span>, [<span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.ctrlFlavor=<span class="string">"百威"</span>;</span><br><span class="line">&#125;])</span><br><span class="line">myModule.directive(<span class="string">"drink"</span>, <span class="keyword">function</span>() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        restrict:<span class="string">'AE'</span>,</span><br><span class="line">        scope:&#123;</span><br><span class="line">            flavor:<span class="string">'='</span></span><br><span class="line">        &#125;,</span><br><span class="line">        template:<span class="string">'&lt;input type="text" ng-model="flavor"/&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>双向需求绑定：<br>不仅仅把<code>$scope.ctrlFlavor=&quot;百威&quot;</code>传递给指令，更要把控制器中的<code>$scope.ctrlFlavor</code>与指令中<code>ng-model=&quot;flavor&quot;</code>相互绑定</p>
+<hr>
+<h1 id="scopeAnd">scopeAnd</h1><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div ng-controller=<span class="string">"MyCtrl"</span>&gt;</span><br><span class="line">        &lt;greeting greet=<span class="string">"sayHello(name)"</span>&gt;&lt;/greeting&gt;</span><br><span class="line">        &lt;greeting greet=<span class="string">"sayHello(name)"</span>&gt;&lt;/greeting&gt;</span><br><span class="line">        &lt;greeting greet=<span class="string">"sayHello(name)"</span>&gt;&lt;/greeting&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">===================================</span><br><span class="line">var myModule = angular.module(<span class="string">"MyModule"</span>, []);</span><br><span class="line">myModule.controller(<span class="string">'MyCtrl'</span>, [<span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.sayHello=function(name)&#123;</span><br><span class="line">        alert(<span class="string">"Hello "</span>+name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;])</span><br><span class="line">myModule.directive(<span class="string">"greeting"</span>, <span class="keyword">function</span>() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        restrict:<span class="string">'AE'</span>,</span><br><span class="line">        scope:&#123;</span><br><span class="line">            greet:<span class="string">'&amp;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        template:<span class="string">'&lt;input type="text" ng-model="userName" /&gt;&lt;br/&gt;'</span>+</span><br><span class="line">        <span class="string">'&lt;button class="btn btn-default" ng-click="greet(&#123;name:userName&#125;)"&gt;Greeting&lt;/button&gt;&lt;br/&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>控制器MyCtrl暴露了一个sayHello()方法</p>
+<p>greeting指令，在<code>scope:{greet:&#39;&amp;&#39;}</code>，因此在模板里的按钮<code>&lt;button&gt;</code>调用greet这个函数，页面中绑定了sayHello()这个方法</p>
+<p>可以看到控制器中的sayHello()执行的时候会传入参数<code>name</code></p>
+<p>这个<code>name</code>从哪里来？</p>
+<p>先去下边的<code>&lt;button&gt;</code>里找<code>greet({name:userName})&quot;</code><br>然后去<code>&lt;input&gt;</code>里<code>ng-model=&quot;userName&quot;</code>找</p>
+<p>原文来自<a href="http://www.imooc.com/" target="_blank" rel="external">慕课网</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ng-指令/">ng-指令</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2016/03/19/ng-4/" data-title="ng-4 | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/19/ng-3/"  title="ng-3">
+ <strong>下一篇：</strong><br/> 
+ <span>ng-3
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/03/19/ng-4/" data-title="ng-4" data-url="hinami.xyz/2016/03/19/ng-4/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义指令"><span class="toc-number">1.</span> <span class="toc-text">自定义指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令执行三个阶段"><span class="toc-number">2.</span> <span class="toc-text">指令执行三个阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载阶段："><span class="toc-number">2.0.1.</span> <span class="toc-text">加载阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译阶段："><span class="toc-number">2.0.2.</span> <span class="toc-text">编译阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接阶段"><span class="toc-number">2.0.3.</span> <span class="toc-text">链接阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提示"><span class="toc-number">2.0.3.0.1.</span> <span class="toc-text">提示</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尝试在link中绑定滑动事件"><span class="toc-number">2.1.</span> <span class="toc-text">尝试在link中绑定滑动事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动感超人"><span class="toc-number">3.</span> <span class="toc-text">动感超人</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#独立scope"><span class="toc-number">4.</span> <span class="toc-text">独立scope</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#scope绑定的策略"><span class="toc-number">4.0.1.</span> <span class="toc-text">scope绑定的策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAt"><span class="toc-number">5.</span> <span class="toc-text">scopeAt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeEqual"><span class="toc-number">6.</span> <span class="toc-text">scopeEqual</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAnd"><span class="toc-number">7.</span> <span class="toc-text">scopeAnd</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Demo/" title="Demo">Demo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/HTML5/" title="HTML5">HTML5<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/css3/" title="css3">css3<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/php/" title="php">php<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>35</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面试经验/" title="面试经验">面试经验<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目经验/" title="项目经验">项目经验<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>39</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/遍历/" title="遍历">遍历<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JSON/" title="JSON">JSON<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://tms.im" target="_blank" title="梦石真人">谭  总</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="cateaf.com" target="_blank" title="这人是个死基佬">小礼服</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="全球最大同性交友社区">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://home.cnblogs.com/u/yxy99/" target="_blank" title="yxy">yxy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m hinami in HNU. <br/>
+			This is my school,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hinami0507" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/346565386Toms" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/hinami.sin" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/po-xiao-14-75" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:346565386@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hinami">hinami</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd65912a25436b0b55db731ce75f5c981' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
