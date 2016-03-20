@@ -17,7 +17,8 @@
 <meta property="og:url" content="hinami.xyz/2016/03/19/ng-4/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="指令的定义，执行三个阶段，指令之间通过控制器暴露公共方法来相互作用，指令的复用，运用【独立scope】来划分指令模块，scopeAnd，scopeEqual，scopeAt">
-<meta property="og:updated_time" content="2016-03-19T16:02:29.482Z">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/ng-dir-UI.jpg">
+<meta property="og:updated_time" content="2016-03-20T07:15:52.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ng-指令-(1)">
 <meta name="twitter:description" content="指令的定义，执行三个阶段，指令之间通过控制器暴露公共方法来相互作用，指令的复用，运用【独立scope】来划分指令模块，scopeAnd，scopeEqual，scopeAt">
@@ -173,6 +174,16 @@
 <p>可以看到控制器中的sayHello()执行的时候会传入参数<code>name</code></p>
 <p>这个<code>name</code>从哪里来？</p>
 <p>先去下边的<code>&lt;button&gt;</code>里找<code>greet({name:userName})&quot;</code><br>然后去<code>&lt;input&gt;</code>里<code>ng-model=&quot;userName&quot;</code>找</p>
+<hr>
+<h1 id="expanderSimple">expanderSimple</h1><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&lt;body ng-controller=<span class="string">'SomeController'</span> &gt;</span><br><span class="line">    &lt;accordion&gt;</span><br><span class="line">        &lt;expander class=<span class="string">'expander'</span> ng-repeat=<span class="string">'expander in expanders'</span> expander-title=<span class="string">'expander.title'</span>&gt;</span><br><span class="line">            &#123;&#123;expander.text&#125;&#125;</span><br><span class="line">        &lt;/expander&gt;</span><br><span class="line">    &lt;/accordion&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">=====================================</span><br><span class="line">var expanderModule=angular.module(<span class="string">'expanderModule'</span>, []);</span><br><span class="line">expanderModule.directive(<span class="string">'expander'</span>, <span class="keyword">function</span>() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        restrict : <span class="string">'EA'</span>,</span><br><span class="line">        replace : true,</span><br><span class="line">        transclude : true,</span><br><span class="line">        scope : &#123;</span><br><span class="line">            title : <span class="string">'=expanderTitle'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        template : <span class="string">'&lt;div&gt;'</span></span><br><span class="line">                 + <span class="string">'&lt;div class="title" ng-click="toggle()"&gt;&#123;&#123;title&#125;&#125;&lt;/div&gt;'</span></span><br><span class="line">                 + <span class="string">'&lt;div class="body" ng-show="showMe" ng-transclude&gt;&lt;/div&gt;'</span></span><br><span class="line">                 + <span class="string">'&lt;/div&gt;'</span>,</span><br><span class="line">        link : function(scope, element, attrs) &#123;</span><br><span class="line">            scope.showMe = false;</span><br><span class="line">            scope.toggle = function() &#123;</span><br><span class="line">                scope.showMe = !scope.showMe;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">expanderModule.controller(<span class="string">'SomeController'</span>,<span class="keyword">function</span>(<span class="variable">$scope</span>) &#123;</span><br><span class="line">    <span class="variable">$scope</span>.title = <span class="string">'点击展开'</span>;</span><br><span class="line">    <span class="variable">$scope</span>.text = <span class="string">'这里是内部的内容。'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里注意 ,HTML中的<code>expander-title</code>在JS中用驼峰写法<code>expanderTitle</code></p>
+<p>也可以用angular-UI封装好的指令库</p>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/ng-dir-UI.jpg" alt="angular常用指令库"></p>
+<p>angularJS</p>
+<p><a href="http://www.csdn.net/article/2013-10-08/2817118-AngularJS-Framework-Google" target="_blank" rel="external">CSDN专访AngularJS框架创始人Misko Hevery</a></p>
+<p>CSDN：AngularJS的设计理念是什么？灵感来自于什么？</p>
+<p>Misko：AngularJS遵循的设计理念是——构建UI应该是声明式的。</p>
+<p>灵感来自于我之前在Adobe公司所从事的FLEX方面的工作。但是我还想要有大量的声明式UI，这也是AngularJS中标识符（directives）想法的灵感来源。</p>
 <p>原文来自<a href="http://www.imooc.com/" target="_blank" rel="external">慕课网</a></p>
   
 	</div>
@@ -210,10 +221,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/03/19/ng-5/" title="ng-指令-(2)">
+ <a href="/2016/03/20/kna-1/" title="前端背包16.3.20">
   <strong>上一篇：</strong><br/>
   <span>
-  ng-指令-(2)</span>
+  前端背包16.3.20</span>
 </a>
 </div>
 
@@ -240,7 +251,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义指令"><span class="toc-number">1.</span> <span class="toc-text">自定义指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令执行三个阶段"><span class="toc-number">2.</span> <span class="toc-text">指令执行三个阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载阶段："><span class="toc-number">2.0.1.</span> <span class="toc-text">加载阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译阶段："><span class="toc-number">2.0.2.</span> <span class="toc-text">编译阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接阶段"><span class="toc-number">2.0.3.</span> <span class="toc-text">链接阶段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令中的参数"><span class="toc-number">3.</span> <span class="toc-text">指令中的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#restrict"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">restrict</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transclude"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">transclude</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scope"><span class="toc-number">3.0.0.3.</span> <span class="toc-text">scope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#templateUrl"><span class="toc-number">3.0.0.4.</span> <span class="toc-text">templateUrl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#link"><span class="toc-number">3.0.0.5.</span> <span class="toc-text">link</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提示"><span class="toc-number">3.0.0.5.1.</span> <span class="toc-text">提示</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尝试在link中绑定滑动事件"><span class="toc-number">3.1.</span> <span class="toc-text">尝试在link中绑定滑动事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动感超人"><span class="toc-number">4.</span> <span class="toc-text">动感超人</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#独立scope"><span class="toc-number">5.</span> <span class="toc-text">独立scope</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#scope绑定的策略"><span class="toc-number">5.0.1.</span> <span class="toc-text">scope绑定的策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAt"><span class="toc-number">6.</span> <span class="toc-text">scopeAt</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hinami是如何打印出来的呢？"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">hinami是如何打印出来的呢？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeEqual"><span class="toc-number">7.</span> <span class="toc-text">scopeEqual</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAnd"><span class="toc-number">8.</span> <span class="toc-text">scopeAnd</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义指令"><span class="toc-number">1.</span> <span class="toc-text">自定义指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令执行三个阶段"><span class="toc-number">2.</span> <span class="toc-text">指令执行三个阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载阶段："><span class="toc-number">2.0.1.</span> <span class="toc-text">加载阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译阶段："><span class="toc-number">2.0.2.</span> <span class="toc-text">编译阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接阶段"><span class="toc-number">2.0.3.</span> <span class="toc-text">链接阶段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令中的参数"><span class="toc-number">3.</span> <span class="toc-text">指令中的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#restrict"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">restrict</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transclude"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">transclude</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scope"><span class="toc-number">3.0.0.3.</span> <span class="toc-text">scope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#templateUrl"><span class="toc-number">3.0.0.4.</span> <span class="toc-text">templateUrl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#link"><span class="toc-number">3.0.0.5.</span> <span class="toc-text">link</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提示"><span class="toc-number">3.0.0.5.1.</span> <span class="toc-text">提示</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尝试在link中绑定滑动事件"><span class="toc-number">3.1.</span> <span class="toc-text">尝试在link中绑定滑动事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动感超人"><span class="toc-number">4.</span> <span class="toc-text">动感超人</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#独立scope"><span class="toc-number">5.</span> <span class="toc-text">独立scope</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#scope绑定的策略"><span class="toc-number">5.0.1.</span> <span class="toc-text">scope绑定的策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAt"><span class="toc-number">6.</span> <span class="toc-text">scopeAt</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hinami是如何打印出来的呢？"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">hinami是如何打印出来的呢？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeEqual"><span class="toc-number">7.</span> <span class="toc-text">scopeEqual</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scopeAnd"><span class="toc-number">8.</span> <span class="toc-text">scopeAnd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#expanderSimple"><span class="toc-number">9.</span> <span class="toc-text">expanderSimple</span></a></li></ol>
  
   </div>
 
@@ -254,7 +265,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>5</sup></a></li>
+			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>4</sup></a></li>
 		  
 		
 		  
@@ -371,15 +382,15 @@
 			
 		
 			
-				<li><a href="/tags/ng-指令/" title="ng-指令">ng-指令<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/遍历/" title="遍历">遍历<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
 			
 		
 			
