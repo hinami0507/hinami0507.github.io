@@ -4,35 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红本-(28)-事件模拟 | hinami</title>
+    <title>前端背包16.3.20 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="举个例子：模拟鼠标点击事件，就是当这个事件被触发的时候，就相当(其实就是了)于你的鼠标在对应的地方点了一下，
-
-模拟鼠标事件
-创建鼠标事件对象的方法是为createEvent()传入字符串”MouseEvents”。就像这样：var event = document.createEvent(&amp;quot;MouseEvents&amp;quot;);
-然后你会得到一个名为initMouseEvent()方法">
+    <meta name="description" content="前端学习方法前端网址导航来自朴灵大大的 – Node.js 简史ISUX-移动端划屏九问tip:做189mail的时候所踩的坑都在这里了拖拽189mail5-拖拽 性能问题很头疼，稍微低配一点的手机(例如我的米2矮屎QAQ)就会跳屏和卡屏滑动189mail6-滑动
+ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知乎-WebSocket协议tip:WebSocket协议—">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红本-(28)-事件模拟">
-<meta property="og:url" content="hinami.xyz/2015/11/18/red-28/index.html">
+<meta property="og:title" content="前端背包16.3.20">
+<meta property="og:url" content="hinami.xyz/2016/03/20/kna-1/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="举个例子：模拟鼠标点击事件，就是当这个事件被触发的时候，就相当(其实就是了)于你的鼠标在对应的地方点了一下，
-
-模拟鼠标事件
-创建鼠标事件对象的方法是为createEvent()传入字符串”MouseEvents”。就像这样：var event = document.createEvent(&amp;quot;MouseEvents&amp;quot;);
-然后你会得到一个名为initMouseEvent()方法">
-<meta property="og:updated_time" content="2015-11-18T15:36:02.000Z">
+<meta property="og:description" content="前端学习方法前端网址导航来自朴灵大大的 – Node.js 简史ISUX-移动端划屏九问tip:做189mail的时候所踩的坑都在这里了拖拽189mail5-拖拽 性能问题很头疼，稍微低配一点的手机(例如我的米2矮屎QAQ)就会跳屏和卡屏滑动189mail6-滑动
+ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知乎-WebSocket协议tip:WebSocket协议—">
+<meta property="og:updated_time" content="2016-03-20T03:31:35.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红本-(28)-事件模拟">
-<meta name="twitter:description" content="举个例子：模拟鼠标点击事件，就是当这个事件被触发的时候，就相当(其实就是了)于你的鼠标在对应的地方点了一下，
-
-模拟鼠标事件
-创建鼠标事件对象的方法是为createEvent()传入字符串”MouseEvents”。就像这样：var event = document.createEvent(&amp;quot;MouseEvents&amp;quot;);
-然后你会得到一个名为initMouseEvent()方法">
+<meta name="twitter:title" content="前端背包16.3.20">
+<meta name="twitter:description" content="前端学习方法前端网址导航来自朴灵大大的 – Node.js 简史ISUX-移动端划屏九问tip:做189mail的时候所踩的坑都在这里了拖拽189mail5-拖拽 性能问题很头疼，稍微低配一点的手机(例如我的米2矮屎QAQ)就会跳屏和卡屏滑动189mail6-滑动
+ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知乎-WebSocket协议tip:WebSocket协议—">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -93,46 +84,22 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/18/red-28/" title="小红本-(28)-事件模拟" itemprop="url">小红本-(28)-事件模拟</a>
+      <a href="/2016/03/20/kna-1/" title="前端背包16.3.20" itemprop="url">前端背包16.3.20</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-18T14:34:59.000Z" itemprop="datePublished"> 发表于 2015-11-18</time>
+    <time datetime="2016-03-20T01:41:30.000Z" itemprop="datePublished"> 发表于 2016-03-20</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<p>举个例子：<br>模拟鼠标点击事件，就是当这个事件被触发的时候，就相当(其实就是了)于你的鼠标在对应的地方点了一下，</p>
-<blockquote>
-<h1 id="模拟鼠标事件">模拟鼠标事件</h1></blockquote>
-<p>创建鼠标事件对象的方法是为createEvent()传入字符串”MouseEvents”。<br>就像这样：<br><code>var event = document.createEvent(&quot;MouseEvents&quot;);</code></p>
-<p>然后你会得到一个名为initMouseEvent()方法，用于指定与该鼠标事件有关的信息</p>
-<p>这个方法接受<strong>15个参数</strong> Σ( ° △ °|||)︴，没错!是15个！！！(°ー°〃)</p>
-<p>这些参数的含义如下：</p>
-<ul>
-<li>type（字符串）：表示要触发的事件类型，例如”click”。</li>
-<li>bubbles（布尔值）：表示事件是否应该冒泡。为精确地模拟鼠标事件，应该把这个参数设置为<br>true。</li>
-<li>cancelable（布尔值）：表示事件是否可以取消。为精确地模拟鼠标事件，应该把这个参数设<br>置为true。</li>
-<li>view（AbstractView）：与事件关联的视图。这个参数几乎总是要设置为document.defaultView。</li>
-<li>detail（整数）：与事件有关的详细信息。这个值一般只有事件处理程序使用，但通常都设置为0。</li>
-<li>screenX（整数）：事件相对于屏幕的X 坐标。</li>
-<li>screenY（整数）：事件相对于屏幕的Y 坐标。</li>
-<li>clientX（整数）：事件相对于视口的X 坐标。</li>
-<li>clientY（整数）：事件想对于视口的Y 坐标。</li>
-<li>ctrlKey（布尔值）：表示是否按下了Ctrl 键。默认值为false。</li>
-<li>altKey（布尔值）：表示是否按下了Alt 键。默认值为false。</li>
-<li>shiftKey（布尔值）：表示是否按下了Shift 键。默认值为false。</li>
-<li>metaKey（布尔值）：表示是否按下了Meta 键。默认值为false。</li>
-<li>button（整数）：表示按下了哪一个鼠标键。默认值为0。</li>
-<li>relatedTarget（对象）：表示与事件相关的对象。这个参数只在模拟mouseover 或mouseout时使用。</li>
-</ul>
-<p>下边是例子：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">var btn = document.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"><span class="comment">//创建事件对象</span></span><br><span class="line">var event = document.createEvent(<span class="string">"MouseEvents"</span>);</span><br><span class="line"><span class="comment">//初始化事件对象</span></span><br><span class="line">event.initMouseEvent(<span class="string">"click"</span>, <span class="literal">true</span>, <span class="literal">true</span>, document.defaultView, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,<span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="number">0</span>, null);</span><br><span class="line"><span class="comment">//触发事件</span></span><br><span class="line">btn.dispatchEvent(event);</span><br></pre></td></tr></table></figure></p>
-<p>这里是<a href="http://i.hinami.xyz/Demo/redcode/Ch13/SimulateDOMClickExample01.htm" target="_blank" rel="external">Demo</a></p>
-<p>用的比较少，以后需要的时候再看吧、</p>
+		<h4 id="前端学习方法"><a href="https://github.com/qiu-deqing/FE-learning" target="_blank" rel="external">前端学习方法</a></h4><h4 id="前端网址导航"><a href="http://www.whycss.com/" target="_blank" rel="external">前端网址导航</a></h4><h4 id="来自朴灵大大的_–_Node-js_简史"><a href="http://www.infoq.com/cn/articles/node-js-and-io-js" target="_blank" rel="external">来自朴灵大大的 – Node.js 简史</a></h4><h4 id="ISUX-移动端划屏九问"><a href="https://isux.tencent.com/nine-question-of-swipe-html5-page.html" target="_blank" rel="external">ISUX-移动端划屏九问</a></h4><p>tip:做<a href="http://i.hinami.xyz/Demo/189mail5/" target="_blank" rel="external">189mail</a>的时候所踩的坑都在这里了<br>拖拽<a href="http://i.hinami.xyz/Demo/189mail5/" target="_blank" rel="external">189mail5-拖拽</a> 性能问题很头疼，稍微低配一点的手机(例如我的米2矮屎QAQ)就会跳屏和卡屏<br>滑动<a href="http://i.hinami.xyz/Demo/189mail6/" target="_blank" rel="external">189mail6-滑动</a></p>
+<h4 id="ISUX-WebSocket实现多屏互动的分析及方案"><a href="https://isux.tencent.com/multi-screen-interactive-solution.html" target="_blank" rel="external">ISUX-WebSocket实现多屏互动的分析及方案</a></h4><h6 id="Demo–多屏互动游戏"><a href="http://115.159.36.96:8000/" target="_blank" rel="external">Demo–多屏互动游戏</a></h6><h6 id="知乎-WebSocket协议"><a href="https://www.zhihu.com/question/20215561" target="_blank" rel="external">知乎-WebSocket协议</a></h6><p>tip:WebSocket协议—-之前有过做一个多人联机炸弹人的想法，有时间可以用这个东西试试</p>
+<h4 id="Node-js_打造实时多人游戏框架"><a href="http://www.aliued.cn/2014/10/28/node-js-%E6%89%93%E9%80%A0%E5%AE%9E%E6%97%B6%E5%A4%9A%E4%BA%BA%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6.html" target="_blank" rel="external">Node.js 打造实时多人游戏框架</a></h4><p>tip:看了一下时间—两年前的文章了。。。。。。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -140,14 +107,9 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/小红书/">小红书</a>
+  <a class="article-category-link" href="/categories/前端背包/">前端背包</a>
 </div>
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/事件模拟/">事件模拟</a><a href="/tags/前端/">前端</a>
-  </div>
 
 </div>
 
@@ -155,7 +117,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/11/18/red-28/" data-title="小红本-(28)-事件模拟 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2016/03/20/kna-1/" data-title="前端背包16.3.20 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -168,19 +130,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/11/18/red-29/" title="小红本-(29)-表单脚本">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红本-(29)-表单脚本</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/11/16/red-27/"  title="小红本-(27)-内存和性能">
+<a href="/2016/03/19/ng-5/"  title="ng-指令-(2)">
  <strong>下一篇：</strong><br/> 
- <span>小红本-(27)-内存和性能
+ <span>ng-指令-(2)
 </span>
 </a>
 </div>
@@ -189,7 +143,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/11/18/red-28/" data-title="小红本-(28)-事件模拟" data-url="hinami.xyz/2015/11/18/red-28/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/20/kna-1/" data-title="前端背包16.3.20" data-url="hinami.xyz/2016/03/20/kna-1/"></div>
 </section>
 
 
@@ -199,7 +153,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#模拟鼠标事件"><span class="toc-number">1.</span> <span class="toc-text">模拟鼠标事件</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前端学习方法"><span class="toc-number">1.</span> <span class="toc-text">前端学习方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端网址导航"><span class="toc-number">2.</span> <span class="toc-text">前端网址导航</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#来自朴灵大大的_–_Node-js_简史"><span class="toc-number">3.</span> <span class="toc-text">来自朴灵大大的 – Node.js 简史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ISUX-移动端划屏九问"><span class="toc-number">4.</span> <span class="toc-text">ISUX-移动端划屏九问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ISUX-WebSocket实现多屏互动的分析及方案"><span class="toc-number">5.</span> <span class="toc-text">ISUX-WebSocket实现多屏互动的分析及方案</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Demo–多屏互动游戏"><span class="toc-number">5.0.1.</span> <span class="toc-text">Demo–多屏互动游戏</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#知乎-WebSocket协议"><span class="toc-number">5.0.2.</span> <span class="toc-text">知乎-WebSocket协议</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Node-js_打造实时多人游戏框架"><span class="toc-number">6.</span> <span class="toc-text">Node.js 打造实时多人游戏框架</span></a></li></ol>
  
   </div>
 
