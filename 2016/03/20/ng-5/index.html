@@ -4,26 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>前端背包16.3.20 | hinami</title>
+    <title>ng-服务 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="前端学习方法前端网址导航来自朴灵大大的 – Node.js 简史ISUX-移动端划屏九问tip:做189mail的时候所踩的坑都在这里了拖拽189mail5-拖拽 性能问题很头疼，稍微低配一点的手机(例如我的米2矮屎QAQ)就会跳屏和卡屏滑动189mail6-滑动
-ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知乎-WebSocket协议tip:WebSocket协议—">
+    <meta name="description" content="http请求=================HTML==============&amp;lt;div ng-controller=&quot;LoadDataCtrl&quot;&amp;gt;	&amp;lt;ul&amp;gt;		&amp;lt;li ng-repeat=&quot;user in users&quot;&amp;gt;			&amp;#123;&amp;#123;user.name&amp;#125;&amp;#125;		&amp;lt;/li&amp;gt;	&amp;lt;/ul&amp;gt;&amp;lt;/div&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端背包16.3.20">
-<meta property="og:url" content="hinami.xyz/2016/03/20/kna-1/index.html">
+<meta property="og:title" content="ng-服务">
+<meta property="og:url" content="hinami.xyz/2016/03/20/ng-5/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="前端学习方法前端网址导航来自朴灵大大的 – Node.js 简史ISUX-移动端划屏九问tip:做189mail的时候所踩的坑都在这里了拖拽189mail5-拖拽 性能问题很头疼，稍微低配一点的手机(例如我的米2矮屎QAQ)就会跳屏和卡屏滑动189mail6-滑动
-ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知乎-WebSocket协议tip:WebSocket协议—">
-<meta property="og:updated_time" content="2016-03-20T03:31:35.275Z">
+<meta property="og:description" content="http请求=================HTML==============&amp;lt;div ng-controller=&quot;LoadDataCtrl&quot;&amp;gt;	&amp;lt;ul&amp;gt;		&amp;lt;li ng-repeat=&quot;user in users&quot;&amp;gt;			&amp;#123;&amp;#123;user.name&amp;#125;&amp;#125;		&amp;lt;/li&amp;gt;	&amp;lt;/ul&amp;gt;&amp;lt;/div&amp;">
+<meta property="og:updated_time" content="2016-03-20T07:37:25.712Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端背包16.3.20">
-<meta name="twitter:description" content="前端学习方法前端网址导航来自朴灵大大的 – Node.js 简史ISUX-移动端划屏九问tip:做189mail的时候所踩的坑都在这里了拖拽189mail5-拖拽 性能问题很头疼，稍微低配一点的手机(例如我的米2矮屎QAQ)就会跳屏和卡屏滑动189mail6-滑动
-ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知乎-WebSocket协议tip:WebSocket协议—">
+<meta name="twitter:title" content="ng-服务">
+<meta name="twitter:description" content="http请求=================HTML==============&amp;lt;div ng-controller=&quot;LoadDataCtrl&quot;&amp;gt;	&amp;lt;ul&amp;gt;		&amp;lt;li ng-repeat=&quot;user in users&quot;&amp;gt;			&amp;#123;&amp;#123;user.name&amp;#125;&amp;#125;		&amp;lt;/li&amp;gt;	&amp;lt;/ul&amp;gt;&amp;lt;/div&amp;">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -84,22 +81,25 @@ ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知�
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/20/kna-1/" title="前端背包16.3.20" itemprop="url">前端背包16.3.20</a>
+      <a href="/2016/03/20/ng-5/" title="ng-服务" itemprop="url">ng-服务</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-20T01:41:30.000Z" itemprop="datePublished"> 发表于 2016-03-20</time>
+    <time datetime="2016-03-20T07:17:35.000Z" itemprop="datePublished"> 发表于 2016-03-20</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h4 id="前端学习方法"><a href="https://github.com/qiu-deqing/FE-learning" target="_blank" rel="external">前端学习方法</a></h4><h4 id="前端网址导航"><a href="http://www.whycss.com/" target="_blank" rel="external">前端网址导航</a></h4><h4 id="来自朴灵大大的_–_Node-js_简史"><a href="http://www.infoq.com/cn/articles/node-js-and-io-js" target="_blank" rel="external">来自朴灵大大的 – Node.js 简史</a></h4><h4 id="ISUX-移动端划屏九问"><a href="https://isux.tencent.com/nine-question-of-swipe-html5-page.html" target="_blank" rel="external">ISUX-移动端划屏九问</a></h4><p>tip:做<a href="http://i.hinami.xyz/Demo/189mail5/" target="_blank" rel="external">189mail</a>的时候所踩的坑都在这里了<br>拖拽<a href="http://i.hinami.xyz/Demo/189mail5/" target="_blank" rel="external">189mail5-拖拽</a> 性能问题很头疼，稍微低配一点的手机(例如我的米2矮屎QAQ)就会跳屏和卡屏<br>滑动<a href="http://i.hinami.xyz/Demo/189mail6/" target="_blank" rel="external">189mail6-滑动</a></p>
-<h4 id="ISUX-WebSocket实现多屏互动的分析及方案"><a href="https://isux.tencent.com/multi-screen-interactive-solution.html" target="_blank" rel="external">ISUX-WebSocket实现多屏互动的分析及方案</a></h4><h6 id="Demo–多屏互动游戏"><a href="http://115.159.36.96:8000/" target="_blank" rel="external">Demo–多屏互动游戏</a></h6><h6 id="知乎-WebSocket协议"><a href="https://www.zhihu.com/question/20215561" target="_blank" rel="external">知乎-WebSocket协议</a></h6><p>tip:WebSocket协议—-之前有过做一个多人联机炸弹人的想法，有时间可以用这个东西试试</p>
-<h4 id="Node-js_打造实时多人游戏框架"><a href="http://www.aliued.cn/2014/10/28/node-js-%E6%89%93%E9%80%A0%E5%AE%9E%E6%97%B6%E5%A4%9A%E4%BA%BA%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6.html" target="_blank" rel="external">Node.js 打造实时多人游戏框架</a></h4><p>tip:看了一下时间—两年前的文章了。。。。。。</p>
+		<h1 id="http请求">http请求</h1><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">=================HTML==============</span><br><span class="line">&lt;div ng-controller=<span class="string">"LoadDataCtrl"</span>&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li ng-repeat=<span class="string">"user in users"</span>&gt;</span><br><span class="line">			&#123;&#123;user.name&#125;&#125;</span><br><span class="line">		&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">================js===========</span><br><span class="line">var myModule=angular.module(<span class="string">"MyModule"</span>,[]);</span><br><span class="line">myModule.controller(<span class="string">'LoadDataCtrl'</span>, [<span class="string">'$scope'</span>,<span class="string">'$http'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>,<span class="variable">$http</span>)&#123;</span><br><span class="line">	<span class="variable">$http</span>(&#123;</span><br><span class="line">        method: <span class="string">'GET'</span>,</span><br><span class="line">        url: <span class="string">'data.json'</span></span><br><span class="line">    &#125;).success(function(data, status, headers, config) &#123;</span><br><span class="line">        console.log(<span class="string">"success..."</span>);</span><br><span class="line">        console.log(data);</span><br><span class="line">        <span class="variable">$scope</span>.users=data;</span><br><span class="line">    &#125;).error(function(data, status, headers, config) &#123;</span><br><span class="line">        console.log(<span class="string">"error..."</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;]);</span><br><span class="line">=================data.json=========</span><br><span class="line">[&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"《用AngularJS开发下一代WEB应用》"</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"《Ext江湖》"</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"《ActionScript3.0游戏设计基础（第二版）》"</span></span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p>直接在控制器中写</p>
+<p>链式写法</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>(<span class="variable">$scope</span>,<span class="variable">$http</span>)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="variable">$http</span>(&#123;//........&#125;).success(function()&#123;//.....&#125;).error(function()&#123;//.....&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里实现了一个简单的前后端交互</p>
+<h1 id="scope-$watch">scope.$watch</h1><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">===============HTML============</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div ng-controller=<span class="string">"ServiceController"</span>&gt;</span><br><span class="line">        &lt;label&gt;用户名&lt;/label&gt;</span><br><span class="line">        &lt;input type=<span class="string">"text"</span> ng-model=<span class="string">"username"</span> placeholder=<span class="string">"请输入用户名"</span> /&gt;</span><br><span class="line">        &lt;pre ng-show=<span class="string">"username"</span>&gt;&#123;&#123;users&#125;&#125;&lt;/pre&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">=================js===============</span><br><span class="line">var myServiceApp = angular.module(<span class="string">"MyServiceApp"</span>, []);</span><br><span class="line">myServiceApp.factory(<span class="string">'userListService'</span>, [<span class="string">'$http'</span>,</span><br><span class="line">    <span class="keyword">function</span>(<span class="variable">$http</span>) &#123;</span><br><span class="line">        var doRequest = function(username, path) &#123;</span><br><span class="line">            return <span class="variable">$http</span>(&#123;</span><br><span class="line">                method: <span class="string">'GET'</span>,</span><br><span class="line">                url: <span class="string">'users.json'</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;</span><br><span class="line">            userList: function(username) &#123;</span><br><span class="line">                return doRequest(username, <span class="string">'userList'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">myServiceApp.controller(<span class="string">'ServiceController'</span>, [<span class="string">'$scope'</span>, <span class="string">'$timeout'</span>, <span class="string">'userListService'</span>,</span><br><span class="line">    <span class="keyword">function</span>(<span class="variable">$scope</span>, <span class="variable">$timeout</span>, userListService) &#123;</span><br><span class="line">        var timeout;</span><br><span class="line">        <span class="variable">$scope</span>.<span class="variable">$watch</span>(<span class="string">'username'</span>, function(newUserName) &#123;</span><br><span class="line">            if (newUserName) &#123;</span><br><span class="line">                if (timeout) &#123;</span><br><span class="line">                    <span class="variable">$timeout</span>.cancel(timeout);</span><br><span class="line">                &#125;</span><br><span class="line">                timeout = <span class="variable">$timeout</span>(function() &#123;</span><br><span class="line">                    userListService.userList(newUserName)</span><br><span class="line">                        .success(function(data, status) &#123;</span><br><span class="line">                            <span class="variable">$scope</span>.users = data;</span><br><span class="line">                        &#125;);</span><br><span class="line">                &#125;, <span class="number">350</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -107,9 +107,14 @@ ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知�
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/前端背包/">前端背包</a>
+  <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
 </div>
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ng-服务/">ng-服务</a>
+  </div>
 
 </div>
 
@@ -117,7 +122,7 @@ ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知�
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2016/03/20/kna-1/" data-title="前端背包16.3.20 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2016/03/20/ng-5/" data-title="ng-服务 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -130,19 +135,11 @@ ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知�
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/03/20/ng-5/" title="ng-服务">
-  <strong>上一篇：</strong><br/>
-  <span>
-  ng-服务</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/03/19/ng-4/"  title="ng-指令">
+<a href="/2016/03/20/kna-1/"  title="前端背包16.3.20">
  <strong>下一篇：</strong><br/> 
- <span>ng-指令
+ <span>前端背包16.3.20
 </span>
 </a>
 </div>
@@ -151,7 +148,7 @@ ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知�
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/03/20/kna-1/" data-title="前端背包16.3.20" data-url="hinami.xyz/2016/03/20/kna-1/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/20/ng-5/" data-title="ng-服务" data-url="hinami.xyz/2016/03/20/ng-5/"></div>
 </section>
 
 
@@ -161,7 +158,7 @@ ISUX-WebSocket实现多屏互动的分析及方案Demo–多屏互动游戏知�
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前端学习方法"><span class="toc-number">1.</span> <span class="toc-text">前端学习方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端网址导航"><span class="toc-number">2.</span> <span class="toc-text">前端网址导航</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#来自朴灵大大的_–_Node-js_简史"><span class="toc-number">3.</span> <span class="toc-text">来自朴灵大大的 – Node.js 简史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ISUX-移动端划屏九问"><span class="toc-number">4.</span> <span class="toc-text">ISUX-移动端划屏九问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ISUX-WebSocket实现多屏互动的分析及方案"><span class="toc-number">5.</span> <span class="toc-text">ISUX-WebSocket实现多屏互动的分析及方案</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Demo–多屏互动游戏"><span class="toc-number">5.0.1.</span> <span class="toc-text">Demo–多屏互动游戏</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#知乎-WebSocket协议"><span class="toc-number">5.0.2.</span> <span class="toc-text">知乎-WebSocket协议</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Node-js_打造实时多人游戏框架"><span class="toc-number">6.</span> <span class="toc-text">Node.js 打造实时多人游戏框架</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#http请求"><span class="toc-number">1.</span> <span class="toc-text">http请求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scope-$watch"><span class="toc-number">2.</span> <span class="toc-text">scope.$watch</span></a></li></ol>
  
   </div>
 
