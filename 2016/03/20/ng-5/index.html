@@ -11,16 +11,16 @@
     
 
     
-    <meta name="description" content="http请求=================HTML==============&amp;lt;div ng-controller=&quot;LoadDataCtrl&quot;&amp;gt;	&amp;lt;ul&amp;gt;		&amp;lt;li ng-repeat=&quot;user in users&quot;&amp;gt;			&amp;#123;&amp;#123;user.name&amp;#125;&amp;#125;		&amp;lt;/li&amp;gt;	&amp;lt;/ul&amp;gt;&amp;lt;/div&amp;">
+    <meta name="description" content="filter服务--数据格式化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ng-服务">
 <meta property="og:url" content="hinami.xyz/2016/03/20/ng-5/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="http请求=================HTML==============&amp;lt;div ng-controller=&quot;LoadDataCtrl&quot;&amp;gt;	&amp;lt;ul&amp;gt;		&amp;lt;li ng-repeat=&quot;user in users&quot;&amp;gt;			&amp;#123;&amp;#123;user.name&amp;#125;&amp;#125;		&amp;lt;/li&amp;gt;	&amp;lt;/ul&amp;gt;&amp;lt;/div&amp;">
-<meta property="og:updated_time" content="2016-03-20T07:37:25.712Z">
+<meta property="og:description" content="filter服务--数据格式化">
+<meta property="og:updated_time" content="2016-03-20T08:40:29.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ng-服务">
-<meta name="twitter:description" content="http请求=================HTML==============&amp;lt;div ng-controller=&quot;LoadDataCtrl&quot;&amp;gt;	&amp;lt;ul&amp;gt;		&amp;lt;li ng-repeat=&quot;user in users&quot;&amp;gt;			&amp;#123;&amp;#123;user.name&amp;#125;&amp;#125;		&amp;lt;/li&amp;gt;	&amp;lt;/ul&amp;gt;&amp;lt;/div&amp;">
+<meta name="twitter:description" content="filter服务--数据格式化">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -100,6 +100,39 @@
 <figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>(<span class="variable">$scope</span>,<span class="variable">$http</span>)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="variable">$http</span>(&#123;//........&#125;).success(function()&#123;//.....&#125;).error(function()&#123;//.....&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里实现了一个简单的前后端交互</p>
 <h1 id="scope-$watch">scope.$watch</h1><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">===============HTML============</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div ng-controller=<span class="string">"ServiceController"</span>&gt;</span><br><span class="line">        &lt;label&gt;用户名&lt;/label&gt;</span><br><span class="line">        &lt;input type=<span class="string">"text"</span> ng-model=<span class="string">"username"</span> placeholder=<span class="string">"请输入用户名"</span> /&gt;</span><br><span class="line">        &lt;pre ng-show=<span class="string">"username"</span>&gt;&#123;&#123;users&#125;&#125;&lt;/pre&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">=================js===============</span><br><span class="line">var myServiceApp = angular.module(<span class="string">"MyServiceApp"</span>, []);</span><br><span class="line">myServiceApp.factory(<span class="string">'userListService'</span>, [<span class="string">'$http'</span>,</span><br><span class="line">    <span class="keyword">function</span>(<span class="variable">$http</span>) &#123;</span><br><span class="line">        var doRequest = function(username, path) &#123;</span><br><span class="line">            return <span class="variable">$http</span>(&#123;</span><br><span class="line">                method: <span class="string">'GET'</span>,</span><br><span class="line">                url: <span class="string">'users.json'</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;</span><br><span class="line">            userList: function(username) &#123;</span><br><span class="line">                return doRequest(username, <span class="string">'userList'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">myServiceApp.controller(<span class="string">'ServiceController'</span>, [<span class="string">'$scope'</span>, <span class="string">'$timeout'</span>, <span class="string">'userListService'</span>,</span><br><span class="line">    <span class="keyword">function</span>(<span class="variable">$scope</span>, <span class="variable">$timeout</span>, userListService) &#123;</span><br><span class="line">        var timeout;</span><br><span class="line">        <span class="variable">$scope</span>.<span class="variable">$watch</span>(<span class="string">'username'</span>, function(newUserName) &#123;</span><br><span class="line">            if (newUserName) &#123;</span><br><span class="line">                if (timeout) &#123;</span><br><span class="line">                    <span class="variable">$timeout</span>.cancel(timeout);</span><br><span class="line">                &#125;</span><br><span class="line">                timeout = <span class="variable">$timeout</span>(function() &#123;</span><br><span class="line">                    userListService.userList(newUserName)</span><br><span class="line">                        .success(function(data, status) &#123;</span><br><span class="line">                            <span class="variable">$scope</span>.users = data;</span><br><span class="line">                        &#125;);</span><br><span class="line">                &#125;, <span class="number">350</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<p>1.自己命名的service不要以<code>$</code>开头</p>
+<p>2.服务注入的时候自定义服务要放最后</p>
+<p>[‘$scope’, ‘$timeout’, ‘userListService’</p>
+<h1 id="Service的特性">Service的特性</h1><p>1.Service都是单例，整个大的app中，无论用多少次都是一个实例</p>
+<p>2.Service由$injector负责实例化，不需要new</p>
+<p>3.Service在整个应用的声明周期中存在，可以用来共享数据<br>(建议在scope中共享数据)</p>
+<p>4.在需要使用的地方利用<strong>依赖注入</strong>机制注入Service</p>
+<p>5.自己命名的service不要以<code>$</code>开头</p>
+<p>6.服务注入的时候自定义服务要放最后</p>
+<p>[‘$scope’, ‘$timeout’, ‘userListService’</p>
+<h2 id="Service、provider、factory本质都是Provider">Service、provider、factory本质都是Provider</h2><p>provider模式是’策略模式’+“抽象工厂模式”的混合体</p>
+<p>参数格式顺序不同—</p>
+<h1 id="filter服务">filter服务</h1><p>angularJS内置9个filter</p>
+<ul>
+<li>currency</li>
+<li>date</li>
+<li>filter</li>
+<li>json</li>
+<li>limitTo</li>
+<li>lowercase</li>
+<li>uppercase</li>
+<li>number</li>
+<li>orderBy</li>
+</ul>
+<p>用管道符号 <code>|</code>隔开</p>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="expansion">&#123;&#123; <span class="number">1304375948024</span> | date &#125;&#125;</span>  /<span class="regexp">/May 3, 2011 </span><br><span class="line"></span><br><span class="line">&#123;&#123; 1304375948024 | date:"MM/dd</span><span class="regexp">/yyyy @ h:mma" &#125;&#125; /</span><span class="regexp">/05/</span><span class="number">03</span>/<span class="number">2011</span> @ <span class="number">6</span><span class="symbol">:</span><span class="number">39</span>AM </span><br><span class="line"></span><br><span class="line"><span class="expansion">&#123;&#123; <span class="number">1304375948024</span> | <span class="symbol">date:</span><span class="string">"yyyy-MM-dd hh:mm:ss"</span> &#125;&#125;</span> /<span class="regexp">/2011-05-03 06:39:08</span></span><br></pre></td></tr></table></figure>
+<p>不列举了—看API就行了</p>
+<h1 id="可以自定义filter">可以自定义filter</h1><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">===========================================</span><br><span class="line">&#123;&#123;<span class="string">'hinami'</span>| filter1 &#125;&#125;</span><br><span class="line">====================HTML===============</span><br><span class="line"><span class="keyword">var</span> myModule=angular.module(<span class="string">"MyModule"</span>,[]);</span><br><span class="line">myModule.filter(<span class="string">'filter1'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(item)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello,'</span>+item ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>最后输出hello,hinami</p>
+<p>item就是获取的字符串</p>
+<h1 id="UI-route路由实现路由嵌套">UI-route路由实现路由嵌套</h1><p>angularJS原生路由不好用,不可实现嵌套路由</p>
+<p>代码片段<br><figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line"><span class="variable">$stateProvider</span></span><br><span class="line">    .state(<span class="string">'index'</span>, &#123;</span><br><span class="line">        url: <span class="string">'/index'</span>,</span><br><span class="line">        views: &#123;</span><br><span class="line">            <span class="string">''</span>: &#123;</span><br><span class="line">                templateUrl: <span class="string">'tpls/home.html'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">'main@index'</span>: &#123;  //在index页面main区域路由</span><br><span class="line">                templateUrl: <span class="string">'tpls/loginForm.html'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
+<p><code>main@index</code>告诉路由:在index页面main区域路由采用模板<code>templateUrl: &#39;tpls/loginForm.html&#39;</code>进行填充</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -135,6 +168,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/03/30/chatroom/" title="websocket实现的聊天室">
+  <strong>上一篇：</strong><br/>
+  <span>
+  websocket实现的聊天室</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/03/20/kna-1/"  title="前端背包16.3.20">
@@ -158,7 +199,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#http请求"><span class="toc-number">1.</span> <span class="toc-text">http请求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scope-$watch"><span class="toc-number">2.</span> <span class="toc-text">scope.$watch</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#http请求"><span class="toc-number">1.</span> <span class="toc-text">http请求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scope-$watch"><span class="toc-number">2.</span> <span class="toc-text">scope.$watch</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Service的特性"><span class="toc-number">3.</span> <span class="toc-text">Service的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Service、provider、factory本质都是Provider"><span class="toc-number">3.1.</span> <span class="toc-text">Service、provider、factory本质都是Provider</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#filter服务"><span class="toc-number">4.</span> <span class="toc-text">filter服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可以自定义filter"><span class="toc-number">5.</span> <span class="toc-text">可以自定义filter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UI-route路由实现路由嵌套"><span class="toc-number">6.</span> <span class="toc-text">UI-route路由实现路由嵌套</span></a></li></ol>
  
   </div>
 
@@ -269,11 +310,11 @@
 			
 		
 			
-				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
 			
 		
 			
@@ -281,19 +322,19 @@
 			
 		
 			
-				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/遍历/" title="遍历">遍历<sup>1</sup></a></li>
+				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mail/" title="mail">mail<sup>1</sup></a></li>
 			
 		
 			

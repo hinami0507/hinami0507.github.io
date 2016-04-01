@@ -4,41 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>小红书-(9)-RegExp | hinami</title>
+    <title>websocket实现的聊天室 | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="什么是 RegExp？正则表达式描述了字符的模式对象。当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。简单的模式可以是一个单独的字符。更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。您可以规定字符串中的检索位置，以及要检索的字符类型，等等。
-他常常用来检测用户输入的账号邮箱格式。
-
-
-RegExp类型
-
-var expression = / pa">
+    <meta name="description" content="最近在逛ISUX看到的基于websocket协议开发的web在线聊天室
+于是开始了解websocket
+先上demo吧:demo.hxz.im
+websocket协议WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。可以视为HTTP协议支持长连接的一个大补丁,基于 TCP 协议；HTTP 也是一种协议，基于 TCP 协议。连">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小红书-(9)-RegExp">
-<meta property="og:url" content="hinami.xyz/2015/10/27/red-9/index.html">
+<meta property="og:title" content="websocket实现的聊天室">
+<meta property="og:url" content="hinami.xyz/2016/03/30/chatroom/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="什么是 RegExp？正则表达式描述了字符的模式对象。当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。简单的模式可以是一个单独的字符。更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。您可以规定字符串中的检索位置，以及要检索的字符类型，等等。
-他常常用来检测用户输入的账号邮箱格式。
-
-
-RegExp类型
-
-var expression = / pa">
-<meta property="og:updated_time" content="2015-10-27T12:58:06.000Z">
+<meta property="og:description" content="最近在逛ISUX看到的基于websocket协议开发的web在线聊天室
+于是开始了解websocket
+先上demo吧:demo.hxz.im
+websocket协议WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。可以视为HTTP协议支持长连接的一个大补丁,基于 TCP 协议；HTTP 也是一种协议，基于 TCP 协议。连">
+<meta property="og:updated_time" content="2016-04-01T14:34:31.308Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小红书-(9)-RegExp">
-<meta name="twitter:description" content="什么是 RegExp？正则表达式描述了字符的模式对象。当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。简单的模式可以是一个单独的字符。更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。您可以规定字符串中的检索位置，以及要检索的字符类型，等等。
-他常常用来检测用户输入的账号邮箱格式。
-
-
-RegExp类型
-
-var expression = / pa">
+<meta name="twitter:title" content="websocket实现的聊天室">
+<meta name="twitter:description" content="最近在逛ISUX看到的基于websocket协议开发的web在线聊天室
+于是开始了解websocket
+先上demo吧:demo.hxz.im
+websocket协议WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。可以视为HTTP协议支持长连接的一个大补丁,基于 TCP 协议；HTTP 也是一种协议，基于 TCP 协议。连">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -99,63 +90,69 @@ var expression = / pa">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/27/red-9/" title="小红书-(9)-RegExp" itemprop="url">小红书-(9)-RegExp</a>
+      <a href="/2016/03/30/chatroom/" title="websocket实现的聊天室" itemprop="url">websocket实现的聊天室</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-27T01:28:43.000Z" itemprop="datePublished"> 发表于 2015-10-27</time>
+    <time datetime="2016-03-30T15:11:48.000Z" itemprop="datePublished"> 发表于 2016-03-30</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h1 id="什么是_RegExp？">什么是 RegExp？</h1><p>正则表达式描述了字符的模式对象。<br>当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。<br>简单的模式可以是一个单独的字符。<br>更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。<br>您可以规定字符串中的检索位置，以及要检索的字符类型，等等。</p>
-<p>他常常用来检测用户输入的账号邮箱格式。</p>
-<hr>
-<blockquote>
-<h1 id="RegExp类型">RegExp类型</h1></blockquote>
-<ul>
-<li><code>var expression = / pattern / flags ;</code></li>
+		<p>最近在逛<a href="https://isux.tencent.com/" target="_blank" rel="external">ISUX</a>看到的基于websocket协议开发的web在线聊天室</p>
+<p>于是开始了解websocket</p>
+<p>先上demo吧:<a href="http://demo.hxz.im/" target="_blank" rel="external">demo.hxz.im</a></p>
+<h1 id="websocket协议">websocket协议</h1><p>WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。可以视为HTTP协议支持长连接的一个大补丁,基于 TCP 协议；HTTP 也是一种协议，基于 TCP 协议。<strong>连接要保持还是关闭是由你服务器应用来控制的</strong>。</p>
+<h1 id="以前的即时通信—polling&amp;Ajax">以前的即时通信—polling&amp;Ajax</h1><p>之前要实现实时通信，所用的技术是轮询(polling)，设置一个事件间隔，例如每一秒向服务器发出HTTP request，</p>
+<h4 id="Ajax会遇到以下场景：">Ajax会遇到以下场景：</h4><figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。。(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。。。(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。。。。。(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。(response)</span><br><span class="line">。。。。。。</span><br></pre></td></tr></table></figure>
+<p>如此之下，服务器表示很抓狂┻━┻︵╰(‵□′)╯︵┻━┻</p>
+<h4 id="long_poll">long poll</h4><p>和AJAX差不多，—</p>
+<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n--没有的haunted有了再发给我吧(Request)</span><br><span class="line">服务端：（过了好久）我有消息了---给你吧(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n--没有的haunted有了再发给我吧(Request)</span><br><span class="line">。。。。。。。</span><br></pre></td></tr></table></figure>
+<p>同样是轮询-但是采用的是阻塞模式—客户端一直发请求，服务端有消息后才会返回给客户端</p>
+<h3 id="以上方法的缺点">以上方法的缺点</h3><ul>
+<li><code>Ajax</code>缺点在于，服务端一直在回答客户端没有消息—这占用了客户端很大的资源和运算时间</li>
+<li><p><code>long poll</code>缺点在于要同时接待很多客户–</p>
+</li>
+<li><p>之前两种方式都是基于原始的HTTP请求协议，然而HTTP协议缺点在于是一个<code>无记忆性、无状态</code>的协议。<br>也就是说–接受到HTTP请求后,状态相应码readyState</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span> - (未初始化)还没有调用<span class="function"><span class="title">send</span><span class="params">()</span></span>方法</span><br><span class="line"><span class="number">1</span> - (载入)已调用<span class="function"><span class="title">send</span><span class="params">()</span></span>方法，正在发送请求</span><br><span class="line"><span class="number">2</span> - (载入完成)<span class="function"><span class="title">send</span><span class="params">()</span></span>方法执行完成，</span><br><span class="line"><span class="number">3</span> - (交互)正在解析响应内容</span><br><span class="line"><span class="number">4</span> - (完成)响应内容解析完成，可以在客户端调用了</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>相当于两个参数,flags为启用哪种模式</p>
+<p>当readyState==4的时候，客户端与服务端的链接就已经断开了—服务端立马忘了刚才是哪个客户端请求的了</p>
 <ul>
-<li><strong><code>g</code></strong>：表示全局（global）模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止；</li>
-<li><strong><code>i</code></strong>：表示不区分大小写（case-insensitive）模式，即在确定匹配项时忽略模式与字符串的大小写；</li>
-<li><strong><code>m</code></strong>：表示多行（multiline）模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项。</li>
+<li>还有一点就在于每次发送请求，（相对来说）真正需要的信息很少，这很少的信息将会包裹在一个很大的请求头里 (HTTP header)，并且每次连接都要重新三次握手，服务器每次都要重新阅读请求头，来确认用户身份，信息交换效率很低，实现的只是一个<strong>伪长连接</strong></li>
 </ul>
-<p>举几个栗子~：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">var pattern1 = <span class="regexp">/at/g</span>;   <span class="regexp">//</span>匹配字符串中所有<span class="string">"at"</span>的实例</span><br><span class="line">var pattern2 = <span class="regexp">/[bc]at/i</span>;  <span class="regexp">//</span>匹配第一个<span class="string">"bat"</span>或<span class="string">"cat"</span>，不区分大小写</span><br><span class="line">var pattern3 = <span class="regexp">/.at/gi</span>;  <span class="regexp">//</span>匹配所有以<span class="string">"at"</span>结尾的<span class="number">3</span> 个字符的组合，不区分大小写</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<h5 id="转义">转义</h5></blockquote>
-<p>要想搜索<strong><code>元字符</code></strong>必须转义:<br><code>( [ { \ ^ $ | ) ? * + .]}</code></p>
-<p>再举几个栗子~：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">var pattern1 = <span class="regexp">/at/g</span>;   <span class="regexp">//</span>匹配字符串中所有<span class="string">"at"</span>的实例</span><br><span class="line">var pattern2 = <span class="regexp">/\[bc\]at/i</span>;  <span class="regexp">//</span>匹配第一个<span class="string">"[bc]at"</span>，不区分大小写</span><br><span class="line">var pattern3 = <span class="regexp">/\.at/gi</span>;  <span class="regexp">//</span>匹配所有的<span class="string">".at"</span>组合，不区分大小写</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<h1 id="RegExp实例方法">RegExp实例方法</h1></blockquote>
-<p>RegExp对象的主要方法是exec(),返回三项</p>
+<h1 id="websocket的优势">websocket的优势</h1><p>websocket则是只要<strong>经过一次HTTP请求</strong>，状态停留在101后，就不用再次发送笨重的HTTP header了—可以源源不断的进行信息传送了</p>
+<p>并且是服务器主动推送信息，发给接线员(nginx),不需要占用太多客户端资源。</p>
+<h1 id="来看看一个Websocket的实现吧">来看看一个Websocket的实现吧</h1><p>这里参考的是<a href="http://www.plhwin.com/2014/05/28/nodejs-socketio/" target="_blank" rel="external">潘良虎的随想录</a></p>
+<p>本次用到的东西</p>
 <ul>
-<li>Array()数组</li>
-<li>index</li>
-<li>input</li>
+<li>node.js</li>
+<li>socket.io(一个开源的WebSocket库)</li>
+<li>express(基于 Node.js 平台，快速、开放、极简的 web 开发框架。)</li>
+<li>WebSocket服务端</li>
 </ul>
-<p>例子~<br><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">var text = <span class="string">"mom and dad and baby"</span>;</span><br><span class="line">var pattern = /mom( <span class="keyword">and</span> dad( <span class="keyword">and</span> baby)?)?/gi;</span><br><span class="line">var <span class="operator">matches</span> = pattern.exec(text);</span><br><span class="line">alert(<span class="operator">matches</span>.index); // <span class="number">0</span>  匹配的字符串所在的位置</span><br><span class="line">alert(<span class="operator">matches</span>.input); // <span class="string">"mom and dad and baby"</span> </span><br><span class="line">alert(<span class="operator">matches</span>[<span class="number">0</span>]); // <span class="string">"mom and dad and baby"</span></span><br><span class="line">alert(<span class="operator">matches</span>[<span class="number">1</span>]); // <span class="string">" and dad and baby"</span></span><br><span class="line">alert(<span class="operator">matches</span>[<span class="number">2</span>]); // <span class="string">" and baby"</span></span><br></pre></td></tr></table></figure></p>
-<p>验证邮箱的一个例子(未完成):<br><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"www.hinami@qq.com"</span>;</span><br><span class="line"><span class="keyword">var</span> pattern = /@/<span class="keyword">g</span>;</span><br><span class="line"><span class="keyword">var</span> com = /com/<span class="keyword">g</span>;</span><br><span class="line"><span class="keyword">if</span> ( pattern.<span class="keyword">test</span>(text) &amp;&amp; com.<span class="keyword">test</span>(text) )&#123;</span><br><span class="line">alert(<span class="string">"The pattern was matched."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>关于RegExp还有很多不懂的，先挖个坑，以后填</p>
+<p>上边那位前辈已经讲的很详细了–源码我也不贴了：</p>
+<p>关键部分就在于<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">============client.js=======</span><br><span class="line"><span class="comment">//连接websocket后端服务器</span></span><br><span class="line"><span class="keyword">this</span>.socket = io.connect(<span class="string">'ws://demo.hxz.im'</span>);</span><br><span class="line">================================</span><br><span class="line"><span class="comment">//告诉服务器端有用户登录</span></span><br><span class="line"><span class="keyword">this</span>.socket.emit(<span class="string">'login'</span>, &#123;userid:<span class="keyword">this</span>.userid, username:<span class="keyword">this</span>.username&#125;);</span><br><span class="line">================================</span><br><span class="line"><span class="comment">//监听新用户登录</span></span><br><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">'login'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">o</span>)</span>&#123;</span><br><span class="line">	CHAT.updateSysMsg(o, <span class="string">'login'</span>);	</span><br><span class="line">&#125;);</span><br><span class="line">============server.js====================</span><br><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)();</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>).Server(app);</span><br><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(http);</span><br><span class="line"></span><br><span class="line"><span class="comment">//客户端路由</span></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	res.send(<span class="string">'&lt;h1&gt;Welcome Realtime Server&lt;/h1&gt;'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>)</span>&#123;</span><br><span class="line">	</span><br><span class="line">	socket.on(<span class="string">'login'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">	io.emit(<span class="string">'login'</span>,obj)</span><br><span class="line">	<span class="comment">//监听用户发布聊天内容</span></span><br><span class="line">		socket.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">			<span class="comment">//向所有客户端广播发布的消息</span></span><br><span class="line">			io.emit(<span class="string">'message'</span>, obj);</span><br><span class="line">			<span class="built_in">console</span>.log(obj.username+<span class="string">'说：'</span>+obj.content);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		http.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'listening on *:3000'</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>io.on(&#39;connection&#39;,fn)</code>客户端连接接口</li>
+<li><code>socket.on(&#39;someEvent&#39;,fn)</code>监听客户端事件</li>
+<li><code>io.emit(&#39;login&#39;,fn)</code>向所有客户端广播信息</li>
+</ul>
+<p>参考：</p>
+<p><a href="https://www.zhihu.com/question/20215561" target="_blank" rel="external">知乎-Ovear</a><br><a href="http://www.plhwin.com/2014/05/28/nodejs-socketio/" target="_blank" rel="external">潘良虎的随想录</a><br><a href="https://isux.tencent.com/" target="_blank" rel="external">ISUX</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/小红书/">小红书</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JS/">JS</a><a href="/tags/JavaScript/">JavaScript</a><a href="/tags/RegExp/">RegExp</a><a href="/tags/前端/">前端</a><a href="/tags/小红书/">小红书</a>
+  <span></span> <a href="/tags/websocket/">websocket</a>
   </div>
 
 </div>
@@ -164,7 +161,7 @@ var expression = / pa">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/27/red-9/" data-title="小红书-(9)-RegExp | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2016/03/30/chatroom/" data-title="websocket实现的聊天室 | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -177,19 +174,11 @@ var expression = / pa">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/27/red-10/" title="小红书-(10)-function">
-  <strong>上一篇：</strong><br/>
-  <span>
-  小红书-(10)-function</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/25/red-8/"  title="小红书-(8)-Array数组">
+<a href="/2016/03/20/ng-5/"  title="ng-服务">
  <strong>下一篇：</strong><br/> 
- <span>小红书-(8)-Array数组
+ <span>ng-服务
 </span>
 </a>
 </div>
@@ -198,7 +187,7 @@ var expression = / pa">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/27/red-9/" data-title="小红书-(9)-RegExp" data-url="hinami.xyz/2015/10/27/red-9/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/30/chatroom/" data-title="websocket实现的聊天室" data-url="hinami.xyz/2016/03/30/chatroom/"></div>
 </section>
 
 
@@ -208,7 +197,7 @@ var expression = / pa">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是_RegExp？"><span class="toc-number">1.</span> <span class="toc-text">什么是 RegExp？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RegExp类型"><span class="toc-number">2.</span> <span class="toc-text">RegExp类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#转义"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">转义</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RegExp实例方法"><span class="toc-number">3.</span> <span class="toc-text">RegExp实例方法</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#websocket协议"><span class="toc-number">1.</span> <span class="toc-text">websocket协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以前的即时通信—polling&Ajax"><span class="toc-number">2.</span> <span class="toc-text">以前的即时通信—polling&Ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Ajax会遇到以下场景："><span class="toc-number">2.0.0.1.</span> <span class="toc-text">Ajax会遇到以下场景：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#long_poll"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">long poll</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以上方法的缺点"><span class="toc-number">2.0.1.</span> <span class="toc-text">以上方法的缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#websocket的优势"><span class="toc-number">3.</span> <span class="toc-text">websocket的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#来看看一个Websocket的实现吧"><span class="toc-number">4.</span> <span class="toc-text">来看看一个Websocket的实现吧</span></a></li></ol>
  
   </div>
 
