@@ -11,25 +11,16 @@
     
 
     
-    <meta name="description" content="最近在逛ISUX看到的基于websocket协议开发的web在线聊天室
-于是开始了解websocket
-先上demo吧:demo.hxz.im
-websocket协议WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。可以视为HTTP协议支持长连接的一个大补丁,基于 TCP 协议；HTTP 也是一种协议，基于 TCP 协议。连">
+    <meta name="description" content="在长连接上，websocket对比long poll和ajax的优势以及web聊天室的实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="websocket实现的聊天室">
 <meta property="og:url" content="hinami.xyz/2016/03/30/chatroom/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="最近在逛ISUX看到的基于websocket协议开发的web在线聊天室
-于是开始了解websocket
-先上demo吧:demo.hxz.im
-websocket协议WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。可以视为HTTP协议支持长连接的一个大补丁,基于 TCP 协议；HTTP 也是一种协议，基于 TCP 协议。连">
-<meta property="og:updated_time" content="2016-04-01T14:34:31.308Z">
+<meta property="og:description" content="在长连接上，websocket对比long poll和ajax的优势以及web聊天室的实现">
+<meta property="og:updated_time" content="2016-04-02T01:22:58.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="websocket实现的聊天室">
-<meta name="twitter:description" content="最近在逛ISUX看到的基于websocket协议开发的web在线聊天室
-于是开始了解websocket
-先上demo吧:demo.hxz.im
-websocket协议WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。可以视为HTTP协议支持长连接的一个大补丁,基于 TCP 协议；HTTP 也是一种协议，基于 TCP 协议。连">
+<meta name="twitter:description" content="在长连接上，websocket对比long poll和ajax的优势以及web聊天室的实现">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -143,7 +134,7 @@ websocket协议WebSocket protocol 是HTML5一种新的协议。它实现了浏�
 <li><code>io.emit(&#39;login&#39;,fn)</code>向所有客户端广播信息</li>
 </ul>
 <p>参考：</p>
-<p><a href="https://www.zhihu.com/question/20215561" target="_blank" rel="external">知乎-Ovear</a><br><a href="http://www.plhwin.com/2014/05/28/nodejs-socketio/" target="_blank" rel="external">潘良虎的随想录</a><br><a href="https://isux.tencent.com/" target="_blank" rel="external">ISUX</a></p>
+<p><a href="https://www.zhihu.com/question/20215561" target="_blank" rel="external">知乎-Ovear</a><br><a href="http://www.plhwin.com/2014/05/28/nodejs-socketio/" target="_blank" rel="external">潘良虎的随想录</a><br><a href="https://isux.tencent.com/" target="_blank" rel="external">ISUX</a><br><a href="http://blog.h5jun.com/post/%E7%94%A8Node.js%E5%BC%80%E5%8F%91%E5%BE%AE%E4%BF%A1%E5%A2%99%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.html" target="_blank" rel="external">用Node.js开发微信墙简明教程</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -174,6 +165,14 @@ websocket协议WebSocket protocol 是HTML5一种新的协议。它实现了浏�
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/04/23/blackJack/" title="blackJack">
+  <strong>上一篇：</strong><br/>
+  <span>
+  blackJack</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/03/20/ng-5/"  title="ng-服务">

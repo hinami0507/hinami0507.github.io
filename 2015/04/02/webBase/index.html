@@ -4,35 +4,44 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>hexo英文手册 | hinami</title>
+    <title>webBase | hinami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hinami">
     
 
     
-    <meta name="description" content="Jacman中文说明
-Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
-Jacman support Hexo 3.0 now !
-Demo | Jark’s Blog
-如何使用 Jacman">
+    <meta name="description" content="doctype声明
+HTML 5&amp;lt;!DOCTYPE html&amp;gt;
+
+HTML 4.01 Strict,但不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
+
+HTML 4.01 Transitional,包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
+
+HTML 4.01 Frameset,包括展示性的和弃用的元素（比如">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo英文手册">
-<meta property="og:url" content="hinami.xyz/2015/10/05/README/index.html">
+<meta property="og:title" content="webBase">
+<meta property="og:url" content="hinami.xyz/2015/04/02/webBase/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="Jacman中文说明
-Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
-Jacman support Hexo 3.0 now !
-Demo | Jark’s Blog
-如何使用 Jacman">
-<meta property="og:updated_time" content="2016-03-05T09:29:10.190Z">
+<meta property="og:description" content="doctype声明
+HTML 5&amp;lt;!DOCTYPE html&amp;gt;
+
+HTML 4.01 Strict,但不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
+
+HTML 4.01 Transitional,包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
+
+HTML 4.01 Frameset,包括展示性的和弃用的元素（比如">
+<meta property="og:updated_time" content="2016-04-23T02:37:26.792Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo英文手册">
-<meta name="twitter:description" content="Jacman中文说明
-Jacman is a fresh looking and responsive theme for Hexo with more features and some build-in Chinese service based on Pacman.  
-Jacman support Hexo 3.0 now !
-Demo | Jark’s Blog
-如何使用 Jacman">
+<meta name="twitter:title" content="webBase">
+<meta name="twitter:description" content="doctype声明
+HTML 5&amp;lt;!DOCTYPE html&amp;gt;
+
+HTML 4.01 Strict,但不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
+
+HTML 4.01 Transitional,包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
+
+HTML 4.01 Frameset,包括展示性的和弃用的元素（比如">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -93,103 +102,71 @@ Demo | Jark’s Blog
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/05/README/" title="hexo英文手册" itemprop="url">hexo英文手册</a>
+      <a href="/2015/04/02/webBase/" title="webBase" itemprop="url">webBase</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-05T12:38:09.000Z" itemprop="datePublished"> 发表于 2015-10-05</time>
+    <time datetime="2015-04-02T01:29:59.000Z" itemprop="datePublished"> 发表于 2015-04-02</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h1 id="Jacman">Jacman</h1><p><a href="/README_zh.md">中文说明</a></p>
-<p>Jacman is a fresh looking and responsive theme for <a href="http://hexo.io" target="_blank" rel="external">Hexo</a> with more features and some build-in Chinese service based on <a href="https://github.com/A-limon/pacman" target="_blank" rel="external">Pacman</a>.  </p>
-<p><strong>Jacman support Hexo 3.0 now !</strong></p>
-<p><a href="http://wuchong.me/jacman" target="_blank" rel="external">Demo</a> | <a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a></p>
-<p><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
-<p>##Installation</p>
-<p>###Install<br><figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/wuchong</span><span class="regexp">/jacman.git themes/jacman</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Jacman requires Hexo 2.7 and above.</strong> </p>
-<p>###Enable<br>Modify <code>theme</code> setting in blog folder<code>_config.yml</code> to <code>jacman</code>.</p>
-<p>###Update<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/jacman</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
-<p><strong>please backup your <code>_config.yml</code> file before update.</strong> </p>
-<p>##Configuration</p>
-<p>Modify settings in  <code>/themes/jacman/_config.yml</code>. <a href="https://github.com/wuchong/jacman/wiki/%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97" target="_blank" rel="external">Learn More</a>.</p>
-<p>##Features</p>
-<ul>
-<li><strong>menu</strong><br>Main navigation menu.</li>
-<li><strong>widget</strong><br>Widgets displaying in sidebar.The category,tag,rss,archive,tagcloud,links,weibo are supported.</li>
-<li><strong>Image</strong><br>Images about favicon, site logo, author image, banner image. Support different image styles like <code>img-logo</code>,<code>img-topic</code>,<code>img-center</code> etc.</li>
-<li><strong>index</strong><br>Two different home page display modes.You can visit <a href="http://wuchong.me/jacman" target="_blank" rel="external">Demo</a> &amp; <a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a> to check the difference.</li>
-<li><strong>author</strong><br>Author imformation, used to show your social network links on the bottom right. Including github, stackoverflow, twitter, facebook, linkedin, google+, weibo, douban, zhihu, email.</li>
-<li><strong>toc</strong><br>Show Table Of Contents in article &amp; aside.</li>
-<li><strong>comments</strong><br><a href="http://duoshuo.com/" target="_blank" rel="external">duoshuo</a> &amp; <a href="https://disqus.com/" target="_blank" rel="external">disqus</a> are supported.</li>
-<li><strong>jiathis</strong><br>Build-in share tool or <a href="http://www.jiathis.com/" target="_blank" rel="external">JiaThis</a> share buttons at the bottom of articles.</li>
-<li><strong>Analytiscs</strong><br><a href="http://www.google.com/analytics/" target="_blank" rel="external">Google analytics</a> &amp; <a href="http://tongji.baidu.com/" target="_blank" rel="external">Baidu tongji</a> &amp; <a href="http://www.cnzz.com/" target="_blank" rel="external">CNZZ tongji</a> are all supported.</li>
-<li><strong>Search</strong><br><a href="https://www.google.com/cse/" target="_blank" rel="external">Googlle Custom Search</a> &amp; <a href="http://zn.baidu.com/" target="_blank" rel="external">Baidu Site Search</a> &amp; <a href="http://tinysou.com/" target="_blank" rel="external">Tiny Search</a> are supported.</li>
-<li><strong>totop</strong><br>Scroll to top</li>
-<li><strong>rss</strong><br>RSS subscription link (change if using Feedburner).</li>
-<li><strong>fancybox</strong><br>Enable <a href="http://fancyapps.com/fancybox/" target="_blank" rel="external">Fancybox</a></li>
-<li><strong>custom theme color</strong><br>Mondify theme color in <code>_config.yaml</code> instead of finding unfamiliar stylus files.</li>
-<li><strong>others</strong><br>You can configure sidebar not show in post pages.</li>
+		<h1 id="doctype声明">doctype声明</h1><ul>
+<li><p>HTML 5<br><code>&lt;!DOCTYPE html&gt;</code></p>
+</li>
+<li><p>HTML 4.01 Strict,但不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。</p>
+</li>
+<li><p>HTML 4.01 Transitional,包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。</p>
+</li>
+<li><p>HTML 4.01 Frameset,包括展示性的和弃用的元素（比如 font）,可以用框架集</p>
+</li>
 </ul>
-<p>You can learn how to use them from <a href="https://github.com/wuchong/jacman/wiki/配置指南" target="_blank" rel="external">Configuration</a>.</p>
-<p>##Sites</p>
+<p>XHTML 1.0 和 HTML4.01一样—-只是加了一条<strong>文档必须是结构良好的XML文档</strong></p>
+<p>①展示型和弃用元素<br>②框架集（Framesets）</p>
 <ul>
-<li><a href="http://wuchong.me/jacman" target="_blank" rel="external">Jacman Theme</a> - The demo site of Jacman Theme</li>
-<li><a href="http://wuchong.me" target="_blank" rel="external">Jark’s Blog</a> - The author’s blog of Jacman</li>
-<li><a href="http://ralphadu.com" target="_blank" rel="external">阿杜个人博客</a> - 阿杜个人博客</li>
-<li><a href="http://philosky.ml/" target="_blank" rel="external">PhiloSky’s Blog</a> - Personal blog</li>
-<li><a href="http://hiluluke.cn" target="_blank" rel="external">hiluSdream</a> - 梦想是无所谓无的，无所谓有的</li>
-<li><a href="http://melface.tk" target="_blank" rel="external">Melface</a> - Personal blog</li>
-<li><a href="http://heamon7.com" target="_blank" rel="external">heamon7’s Utopia</a> - 修行绝尘，悟道涉俗</li>
-<li><a href="http://ningning.today" target="_blank" rel="external">PegasusWang’s Blog</a> - 你的问题主要在于读书不多而想得太多</li>
-<li><a href="http://www.caoqq.net" target="_blank" rel="external">青劲草</a> - 学会记录成长点滴</li>
-<li><a href="http://cscao.com" target="_blank" rel="external">Vigorass</a> - Learn to record dripping growth</li>
-<li><a href="http://moqizhan.com" target="_blank" rel="external">MoqiZhan</a> - 人生就是不停的战斗</li>
-<li><a href="http://think-diff.me/" target="_blank" rel="external">Think Differently</a> - If You Can Think Differently, You Can Act Differently.</li>
-<li><a href="http://wangyangyang.gitcafe.com" target="_blank" rel="external">ylf</a> - 王洋洋</li>
-<li><a href="http://blog.igevin.info/" target="_blank" rel="external">Gevin’s blog</a> - Stay hungry, stay foolish; Stop when you are perfect.</li>
-<li><a href="http://keychar.com" target="_blank" rel="external">keychar</a> - A technology blog, design &amp; programming.</li>
-<li><a href="http://chenpengdsp.com" target="_blank" rel="external">peng的博客</a> - 人生就是不停的战斗</li>
-<li><a href="http://aeesky.github.io" target="_blank" rel="external">More and More</a> -刚起步：）</li>
-<li><a href="http://dpast.org" target="_blank" rel="external">好久不见</a> - Julian Zhu</li>
-<li><a href="http://jukezhang.com/" target="_blank" rel="external">keke2014’s blog</a> - Stay hungry, stay foolish - Steve Jobs</li>
-<li><a href="http://www.eurry.net" target="_blank" rel="external">Eurry</a> - Eurry’s Blog.</li>
-<li><a href="http://isencle.com" target="_blank" rel="external">sencle’s blog</a> -just do it</li>
-<li><a href="http://ioxymoron.me" target="_blank" rel="external">Oxymoron’s Blog</a> - Let’s start from here.</li>
-<li><a href="http://wsgzao.github.io" target="_blank" rel="external">HelloDog</a> - Keep Clam and Carry On</li>
-<li><a href="http://haomwei.com" target="_blank" rel="external">屠城｜屠夫9441的博客</a> - 苟全性命于乱世，不求闻达于诸侯。</li>
-<li><a href="http://icehe.github.io/" target="_blank" rel="external">Ice He. 何志遠</a> - Less is more. 寧靜致遠。</li>
-<li><a href="http://www.prokitty.com" target="_blank" rel="external">prokitty，侏罗纪公园</a> -Belive yourself,belive Cherry.</li>
-<li><a href="http://ceclinux.org" target="_blank" rel="external">Ceclinux</a> - Arch is the best</li>
-<li><a href="http://brucege.com" target="_blank" rel="external">BruceGe’s blog</a> - Start Blogging</li>
-<li><a href="http://yangxiaolei.me" target="_blank" rel="external">Yangxiaolei’s blog</a> - 让知识成为信仰，让优秀成为习惯</li>
-<li><a href="http://ccloveyou.org" target="_blank" rel="external">CC’s blog</a> - CC</li>
-<li><a href="http://watermeion.github.io" target="_blank" rel="external">TadGuo’s pages</a> - More is different.</li>
-<li><a href="http://mutse.github.io" target="_blank" rel="external">Mutse’s blog</a> - Love Life, Love open source</li>
+<li>Strict ①②都不能用</li>
+<li>Transitional ①能用，②不能用</li>
+<li>Frameset ①②都能用</li>
 </ul>
-<p>If you are using Jacman,you can add your site <a href="https://github.com/wuchong/jacman/wiki/Sites" target="_blank" rel="external">here</a> ! I’ll push the available sites here.</p>
-<p>##License<br><a href="/LICENSE">MIT</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAwNjI5MTYyMw==&amp;mid=403815851&amp;idx=1&amp;sn=aa61f9eb57c59a8d9b21ec1dc2076f8d&amp;scene=23&amp;srcid=03300vSFXxCUZWZzgS1XLG6h#rd" target="_blank" rel="external">JS开发的45个经典技巧</a></p>
+<h1 id="HTTP2-0和HTTP1-1">HTTP2.0和HTTP1.1</h1><p><a href="https://www.zhihu.com/question/34074946" target="_blank" rel="external">知乎-HTTP2.0对比1.1</a></p>
+<h1 id="Web语义化，有什么好处">Web语义化，有什么好处</h1><p>去掉样式后页面呈现清晰的结构<br>盲人使用读屏器更好地阅读<br>搜索引擎更好地理解页面，有利于收录<br>便团队项目的可持续运作及维护</p>
+<h1 id="三次握手，四次挥手">三次握手，四次挥手</h1><ul>
+<li>第一阶段   客户机发送完数据之后，向服务器发送一个FIN数据段，序列号为i；<br>1.服务器收到FIN(i)后，返回确认段ACK，序列号为i+1，关闭服务器读通道；<br>2.客户机收到ACK(i+1)后，关闭客户机写通道；<br>（此时，客户机仍能通过读通道读取服务器的数据，服务器仍能通过写通道写数据）</li>
+<li>第二阶段 服务器发送完数据之后，向客户机发送一个FIN数据段，序列号为j；<br>3.客户机收到FIN(j)后，返回确认段ACK，序列号为j+1，关闭客户机读通道；<br>4.服务器收到ACK(j+1)后，关闭服务器写通道。</li>
+</ul>
+<p><a href="http://blog.csdn.net/longeremmy/article/details/8012532" target="_blank" rel="external">HTTP报文详解</a></p>
+<p>请求: </p>
+<ul>
+<li>请求行</li>
+<li>请求头</li>
+<li>请求体</li>
+</ul>
+<p>响应: </p>
+<ul>
+<li>响应行</li>
+<li>响应头</li>
+<li>响应体</li>
+</ul>
+<h3 id="HTTP的响应状态码由5段组成：">HTTP的响应状态码由5段组成：</h3><ul>
+<li>1xx 消息，一般是告诉客户端，请求已经收到了，正在处理，别急…</li>
+<li>2xx 处理成功，一般表示：请求收悉、我明白你要的、请求已受理、已经处理完成等信息.</li>
+<li>3xx 重定向到其它地方。它让客户端再发起一个请求以完成整个处理。</li>
+<li>4xx 处理发生错误，责任在客户端，如客户端的请求一个不存在的资源，客户端未被授权，禁止访问等。</li>
+<li>5xx 处理发生错误，责任在服务端，如服务端抛出异常，路由出错，HTTP版本不支持等。</li>
+</ul>
+<p><strong>HttpWatch</strong>是强大的网页数据分析工具，安装后将集成到Internet Explorer工具栏中。它不用代理服务器或一些复杂的网络监控工具，就能抓取请求及响应的完整信息，包括Cookies、消息头、查询参数、响应报文等，是Web应用开发人员的必备工具。</p>
+<h1 id="sessionStorage,localStorage,cookie区别">sessionStorage,localStorage,cookie区别</h1><p>都会在浏览器端保存，有大小限制，同源限制<br>cookie会在请求时发送到服务器，作为会话标识，服务器可修改cookie；web storage不会发送到服务器<br>cookie有path概念，子路径可以访问父路径cookie，父路径不能访问子路径cookie<br>有效期：cookie在设置的有效期内有效，默认为浏览器关闭；sessionStorage在窗口关闭前有效，localStorage长期有效，直到用户删除<br>共享：sessionStorage不能共享，localStorage在同源文档之间共享，cookie在同源且符合path规则的文档之间共享<br>localStorage的修改会促发其他文档窗口的update事件<br>cookie有secure属性要求HTTPS传输<br>浏览器不能保存超过300个cookie，单个服务器不能超过20个，每个cookie不能超过4k。web storage大小支持能达到5M</p>
+<h1 id="ECMAscript6新标准">ECMAscript6新标准</h1><p><a href="http://www.ituring.com.cn/article/201561" target="_blank" rel="external">图灵王-ECMAscript6</a><br><a href="http://www.hubwiz.com/course/5594e91ac086935f4a6fb8ef/" target="_blank" rel="external">汇智网-ECMAscript6</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/hexo/">hexo</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/hexo/">hexo</a>
-  </div>
 
 </div>
 
@@ -197,7 +174,7 @@ Demo | Jark’s Blog
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="hinami.xyz/2015/10/05/README/" data-title="hexo英文手册 | hinami" data-tsina="null" class="share clearfix">
+	  <div data-url="hinami.xyz/2015/04/02/webBase/" data-title="webBase | hinami" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -211,27 +188,19 @@ Demo | Jark’s Blog
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/10/05/README_zh/" title="hexo中文">
+ <a href="/2015/10/05/README/" title="hexo英文手册">
   <strong>上一篇：</strong><br/>
   <span>
-  hexo中文</span>
+  hexo英文手册</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2015/04/02/webBase/"  title="webBase">
- <strong>下一篇：</strong><br/> 
- <span>webBase
-</span>
-</a>
-</div>
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/05/README/" data-title="hexo英文手册" data-url="hinami.xyz/2015/10/05/README/"></div>
+	<div class="ds-thread" data-thread-key="2015/04/02/webBase/" data-title="webBase" data-url="hinami.xyz/2015/04/02/webBase/"></div>
 </section>
 
 
@@ -241,7 +210,7 @@ Demo | Jark’s Blog
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jacman"><span class="toc-number">1.</span> <span class="toc-text">Jacman</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#doctype声明"><span class="toc-number">1.</span> <span class="toc-text">doctype声明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP2-0和HTTP1-1"><span class="toc-number">2.</span> <span class="toc-text">HTTP2.0和HTTP1.1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web语义化，有什么好处"><span class="toc-number">3.</span> <span class="toc-text">Web语义化，有什么好处</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三次握手，四次挥手"><span class="toc-number">4.</span> <span class="toc-text">三次握手，四次挥手</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP的响应状态码由5段组成："><span class="toc-number">4.0.1.</span> <span class="toc-text">HTTP的响应状态码由5段组成：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sessionStorage,localStorage,cookie区别"><span class="toc-number">5.</span> <span class="toc-text">sessionStorage,localStorage,cookie区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ECMAscript6新标准"><span class="toc-number">6.</span> <span class="toc-text">ECMAscript6新标准</span></a></li></ol>
  
   </div>
 

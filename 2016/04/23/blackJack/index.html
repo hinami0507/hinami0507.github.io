@@ -1,0 +1,678 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>blackJack | hinami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hinami">
+    
+
+    
+    <meta name="description" content="websoket实现的联机游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="blackJack">
+<meta property="og:url" content="hinami.xyz/2016/04/23/blackJack/index.html">
+<meta property="og:site_name" content="hinami">
+<meta property="og:description" content="websoket实现的联机游戏">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/blackJackSingleFlow.jpg">
+<meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/blackJackOnlineFlow.jpg">
+<meta property="og:updated_time" content="2016-04-23T02:35:31.317Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="blackJack">
+<meta name="twitter:description" content="websoket实现的联机游戏">
+<meta name="twitter:creator" content="@346565386Toms">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hinami" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/fav.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hinami" title="hinami"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hinami">hinami</a></h1>
+				<h2 class="blog-motto">↖give me five~(๑•̀▽•́)و✧</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hinami.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/23/blackJack/" title="blackJack" itemprop="url">blackJack</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hinami" target="_blank" itemprop="author">hinami</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-23T01:35:41.000Z" itemprop="datePublished"> 发表于 2016-04-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>先上地址:<br><a href="http://on.hxz.im/s/" target="_blank" rel="external">21点游戏BlackJack–单机版</a>—–支持移动和PC端<br><a href="http://on.hxz.im/" target="_blank" rel="external">21点游戏BlackJack–联机版</a>—–目前仅支持PC端</p>
+<h1 id="21点纸牌游戏">21点纸牌游戏</h1><blockquote>
+<h3 id="单机版">单机版</h3></blockquote>
+<p><strong>单机版</strong>文件目录<br><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">Index.html        <span class="comment">//主要页面</span></span><br><span class="line">Js----</span><br><span class="line">   <span class="string">|---refer.js       //裁判对象—监督游戏进行</span></span><br><span class="line">   <span class="string">|---banker.js      //庄家对象</span></span><br><span class="line">   <span class="string">|---Brobot.js      //机器人对象—负责控制庄家叫牌-停牌</span></span><br><span class="line">   <span class="string">|---player.js      //玩家对象</span></span><br><span class="line">Img---</span><br><span class="line">   <span class="string">|bg.png</span></span><br><span class="line">   <span class="string">|chip2.png</span></span><br><span class="line">   <span class="string">|chip5.png</span></span><br><span class="line">   <span class="string">|chip10.png</span></span><br><span class="line">   <span class="string">|chip25.png</span></span><br><span class="line">   <span class="string">|chip50.png</span></span><br><span class="line">   <span class="string">|chip100.png</span></span><br><span class="line">   <span class="string">|chipclear.png</span></span><br><span class="line">   <span class="string">|poker.jpg</span></span><br><span class="line">   <span class="string">|top.png</span></span><br><span class="line">css----</span><br><span class="line">   <span class="string">|---init.scss          //初始化scss</span></span><br><span class="line">   <span class="string">|---main.css         //编译后的css</span></span><br><span class="line">   <span class="string">|---main.css.map</span></span><br><span class="line">   <span class="string">|---mobile.scss    //手机端兼容性scss</span></span><br><span class="line">   <span class="string">|---style.scss     //主要scss</span></span><br><span class="line">   <span class="string">|---.sass-cashe</span></span><br></pre></td></tr></table></figure></p>
+<p>在阅读完21点游戏规则后，</p>
+<p>设计出了4个大的游戏对象：</p>
+<ul>
+<li>闲家(player)</li>
+<li>庄家(banker)</li>
+<li>裁判(Referee)</li>
+<li>庄家机器人(Brobot)</li>
+</ul>
+<p><strong>单机版中用户的状态简单标记为</strong> </p>
+<ul>
+<li>0:[未进行游戏，手里无牌],</li>
+<li>ready:[准备中]</li>
+<li>1:[游戏进行中，手里有一副牌未停牌]</li>
+<li>2:[游戏进行中，手里有两副牌未停牌，当前操作第二副牌]</li>
+</ul>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/blackJackSingleFlow.jpg" alt="单机版流程图"></p>
+<h4 id="闲家(player):">闲家(player):</h4><p>闲家对象有多个，所以用function creatPlayer() {};工厂模式创造对象<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">闲家的属性</span><br><span class="line">	<span class="keyword">this</span>.state ;                    <span class="comment">//记录玩家状态</span></span><br><span class="line">                                    <span class="comment">//状态0：未游戏，</span></span><br><span class="line">                                    <span class="comment">//状态:ready:玩家已经准备；</span></span><br><span class="line">                                    <span class="comment">//状态1：手里只有一副牌，正在操作第一幅牌，</span></span><br><span class="line">                                    <span class="comment">//状态2：手里有两副牌，正在操作第二副牌</span></span><br><span class="line">    <span class="keyword">this</span>.id = id                      <span class="comment">//玩家id</span></span><br><span class="line">    <span class="keyword">this</span>.name = name                  <span class="comment">//玩家名字--用于获取dom</span></span><br><span class="line">    <span class="keyword">this</span>.role = role;                 <span class="comment">//玩家身份，0为庄家,1,2,3,4为闲家</span></span><br><span class="line">    <span class="keyword">this</span>.credits = <span class="number">1000</span>;              <span class="comment">//剩余资本</span></span><br><span class="line">    <span class="keyword">this</span>.bet = <span class="number">0</span>;                     <span class="comment">//当前赌注</span></span><br><span class="line">    <span class="keyword">this</span>.hand = [];                   <span class="comment">//当前手牌,第一张为暗牌</span></span><br><span class="line">    <span class="keyword">this</span>.pokerColor = [];             <span class="comment">//记录牌的花色</span></span><br><span class="line">    <span class="keyword">this</span>.pac = <span class="number">0</span>;                     <span class="comment">//分牌的时候另一手牌</span></span><br><span class="line">    <span class="keyword">this</span>.curPoint = [];               <span class="comment">//当前手牌的点数</span></span><br><span class="line">    <span class="keyword">this</span>.result = [];                 <span class="comment">//玩家最终点数</span></span><br><span class="line"><span class="comment">//=================================================</span></span><br><span class="line">闲家的方法:</span><br><span class="line">sit()             <span class="comment">//坐下，表示玩家占用该游戏位置</span></span><br><span class="line">ready()           <span class="comment">//玩家准备，监听裁判发出游戏开始命令</span></span><br><span class="line">wager(b)下注      <span class="comment">//参数b为本次下注金额，成功下注返回ture，否则返回false</span></span><br><span class="line">hit();            <span class="comment">//叫牌，随机生成1-52数字，并且提取其中的牌点数和花色保存</span></span><br><span class="line">start()           <span class="comment">//由裁判Referee触发，游戏开始指令，</span></span><br><span class="line"><span class="keyword">continue</span>()        <span class="comment">//若游戏开始后观察到，庄家明牌不为A，则立刻进入该状态,游戏继续</span></span><br><span class="line">insur(choice)     <span class="comment">//若游戏开始后观察到，庄家明牌为A，玩家对是否买保险做出的选择,choice==”yes”则购买，“no“则不买</span></span><br><span class="line">				  </span><br><span class="line"><span class="keyword">double</span>()          <span class="comment">//玩家双倍，在下注，并且要牌，然后停牌</span></span><br><span class="line">split()           <span class="comment">//玩家分牌,玩家多一副手牌，（注意,player.state 不仅标识玩家游戏状态，也标识玩家当前操作的牌组，state==1操作1号牌组，）</span></span><br><span class="line">bust()            <span class="comment">//玩家爆牌，点数置为-1等待裁判发游戏结束指令，</span></span><br><span class="line">surrender()       <span class="comment">//玩家投降，付出一半的赌注，回收另一半赌注</span></span><br><span class="line">IsJack（）        <span class="comment">//判断是否黑杰克，是则返回1，否则返回0</span></span><br><span class="line">Register（）      <span class="comment">//向裁判报告当前状态</span></span><br><span class="line">robotWatch（）    <span class="comment">//向机器人报告当前状态</span></span><br><span class="line">calcu()           <span class="comment">//计算当前牌组，将当前牌计算出的所有点数结果(小于等于21)存入//this.curPoint，若计算出所有结果均大于21，则运行 bust()</span></span><br><span class="line">anagBut(Arr,on)   <span class="comment">//用于控制该玩家可选按钮开关，</span></span><br><span class="line">                  <span class="comment">//Arr为操作按钮名字数组, 也可传入字符串”all”则为全部操作</span></span><br><span class="line">                  <span class="comment">//on为开关</span></span><br><span class="line">                  <span class="comment">//on==1表示开，on==0表示关，on==其他值则表示反转</span></span><br><span class="line">                  <span class="comment">//例: this.ManagBut（【"sit", "ready", "hit"】，0）表示关闭【坐下，准备，叫牌】按钮</span></span><br><span class="line">Over()            <span class="comment">//游戏结束，开始根据庄家和自己的点数计算输赢，计算赌金结果</span></span><br><span class="line"><span class="comment">//===========================================</span></span><br><span class="line">闲家的更新状态函数</span><br><span class="line">synHand（）       <span class="comment">//更新当前手牌</span></span><br><span class="line">synMsg()          <span class="comment">//更新玩家信息显示：剩余资金，赌注，状态msg=="end"显示当前结果点数</span></span><br><span class="line">setPoker(x,y)     <span class="comment">//根据当前手牌显示扑克牌，用一张图片（包含所有扑克牌）移动背景</span></span><br><span class="line">                  <span class="comment">//position实现,x为点数，y为花色</span></span><br><span class="line"><span class="keyword">register</span>()        <span class="comment">//向裁判报告当前状态</span></span><br><span class="line">robotWatch()      <span class="comment">//向机器人报告当前状态</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="庄家(banker):">庄家(banker):</h4><p>庄家的作用在于提供点数供玩家判断是否输赢<br>庄家的属性==========================<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.id = id;                   <span class="comment">//玩家id</span></span><br><span class="line"><span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="keyword">this</span>.role = <span class="number">0</span>;                  <span class="comment">//玩家身份，0为庄家,1,2,3,4为闲家</span></span><br><span class="line"><span class="keyword">this</span>.hand = [];                 <span class="comment">//当前手牌,第一张为暗牌</span></span><br><span class="line"><span class="keyword">this</span>.curPoint = [];             <span class="comment">//当前手牌的点数</span></span><br><span class="line"><span class="keyword">this</span>.result = <span class="number">0</span>;                <span class="comment">//最终点数</span></span><br><span class="line"><span class="keyword">this</span>.state = <span class="number">0</span>;                 <span class="comment">//状态0还未游戏，状态1为正在游戏</span></span><br><span class="line"><span class="keyword">this</span>.pokerColor = [];           <span class="comment">//手牌花色</span></span><br></pre></td></tr></table></figure></p>
+<p>庄家的行为 几乎是 闲家的 简化版本，不同之处在于，没有【分牌，双倍，保险，投降】，只有【叫牌，停牌】两个行为，</p>
+<p>还有不同之处在于，双方都爆牌的时候<br>庄家爆牌的时候，点数置为0<br>闲家爆牌的时候，点数置为-1<br>最终结算的时候算庄家赢</p>
+<p>在这里就不贴出来了，</p>
+<h4 id="裁判(Referee):">裁判(Referee):</h4><p>裁判的作用在于监听所有玩家(包含庄家和闲家)的状态，对游戏进程进行管理，维护游戏秩序<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">//&#35009;&#21028;&#23646;&#24615;=================================================&#10;playing: false,                 //&#28216;&#25103;&#26159;&#21542;&#27491;&#22312;&#36827;&#34892;,true&#20026;&#27491;&#22312;&#36827;&#34892;,false&#20026;&#19981;&#36827;&#34892;&#10;sta: [],                        //&#32479;&#35745;&#29609;&#23478;&#29366;&#24577;&#30340;&#25968;&#32452;,&#25968;&#32452;&#21495;&#20026;&#29609;&#23478;&#36523;&#20221;&#21495;,&#20540;&#20026;&#29609;&#23478;&#29366;&#24577;&#10;name: [],                       //&#32479;&#35745;&#29609;&#23478;&#21517;&#23383;&#30340;&#25968;&#32452;,&#25968;&#32452;&#21495;&#20026;&#29609;&#23478;&#36523;&#20221;&#21495;,&#20540;&#20026;&#29609;&#23478;&#29366;&#24577;&#10;nsur: [],                       //&#32479;&#35745;&#29609;&#23478;&#36141;&#20080;&#20445;&#38505;&#24773;&#20917;&#30340;&#25968;&#32452;,&#25968;&#32452;&#21495;&#20026;&#29609;&#23478;&#36523;&#20221;&#21495;,&#20540;&#20026;&#29609;&#23478;&#29366;&#24577;&#10;&#35009;&#21028;&#30340;&#26041;&#27861;================================================&#10;Watch(role, name, gamSta)       //role&#29609;&#23478;&#35282;&#33394;&#65292;name&#29609;&#23478;&#21517;&#23383;&#65292;gamSta&#29609;&#23478;&#29366;&#24577;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;//&#30001;player&#21644;banker&#20351;&#29992;&#30340;&#25509;&#21475;-&#30417;&#21548;&#29609;&#23478;&#30446;&#21069;&#30340;&#29366;&#24577;&#65292;&#24182;&#19988;&#21028;&#26029;&#28216;&#25103;&#26159;&#21542;&#24320;&#22987;&#21644;&#32467;&#26463;&#10;                        &#10;IsBegin()                       //&#26816;&#27979;&#25152;&#26377;&#29609;&#23478;state==&#8221;ready&#8221;&#65292;&#33509;&#20934;&#22791;&#24182;&#19988;&#28216;&#25103;&#26410;&#32771;&#35797;&#21017;&#24191;&#25773;&#28216;&#25103;&#24320;&#22987;&#65292;&#10;IsOver()                        //&#26816;&#27979;&#25152;&#26377;&#29609;&#23478;state==&#8221;0&#8221;&#65292;&#33509;&#26159;&#21017;&#24191;&#25773;&#28216;&#25103;&#32467;&#26463;&#65292;&#21508;&#29609;&#23478;//&#24320;&#22987;&#32467;&#31639;&#28216;&#25103;&#36755;&#36194;&#10;InsMeas(role, name, gamSta, IsInsur)  &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;//IsInsur=0&#19981;&#20080;&#20445;&#38505;&#65292;IsInsur=1&#20080;&#20445;&#38505;&#65292;&#20854;&#20182;&#20026;&#26410;&#25805;&#20316;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;//&#26816;&#27979;&#29609;&#23478;&#26159;&#21542;&#23545;&#20445;&#38505;&#20570;&#20986;&#36873;&#25321;&#65292;&#33509;&#37117;&#20570;&#20986;&#36873;&#25321;&#65292;&#10;Radiate()                       //&#21521;&#25152;&#26377;&#29609;&#23478;&#24191;&#25773;&#20107;&#20214;&#65288;start&#65292;continue&#65292;InsurOver&#65292;over&#65289;&#10;Init()                          //&#21021;&#22987;&#21270;</span><br></pre></td></tr></table></figure></p>
+<h4 id="庄家机器人(Robot):">庄家机器人(Robot):</h4><p>在观察到所有闲加停牌(或爆牌)后—用于控制庄家叫牌和停牌—<br>在单机版上作用不是很大，是为了联机版铺路，也为了后期开发能让玩家操作庄家<br>机器人属性===========================================<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.p = puppet;                <span class="comment">//输入庄家对象--用于操控</span></span><br><span class="line"><span class="keyword">this</span>.Fstate = [];               <span class="comment">//搜集闲家的状态 用于机器人动作，</span></span><br><span class="line"><span class="keyword">this</span>.Fresult = [];              <span class="comment">// 搜集玩家的最终点数</span></span><br><span class="line"><span class="keyword">this</span>.Range = [<span class="number">10</span>, <span class="number">17</span>];          <span class="comment">//随机范围--当前牌小于10则叫牌，大于17则停牌，10~17 //之间概率叫牌，当前牌越大-叫牌概率越小</span></span><br><span class="line">机器人方法===============================================</span><br><span class="line"><span class="keyword">this</span>.watch()         			<span class="comment">//观察所有闲家状态</span></span><br><span class="line">                     			<span class="comment">//所有闲家state==”ready”则运行this.start()</span></span><br><span class="line">                     			<span class="comment">//所有闲家state==”0”则运行this.over()</span></span><br><span class="line"><span class="keyword">this</span>.start()         			<span class="comment">//控制庄家ready</span></span><br><span class="line"><span class="keyword">this</span>.over()          			<span class="comment">//控制庄家叫牌停牌</span></span><br><span class="line">                     			<span class="comment">//结束后报告裁判当前状态 </span></span><br><span class="line">This.init()          			<span class="comment">//初始化机器人，</span></span><br><span class="line"></span><br><span class="line">TvBox. Onlive(msg)              <span class="comment">//更新左下角信息窗口</span></span><br><span class="line">TvBox. Tinylive(msg)            <span class="comment">//浮动提示消息</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h3 id="联机版">联机版</h3></blockquote>
+<p><strong>联机版</strong>文件目录</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">Index.html            <span class="comment">//主要页面</span></span><br><span class="line">Server--</span><br><span class="line">　 <span class="string">|---bServer.js     //服务器js文件—依赖socket.io和express库---用node.js在后台</span></span><br><span class="line">                      <span class="comment">//运行，forever进程守护，依赖socket.io和express</span></span><br><span class="line">Js----</span><br><span class="line">   <span class="string">|---Bclient.js     //负责与服务器沟通jack对象 </span></span><br><span class="line">   <span class="string">|---banker.js      //庄家对象</span></span><br><span class="line">   <span class="string">|---player.js      //闲家对象</span></span><br><span class="line">Img---</span><br><span class="line">   <span class="string">|bg.png</span></span><br><span class="line">   <span class="string">|chip2.png</span></span><br><span class="line">   <span class="string">|chip5.png</span></span><br><span class="line">   <span class="string">|chip10.png</span></span><br><span class="line">   <span class="string">|chip25.png</span></span><br><span class="line">   <span class="string">|chip50.png</span></span><br><span class="line">   <span class="string">|chip100.png</span></span><br><span class="line">   <span class="string">|chipclear.png</span></span><br><span class="line">   <span class="string">|poker.jpg</span></span><br><span class="line">   <span class="string">|top.png</span></span><br><span class="line">css----</span><br><span class="line">   <span class="string">|---init.scss         //初始化scss</span></span><br><span class="line">   <span class="string">|---main.css          //编译后的css</span></span><br><span class="line">   <span class="string">|---main.css.map</span></span><br><span class="line">   <span class="string">|---style.scss        //主要scss</span></span><br><span class="line">   <span class="string">|---.sass-cashe</span></span><br></pre></td></tr></table></figure>
+<p>联机版首先要考虑的是客户端和服务端的信息交互问题，因为ajax轮询效率低，所以采用了HTML5中 websocket协议进行双工通信，这里在服务端用的是nginx+node.js搭建的简易后台，用forever维护进程在后台运行, 依赖socket.io和express;</p>
+<p>首先对象设计中–将单机版的【robot】和【Referre】合并到服务器端，由服务端负责发牌【产生随机数】</p>
+<p>客户端中多了一个【Bclient.js】其中的jack为与服务器沟通的对象，负责发送信息给服务端，和接收来自服务端的信息</p>
+<p><strong>单机版中用户的状态简单标记为</strong> </p>
+<ul>
+<li>0:[未进行游戏，手里无牌],</li>
+<li>ready:[准备中]</li>
+<li>1:[游戏进行中，手里有一副牌未停牌]</li>
+<li>2:[游戏进行中，手里有两副牌未停牌，当前操作第二副牌]</li>
+</ul>
+<p><strong>而在联机版中,服务端R.game</strong></p>
+<ul>
+<li>0-等待玩家坐下,【玩家可以坐下】</li>
+<li>1–有玩家坐下–监听准备–【玩家可以坐下】</li>
+<li>ready—–坐下的玩家准备—–【玩家可以坐下】</li>
+<li>2-[游戏开始]–判断是否买保险-若庄家黑杰克则跳到4，否则调到3—</li>
+<li>3-[游戏进行中]，</li>
+<li>4-[游戏结束],结算</li>
+<li>5-[结算完毕],开始初始化</li>
+<li>0-[游戏结束],等待玩家坐下</li>
+</ul>
+<p><img src="http://7xnp0k.com1.z0.glb.clouddn.com/blackJackOnlineFlow.jpg" alt="联机版流程图"></p>
+<p>服务端在向下一个状态前进的时候，都会统计所有坐下玩家的状态，当所有状态符合标准后，服务端会广播下一步行为，并且自己进入下一个状态，等待玩家响应。</p>
+<h3 id="闲家（player）">闲家（player）</h3><p>和单机版没有太大区别，主要区别在于多了checkid()方法，所有用户在向服务器发送游戏指令的时候【sit指令除外】都会验证自身id是否是在这个座位上</p>
+<p>服务器在广播开始游戏后，会发出各个座位的落座情况【座位上放着坐下人的ID】，jack.chair之后所有用户会根据自身jack.id核对jack.chair，保证各个用户之间的游戏指令不会混绕；用户不可以操作其他玩家的游戏;只能操作自己占有的用户位置的游戏</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.checkId = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (jack.chair[<span class="keyword">this</span>.role] == jack.id) </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;      <span class="comment">//用户id验证正确，可以向服务器发送游戏指令</span></span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;    <span class="comment">//用户id验证失败，不向客户端发送游戏指令</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="keyword">this</span>.sit（）          <span class="comment">//向服务端请求坐下该位置</span></span><br><span class="line"><span class="keyword">this</span>.sitDown（）      <span class="comment">//获得服务端同意后，在该位置坐下，</span></span><br><span class="line"><span class="keyword">this</span>.tinyline(msg)    <span class="comment">//私有化，针对每个player都有自己的浮动提示窗</span></span><br><span class="line"><span class="keyword">this</span>.tinylive(“msg”)  <span class="comment">//每个用户独立的信息提示</span></span><br></pre></td></tr></table></figure>
+<h3 id="庄家（banker）">庄家（banker）</h3><p>庄家的变化在于将本地的机器人控制转变为服务端发送的信号控制<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//监听庄家准备</span></span><br><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">"banReady"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            banker.ready();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//监听庄家叫牌</span></span><br><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">"banHit"</span>, <span class="function"><span class="keyword">function</span><span class="params">(pokNum)</span> </span>&#123;</span><br><span class="line">            banker.hit(pokNum - <span class="number">1</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"><span class="comment">//监听庄家停牌</span></span><br><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">"banStand"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            banker.stand();</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="服务端（R）">服务端（R）</h3><p>详情请见代码【注释】和【联机版状态流程图】<br>主要注意的是，当玩家中途退出【关闭网页会话】的时候，记得要搜寻玩家是否在游戏list中，若是的话，将玩家从游戏删除，并且判断当前是否还有玩家游戏，若无则初始化游戏，以免阻塞游戏进程</p>
+<p>并且在游戏开始发牌是，记住庄家的头两张牌，以便于之后的控制庄家叫牌流程，不需要再从客户端庄家获取</p>
+<p>服务端广播Io.emit（）只会触发客户端的事件，不会触发服务端本身事件<br>同样，客户端jack.soket.emit()只会触发服务端事件，不会触发客户端本身事件</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/游戏/">游戏</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="hinami.xyz/2016/04/23/blackJack/" data-title="blackJack | hinami" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/30/chatroom/"  title="websocket实现的聊天室">
+ <strong>下一篇：</strong><br/> 
+ <span>websocket实现的聊天室
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/04/23/blackJack/" data-title="blackJack" data-url="hinami.xyz/2016/04/23/blackJack/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#21点纸牌游戏"><span class="toc-number">1.</span> <span class="toc-text">21点纸牌游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单机版"><span class="toc-number">1.0.1.</span> <span class="toc-text">单机版</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#闲家(player):"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">闲家(player):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#庄家(banker):"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">庄家(banker):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#裁判(Referee):"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">裁判(Referee):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#庄家机器人(Robot):"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">庄家机器人(Robot):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#联机版"><span class="toc-number">1.0.2.</span> <span class="toc-text">联机版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闲家（player）"><span class="toc-number">1.0.3.</span> <span class="toc-text">闲家（player）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#庄家（banker）"><span class="toc-number">1.0.4.</span> <span class="toc-text">庄家（banker）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端（R）"><span class="toc-number">1.0.5.</span> <span class="toc-text">服务端（R）</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/AngularJS/" title="AngularJS">AngularJS<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Demo/" title="Demo">Demo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/HTML5/" title="HTML5">HTML5<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/css3/" title="css3">css3<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/php/" title="php">php<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端背包/" title="前端背包">前端背包<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/小红书/" title="小红书">小红书<sup>35</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面试经验/" title="面试经验">面试经验<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目经验/" title="项目经验">项目经验<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>39</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小红书/" title="小红书">小红书<sup>16</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/过滤输入/" title="过滤输入">过滤输入<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mail/" title="mail">mail<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JSON/" title="JSON">JSON<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1000.hnu.cn/" target="_blank" title="千年弦歌">千年弦歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://tms.im" target="_blank" title="梦石真人">谭  总</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="cateaf.com" target="_blank" title="这人是个死基佬">小礼服</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xindroid.com/" target="_blank" title="xindroid">xindroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="全球最大同性交友社区">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://home.cnblogs.com/u/yxy99/" target="_blank" title="yxy">yxy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m hinami in HNU. <br/>
+			This is my school,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hinami0507" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/346565386Toms" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/hinami.sin" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/po-xiao-14-75" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:346565386@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hinami">hinami</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hinami"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd65912a25436b0b55db731ce75f5c981' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
