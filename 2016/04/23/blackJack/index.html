@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="websoket实现的联机游戏">
+    <meta name="description" content="websoket实现的联机游戏---21点纸牌游戏(blackJack)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="blackJack">
 <meta property="og:url" content="hinami.xyz/2016/04/23/blackJack/index.html">
 <meta property="og:site_name" content="hinami">
-<meta property="og:description" content="websoket实现的联机游戏">
+<meta property="og:description" content="websoket实现的联机游戏---21点纸牌游戏(blackJack)">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/blackJackSingleFlow.jpg">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/blackJackOnlineFlow.jpg">
-<meta property="og:updated_time" content="2016-04-23T02:35:31.317Z">
+<meta property="og:updated_time" content="2016-04-23T02:50:03.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="blackJack">
-<meta name="twitter:description" content="websoket实现的联机游戏">
+<meta name="twitter:description" content="websoket实现的联机游戏---21点纸牌游戏(blackJack)">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -157,15 +157,22 @@
 <h3 id="服务端（R）">服务端（R）</h3><p>详情请见代码【注释】和【联机版状态流程图】<br>主要注意的是，当玩家中途退出【关闭网页会话】的时候，记得要搜寻玩家是否在游戏list中，若是的话，将玩家从游戏删除，并且判断当前是否还有玩家游戏，若无则初始化游戏，以免阻塞游戏进程</p>
 <p>并且在游戏开始发牌是，记住庄家的头两张牌，以便于之后的控制庄家叫牌流程，不需要再从客户端庄家获取</p>
 <p>服务端广播Io.emit（）只会触发客户端的事件，不会触发服务端本身事件<br>同样，客户端jack.soket.emit()只会触发服务端事件，不会触发客户端本身事件</p>
+<hr>
+<p>若发现bug请留言↓</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/项目经验/">项目经验</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/游戏/">游戏</a>
+  <span></span> <a href="/tags/nodeJs/">nodeJs</a>
   </div>
 
 </div>
@@ -264,7 +271,7 @@
 		  
 		
 		  
-			<li><a href="/categories/项目经验/" title="项目经验">项目经验<sup>3</sup></a></li>
+			<li><a href="/categories/项目经验/" title="项目经验">项目经验<sup>4</sup></a></li>
 		  
 		
 		</ul>
