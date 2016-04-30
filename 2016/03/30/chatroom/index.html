@@ -17,7 +17,7 @@
 <meta property="og:url" content="hinami.xyz/2016/03/30/chatroom/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="在长连接上，websocket对比long poll和ajax的优势以及web聊天室的实现">
-<meta property="og:updated_time" content="2016-04-02T01:22:58.025Z">
+<meta property="og:updated_time" content="2016-04-30T10:50:02.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="websocket实现的聊天室">
 <meta name="twitter:description" content="在长连接上，websocket对比long poll和ajax的优势以及web聊天室的实现">
@@ -96,7 +96,7 @@
 		
 		<p>最近在逛<a href="https://isux.tencent.com/" target="_blank" rel="external">ISUX</a>看到的基于websocket协议开发的web在线聊天室</p>
 <p>于是开始了解websocket</p>
-<p>先上demo吧:<a href="http://demo.hxz.im/" target="_blank" rel="external">demo.hxz.im</a></p>
+<p>先上demo吧:<a href="http://on.hxz.im/" target="_blank" rel="external">on.hxz.im</a>这个是blackjack游戏—顺便有个聊天室</p>
 <h1 id="websocket协议">websocket协议</h1><p>WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。可以视为HTTP协议支持长连接的一个大补丁,基于 TCP 协议；HTTP 也是一种协议，基于 TCP 协议。<strong>连接要保持还是关闭是由你服务器应用来控制的</strong>。</p>
 <h1 id="以前的即时通信—polling&amp;Ajax">以前的即时通信—polling&amp;Ajax</h1><p>之前要实现实时通信，所用的技术是轮询(polling)，设置一个事件间隔，例如每一秒向服务器发出HTTP request，</p>
 <h4 id="Ajax会遇到以下场景：">Ajax会遇到以下场景：</h4><figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。。(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。。。(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。。。。。(response)</span><br><span class="line">客户端：有没有新信息啊n<span class="comment">(*≧▽≦*)</span>n(Request)</span><br><span class="line">服务端：没有。。。(response)</span><br><span class="line">。。。。。。</span><br></pre></td></tr></table></figure>
@@ -267,11 +267,11 @@
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
 			
 		
 			
@@ -279,15 +279,11 @@
 			
 		
 			
-				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
 			
 		
 			
@@ -295,11 +291,11 @@
 			
 		
 			
-				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
 			
 		
 			
@@ -307,7 +303,15 @@
 			
 		
 			
-				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面试经验/" title="面试经验">面试经验<sup>2</sup></a></li>
 			
 		
 			
@@ -315,7 +319,7 @@
 			
 		
 			
-				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
 			
 		
 			
@@ -331,15 +335,11 @@
 			
 		
 			
-				<li><a href="/tags/mail/" title="mail">mail<sup>1</sup></a></li>
+				<li><a href="/tags/string方法汇总/" title="string方法汇总">string方法汇总<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JSON/" title="JSON">JSON<sup>1</sup></a></li>
 			
 		
 		</ul>

@@ -19,7 +19,7 @@
 <meta property="og:description" content="websoket实现的联机游戏---21点纸牌游戏(blackJack)">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/blackJackSingleFlow.jpg">
 <meta property="og:image" content="http://7xnp0k.com1.z0.glb.clouddn.com/blackJackOnlineFlow.jpg">
-<meta property="og:updated_time" content="2016-04-23T02:50:03.431Z">
+<meta property="og:updated_time" content="2016-04-29T12:57:26.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="blackJack">
 <meta name="twitter:description" content="websoket实现的联机游戏---21点纸牌游戏(blackJack)">
@@ -154,6 +154,10 @@
 <p>服务器在广播开始游戏后，会发出各个座位的落座情况【座位上放着坐下人的ID】，jack.chair之后所有用户会根据自身jack.id核对jack.chair，保证各个用户之间的游戏指令不会混绕；用户不可以操作其他玩家的游戏;只能操作自己占有的用户位置的游戏</p>
 <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.checkId = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (jack.chair[<span class="keyword">this</span>.role] == jack.id) </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;      <span class="comment">//用户id验证正确，可以向服务器发送游戏指令</span></span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;    <span class="comment">//用户id验证失败，不向客户端发送游戏指令</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="keyword">this</span>.sit（）          <span class="comment">//向服务端请求坐下该位置</span></span><br><span class="line"><span class="keyword">this</span>.sitDown（）      <span class="comment">//获得服务端同意后，在该位置坐下，</span></span><br><span class="line"><span class="keyword">this</span>.tinyline(msg)    <span class="comment">//私有化，针对每个player都有自己的浮动提示窗</span></span><br><span class="line"><span class="keyword">this</span>.tinylive(“msg”)  <span class="comment">//每个用户独立的信息提示</span></span><br></pre></td></tr></table></figure>
 <h3 id="庄家（banker）">庄家（banker）</h3><p>庄家的变化在于将本地的机器人控制转变为服务端发送的信号控制<br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//监听庄家准备</span></span><br><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">"banReady"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            banker.ready();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//监听庄家叫牌</span></span><br><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">"banHit"</span>, <span class="function"><span class="keyword">function</span><span class="params">(pokNum)</span> </span>&#123;</span><br><span class="line">            banker.hit(pokNum - <span class="number">1</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"><span class="comment">//监听庄家停牌</span></span><br><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">"banStand"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            banker.stand();</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改日记">修改日记</h3><p>2016/04/29</p>
+<p>面试中-面试官指出了这里的问题<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">"insur"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">role, choice</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> player = <span class="built_in">eval</span>(<span class="string">"player"</span>+role);</span><br><span class="line">            player.insur(choice);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>1.<code>eval</code>会引起额外巨大的开销<br>2.<code>eval</code>运行代码并且没有验证输入的话会很危险，很容易被人注入一些奇怪的代码</p>
+<p>于是叫我当面改，我改成了这样—<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">getDom: <span class="function"><span class="keyword">function</span>(<span class="params">role</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">switch</span>(role)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">return</span> <span class="built_in">window</span>.player1;<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>: <span class="keyword">return</span> <span class="built_in">window</span>.player2;<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>: <span class="keyword">return</span> <span class="built_in">window</span>.player3;<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">this</span>.socket.on(<span class="string">"insur"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">role, choice</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> player = jack.getDom(role);</span><br><span class="line">            player.insur(choice);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
 <h3 id="服务端（R）">服务端（R）</h3><p>详情请见代码【注释】和【联机版状态流程图】<br>主要注意的是，当玩家中途退出【关闭网页会话】的时候，记得要搜寻玩家是否在游戏list中，若是的话，将玩家从游戏删除，并且判断当前是否还有玩家游戏，若无则初始化游戏，以免阻塞游戏进程</p>
 <p>并且在游戏开始发牌是，记住庄家的头两张牌，以便于之后的控制庄家叫牌流程，不需要再从客户端庄家获取</p>
 <p>服务端广播Io.emit（）只会触发客户端的事件，不会触发服务端本身事件<br>同样，客户端jack.soket.emit()只会触发服务端事件，不会触发客户端本身事件</p>
@@ -217,7 +221,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#21点纸牌游戏"><span class="toc-number">1.</span> <span class="toc-text">21点纸牌游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单机版"><span class="toc-number">1.0.1.</span> <span class="toc-text">单机版</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#闲家(player):"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">闲家(player):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#庄家(banker):"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">庄家(banker):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#裁判(Referee):"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">裁判(Referee):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#庄家机器人(Robot):"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">庄家机器人(Robot):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#联机版"><span class="toc-number">1.0.2.</span> <span class="toc-text">联机版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闲家（player）"><span class="toc-number">1.0.3.</span> <span class="toc-text">闲家（player）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#庄家（banker）"><span class="toc-number">1.0.4.</span> <span class="toc-text">庄家（banker）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端（R）"><span class="toc-number">1.0.5.</span> <span class="toc-text">服务端（R）</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#21点纸牌游戏"><span class="toc-number">1.</span> <span class="toc-text">21点纸牌游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单机版"><span class="toc-number">1.0.1.</span> <span class="toc-text">单机版</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#闲家(player):"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">闲家(player):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#庄家(banker):"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">庄家(banker):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#裁判(Referee):"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">裁判(Referee):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#庄家机器人(Robot):"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">庄家机器人(Robot):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#联机版"><span class="toc-number">1.0.2.</span> <span class="toc-text">联机版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闲家（player）"><span class="toc-number">1.0.3.</span> <span class="toc-text">闲家（player）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#庄家（banker）"><span class="toc-number">1.0.4.</span> <span class="toc-text">庄家（banker）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改日记"><span class="toc-number">1.0.5.</span> <span class="toc-text">修改日记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端（R）"><span class="toc-number">1.0.6.</span> <span class="toc-text">服务端（R）</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -288,11 +292,11 @@
 			
 		
 			
-				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>35</sup></a></li>
+				<li><a href="/tags/JS/" title="JS">JS<sup>35</sup></a></li>
 			
 		
 			
@@ -300,15 +304,11 @@
 			
 		
 			
-				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
 			
 		
 			
@@ -316,11 +316,11 @@
 			
 		
 			
-				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
+				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+				<li><a href="/tags/DOM3/" title="DOM3">DOM3<sup>3</sup></a></li>
 			
 		
 			
@@ -328,7 +328,15 @@
 			
 		
 			
-				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面试经验/" title="面试经验">面试经验<sup>2</sup></a></li>
 			
 		
 			
@@ -336,7 +344,7 @@
 			
 		
 			
-				<li><a href="/tags/style/" title="style">style<sup>2</sup></a></li>
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
 			
 		
 			
@@ -352,15 +360,11 @@
 			
 		
 			
-				<li><a href="/tags/mail/" title="mail">mail<sup>1</sup></a></li>
+				<li><a href="/tags/string方法汇总/" title="string方法汇总">string方法汇总<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JSON/" title="JSON">JSON<sup>1</sup></a></li>
 			
 		
 		</ul>
