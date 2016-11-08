@@ -12,18 +12,24 @@
 
     
     <meta name="description" content="WebVR好久没有写博客了，这次的方向是webVR,说到webVR，还要说一下three.js，做3D页面的首选
-三要素:场景,相机,渲染var scene = new THREE.Scene(); //创建场景var renderer = new THREE.WebGLRenderer(); //创建渲染器var cube;  //创建立方体var camera;  //创建相机function">
+三要素:场景,相机,渲染先上DEMO再说
+我这里加了点鼠标和触屏控制~~
+var scene = new THREE.Scene();var renderer = new THREE.WebGLRenderer(); var cube;var camera;function inits">
 <meta property="og:type" content="article">
 <meta property="og:title" content="画一个长方体">
 <meta property="og:url" content="hinami.xyz/2016/11/07/webvr/index.html">
 <meta property="og:site_name" content="hinami">
 <meta property="og:description" content="WebVR好久没有写博客了，这次的方向是webVR,说到webVR，还要说一下three.js，做3D页面的首选
-三要素:场景,相机,渲染var scene = new THREE.Scene(); //创建场景var renderer = new THREE.WebGLRenderer(); //创建渲染器var cube;  //创建立方体var camera;  //创建相机function">
-<meta property="og:updated_time" content="2016-11-08T03:16:52.979Z">
+三要素:场景,相机,渲染先上DEMO再说
+我这里加了点鼠标和触屏控制~~
+var scene = new THREE.Scene();var renderer = new THREE.WebGLRenderer(); var cube;var camera;function inits">
+<meta property="og:updated_time" content="2016-11-08T08:34:27.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="画一个长方体">
 <meta name="twitter:description" content="WebVR好久没有写博客了，这次的方向是webVR,说到webVR，还要说一下three.js，做3D页面的首选
-三要素:场景,相机,渲染var scene = new THREE.Scene(); //创建场景var renderer = new THREE.WebGLRenderer(); //创建渲染器var cube;  //创建立方体var camera;  //创建相机function">
+三要素:场景,相机,渲染先上DEMO再说
+我这里加了点鼠标和触屏控制~~
+var scene = new THREE.Scene();var renderer = new THREE.WebGLRenderer(); var cube;var camera;function inits">
 <meta name="twitter:creator" content="@346565386Toms">
 
     
@@ -98,7 +104,17 @@
 	<div class="article-content">
 		
 		<h1 id="WebVR">WebVR</h1><p>好久没有写博客了，这次的方向是webVR,说到webVR，还要说一下three.js，做3D页面的首选</p>
-<h1 id="三要素:场景,相机,渲染">三要素:场景,相机,渲染</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scene = <span class="keyword">new</span> THREE.Scene(); <span class="comment">//创建场景</span></span><br><span class="line"><span class="keyword">var</span> renderer = <span class="keyword">new</span> THREE.WebGLRenderer(); <span class="comment">//创建渲染器</span></span><br><span class="line"><span class="keyword">var</span> cube;  <span class="comment">//创建立方体</span></span><br><span class="line"><span class="keyword">var</span> camera;  <span class="comment">//创建相机</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initscene</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    renderer.setSize(<span class="built_in">window</span>.innerWidth, <span class="built_in">window</span>.innerHeight);  <span class="comment">//场景宽高</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(renderer.domElement);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initcube</span>(<span class="params">x,y,z</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> geometry = <span class="keyword">new</span> THREE.CubeGeometry(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>); <span class="comment">//设置立方体长宽高</span></span><br><span class="line">    <span class="keyword">var</span> material = <span class="keyword">new</span> THREE.MeshBasicMaterial(&#123;</span><br><span class="line">        color: <span class="number">0x00ff00</span>,</span><br><span class="line">        wireframe: <span class="literal">true</span></span><br><span class="line">    &#125;);</span><br><span class="line">    cube = <span class="keyword">new</span> THREE.Mesh(geometry, material);</span><br><span class="line">    scene.add(cube);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initCamera</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    camera = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">75</span>, <span class="built_in">window</span>.innerWidth / <span class="built_in">window</span>.innerHeight, <span class="number">0.1</span>, <span class="number">1000</span>);</span><br><span class="line">    camera.position.set(<span class="number">0</span>,<span class="number">0</span>,<span class="number">5</span>)</span><br><span class="line">    <span class="comment">// camera.position.x = 0;</span></span><br><span class="line">    <span class="comment">// camera.position.y = 0;</span></span><br><span class="line">    <span class="comment">// camera.position.z = 5;</span></span><br><span class="line">    camera.lookAt(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        z: <span class="number">0</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    requestAnimationFrame(render);</span><br><span class="line">    <span class="comment">// cube.rotation.x += 0.01;</span></span><br><span class="line">    renderer.render(scene, camera);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    initscene();</span><br><span class="line">    initcube();</span><br><span class="line">    initCamera();</span><br><span class="line">    render();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+<h1 id="三要素:场景,相机,渲染">三要素:场景,相机,渲染</h1><p>先上<a href="http://vr.hxz.im/demo1/" target="_blank" rel="external">DEMO</a>再说</p>
+<p>我这里加了点鼠标和触屏控制~~</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scene = <span class="keyword">new</span> THREE.Scene();</span><br><span class="line"><span class="keyword">var</span> renderer = <span class="keyword">new</span> THREE.WebGLRenderer(); </span><br><span class="line"><span class="keyword">var</span> cube;</span><br><span class="line"><span class="keyword">var</span> camera;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initscene</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    renderer.setSize(<span class="built_in">window</span>.innerWidth, <span class="built_in">window</span>.innerHeight);   <span class="comment">//设置场景宽高</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(renderer.domElement);            <span class="comment">//将场景放到DOM中</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initcube</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> geometry = <span class="keyword">new</span> THREE.CubeGeometry(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>); <span class="comment">//创建几何立方体长宽高</span></span><br><span class="line">    <span class="keyword">var</span> material = <span class="keyword">new</span> THREE.MeshBasicMaterial(&#123;    <span class="comment">//创建材质</span></span><br><span class="line">        color: <span class="number">0x00ff00</span>,     <span class="comment">//线颜色</span></span><br><span class="line">        wireframe: <span class="literal">true</span>      <span class="comment">//只显示线框</span></span><br><span class="line">    &#125;);</span><br><span class="line">    cube = <span class="keyword">new</span> THREE.Mesh(geometry, material);     <span class="comment">//根据形状和材质生成立方体</span></span><br><span class="line">    scene.add(cube);                               <span class="comment">//将生成的立方体导入到场景中</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initCamera</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//创建透视相机，</span></span><br><span class="line">        <span class="comment">// 参数一：视角</span></span><br><span class="line">        <span class="comment">// 参数二: 纵横比例</span></span><br><span class="line">        <span class="comment">// 参数三: 近平面</span></span><br><span class="line">        <span class="comment">// 参数三: 远平面</span></span><br><span class="line">    camera = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">75</span>, <span class="built_in">window</span>.innerWidth / <span class="built_in">window</span>.innerHeight, <span class="number">0.1</span>, <span class="number">1000</span>);</span><br><span class="line">    camera.position.set(<span class="number">0</span>,<span class="number">0</span>,<span class="number">5</span>) <span class="comment">//相机位置</span></span><br><span class="line">    <span class="comment">// camera.position.x = 0;</span></span><br><span class="line">    <span class="comment">// camera.position.y = 0;</span></span><br><span class="line">    <span class="comment">// camera.position.z = 5;</span></span><br><span class="line">    camera.lookAt(&#123;            <span class="comment">//相机方向</span></span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        z: <span class="number">0</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    requestAnimationFrame(render);  <span class="comment">//循环渲染本渲染器</span></span><br><span class="line">    <span class="comment">// cube.rotation.x += 0.01;</span></span><br><span class="line">    renderer.render(scene, camera);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    initscene();</span><br><span class="line">    initcube();</span><br><span class="line">    initCamera();</span><br><span class="line">    render();</span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+<p>这里是一个很简单的DEMO，画一个简单的长方体</p>
+<h2 id="简单的几个步奏创建一个3D场景">简单的几个步奏创建一个3D场景</h2><ul>
+<li><code>initscene()</code>初始化场景</li>
+<li><code>initcube()</code>创建一个长方体,设置他的颜色和长宽高，还有他的视角</li>
+<li><code>initCamera()</code>初始化一个相机.设置他的视角，纵横比，近平面，原平面，位置，相机方向</li>
+<li><code>render()</code>一个渲染器，通过requestAnimationFrame(render)循环渲染他本身,使得大家可以看到一个动态的场景</li>
+</ul>
+<p>为了让大家更好的体验，所以后边加上了一个简单的鼠标和触屏操作，使得大家可以全方位的观察立方体,简单来说就是通过检测玩家鼠标拖动和触屏拖动中的X,Y轴差异，改变cube的角度 <code>cube.rotation.x</code>,<code>cube.rotation.y</code>，<code>cube.rotation.z</code></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -157,7 +173,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebVR"><span class="toc-number">1.</span> <span class="toc-text">WebVR</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三要素:场景,相机,渲染"><span class="toc-number">2.</span> <span class="toc-text">三要素:场景,相机,渲染</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebVR"><span class="toc-number">1.</span> <span class="toc-text">WebVR</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三要素:场景,相机,渲染"><span class="toc-number">2.</span> <span class="toc-text">三要素:场景,相机,渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的几个步奏创建一个3D场景"><span class="toc-number">2.1.</span> <span class="toc-text">简单的几个步奏创建一个3D场景</span></a></li></ol></li></ol>
  
   </div>
 
@@ -244,15 +260,19 @@
 			
 		
 			
-				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/事件类型/" title="事件类型">事件类型<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/DOM2/" title="DOM2">DOM2<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>3</sup></a></li>
 			
 		
 			
@@ -264,31 +284,11 @@
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/事件/" title="事件">事件<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/面试经验/" title="面试经验">面试经验<sup>2</sup></a></li>
 			
 		
 			
@@ -300,11 +300,27 @@
 			
 		
 			
-				<li><a href="/tags/脚本加载/" title="脚本加载">脚本加载<sup>1</sup></a></li>
+				<li><a href="/tags/面试经验/" title="面试经验">面试经验<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/鼠标与滚轮事件/" title="鼠标与滚轮事件">鼠标与滚轮事件<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cookie/" title="cookie">cookie<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境/" title="环境">环境<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/作用域/" title="作用域">作用域<sup>1</sup></a></li>
 			
 		
 		</ul>
